@@ -1,0 +1,56 @@
+# Sample intake file — CLEARLY FAKE, illustrative data only.
+# Do not treat any name, date, or URL below as real. Used by the quickstart and the
+# acceptance smoke test.
+
+- state: VA
+  jurisdiction_type: municipality
+  jurisdiction_name: "Town of Example"
+  election_type: municipal
+  election_date: "2027-05-04"
+  offices: ["Mayor", "Town Council (3 seats)"]
+  registration_deadline: "2027-04-12"
+  early_voting_start: "2027-04-16"
+  early_voting_end: "2027-05-01"
+  timezone: "America/New_York"
+  confidence: official
+  source_url: "https://www.elections.example.gov/town-of-example-2027"
+  notes: "Illustrative placeholder record; not a real election."
+
+- state: VA
+  jurisdiction_type: municipality
+  jurisdiction_name: "Town of Example"
+  election_type: special
+  election_date: "2027-11-02"
+  offices: ["Town Council (1 seat, unexpired term)"]
+  registration_deadline: "2027-10-12"
+  confidence: official
+  source_url: "https://www.elections.example.gov/town-of-example-special-2027"
+  notes: "Illustrative placeholder special election."
+
+- state: VA
+  jurisdiction_type: municipality
+  jurisdiction_name: "City of Sampleton"
+  election_type: general
+  election_date: "2027-11-02"
+  offices: ["City Council At-Large", "School Board (2 seats)"]
+  registration_deadline: "2027-10-12"
+  early_voting_start: "2027-09-24"
+  early_voting_end: "2027-10-30"
+  candidate_filing_deadline: "2027-06-15"
+  timezone: "America/New_York"
+  confidence: secondary
+  source_url: "https://www.example.gov/sampleton/elections/2027"
+  notes: "Illustrative placeholder record."
+
+- state: NJ
+  jurisdiction_type: municipality
+  jurisdiction_name: "Borough of Placeholder"
+  election_type: municipal
+  election_date: "2027-05-11"
+  offices: ["Borough Council (2 seats)"]
+  registration_deadline: "2027-04-20"
+  mail_ballot_request_deadline: "2027-05-04"
+  timezone: "America/New_York"
+  confidence: inferred
+  source_url: "https://www.example.nj.gov/placeholder/2027-municipal"
+  notes: "Illustrative placeholder record."
