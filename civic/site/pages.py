@@ -4,6 +4,7 @@ from __future__ import annotations
 
 from typing import Optional
 
+from . import art
 from . import components as C
 from . import copy, icons, seo
 from .base import SiteConfig, esc, rel
@@ -24,15 +25,19 @@ def _cards(cfg: SiteConfig, elections: list[ElectionView]) -> str:
 
 
 def _section(
-    title: str, body: str, *, id: Optional[str] = None, lead: str = "", tinted: bool = False
+    title: str, body: str, *, id: Optional[str] = None, lead: str = "",
+    tinted: bool = False, index: Optional[str] = None,
 ) -> str:
     idattr = f' id="{id}"' if id else ""
     cls = "section section--tinted" if tinted else "section"
     lead_html = f'<p class="section__lead">{lead}</p>' if lead else ""
+    index_html = (
+        f'<p class="section__index" aria-hidden="true">{esc(index)}</p>' if index else ""
+    )
     return (
         f'<section class="{cls}"{idattr}>'
-        f'<div class="wrap"><h2 class="section__title">{title}</h2>{lead_html}{body}</div>'
-        f"</section>"
+        f'<div class="wrap">{index_html}<h2 class="section__title">{title}</h2>'
+        f"{lead_html}{body}</div></section>"
     )
 
 
@@ -61,18 +66,34 @@ def render_home(cfg: SiteConfig, site: SiteData) -> str:
         '<dl class="kpi-strip">'
         f'<div class="kpi"><dt>Elections tracked</dt><dd class="num">{site.total_elections}</dd></div>'
         f'<div class="kpi"><dt>States &amp; DC</dt><dd class="num">{site.total_states}</dd></div>'
-        f'<div class="kpi"><dt>Next election</dt><dd class="num">{next_date}</dd></div>'
+        f'<div class="kpi"><dt>Next election</dt><dd class="num">{esc(next_date)}</dd></div>'
         "</dl>"
     )
+    # Editorial highlight on the load-bearing phrase (span is trusted markup).
+    marked_title = esc(hero_h1).replace(
+        "next election", '<span class="hero__mark">next election</span>'
+    )
+    trust_bar = (
+        '<ul class="trust-bar" aria-label="Why you can trust these dates">'
+        + "".join(
+            f'<li class="trust-pill">{icons.TRUST_ICONS[k]}<span>{esc(label)}</span></li>'
+            for k, label in copy.TRUST_BAR
+        )
+        + "</ul>"
+    )
     hero = (
-        '<section class="hero"><div class="wrap">'
+        '<section class="hero">'
+        f"{art.guilloche_svg()}"
+        '<div class="wrap"><div class="hero__copy">'
         f'<p class="hero__eyebrow overline">{esc(copy.HOME_HERO["eyebrow"])}</p>'
-        f'<h1 class="hero__title">{esc(hero_h1)}</h1>'
-        f'<p class="hero__subhead">{copy.HOME_HERO["subhead"]}</p>'
+        f'<h1 class="hero__title">{marked_title}</h1>'
+        f'<p class="hero__subhead">{esc(copy.HOME_HERO["subhead"])}</p>'
         f'<div class="hero__actions">{jump}'
-        f'<a class="btn btn--secondary" href="{rel(cfg, "/methodology/")}">'
-        f'{copy.CTA["how_we_verify"]}</a></div>'
-        f"{kpi}</div></section>"
+        f'<a class="hero__secondary" href="{rel(cfg, "/methodology/")}">'
+        f'or see how we verify →</a></div>'
+        f"{trust_bar}{kpi}</div>"
+        f'<div class="hero__instrument">{icons.hero_plumbline()}</div>'
+        "</div></section>"
     )
 
     upcoming_body = (
@@ -86,6 +107,7 @@ def render_home(cfg: SiteConfig, site: SiteData) -> str:
             f'<p class="section__more"><a href="{rel(cfg, "/states/")}">'
             f'{copy.CTA["browse_states"]} →</a></p>'
         ),
+        index="01",
     )
 
     state_grid = (
@@ -93,7 +115,7 @@ def render_home(cfg: SiteConfig, site: SiteData) -> str:
         + "".join(C.state_tile(cfg, s) for s in site.states)
         + "</div>"
     )
-    browse = _section("Browse by state", state_grid, id="states", tinted=True)
+    browse = _section("Browse by state", state_grid, id="states", tinted=True, index="02")
 
     trust = _section(
         "How we verify",
@@ -104,6 +126,7 @@ def render_home(cfg: SiteConfig, site: SiteData) -> str:
             f"{C.confidence_legend()}"
             "</div>"
         ),
+        index="03",
     )
 
     exports = _section(
@@ -134,6 +157,7 @@ def render_home(cfg: SiteConfig, site: SiteData) -> str:
         ),
         id="data",
         tinted=True,
+        index="04",
     )
 
     main = hero + on_calendar + browse + trust + exports
