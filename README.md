@@ -95,6 +95,7 @@ civic reject 7       # discard the change, restore `verified`, value unchanged
 | `civic verify ELECTION_ID --by NAME` | Mark an election verified. |
 | `civic export json\|csv\|ics [...]` | Produce exports (`--version`, `--out`, `--include-unverified`, `--since`). |
 | `civic sources seed` | Load `seed/sources.yaml` into the sources table. |
+| `civic site build [...]` | Generate the static consumer website (`--version`, `--out`, `--origin`, `--base-path`, `--include-unverified`, `--no-downloads`). |
 | `civic stats` | Counts by state/status/type + pending-review count. |
 
 ## Data model
@@ -106,6 +107,43 @@ substantive fields — never over provenance, status, or timestamps — decides 
 re-ingest is a no-op, a safe update, or a review-gated conflict. See `schema.sql` and
 `civic/ids.py`.
 
+## Consumer website — "Plumbline"
+
+Product #1 is a static, SEO-focused consumer directory generated from the verified
+records by a hermetic static-site generator (`civic/site/`). It is files only — no
+server — so it deploys to any static host.
+
+```bash
+civic site build --origin https://your-domain.example        # domain-root hosting
+# or, for GitHub project-page hosting under a subpath:
+civic site build --origin https://you.github.io --base-path /Midterm-Hub
+```
+
+Output (default `exports/site/`, git-ignored):
+
+- `/` homepage, `/states/`, `/states/{ST}/`, `/elections/{ST}/{slug}/`,
+  `/elections/{ST}/{slug}/{id}/`, `/about/`, `/methodology/`, `/data/`, `/404.html`
+- `/sitemap.xml`, `/robots.txt`, hermetic `/assets/` (one CSS file, tiny vanilla JS,
+  inline-SVG favicon)
+- `/downloads/` — real JSON/CSV/ICS exports so the data links and calendar
+  subscriptions work on the deployed site
+
+Design & engineering notes:
+
+- **Hermetic**: zero external requests — system fonts, inline SVG, no CDN/analytics.
+- **Accessible**: WCAG 2.1 AA in light *and* dark; semantic landmarks, skip link,
+  visible focus, and confidence encoded four ways (meter + label + color + border),
+  never by color alone.
+- **SEO**: per-page canonical/meta/Open Graph, schema.org JSON-LD (`Event`,
+  `BreadcrumbList`, `WebSite`/`Organization`, `CollectionPage`, `Dataset`,
+  `DefinedTermSet`), a real sitemap, and clean directory-style URLs.
+- **Provenance-first**: every election page shows a source citation, confidence
+  level, and verification metadata — accuracy rendered as UI.
+
+`.github/workflows/pages.yml` builds and publishes the site to GitHub Pages on push
+(derives the origin/subpath from the repo). Enable **Settings → Pages → Source:
+GitHub Actions** once.
+
 ## Configuration (environment)
 
 | Variable | Default |
@@ -116,6 +154,8 @@ re-ingest is a no-op, a safe update, or a review-gated conflict. See `schema.sql
 | `CIVIC_USER_AGENT` | `CivicCalendarBot/0.1 (+https://example.com/bot)` |
 | `CIVIC_ICS_DOMAIN` | `civic-calendar.local` |
 | `CIVIC_RATE_LIMIT_SECONDS` | `2.0` |
+| `CIVIC_SITE_ORIGIN` | `https://plumbline.example` |
+| `CIVIC_SITE_BASE_PATH` | `` (empty = domain root) |
 
 ## Tests
 

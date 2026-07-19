@@ -1,0 +1,71 @@
+name: deploy-site
+
+# Builds the Plumbline static site and publishes it to GitHub Pages.
+# The demo dataset is the clearly-fake sample intake; swap in real verified data
+# by committing an intake file / DB step here when going live.
+
+on:
+  push:
+    branches: [main, claude/civic-calendar-engine-backend-wddfqw]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: pip
+
+      - name: Install
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+          pip install -e .
+
+      - name: Build dataset + site
+        env:
+          CIVIC_DB_PATH: data/civic.db
+        run: |
+          civic init
+          civic intake tests/fixtures/sample_intake.yaml --by ci
+          python - <<'PY'
+          import sqlite3
+          from civic.store import verify
+          c = sqlite3.connect("data/civic.db")
+          c.row_factory = sqlite3.Row
+          for r in c.execute("SELECT id FROM elections"):
+              verify(c, r["id"], "ci")
+          c.commit()
+          PY
+          civic site build \
+            --origin "https://${{ github.repository_owner }}.github.io" \
+            --base-path "/${{ github.event.repository.name }}" \
+            --out _site
+
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4

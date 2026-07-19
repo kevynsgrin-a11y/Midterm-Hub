@@ -188,7 +188,9 @@ class JurisdictionView:
 
     @property
     def ics_url(self) -> str:
-        return f"/elections/{self.state}/{self.slug}/{self.slug}.ics"
+        # Points at the real per-jurisdiction feed emitted by the ICS exporter into
+        # the site's /downloads/ tree, so the link works on the deployed site.
+        return f"/downloads/ics/{self.state}/{self.slug}.ics"
 
     @property
     def upcoming(self) -> list[ElectionView]:

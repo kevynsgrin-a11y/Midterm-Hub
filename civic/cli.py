@@ -32,6 +32,8 @@ app = typer.Typer(
 )
 sources_app = typer.Typer(help="Manage the sources registry.")
 app.add_typer(sources_app, name="sources")
+site_app = typer.Typer(help="Build the static consumer directory site.")
+app.add_typer(site_app, name="site")
 
 
 def _actor(by: Optional[str]) -> str:
@@ -247,6 +249,44 @@ def sources_seed(
             )
             inserted += 1
     typer.secho(f"Seeded {inserted} source(s).", fg=typer.colors.GREEN)
+
+
+@site_app.command("build")
+def site_build(
+    version: Optional[str] = typer.Option(None, "--version", help="YYYY.MM.DD"),
+    out: Optional[str] = typer.Option(None, "--out", help="Output directory."),
+    origin: Optional[str] = typer.Option(None, "--origin", help="Deploy origin, e.g. https://host"),
+    base_path: Optional[str] = typer.Option(
+        None, "--base-path", help="Subpath prefix for project-page hosting, e.g. /Midterm-Hub"
+    ),
+    include_unverified: bool = typer.Option(
+        False, "--include-unverified", help="Include staging (unverified) records."
+    ),
+    no_downloads: bool = typer.Option(
+        False, "--no-downloads", help="Skip generating the /downloads/ JSON/CSV/ICS files."
+    ),
+) -> None:
+    """Generate the complete static website from verified records."""
+    from .site.build import build_site
+
+    settings = get_settings()
+    version = version or _today_version()
+    out_dir = out or (settings.export_dir.rstrip("/") + "/site")
+    origin = origin if origin is not None else settings.site_origin
+    base_path = base_path if base_path is not None else settings.site_base_path
+
+    with get_connection() as conn:
+        result = build_site(
+            conn, out_dir, origin=origin, base_path=base_path, version=version,
+            include_unverified=include_unverified, with_downloads=not no_downloads,
+        )
+    typer.secho(
+        f"Built {result.pages_written} page(s) into {result.out_dir} "
+        f"(version {result.version}).",
+        fg=typer.colors.GREEN,
+    )
+    if result.downloads_written:
+        typer.echo("Wrote downloadable JSON/CSV/ICS under /downloads/.")
 
 
 @app.command()

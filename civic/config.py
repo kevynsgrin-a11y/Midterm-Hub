@@ -17,6 +17,8 @@ class Settings:
     user_agent: str
     ics_domain: str
     rate_limit_seconds: float
+    site_origin: str
+    site_base_path: str
 
 
 def get_settings() -> Settings:
@@ -30,4 +32,8 @@ def get_settings() -> Settings:
         ),
         ics_domain=os.environ.get("CIVIC_ICS_DOMAIN", "civic-calendar.local"),
         rate_limit_seconds=float(os.environ.get("CIVIC_RATE_LIMIT_SECONDS", "2.0")),
+        # Static-site deploy target. base_path is the subpath prefix for project-page
+        # hosting (e.g. '/Midterm-Hub'), or '' for domain-root hosting.
+        site_origin=os.environ.get("CIVIC_SITE_ORIGIN", "https://plumbline.example"),
+        site_base_path=os.environ.get("CIVIC_SITE_BASE_PATH", ""),
     )

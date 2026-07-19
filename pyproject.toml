@@ -29,6 +29,9 @@ civic = "civic.cli:main"
 [tool.setuptools]
 packages = ["civic", "civic.adapters", "civic.exports", "civic.site"]
 
+[tool.setuptools.package-data]
+"civic.site" = ["assets/*"]
+
 [tool.pytest.ini_options]
 testpaths = ["tests"]
 addopts = "-q"
