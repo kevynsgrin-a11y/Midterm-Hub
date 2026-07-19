@@ -4,9 +4,12 @@ name: deploy-site
 # The demo dataset is the clearly-fake sample intake; swap in real verified data
 # by committing an intake file / DB step here when going live.
 
+# Runs on the default branch and on manual dispatch only — not on feature branches,
+# so an un-provisioned Pages site never shows as a failing check on a PR.
+# One-time setup: Settings → Pages → Source: "GitHub Actions".
 on:
   push:
-    branches: [main, claude/civic-calendar-engine-backend-wddfqw]
+    branches: [main]
   workflow_dispatch:
 
 permissions:
