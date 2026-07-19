@@ -154,6 +154,41 @@ class TestDownloads:
         assert not (tmp_path / "downloads").exists()
 
 
+class TestQaHardening:
+    def test_demo_banner_rendered(self, conn, make_record, tmp_path):
+        r = upsert(conn, make_record(), actor="t")
+        verify(conn, r.election_id, "c")
+        _build(conn, tmp_path, demo=True)
+        assert 'class="demo-banner"' in (tmp_path / "index.html").read_text()
+        assert (tmp_path / "downloads/NOTICE.txt").exists()
+
+    def test_no_demo_banner_by_default(self, conn, make_record, tmp_path):
+        r = upsert(conn, make_record(), actor="t")
+        verify(conn, r.election_id, "c")
+        _build(conn, tmp_path)
+        assert "demo-banner" not in (tmp_path / "index.html").read_text()
+
+    def test_unsafe_source_url_neutralized(self, conn, make_record, tmp_path):
+        r = upsert(conn, make_record(source_url="javascript:alert(1)"), actor="t")
+        verify(conn, r.election_id, "c")
+        _build(conn, tmp_path)
+        html = (
+            tmp_path / f"elections/VA/town-of-example/{r.election_id}/index.html"
+        ).read_text()
+        # No clickable javascript: href survives, even though the string may appear as text.
+        assert 'href="javascript:' not in html.lower()
+
+    def test_stale_tree_pruned(self, conn, make_record, tmp_path):
+        r = upsert(conn, make_record(jurisdiction_name="Town of Example"), actor="t")
+        verify(conn, r.election_id, "c")
+        _build(conn, tmp_path)
+        stale = tmp_path / "elections" / "VA" / "old-town" / "index.html"
+        stale.parent.mkdir(parents=True, exist_ok=True)
+        stale.write_text("stale")
+        _build(conn, tmp_path)  # rebuild should wipe the orphan
+        assert not stale.exists()
+
+
 class TestEdgeCases:
     def test_empty_db_builds(self, conn, tmp_path):
         res = _build(conn, tmp_path)

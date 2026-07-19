@@ -12,7 +12,8 @@ from typing import Optional
 
 from ..exports import fetch_elections, row_to_record
 
-# 50 states + DC, full names for headings, URLs stay lowercase postal codes.
+# 50 states + DC. Full names for headings; URLs use the uppercase postal code
+# (e.g. /states/VA/) — the same case the view models emit everywhere.
 STATE_NAMES: dict[str, str] = {
     "AL": "Alabama", "AK": "Alaska", "AZ": "Arizona", "AR": "Arkansas",
     "CA": "California", "CO": "Colorado", "CT": "Connecticut", "DE": "Delaware",
@@ -239,6 +240,9 @@ class SiteData:
     elections: list[ElectionView]
     states: list[StateView]
     jurisdictions: list[JurisdictionView]
+    # When True, the build renders a site-wide banner stating the records are
+    # illustrative sample data — so a demo build never presents fake elections as real.
+    demo: bool = False
 
     @property
     def upcoming(self) -> list[ElectionView]:

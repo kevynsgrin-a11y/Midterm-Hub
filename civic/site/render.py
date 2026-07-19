@@ -78,6 +78,7 @@ def _footer(cfg: SiteConfig, site: SiteData) -> str:
         )
     colophon = (
         '<div class="footer__meta">'
+        f'<p class="footer__tagline">{esc(copy.TAGLINE)}</p>'
         f'<p class="footer__provenance num">{icons.LOGO_MARK} Data version '
         f"{esc(site.version)} · Last verified {esc(site.last_modified[:10])}</p>"
         f'<p class="footer__disclaimer">{esc(copy.FOOTER_BLURB)}</p>'
@@ -144,8 +145,8 @@ def render_page(
     if canonical:
         head.append(f'<link rel="canonical" href="{esc(canonical)}">')
     head += [
-        f'<meta name="theme-color" content="#F5F3EC" media="(prefers-color-scheme: light)">',
-        f'<meta name="theme-color" content="#131316" media="(prefers-color-scheme: dark)">',
+        '<meta name="theme-color" content="#F5F3EC" media="(prefers-color-scheme: light)">',
+        '<meta name="theme-color" content="#131316" media="(prefers-color-scheme: dark)">',
         f'<link rel="icon" type="image/svg+xml" href="{esc(favicon)}">',
         # Open Graph
         f'<meta property="og:site_name" content="{esc(copy.BRAND)}">',
@@ -174,11 +175,21 @@ def render_page(
     if breadcrumb_items:
         crumb_html = _breadcrumb(cfg, breadcrumb_items)
 
+    demo_banner = ""
+    if getattr(site, "demo", False):
+        demo_banner = (
+            '<div class="demo-banner" role="note">'
+            "<strong>Demonstration site.</strong> Every election shown is illustrative "
+            f'sample data — not a real election. <a href="{esc(rel(cfg, "/about/"))}">'
+            "About the data</a>.</div>"
+        )
+
     body = [
         f'<body{attrs(class_=body_class or None)}>',
         f'<a class="skip-link" href="#main">{esc(copy.CTA["skip_to_content"])}</a>',
+        demo_banner,
         _masthead(cfg, site, path, edition),
-        '<main id="main">',
+        '<main id="main" tabindex="-1">',
         crumb_html,
         main_html,
         "</main>",
