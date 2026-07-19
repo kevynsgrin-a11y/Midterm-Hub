@@ -16,9 +16,7 @@ from .data import (
     CONFIDENCE_BLURB,
     CONFIDENCE_LABELS,
     ElectionView,
-    JurisdictionView,
     SiteData,
-    StateView,
 )
 
 CONTEXT = "https://schema.org"
@@ -151,9 +149,10 @@ def event_ld(cfg: SiteConfig, e: ElectionView) -> dict:
             {"@type": "PropertyValue", "name": "Source retrieved", "value": e.source_retrieved_at}
         )
 
+    # No relative countdown here: JSON-LD is indexed and would go stale between builds.
     desc = (
         f"The {e.jurisdiction_name}, {e.state_name} {e.election_type_label.lower()} "
-        f"election is {e.date_full} ({e.countdown})."
+        f"election is {e.date_full}."
     )
     if e.offices_summary:
         desc += f" On the ballot: {e.offices_summary}."
@@ -176,7 +175,7 @@ def event_ld(cfg: SiteConfig, e: ElectionView) -> dict:
         node["about"] = [{"@type": "Thing", "name": o} for o in e.offices]
     if sub_events:
         node["subEvent"] = sub_events
-    return {"@context": CONTEXT, "@graph": [node, {"@id": org_id(cfg)}]}
+    return {"@context": CONTEXT, "@graph": [node]}
 
 
 def collection_ld(
@@ -225,8 +224,7 @@ def defined_terms_ld(cfg: SiteConfig) -> dict:
 
 
 def dataset_ld(cfg: SiteConfig, site: SiteData) -> dict:
-    return {
-        "@context": CONTEXT,
+    dataset = {
         "@type": "Dataset",
         "@id": absu(cfg, "/data/") + "#dataset",
         "name": "U.S. Off-Cycle & Local Elections dataset",
@@ -248,6 +246,8 @@ def dataset_ld(cfg: SiteConfig, site: SiteData) -> dict:
             "confidence", "source_url",
         ],
     }
+    # Include the Organization node so creator/publisher @id references resolve on /data/.
+    return {"@context": CONTEXT, "@graph": [dataset, _org(cfg)]}
 
 
 # ---------------------------------------------------------------------------

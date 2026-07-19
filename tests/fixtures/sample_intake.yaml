@@ -14,7 +14,7 @@
   timezone: "America/New_York"
   confidence: official
   source_url: "https://www.elections.example.gov/town-of-example-2027"
-  notes: "Illustrative placeholder record; not a real election."
+  notes: "Illustrative sample record — not a real election."
 
 - state: VA
   jurisdiction_type: municipality
@@ -25,7 +25,7 @@
   registration_deadline: "2027-10-12"
   confidence: official
   source_url: "https://www.elections.example.gov/town-of-example-special-2027"
-  notes: "Illustrative placeholder special election."
+  notes: "Illustrative sample record — not a real election (special election)."
 
 - state: VA
   jurisdiction_type: municipality
@@ -40,7 +40,7 @@
   timezone: "America/New_York"
   confidence: secondary
   source_url: "https://www.example.gov/sampleton/elections/2027"
-  notes: "Illustrative placeholder record."
+  notes: "Illustrative sample record — not a real election."
 
 - state: NJ
   jurisdiction_type: municipality
@@ -53,4 +53,4 @@
   timezone: "America/New_York"
   confidence: inferred
   source_url: "https://www.example.nj.gov/placeholder/2027-municipal"
-  notes: "Illustrative placeholder record."
+  notes: "Illustrative sample record — not a real election."

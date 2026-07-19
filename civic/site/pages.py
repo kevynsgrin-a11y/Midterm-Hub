@@ -23,11 +23,14 @@ def _cards(cfg: SiteConfig, elections: list[ElectionView]) -> str:
     )
 
 
-def _section(title: str, body: str, *, id: Optional[str] = None, lead: str = "") -> str:
+def _section(
+    title: str, body: str, *, id: Optional[str] = None, lead: str = "", tinted: bool = False
+) -> str:
     idattr = f' id="{id}"' if id else ""
+    cls = "section section--tinted" if tinted else "section"
     lead_html = f'<p class="section__lead">{lead}</p>' if lead else ""
     return (
-        f'<section class="section"{idattr}>'
+        f'<section class="{cls}"{idattr}>'
         f'<div class="wrap"><h2 class="section__title">{title}</h2>{lead_html}{body}</div>'
         f"</section>"
     )
@@ -63,8 +66,8 @@ def render_home(cfg: SiteConfig, site: SiteData) -> str:
     )
     hero = (
         '<section class="hero"><div class="wrap">'
-        f'<p class="hero__eyebrow overline">{copy.HOME_HERO["eyebrow"]}</p>'
-        f'<h1 class="hero__title">{hero_h1}</h1>'
+        f'<p class="hero__eyebrow overline">{esc(copy.HOME_HERO["eyebrow"])}</p>'
+        f'<h1 class="hero__title">{esc(hero_h1)}</h1>'
         f'<p class="hero__subhead">{copy.HOME_HERO["subhead"]}</p>'
         f'<div class="hero__actions">{jump}'
         f'<a class="btn btn--secondary" href="{rel(cfg, "/methodology/")}">'
@@ -90,7 +93,7 @@ def render_home(cfg: SiteConfig, site: SiteData) -> str:
         + "".join(C.state_tile(cfg, s) for s in site.states)
         + "</div>"
     )
-    browse = _section("Browse by state", state_grid, id="states")
+    browse = _section("Browse by state", state_grid, id="states", tinted=True)
 
     trust = _section(
         "How we verify",
@@ -130,6 +133,7 @@ def render_home(cfg: SiteConfig, site: SiteData) -> str:
             + "</div>"
         ),
         id="data",
+        tinted=True,
     )
 
     main = hero + on_calendar + browse + trust + exports
@@ -161,14 +165,13 @@ def render_states_index(cfg: SiteConfig, site: SiteData) -> str:
         f'state — {site.total_states} covered.</p></div>'
         f'<div class="wrap">{grid}</div>'
     )
-    items = [("Browse all states", s.url) for s in site.states]
+    items = [(s.name, s.url) for s in site.states]
     return render_page(
         cfg, site, path="/states/",
         title="Elections by State — Plumbline",
         description=(
-            f"Browse verified off-cycle and local election calendars for all "
-            f"{site.total_states} covered U.S. states and DC — dates, registration "
-            f"deadlines, and early-voting windows."
+            "Browse verified off-cycle and local election calendars by state — "
+            "dates, voter-registration deadlines, and early-voting windows."
         ),
         main_html=main, breadcrumb_items=[HOME, STATES],
         jsonld=[
@@ -257,7 +260,8 @@ def render_jurisdiction(cfg: SiteConfig, site: SiteData, j: JurisdictionView) ->
         f'{len(j.elections)} verified record'
         f'{"s" if len(j.elections) != 1 else ""}.</p>'
         f'<div class="page-head__actions">{subscribe}</div>{lead}</div>'
-        f'<div class="wrap">{_cards(cfg, j.elections)}</div>'
+        f'<div class="wrap"><h2 class="section-h2">Election records</h2>'
+        f"{_cards(cfg, j.elections)}</div>"
     )
     breadcrumb = [HOME, STATES, (j.state_name, f"/states/{j.state}/"), (j.name, j.url)]
     desc = (
@@ -318,7 +322,7 @@ def render_election(cfg: SiteConfig, site: SiteData, e: ElectionView) -> str:
     )
     trust = (
         '<section class="detail-section detail-trust"><h2>Sourcing &amp; confidence</h2>'
-        f'<p class="detail-trust__blurb">{e.confidence_blurb}</p>'
+        f'<p class="detail-trust__blurb">{esc(e.confidence_blurb)}</p>'
         f"{C.provenance(cfg, e)}"
         f'<p class="detail-trust__foot"><a href="{rel(cfg, "/methodology/#confidence")}">'
         'What do confidence levels mean? →</a></p></section>'
@@ -334,9 +338,10 @@ def render_election(cfg: SiteConfig, site: SiteData, e: ElectionView) -> str:
         (f"{e.election_type_label} — {e.date_short}", e.url),
     ]
     reg = next((d for d in e.deadlines if d.key == "registration_deadline"), None)
+    # Absolute date only — no relative countdown, which would go stale in the index.
     desc = (
         f"The {e.jurisdiction_name}, {e.state_name} {e.election_type_label.lower()} "
-        f"election is {e.date_full} ({e.countdown})."
+        f"election is {e.date_full}."
     )
     if reg:
         desc += f" Voter registration deadline {reg.formatted}."
@@ -425,9 +430,27 @@ def render_methodology(cfg: SiteConfig, site: SiteData) -> str:
 
 
 def render_data(cfg: SiteConfig, site: SiteData) -> str:
-    intro = "".join(f"<p>{p}</p>" for p in copy.DATA_PRODUCT)
+    intro = "".join(f"<p>{esc(p)}</p>" for p in copy.DATA_PRODUCT)
     audiences = "".join(
-        f"<li><strong>{who}.</strong> {what}</li>" for who, what in copy.DATA_PRODUCT_AUDIENCES
+        f"<li><strong>{esc(who)}.</strong> {esc(what)}</li>"
+        for who, what in copy.DATA_PRODUCT_AUDIENCES
+    )
+    json_links = "".join(
+        f'<li><a href="{rel(cfg, "/downloads/json/" + s.code + "/index.json")}">'
+        f"{esc(s.name)}</a></li>"
+        for s in site.states
+    )
+    json_index = (
+        f'<div class="wrap json-index-block"><h2 class="section-h2">Per-state JSON</h2>'
+        f"<ul class=\"json-index\">{json_links}</ul>"
+        f'<p class="license-note">The dataset is licensed under '
+        f'<a href="https://creativecommons.org/licenses/by/4.0/" rel="license">'
+        f"CC&nbsp;BY&nbsp;4.0</a> — free to use with attribution.</p></div>"
+        if site.states
+        else '<div class="wrap"><p class="license-note">Per-state JSON is available '
+        'once records are published. The dataset is licensed under '
+        '<a href="https://creativecommons.org/licenses/by/4.0/" rel="license">'
+        "CC&nbsp;BY&nbsp;4.0</a>.</p></div>"
     )
     csv_href = rel(cfg, f"/downloads/csv/{site.version}/off_cycle_elections_{site.version}.csv")
     changelog_href = rel(cfg, f"/downloads/csv/{site.version}/CHANGELOG.md")
@@ -465,8 +488,9 @@ def render_data(cfg: SiteConfig, site: SiteData) -> str:
         '<p class="lede">Plumbline Data is the same verified record set, packaged as '
         "versioned flat files you can drop straight into a model, a CRM, or a field "
         "plan.</p></div>"
-        f'<div class="wrap">{cards}</div>'
-        f'<section class="section"><div class="wrap prose">{intro}'
+        f'<div class="wrap"><h2 class="section-h2">Downloads</h2>{cards}</div>'
+        f"{json_index}"
+        f'<section class="section section--tinted"><div class="wrap prose">{intro}'
         f"<h2>Built for teams that plan around dates</h2><ul>{audiences}</ul>"
         f"<p>{copy.DATA_PRODUCT_CLOSER} "
         f'<a href="{rel(cfg, "/methodology/")}">Read the methodology →</a></p>'

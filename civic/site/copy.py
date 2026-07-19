@@ -121,10 +121,12 @@ FOOTER_BLURB = (
     "affiliated with any government agency, political party, or campaign."
 )
 
+# aria-label, when present, MUST begin with the visible link text so it satisfies
+# WCAG 2.5.3 Label in Name (voice control "click States" works).
 NAV = [
-    ("States", "/states/", "Browse elections by state"),
-    ("Methodology", "/methodology/", "How we source and verify election dates"),
-    ("Data", "/data/", "Bulk data exports for teams and developers"),
+    ("States", "/states/", "States — browse elections by state"),
+    ("Methodology", "/methodology/", "Methodology — how we source and verify dates"),
+    ("Data", "/data/", "Data — bulk exports for teams and developers"),
     ("About", "/about/", None),
 ]
 

@@ -6,13 +6,12 @@ import datetime
 from typing import Optional
 
 from . import icons
-from .base import SiteConfig, absu, attrs, esc, rel
+from .base import SiteConfig, attrs, esc, rel, safe_href
 from .data import (
     CONFIDENCE_BLURB,
     CONFIDENCE_LABELS,
     Deadline,
     ElectionView,
-    JurisdictionView,
     StateView,
 )
 
@@ -76,7 +75,7 @@ def confidence_legend() -> str:
 
 def source_link(cfg: SiteConfig, url: str) -> str:
     return (
-        f'<a class="source-link num" href="{esc(url)}" rel="nofollow noopener" '
+        f'<a class="source-link num" href="{esc(safe_href(url))}" rel="nofollow noopener" '
         f'target="_blank">SOURCE{icons.ICON_EXTERNAL}'
         f'<span class="sr-only"> (opens in a new tab)</span></a>'
     )
@@ -119,8 +118,10 @@ def deadline_rail(cfg: SiteConfig, e: ElectionView) -> str:
     ]
     nodes.append(("Election day", e.election_date, "election", None))
 
-    # Identify the first upcoming milestone to mark as NEXT.
-    next_idx = next((i for i, n in enumerate(nodes) if n[1] >= today), None)
+    # NEXT marks the soonest upcoming *deadline* (never election day); election day
+    # always carries the ELECTION tag when it is still upcoming.
+    deadline_count = len(nodes) - 1
+    next_idx = next((i for i in range(deadline_count) if nodes[i][1] >= today), None)
 
     items = []
     for i, (label, d, key, time) in enumerate(nodes):
@@ -130,13 +131,13 @@ def deadline_rail(cfg: SiteConfig, e: ElectionView) -> str:
             classes.append("rail__node--election")
         if days < 0:
             classes.append("rail__node--past")
-        if i == next_idx and key != "election":
+        if i == next_idx:
             classes.append("rail__node--next")
         tagline = ""
-        if i == next_idx:
-            tagline = '<span class="rail__tag">NEXT</span>'
-        elif key == "election" and days >= 0:
+        if key == "election" and days >= 0:
             tagline = '<span class="rail__tag rail__tag--election">ELECTION</span>'
+        elif i == next_idx:
+            tagline = '<span class="rail__tag">NEXT</span>'
         time_html = f" <span class='rail__time'>{esc(time)}</span>" if time else ""
         items.append(
             f'<li class="{" ".join(classes)}">'
@@ -153,28 +154,6 @@ def deadline_rail(cfg: SiteConfig, e: ElectionView) -> str:
     )
 
 
-def timeline(e: ElectionView) -> str:
-    """Compact deadline list for secondary placement."""
-    today = e._today
-    rows = []
-    for dl in e.deadlines:
-        days = (dl.date - today).days
-        state = " timeline__node--past" if days < 0 else ""
-        rows.append(
-            f'<li class="timeline__node{state}">'
-            f'<span class="timeline__label">{esc(dl.label)}</span>'
-            f'<time class="timeline__date num" datetime="{esc(dl.date.isoformat())}">'
-            f"{esc(dl.formatted)}</time></li>"
-        )
-    rows.append(
-        f'<li class="timeline__node timeline__node--election">'
-        f'<span class="timeline__label">Election day</span>'
-        f'<time class="timeline__date num" datetime="{esc(e.date_iso)}">'
-        f"{esc(e.date_short)}</time></li>"
-    )
-    return f'<ol class="timeline">{"".join(rows)}</ol>'
-
-
 def _prov_row(label: str, value_html: str) -> str:
     return (
         f'<div class="provenance__row"><span class="provenance__key">{esc(label)}</span>'
@@ -186,8 +165,8 @@ def provenance(cfg: SiteConfig, e: ElectionView) -> str:
     rows = [
         _prov_row(
             "SOURCE",
-            f'<a href="{esc(e.source_url)}" rel="nofollow noopener" target="_blank" '
-            f'title="{esc(e.source_url)}">{esc(e.source_url)}</a>',
+            f'<a href="{esc(safe_href(e.source_url))}" rel="nofollow noopener" '
+            f'target="_blank" title="{esc(e.source_url)}">{esc(e.source_url)}</a>',
         )
     ]
     if e.source_retrieved_at:

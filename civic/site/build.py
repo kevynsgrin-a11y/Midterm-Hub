@@ -70,6 +70,7 @@ def build_site(
     today: Optional[datetime.date] = None,
     include_unverified: bool = False,
     with_downloads: bool = True,
+    demo: bool = False,
 ) -> BuildResult:
     if generated_at is None:
         generated_at = datetime.datetime.now(datetime.timezone.utc).strftime(
@@ -80,7 +81,16 @@ def build_site(
         conn, version=version, generated_at=generated_at, today=today,
         include_unverified=include_unverified,
     )
+    site.demo = demo
+
     out = Path(out_dir)
+    # Rebuild the managed tree from scratch so removed pages/downloads never linger
+    # and diverge from sitemap.xml. Guard against nuking a root/home directory.
+    resolved = out.resolve()
+    if resolved == Path("/") or resolved == Path.home() or str(resolved) == "":
+        raise ValueError(f"refusing to build into {resolved!r}")
+    if out.exists():
+        shutil.rmtree(out)
     out.mkdir(parents=True, exist_ok=True)
 
     count = 0
@@ -112,8 +122,15 @@ def build_site(
         downloads = out / "downloads"
         export_json(conn, downloads, version, generated_at, include_unverified)
         export_csv(conn, downloads, version, generated_at, include_unverified)
-        gen_dt = datetime.datetime.now(datetime.timezone.utc)
+        # Pin ICS DTSTAMP to generated_at (deterministic), not wall-clock now().
+        gen_dt = datetime.datetime.fromisoformat(generated_at.replace("Z", "+00:00"))
         export_ics(conn, downloads, version, generated_at, gen_dt, cfg_origin_domain(cfg), include_unverified)
+        if demo and downloads.exists():
+            (downloads / "NOTICE.txt").write_text(
+                "DEMONSTRATION DATA — every record in these files is illustrative "
+                "sample data, not a real election. Do not rely on it.\n",
+                encoding="utf-8",
+            )
 
     return BuildResult(
         out_dir=str(out), pages_written=count, downloads_written=with_downloads, version=version

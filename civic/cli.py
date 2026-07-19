@@ -265,6 +265,9 @@ def site_build(
     no_downloads: bool = typer.Option(
         False, "--no-downloads", help="Skip generating the /downloads/ JSON/CSV/ICS files."
     ),
+    demo: bool = typer.Option(
+        False, "--demo", help="Render a site-wide banner marking the data as illustrative."
+    ),
 ) -> None:
     """Generate the complete static website from verified records."""
     from .site.build import build_site
@@ -279,6 +282,7 @@ def site_build(
         result = build_site(
             conn, out_dir, origin=origin, base_path=base_path, version=version,
             include_unverified=include_unverified, with_downloads=not no_downloads,
+            demo=demo,
         )
     typer.secho(
         f"Built {result.pages_written} page(s) into {result.out_dir} "

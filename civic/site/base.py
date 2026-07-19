@@ -57,6 +57,18 @@ def asset(cfg: SiteConfig, path: str) -> str:
     return rel(cfg, "/assets/" + path.lstrip("/"))
 
 
+def safe_href(url: str) -> str:
+    """Allowlist http/https (and site-relative) URLs for use in href; neutralize any
+    other scheme (javascript:, data:, vbscript:, …) to defuse a poisoned source_url."""
+    if url is None:
+        return "#"
+    u = url.strip()
+    low = u.lower()
+    if low.startswith(("http://", "https://", "mailto:", "/", "#", "./", "../")):
+        return u
+    return "#"
+
+
 def attrs(**kw: Any) -> str:
     """Render HTML attributes; True renders bare, None/False are skipped. Trailing
     underscores are stripped so Python keywords work (``class_`` -> ``class``)."""
