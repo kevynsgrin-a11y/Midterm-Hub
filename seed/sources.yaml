@@ -1,0 +1,38 @@
+# Source registry seed, loaded via `civic sources seed`.
+#
+# `adapter` names the parser module that will scrape a source in Phase 2. It is left
+# null here because Phase 1 ships zero scrapers: every source below is a manual-only
+# reference for curators authoring intake YAML. Phase 2 flips the pilot entries
+# (VA/NJ/TX) to their adapter module names only after a fixture-backed parser passes.
+#
+# NOTE: URLs are curator entry points, not committed scrape targets. Verify the live
+# official calendar URL at adapter build time before wiring an adapter.
+
+- state: VA
+  name: "Virginia Department of Elections — Election Information"
+  url: "https://www.elections.virginia.gov/casting-a-ballot/election-information/"
+  adapter: null
+  check_frequency_days: 14
+  enabled: true
+
+- state: NJ
+  name: "New Jersey Division of Elections — Election Information"
+  url: "https://www.nj.gov/state/elections/election-information.shtml"
+  adapter: null
+  check_frequency_days: 14
+  enabled: true
+
+- state: TX
+  name: "Texas Secretary of State — Election Dates"
+  url: "https://www.sos.state.tx.us/elections/voter/important-election-dates.shtml"
+  adapter: null
+  check_frequency_days: 14
+  enabled: true
+
+# Manual-only national reference (no adapter, informational for curators).
+- state: US
+  name: "National Conference of State Legislatures — Election Calendars"
+  url: "https://www.ncsl.org/elections-and-campaigns/state-primary-election-dates"
+  adapter: null
+  check_frequency_days: 30
+  enabled: true
