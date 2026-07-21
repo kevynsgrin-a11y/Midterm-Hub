@@ -21,7 +21,7 @@ from pydantic import (
     model_validator,
 )
 
-from .ids import slugify
+from .ids import safe_slug
 
 # Canonical set of postal codes: 50 states + DC.
 STATES: frozenset[str] = frozenset(
@@ -66,6 +66,11 @@ def _parse_iso_date(value: Any) -> Optional[datetime.date]:
     if isinstance(value, datetime.date):
         return value
     if isinstance(value, str):
+        # Require calendar YYYY-MM-DD only. date.fromisoformat() otherwise accepts the
+        # wider ISO grammar (week dates '2027-W44-2', basic '20271102'), which would
+        # silently coerce a typo into a plausible-but-wrong date.
+        if not re.fullmatch(r"\d{4}-\d{2}-\d{2}", value):
+            raise ValueError(f"date must be calendar format YYYY-MM-DD, got {value!r}")
         try:
             return datetime.date.fromisoformat(value)
         except ValueError as exc:
@@ -121,11 +126,23 @@ class ElectionRecord(BaseModel):
     def _strict_dates(cls, v: Any) -> Optional[datetime.date]:
         return _parse_iso_date(v)
 
+    @field_validator("jurisdiction_name")
+    @classmethod
+    def _check_name(cls, v: Any) -> str:
+        if not isinstance(v, str) or not v.strip():
+            raise ValueError("jurisdiction_name must be a non-empty string")
+        return v
+
     @field_validator("registration_deadline_time")
     @classmethod
     def _check_time(cls, v: Optional[str]) -> Optional[str]:
-        if v is not None and not _TIME_RE.match(v):
+        if v is None:
+            return v
+        if not _TIME_RE.match(v):
             raise ValueError("registration_deadline_time must match HH:MM")
+        hh, mm = int(v[:2]), int(v[3:5])
+        if hh > 23 or mm > 59:
+            raise ValueError("registration_deadline_time must be a real 24h time (00:00–23:59)")
         return v
 
     @field_validator("offices")
@@ -155,12 +172,14 @@ class ElectionRecord(BaseModel):
         if isinstance(data, dict):
             slug = data.get("jurisdiction_slug")
             name = data.get("jurisdiction_name")
-            if not slug and isinstance(name, str) and name.strip():
-                data = {**data, "jurisdiction_slug": slugify(name)}
+            if not (slug or "").strip() and isinstance(name, str) and name.strip():
+                data = {**data, "jurisdiction_slug": safe_slug(name)}
         return data
 
     @model_validator(mode="after")
     def _ordering_and_recency(self) -> "ElectionRecord":
+        if not (self.jurisdiction_slug or "").strip():
+            raise ValueError("jurisdiction_slug is empty")
         warnings: list[str] = []
         ed = self.election_date
 
@@ -192,7 +211,7 @@ class ElectionRecord(BaseModel):
 
         # Hard failure: stale record without an explicit historical-backfill marker.
         age_days = (datetime.date.today() - ed).days
-        if age_days > 30 and "historical" not in (self.notes or "").lower():
+        if age_days > 30 and not re.search(r"\bhistorical\b", self.notes or "", re.I):
             raise ValueError(
                 f"election_date {ed} is more than 30 days in the past; add "
                 f"'historical' to notes to intentionally backfill"

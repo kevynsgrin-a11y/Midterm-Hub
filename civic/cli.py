@@ -157,8 +157,12 @@ def verify_cmd(
     by: str = typer.Option(..., "--by", help="Verifier name."),
 ) -> None:
     """Mark an election verified."""
-    with get_connection() as conn:
-        ok = verify(conn, election_id, by)
+    try:
+        with get_connection() as conn:
+            ok = verify(conn, election_id, by)
+    except ValueError as exc:
+        typer.secho(str(exc), fg=typer.colors.RED)
+        raise typer.Exit(code=1)
     if not ok:
         typer.secho(f"No such election: {election_id}", fg=typer.colors.RED)
         raise typer.Exit(code=1)

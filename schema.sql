@@ -43,7 +43,7 @@ CREATE TABLE IF NOT EXISTS changes (
   new_value TEXT,
   detected_at TEXT NOT NULL,          -- ISO 8601 datetime UTC
   source_url TEXT,
-  applied INTEGER NOT NULL DEFAULT 0  -- 0 = pending review, 1 = applied, 2 = rejected
+  applied INTEGER NOT NULL DEFAULT 0 CHECK (applied IN (0,1,2))  -- 0 = pending review, 1 = applied, 2 = rejected
 );
 CREATE INDEX IF NOT EXISTS idx_changes_election ON changes(election_id);
 CREATE INDEX IF NOT EXISTS idx_changes_applied ON changes(applied);

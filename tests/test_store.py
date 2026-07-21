@@ -6,6 +6,8 @@ changes, does NOT mutate stored values, and approve/reject correctly settle stat
 """
 from __future__ import annotations
 
+import pytest
+
 from civic.store import (
     approve_change,
     diff_since,
@@ -126,6 +128,41 @@ class TestReviewCycleReject:
         assert conn.execute(
             "SELECT applied FROM changes WHERE id = ?", (change_id,)
         ).fetchone()[0] == 2
+
+
+class TestProtectionAcrossSecondConflict:
+    """Regression for the critical bug: a verified record already in needs_review must
+    keep queuing further conflicts — never silently apply an unreviewed value."""
+
+    def test_second_conflict_still_queues_and_protects(self, conn, make_record):
+        r1 = upsert(conn, make_record(registration_deadline="2027-04-12"), actor="t")
+        eid = r1.election_id
+        verify(conn, eid, "curator")
+        verified_hash = _row(conn, eid)["content_hash"]
+
+        upsert(conn, make_record(registration_deadline="2027-04-15"), actor="t")
+        assert _row(conn, eid)["status"] == "needs_review"
+
+        # Second conflicting ingest while in needs_review.
+        res = upsert(conn, make_record(registration_deadline="2027-04-20"), actor="t")
+        assert res.action == "queued_review"  # queued, NOT "updated"
+        row = _row(conn, eid)
+        assert row["registration_deadline"] == "2027-04-12"  # original, untouched
+        assert row["content_hash"] == verified_hash
+
+        # Rejecting one pending change must not restore verified with the bot value.
+        pend = _pending(conn, eid)
+        assert len(pend) == 2
+        reject_change(conn, pend[0]["id"], "curator")
+        assert _row(conn, eid)["status"] == "needs_review"
+        assert _row(conn, eid)["registration_deadline"] == "2027-04-12"
+
+    def test_verify_refuses_with_pending_changes(self, conn, make_record):
+        r = upsert(conn, make_record(registration_deadline="2027-04-12"), actor="t")
+        verify(conn, r.election_id, "c")
+        upsert(conn, make_record(registration_deadline="2027-04-15"), actor="t")
+        with pytest.raises(ValueError):
+            verify(conn, r.election_id, "c")
 
 
 class TestMultiFieldReview:

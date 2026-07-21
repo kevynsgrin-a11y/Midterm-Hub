@@ -92,7 +92,8 @@ def upsert(conn: sqlite3.Connection, record: ElectionRecord, actor: str) -> Upse
     now = _utcnow_iso()
     retrieved = _dt_to_iso_z(record.source_retrieved_at)
     eid = election_id(
-        record.state, record.jurisdiction_slug, record.election_date.isoformat(), record.election_type
+        record.state, record.jurisdiction_type, record.jurisdiction_slug,
+        record.election_date.isoformat(), record.election_type,
     )
     chash = content_hash(record)
     cols = _record_columns(record)
@@ -142,7 +143,10 @@ def upsert(conn: sqlite3.Connection, record: ElectionRecord, actor: str) -> Upse
     diffs = _substantive_diff(existing, cols)
 
     # Path 3: protect verified data — queue changes for review, mutate nothing.
-    if existing["status"] == "verified":
+    # A record already in needs_review is protected too: further conflicting ingests
+    # must KEEP queuing, never silently apply (otherwise a later reject would restore
+    # 'verified' carrying an unreviewed value).
+    if existing["status"] in ("verified", "needs_review"):
         change_ids: list[int] = []
         for f, old_v, new_v in diffs:
             cur = conn.execute(
@@ -206,7 +210,19 @@ def upsert(conn: sqlite3.Connection, record: ElectionRecord, actor: str) -> Upse
 
 
 def verify(conn: sqlite3.Connection, election_id_value: str, actor: str) -> bool:
-    """Mark an election verified. Returns False if the election does not exist."""
+    """Mark an election verified. Returns False if the election does not exist.
+
+    Refuses to verify while changes are pending review — those must be approved or
+    rejected first, so verification can never rubber-stamp unreviewed values."""
+    pending = conn.execute(
+        "SELECT COUNT(*) FROM changes WHERE election_id = ? AND applied = 0",
+        (election_id_value,),
+    ).fetchone()[0]
+    if pending:
+        raise ValueError(
+            f"cannot verify {election_id_value}: {pending} pending change(s); "
+            f"approve or reject them first"
+        )
     now = _utcnow_iso()
     cur = conn.execute(
         "UPDATE elections SET status = 'verified', verified_by = ?, verified_at = ?, "

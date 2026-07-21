@@ -1,7 +1,9 @@
 """ID determinism, slugify edge cases, and content-hash stability."""
 from __future__ import annotations
 
-from civic.ids import content_hash, election_id, slugify
+import pytest
+
+from civic.ids import content_hash, election_id, safe_slug, slugify
 
 
 class TestSlugify:
@@ -26,25 +28,53 @@ class TestSlugify:
         assert slugify("Ward 3 (District 12)") == "ward-3-district-12"
 
 
+class TestSafeSlug:
+    def test_normal_name(self):
+        assert safe_slug("Town of Example") == "town-of-example"
+
+    def test_non_latin_falls_back_uniquely(self):
+        # Purely non-Latin names transliterate to "" — must fall back to a stable,
+        # DISTINCT slug, never collapse two different names to the same value.
+        a = safe_slug("中文市")
+        b = safe_slug("الرياض")
+        assert a and b and a != b
+        assert safe_slug("中文市") == a  # deterministic
+
+
 class TestElectionId:
+    def _id(self, state="VA", jtype="municipality", slug="town-of-example",
+            date="2027-05-04", etype="municipal"):
+        return election_id(state, jtype, slug, date, etype)
+
     def test_deterministic(self):
-        a = election_id("VA", "town-of-example", "2027-05-04", "municipal")
-        b = election_id("VA", "town-of-example", "2027-05-04", "municipal")
+        a, b = self._id(), self._id()
         assert a == b
         assert len(a) == 16
         assert all(ch in "0123456789abcdef" for ch in a)
 
     def test_state_case_insensitive(self):
-        assert election_id("va", "x", "2027-05-04", "municipal") == election_id(
-            "VA", "x", "2027-05-04", "municipal"
-        )
+        assert self._id(state="va") == self._id(state="VA")
 
     def test_distinct_inputs_differ(self):
-        base = election_id("VA", "town-of-example", "2027-05-04", "municipal")
-        assert base != election_id("NJ", "town-of-example", "2027-05-04", "municipal")
-        assert base != election_id("VA", "other-town", "2027-05-04", "municipal")
-        assert base != election_id("VA", "town-of-example", "2027-11-02", "municipal")
-        assert base != election_id("VA", "town-of-example", "2027-05-04", "special")
+        base = self._id()
+        assert base != self._id(state="NJ")
+        assert base != self._id(slug="other-town")
+        assert base != self._id(date="2027-11-02")
+        assert base != self._id(etype="special")
+
+    def test_jurisdiction_type_is_part_of_identity(self):
+        # A county and a city sharing a name must NOT collide.
+        assert self._id(jtype="county") != self._id(jtype="municipality")
+
+    def test_empty_slug_rejected(self):
+        with pytest.raises(ValueError):
+            self._id(slug="")
+
+
+class TestSlugifyTransliteration:
+    def test_non_decomposing_latin(self):
+        assert slugify("Straße") == "strasse"
+        assert slugify("Champagne-Ardenne Œuvre") == "champagne-ardenne-oeuvre"
 
 
 def _record(**over):
