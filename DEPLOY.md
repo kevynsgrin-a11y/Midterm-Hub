@@ -9,9 +9,9 @@ bash scripts/build-site.sh dist    # → ./dist, built for https://midtermwatch.
 `dist/` contains the full site (HTML, `/assets`, `/downloads`, `sitemap.xml`,
 `robots.txt`, and a `CNAME` file). Pick one host below.
 
-> The current build uses the clearly-fake **sample** dataset and shows a
-> "Demonstration site" banner. To go live with real data: add real intake files and
-> run `civic intake …`, then drop `--demo` in `scripts/build-site.sh`.
+> The build ingests the real curated dataset in `intake/*.yaml` — every record
+> was verified against an official source (see each record's `source_url`).
+> To update data: edit/add intake YAML, and the next build picks it up.
 
 ---
 

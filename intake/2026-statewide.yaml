@@ -1,0 +1,927 @@
+# Plumbline curated intake — 2026 statewide cycle.
+# Every record was verified against the cited source on the retrieval date;
+# agent-researched, independently cross-checked against statutory anchors,
+# and human-reviewed before commit. Accuracy over completeness: optional
+# deadline fields appear only where an official source states the exact date.
+
+- state: AK
+  jurisdiction_type: state
+  jurisdiction_name: "Alaska"
+  election_type: primary
+  election_date: "2026-08-18"
+  offices: ["U.S. Senate", "Governor", "U.S. House (all districts)", "Statewide offices & Legislature"]
+  registration_deadline: "2026-07-19"
+  early_voting_start: "2026-08-03"
+  confidence: official
+  source_url: "https://www.elections.alaska.gov/election-information/"
+  source_retrieved_at: "2026-07-21T18:00:00Z"
+  notes: "Top-four nonpartisan open primary; top four advance to the ranked-choice general election."
+
+- state: AK
+  jurisdiction_type: state
+  jurisdiction_name: "Alaska"
+  election_type: general
+  election_date: "2026-11-03"
+  offices: ["U.S. Senate", "Governor", "U.S. House (all districts)", "Statewide offices & Legislature"]
+  registration_deadline: "2026-10-04"
+  early_voting_start: "2026-10-19"
+  confidence: official
+  source_url: "https://www.elections.alaska.gov/calendar/"
+  source_retrieved_at: "2026-07-21T18:00:00Z"
+  notes: "General election uses ranked-choice voting among top-four primary finishers."
+
+- state: AL
+  jurisdiction_type: state
+  jurisdiction_name: "Alabama"
+  election_type: general
+  election_date: "2026-11-03"
+  offices: ["U.S. Senate", "Governor", "U.S. House (all districts)", "Statewide offices & Legislature"]
+  confidence: official
+  source_url: "https://www.sos.alabama.gov/alabama-votes/voter/election-information/2026"
+  source_retrieved_at: "2026-07-21T18:00:00Z"
+  notes: "Statewide primary was held May 19, 2026, with runoffs in June; Alabama has no early in-person voting; Governor (Ivey term-limited) and the Class 2 U.S. Senate seat are both on the ballot."
+
+- state: AR
+  jurisdiction_type: state
+  jurisdiction_name: "Arkansas"
+  election_type: general
+  election_date: "2026-11-03"
+  offices: ["U.S. Senate", "Governor", "U.S. House (all districts)", "Statewide offices & Legislature"]
+  registration_deadline: "2026-10-05"
+  early_voting_start: "2026-10-19"
+  early_voting_end: "2026-11-02"
+  confidence: official
+  source_url: "https://www.sos.arkansas.gov/uploads/elections/2026_Election_Calendar_Rev._6-2025_.pdf"
+  source_retrieved_at: "2026-07-21T18:00:00Z"
+  notes: "A General Runoff Election, if required for eligible (e.g., nonpartisan/municipal) races, is set for December 1, 2026."
+
+- state: AZ
+  jurisdiction_type: state
+  jurisdiction_name: "Arizona"
+  election_type: general
+  election_date: "2026-11-03"
+  offices: ["Governor", "U.S. House (all districts)", "Statewide offices & Legislature"]
+  registration_deadline: "2026-10-05"
+  confidence: official
+  source_url: "https://azsos.gov/elections/election-information/2026-election-info"
+  source_retrieved_at: "2026-07-21T18:00:00Z"
+  notes: "No U.S. Senate seat is up in Arizona in 2026; Governor and all other statewide executive offices plus all 9 U.S. House districts and the Legislature are on the ballot."
+
+- state: CA
+  jurisdiction_type: state
+  jurisdiction_name: "California"
+  election_type: general
+  election_date: "2026-11-03"
+  offices: ["Governor", "U.S. House (all districts)", "Statewide offices & Legislature"]
+  registration_deadline: "2026-10-19"
+  confidence: official
+  source_url: "https://www.sos.ca.gov/elections/upcoming-elections/general-election-november-3-2026/key-dates-deadlines"
+  source_retrieved_at: "2026-07-21T18:00:00Z"
+  notes: "All active registered voters are mailed ballots beginning 2026-10-05; same-day (conditional) voter registration available after the deadline; no U.S. Senate seat on California's 2026 ballot."
+
+- state: CO
+  jurisdiction_type: state
+  jurisdiction_name: "Colorado"
+  election_type: general
+  election_date: "2026-11-03"
+  offices: ["U.S. Senate", "Governor", "U.S. House (all districts)", "Statewide offices & Legislature"]
+  confidence: official
+  source_url: "https://www.sos.state.co.us/pubs/elections/calendars/2026ElectionCalendar.pdf"
+  source_retrieved_at: "2026-07-21T18:00:00Z"
+  notes: "All-mail voting state; every voter receives a mail ballot; same-day voter registration available in person through Election Day."
+
+- state: CT
+  jurisdiction_type: state
+  jurisdiction_name: "Connecticut"
+  election_type: primary
+  election_date: "2026-08-11"
+  offices: ["Governor", "U.S. House (all districts)", "Statewide offices & Legislature"]
+  early_voting_start: "2026-08-03"
+  early_voting_end: "2026-08-09"
+  confidence: official
+  source_url: "https://portal.ct.gov/-/media/sots/electionservices/calendars/2026-elections/2026-election-calendar-122325.pdf?rev=340f2bcacc9748c1a2ed8f49d1774f52&hash=471ECCC3D26999C2D53BB5636927C0EB"
+  source_retrieved_at: "2026-07-21T18:00:00Z"
+  notes: "Same-day voter registration available."
+
+- state: CT
+  jurisdiction_type: state
+  jurisdiction_name: "Connecticut"
+  election_type: general
+  election_date: "2026-11-03"
+  offices: ["Governor", "U.S. House (all districts)", "Statewide offices & Legislature"]
+  early_voting_start: "2026-10-19"
+  early_voting_end: "2026-11-01"
+  confidence: official
+  source_url: "https://portal.ct.gov/-/media/sots/electionservices/calendars/2026-elections/2026-election-calendar-122325.pdf?rev=340f2bcacc9748c1a2ed8f49d1774f52&hash=471ECCC3D26999C2D53BB5636927C0EB"
+  source_retrieved_at: "2026-07-21T18:00:00Z"
+  notes: "Same-day voter registration available."
+
+- state: DC
+  jurisdiction_type: state
+  jurisdiction_name: "District of Columbia"
+  election_type: general
+  election_date: "2026-11-03"
+  offices: ["Mayor", "DC Council", "Delegate to U.S. House", "Attorney General"]
+  early_voting_start: "2026-10-26"
+  early_voting_end: "2026-11-01"
+  confidence: official
+  source_url: "https://dcboe.org/elections/2026-elections"
+  source_retrieved_at: "2026-07-21T18:00:00Z"
+  notes: "Same-day voter registration available."
+
+- state: DE
+  jurisdiction_type: state
+  jurisdiction_name: "Delaware"
+  election_type: primary
+  election_date: "2026-09-15"
+  offices: ["U.S. Senate", "U.S. House (all districts)", "Statewide offices & Legislature"]
+  registration_deadline: "2026-08-22"
+  early_voting_start: "2026-09-02"
+  early_voting_end: "2026-09-13"
+  confidence: official
+  source_url: "https://elections.delaware.gov/elections/primary/primary.html"
+  source_retrieved_at: "2026-07-21T18:00:00Z"
+  notes: "Closed primary; early-voting sites closed Sunday Sept. 6 and Labor Day Sept. 7 within the listed window."
+
+- state: DE
+  jurisdiction_type: state
+  jurisdiction_name: "Delaware"
+  election_type: general
+  election_date: "2026-11-03"
+  offices: ["U.S. Senate", "U.S. House (all districts)", "Statewide offices & Legislature"]
+  registration_deadline: "2026-10-10"
+  early_voting_start: "2026-10-22"
+  early_voting_end: "2026-11-01"
+  confidence: official
+  source_url: "https://elections.delaware.gov/elections/general/general.html"
+  source_retrieved_at: "2026-07-21T18:00:00Z"
+  notes: "Early-voting sites closed Sunday Oct. 25 within the listed window; Delaware has no 2026 governor's race (next in 2028)."
+
+- state: FL
+  jurisdiction_type: state
+  jurisdiction_name: "Florida"
+  election_type: primary
+  election_date: "2026-08-18"
+  offices: ["Governor", "U.S. House (all districts)", "Statewide offices & Legislature"]
+  registration_deadline: "2026-07-20"
+  early_voting_start: "2026-08-08"
+  early_voting_end: "2026-08-15"
+  confidence: official
+  source_url: "https://dos.fl.gov/elections/for-voters/election-dates/"
+  source_retrieved_at: "2026-07-21T18:00:00Z"
+  notes: "Closed primary; early-voting dates shown are the mandatory statewide period (counties may offer additional days). Per DOS, no special U.S. Senate primary is held on this date."
+
+- state: FL
+  jurisdiction_type: state
+  jurisdiction_name: "Florida"
+  election_type: general
+  election_date: "2026-11-03"
+  offices: ["U.S. Senate (special)", "Governor", "U.S. House (all districts)", "Statewide offices & Legislature"]
+  registration_deadline: "2026-10-05"
+  early_voting_start: "2026-10-24"
+  early_voting_end: "2026-10-31"
+  confidence: official
+  source_url: "https://dos.fl.gov/elections/for-voters/election-dates/"
+  source_retrieved_at: "2026-07-21T18:00:00Z"
+  notes: "Includes special U.S. Senate election for the remainder of the unexpired term (appointee Ashley Moody's seat); early-voting dates shown are the mandatory statewide period."
+
+- state: GA
+  jurisdiction_type: state
+  jurisdiction_name: "Georgia"
+  election_type: general
+  election_date: "2026-11-03"
+  offices: ["U.S. Senate", "Governor", "U.S. House (all districts)", "Statewide offices & Legislature"]
+  registration_deadline: "2026-10-05"
+  early_voting_start: "2026-10-13"
+  early_voting_end: "2026-10-30"
+  confidence: official
+  source_url: "https://sos.ga.gov/sites/default/files/forms/2026%20Election%20Calendar%20Summary.pdf"
+  source_retrieved_at: "2026-07-21T18:00:00Z"
+  notes: "Governor's race is open (Kemp term-limited) and the Class 2 U.S. Senate seat is up; May 19 primary and June 16 primary runoff were held before July 25."
+
+- state: GA
+  jurisdiction_type: state
+  jurisdiction_name: "Georgia"
+  election_type: runoff
+  election_date: "2026-12-01"
+  offices: ["U.S. Senate", "Governor", "U.S. House (all districts)", "Statewide offices & Legislature"]
+  registration_deadline: "2026-10-05"
+  confidence: official
+  source_url: "https://sos.ga.gov/sites/default/files/forms/2026%20Election%20Calendar%20Summary.pdf"
+  source_retrieved_at: "2026-07-21T18:00:00Z"
+  notes: "Held only for Nov 3 races in which no candidate receives the required majority (Georgia requires a majority to win the general election); voters must have been registered by the Oct 5, 2026 general-election deadline."
+
+- state: HI
+  jurisdiction_type: state
+  jurisdiction_name: "Hawaii"
+  election_type: primary
+  election_date: "2026-08-08"
+  offices: ["Governor", "U.S. House (all districts)", "Statewide offices & Legislature"]
+  early_voting_start: "2026-07-27"
+  early_voting_end: "2026-08-08"
+  confidence: official
+  source_url: "https://elections.hawaii.gov/"
+  source_retrieved_at: "2026-07-21T18:00:00Z"
+  notes: "Same-day voter registration available; all-mail election with in-person voting at voter service centers (excluding Sundays)."
+
+- state: HI
+  jurisdiction_type: state
+  jurisdiction_name: "Hawaii"
+  election_type: general
+  election_date: "2026-11-03"
+  offices: ["Governor", "U.S. House (all districts)", "Statewide offices & Legislature"]
+  early_voting_start: "2026-10-20"
+  early_voting_end: "2026-11-03"
+  confidence: official
+  source_url: "https://elections.hawaii.gov/"
+  source_retrieved_at: "2026-07-21T18:00:00Z"
+  notes: "Same-day voter registration available; early-voting dates are voter service center in-person voting through Election Day (excluding Sundays)."
+
+- state: IA
+  jurisdiction_type: state
+  jurisdiction_name: "Iowa"
+  election_type: general
+  election_date: "2026-11-03"
+  offices: ["U.S. Senate", "Governor", "U.S. House (all districts)", "Statewide offices & Legislature"]
+  early_voting_start: "2026-10-14"
+  early_voting_end: "2026-11-02"
+  confidence: official
+  source_url: "https://sos.iowa.gov/general-election"
+  source_retrieved_at: "2026-07-21T18:00:00Z"
+  notes: "Same-day voter registration available (pre-registration deadline is 5:00 p.m. Monday, October 19, 2026); early voting shown is in-person absentee at the county auditor's office."
+
+- state: ID
+  jurisdiction_type: state
+  jurisdiction_name: "Idaho"
+  election_type: general
+  election_date: "2026-11-03"
+  offices: ["U.S. Senate", "Governor", "U.S. House (all districts)", "Statewide offices & Legislature"]
+  confidence: official
+  source_url: "https://voteidaho.gov/election-information/"
+  source_retrieved_at: "2026-07-21T18:00:00Z"
+  notes: "Same-day voter registration available at the polls on Election Day; early in-person voting offered only in counties that choose to conduct it."
+
+- state: IL
+  jurisdiction_type: state
+  jurisdiction_name: "Illinois"
+  election_type: general
+  election_date: "2026-11-03"
+  offices: ["U.S. Senate", "Governor", "U.S. House (all districts)", "Statewide offices & Legislature"]
+  early_voting_start: "2026-09-24"
+  early_voting_end: "2026-11-02"
+  confidence: official
+  source_url: "https://elections.il.gov/"
+  source_retrieved_at: "2026-07-21T18:00:00Z"
+  notes: "Open U.S. Senate seat (Sen. Dick Durbin not seeking re-election) plus Governor, all 17 U.S. House districts, statewide constitutional officers, and the General Assembly; early voting begins Sept 24 at election-authority main sites, with additional permanent sites opening later (e.g., Oct 19 in some jurisdictions)."
+
+- state: IN
+  jurisdiction_type: state
+  jurisdiction_name: "Indiana"
+  election_type: general
+  election_date: "2026-11-03"
+  offices: ["U.S. House (all districts)", "Statewide offices & Legislature"]
+  registration_deadline: "2026-10-05"
+  early_voting_start: "2026-10-06"
+  early_voting_end: "2026-11-02"
+  confidence: official
+  source_url: "https://www.in.gov/sos/elections/files/2026-Calendar-Brochure.FINAL-VERSION.pdf"
+  source_retrieved_at: "2026-07-21T18:00:00Z"
+  notes: "No U.S. Senate seat and no Governor's race in Indiana in 2026; ballot includes all 9 U.S. House districts, statewide offices (Secretary of State, Auditor/Comptroller, Treasurer), and the Legislature; early (in-person absentee) voting ends at 12:00 noon on Nov 2."
+
+- state: KS
+  jurisdiction_type: state
+  jurisdiction_name: "Kansas"
+  election_type: primary
+  election_date: "2026-08-04"
+  offices: ["U.S. Senate", "Governor", "U.S. House (all districts)", "Statewide offices & Legislature"]
+  registration_deadline: "2026-07-14"
+  early_voting_start: "2026-07-15"
+  early_voting_end: "2026-08-03"
+  confidence: official
+  source_url: "https://sos.ks.gov/Pubs/Elections/2026-Primary-Election-Dates.pdf"
+  source_retrieved_at: "2026-07-21T18:00:00Z"
+  notes: "Advance in-person voting may begin July 15 (varies by county) and must begin in all counties by July 28; it ends at 12:00 noon on August 3."
+
+- state: KS
+  jurisdiction_type: state
+  jurisdiction_name: "Kansas"
+  election_type: general
+  election_date: "2026-11-03"
+  offices: ["U.S. Senate", "Governor", "U.S. House (all districts)", "Statewide offices & Legislature"]
+  registration_deadline: "2026-10-13"
+  early_voting_start: "2026-10-14"
+  early_voting_end: "2026-11-02"
+  confidence: official
+  source_url: "https://sos.ks.gov/Pubs/Elections/2026-General-Election-Dates.pdf"
+  source_retrieved_at: "2026-07-21T18:00:00Z"
+  notes: "U.S. Senate Class II seat (incumbent Roger Marshall) and an open Governor's race (Gov. Kelly term-limited) are both on the 2026 ballot; advance in-person voting may begin Oct 14, must begin in all counties by Oct 27, and ends at 12:00 noon Nov 2."
+
+- state: KY
+  jurisdiction_type: state
+  jurisdiction_name: "Kentucky"
+  election_type: general
+  election_date: "2026-11-03"
+  offices: ["U.S. Senate", "U.S. House (all districts)", "State Legislature"]
+  registration_deadline: "2026-10-05"
+  early_voting_start: "2026-10-29"
+  early_voting_end: "2026-10-31"
+  confidence: official
+  source_url: "https://elect.ky.gov/Resources/Documents/2026%20Election%20Calendar.pdf"
+  source_retrieved_at: "2026-07-21T18:00:00Z"
+  notes: "Early voting shown is Kentucky's three-day no-excuse in-person absentee period; state legislative seats also on the ballot (no statewide constitutional offices in 2026)."
+
+- state: LA
+  jurisdiction_type: state
+  jurisdiction_name: "Louisiana"
+  election_type: general
+  election_date: "2026-11-03"
+  offices: ["U.S. Senate", "U.S. House (all districts)"]
+  registration_deadline: "2026-10-05"
+  early_voting_start: "2026-10-20"
+  early_voting_end: "2026-10-27"
+  confidence: official
+  source_url: "https://www.sos.la.gov/ElectionsAndVoting/PublishedDocuments/ElectionsCalendar2026.pdf"
+  source_retrieved_at: "2026-07-21T18:00:00Z"
+  notes: "Officially titled 'U.S. Senate General/Open U.S. Representative Primary/Open Primary Election': the U.S. Senate race is the party-general round (closed party primaries for U.S. Senate, La. Supreme Court, PSC and BESE were held May 16, 2026), while U.S. House and other open-primary offices hold their open (jungle) primary this day; online (GeauxVote) registration deadline is Oct 13; early voting excludes Sunday, Oct 25."
+
+- state: LA
+  jurisdiction_type: state
+  jurisdiction_name: "Louisiana"
+  election_type: runoff
+  election_date: "2026-12-12"
+  offices: ["U.S. House (all districts)"]
+  registration_deadline: "2026-11-12"
+  early_voting_start: "2026-11-28"
+  early_voting_end: "2026-12-05"
+  confidence: official
+  source_url: "https://www.sos.la.gov/ElectionsAndVoting/PublishedDocuments/ElectionsCalendar2026.pdf"
+  source_retrieved_at: "2026-07-21T18:00:00Z"
+  notes: "Officially the 'Open General Election' — held only for races in which no candidate wins the required majority on Nov 3 (U.S. House districts without a majority winner, plus open-primary judicial/local races); online (GeauxVote) registration deadline Nov 21; early voting excludes Sunday, Nov 29."
+
+- state: MA
+  jurisdiction_type: state
+  jurisdiction_name: "Massachusetts"
+  election_type: primary
+  election_date: "2026-09-01"
+  offices: ["U.S. Senate", "Governor", "U.S. House (all districts)", "Statewide offices & Legislature"]
+  confidence: official
+  source_url: "https://www.sec.state.ma.us/divisions/elections/recent-updates/upcoming-elections.htm"
+  source_retrieved_at: "2026-07-21T18:00:00Z"
+
+- state: MA
+  jurisdiction_type: state
+  jurisdiction_name: "Massachusetts"
+  election_type: general
+  election_date: "2026-11-03"
+  offices: ["U.S. Senate", "Governor", "U.S. House (all districts)", "Statewide offices & Legislature"]
+  early_voting_start: "2026-10-17"
+  early_voting_end: "2026-10-30"
+  confidence: official
+  source_url: "https://www.sec.state.ma.us/divisions/elections/recent-updates/upcoming-elections.htm"
+  source_retrieved_at: "2026-07-21T18:00:00Z"
+
+- state: MD
+  jurisdiction_type: state
+  jurisdiction_name: "Maryland"
+  election_type: general
+  election_date: "2026-11-03"
+  offices: ["Governor", "U.S. House (all districts)", "Statewide offices & Legislature"]
+  early_voting_start: "2026-10-22"
+  early_voting_end: "2026-10-29"
+  confidence: official
+  source_url: "https://elections.maryland.gov/elections/2026/index.html"
+  source_retrieved_at: "2026-07-21T18:00:00Z"
+  notes: "Same-day voter registration available."
+
+- state: ME
+  jurisdiction_type: state
+  jurisdiction_name: "Maine"
+  election_type: general
+  election_date: "2026-11-03"
+  offices: ["U.S. Senate", "Governor", "U.S. House (all districts)", "Statewide offices & Legislature"]
+  confidence: official
+  source_url: "https://www.maine.gov/sos/elections-voting/upcoming-elections"
+  source_retrieved_at: "2026-07-21T18:00:00Z"
+  notes: "Same-day voter registration available; Maine's statewide primary was held June 9, 2026."
+
+- state: MI
+  jurisdiction_type: state
+  jurisdiction_name: "Michigan"
+  election_type: primary
+  election_date: "2026-08-04"
+  offices: ["U.S. Senate", "Governor", "U.S. House (all districts)", "Statewide offices & Legislature"]
+  registration_deadline: "2026-07-20"
+  early_voting_start: "2026-07-25"
+  early_voting_end: "2026-08-02"
+  confidence: official
+  source_url: "https://www.michigan.gov/sos/-/media/Project/Websites/sos/Election-Administrators/Election-Dates.pdf"
+  source_retrieved_at: "2026-07-21T18:00:00Z"
+  notes: "Registration deadline is for mail/online; in-person registration with proof of residency continues through Election Day. Secretary of State and Attorney General nominees are chosen at party conventions, not in this primary; the primary nominates for U.S. Senate, Governor, U.S. House, and the Legislature."
+
+- state: MI
+  jurisdiction_type: state
+  jurisdiction_name: "Michigan"
+  election_type: general
+  election_date: "2026-11-03"
+  offices: ["U.S. Senate", "Governor", "U.S. House (all districts)", "Statewide offices & Legislature"]
+  registration_deadline: "2026-10-19"
+  early_voting_start: "2026-10-24"
+  early_voting_end: "2026-11-01"
+  confidence: official
+  source_url: "https://www.michigan.gov/sos/-/media/Project/Websites/sos/Election-Administrators/Election-Dates.pdf"
+  source_retrieved_at: "2026-07-21T18:00:00Z"
+  notes: "Open U.S. Senate seat (Sen. Gary Peters not seeking re-election) and open Governor's race (Gov. Whitmer term-limited); registration deadline is mail/online, with in-person registration through Nov 3; Oct 24-Nov 1 is the constitutionally mandated minimum early voting period and some jurisdictions offer additional days."
+
+- state: MN
+  jurisdiction_type: state
+  jurisdiction_name: "Minnesota"
+  election_type: primary
+  election_date: "2026-08-11"
+  offices: ["U.S. Senate", "Governor", "U.S. House (all districts)", "Statewide offices & Legislature"]
+  early_voting_start: "2026-06-26"
+  early_voting_end: "2026-08-10"
+  confidence: official
+  source_url: "https://www.sos.mn.gov/about-the-office/news-room/voting-in-the-primary-election-begins-june-26/"
+  source_retrieved_at: "2026-07-21T18:00:00Z"
+  notes: "Same-day voter registration available."
+
+- state: MN
+  jurisdiction_type: state
+  jurisdiction_name: "Minnesota"
+  election_type: general
+  election_date: "2026-11-03"
+  offices: ["U.S. Senate", "Governor", "U.S. House (all districts)", "Statewide offices & Legislature"]
+  early_voting_start: "2026-09-18"
+  confidence: official
+  source_url: "https://sos.mn.gov/about-the-office/news-room/secretary-simon-highlights-2026-election-dates/"
+  source_retrieved_at: "2026-07-21T18:00:00Z"
+  notes: "Same-day voter registration available."
+
+- state: MO
+  jurisdiction_type: state
+  jurisdiction_name: "Missouri"
+  election_type: primary
+  election_date: "2026-08-04"
+  offices: ["U.S. House (all districts)", "Statewide offices & Legislature"]
+  confidence: official
+  source_url: "https://www.sos.mo.gov/elections/candidates"
+  source_retrieved_at: "2026-07-21T18:00:00Z"
+  notes: "Primary nominates for all 8 U.S. House districts, State Auditor (the only statewide office up in 2026), and the Legislature; no U.S. Senate or Governor race in Missouri in 2026."
+
+- state: MO
+  jurisdiction_type: state
+  jurisdiction_name: "Missouri"
+  election_type: general
+  election_date: "2026-11-03"
+  offices: ["U.S. House (all districts)", "Statewide offices & Legislature"]
+  registration_deadline: "2026-10-07"
+  confidence: official
+  source_url: "https://www.sos.mo.gov/elections/calendar"
+  source_retrieved_at: "2026-07-21T18:00:00Z"
+  notes: "No U.S. Senate or Governor race in Missouri in 2026; State Auditor is the only statewide executive office on the ballot, alongside all 8 U.S. House seats and the Legislature."
+
+- state: MS
+  jurisdiction_type: state
+  jurisdiction_name: "Mississippi"
+  election_type: general
+  election_date: "2026-11-03"
+  offices: ["U.S. Senate", "U.S. House (all districts)"]
+  confidence: official
+  source_url: "https://www.sos.ms.gov/content/documents/elections/2026%20Elections%20Calendar.pdf"
+  source_retrieved_at: "2026-07-21T18:00:00Z"
+  notes: "Ballot also includes nonpartisan judicial races (Supreme Court, Court of Appeals, trial courts); no governor or legislature in 2026 (odd-year offices); Mississippi has no standard early in-person voting (in-person absentee only). The statewide primary and runoff were held in June 2026."
+
+- state: MS
+  jurisdiction_type: state
+  jurisdiction_name: "Mississippi"
+  election_type: runoff
+  election_date: "2026-12-01"
+  offices: ["Judicial & special-election runoffs"]
+  confidence: official
+  source_url: "https://www.sos.ms.gov/content/documents/elections/2026%20Elections%20Calendar.pdf"
+  source_retrieved_at: "2026-07-21T18:00:00Z"
+  notes: "Listed on the official calendar as 'General/Special Runoff Election Day'; held only for races (e.g., nonpartisan judicial contests or special elections) in which no candidate wins the required majority on November 3."
+
+- state: MT
+  jurisdiction_type: state
+  jurisdiction_name: "Montana"
+  election_type: general
+  election_date: "2026-11-03"
+  offices: ["U.S. Senate", "U.S. House (all districts)", "Statewide offices & Legislature"]
+  confidence: official
+  source_url: "https://sosmt.gov/elections/calendars/"
+  source_retrieved_at: "2026-07-21T18:00:00Z"
+  notes: "No Governor race in 2026 (Montana elects its governor in presidential years); late voter registration available until noon on Election Day."
+
+- state: NC
+  jurisdiction_type: state
+  jurisdiction_name: "North Carolina"
+  election_type: general
+  election_date: "2026-11-03"
+  offices: ["U.S. Senate", "U.S. House (all districts)", "Statewide offices & Legislature"]
+  registration_deadline: "2026-10-09"
+  early_voting_start: "2026-10-15"
+  early_voting_end: "2026-10-31"
+  confidence: official
+  source_url: "https://www.ncsbe.gov/voting/upcoming-election"
+  source_retrieved_at: "2026-07-21T18:00:00Z"
+  notes: "No 2026 governor's race; statewide contests are judicial (e.g., N.C. Supreme Court / Court of Appeals) plus all General Assembly seats; the statewide primary was held March 3, 2026; same-day registration is available during early voting; early voting ends 3 p.m. Oct 31."
+
+- state: ND
+  jurisdiction_type: state
+  jurisdiction_name: "North Dakota"
+  election_type: general
+  election_date: "2026-11-03"
+  offices: ["U.S. House (all districts)", "Statewide offices & Legislature"]
+  confidence: official
+  source_url: "https://www.sos.nd.gov/elections/voter/elections-currentpast"
+  source_retrieved_at: "2026-07-21T18:00:00Z"
+  notes: "North Dakota has no voter registration requirement; no U.S. Senate or Governor race in 2026."
+
+- state: NE
+  jurisdiction_type: state
+  jurisdiction_name: "Nebraska"
+  election_type: general
+  election_date: "2026-11-03"
+  offices: ["U.S. Senate", "Governor", "U.S. House (all districts)", "Statewide offices & Legislature"]
+  confidence: official
+  source_url: "https://sos.nebraska.gov/sites/default/files/doc/elections/2026/2026_Election_Calendar.pdf"
+  source_retrieved_at: "2026-07-21T18:00:00Z"
+  notes: "Class II U.S. Senate seat and Governor both on the 2026 ballot; Secretary of State, Attorney General, Treasurer and Auditor also up."
+
+- state: NH
+  jurisdiction_type: state
+  jurisdiction_name: "New Hampshire"
+  election_type: primary
+  election_date: "2026-09-08"
+  offices: ["U.S. Senate", "Governor", "U.S. House (all districts)", "Statewide offices & Legislature"]
+  confidence: official
+  source_url: "https://www.sos.nh.gov/2026-election-details"
+  source_retrieved_at: "2026-07-21T18:00:00Z"
+  notes: "Same-day voter registration available."
+
+- state: NH
+  jurisdiction_type: state
+  jurisdiction_name: "New Hampshire"
+  election_type: general
+  election_date: "2026-11-03"
+  offices: ["U.S. Senate", "Governor", "U.S. House (all districts)", "Statewide offices & Legislature"]
+  confidence: official
+  source_url: "https://www.sos.nh.gov/2026-election-details"
+  source_retrieved_at: "2026-07-21T18:00:00Z"
+  notes: "Same-day voter registration available."
+
+- state: NJ
+  jurisdiction_type: state
+  jurisdiction_name: "New Jersey"
+  election_type: general
+  election_date: "2026-11-03"
+  offices: ["U.S. Senate", "U.S. House (all districts)"]
+  registration_deadline: "2026-10-13"
+  early_voting_start: "2026-10-24"
+  early_voting_end: "2026-11-01"
+  confidence: official
+  source_url: "https://www.nj.gov/state/elections/election-information-2026.shtml"
+  source_retrieved_at: "2026-07-21T18:00:00Z"
+  notes: "No governor or state legislative races in 2026 (those are odd-year elections in New Jersey); the statewide primary was held June 2, 2026."
+
+- state: NM
+  jurisdiction_type: state
+  jurisdiction_name: "New Mexico"
+  election_type: general
+  election_date: "2026-11-03"
+  offices: ["U.S. Senate", "Governor", "U.S. House (all districts)", "Statewide offices & Legislature"]
+  confidence: official
+  source_url: "https://www.sos.nm.gov/candidate-and-campaigns/how-to-become-a-candidate/2026-elections-candidate-information/"
+  source_retrieved_at: "2026-07-21T18:00:00Z"
+  notes: "Same-day voter registration available during early voting and on Election Day."
+
+- state: NV
+  jurisdiction_type: state
+  jurisdiction_name: "Nevada"
+  election_type: general
+  election_date: "2026-11-03"
+  offices: ["Governor", "U.S. House (all districts)", "Statewide offices & Legislature"]
+  early_voting_start: "2026-10-17"
+  early_voting_end: "2026-10-30"
+  confidence: official
+  source_url: "https://www.nvsos.gov/elections/election-information/2026-election-information"
+  source_retrieved_at: "2026-07-21T18:00:00Z"
+  notes: "Active registered voters receive mail ballots; same-day voter registration available; no U.S. Senate seat on Nevada's 2026 ballot."
+
+- state: NY
+  jurisdiction_type: state
+  jurisdiction_name: "New York"
+  election_type: general
+  election_date: "2026-11-03"
+  offices: ["Governor", "U.S. House (all districts)", "Statewide offices & Legislature"]
+  registration_deadline: "2026-10-24"
+  early_voting_start: "2026-10-24"
+  early_voting_end: "2026-11-01"
+  confidence: official
+  source_url: "https://elections.ny.gov/registration-and-voting-deadlines"
+  source_retrieved_at: "2026-07-21T18:00:00Z"
+  notes: "No U.S. Senate seat up in 2026; the statewide primary was held June 23, 2026."
+
+- state: OH
+  jurisdiction_type: state
+  jurisdiction_name: "Ohio"
+  election_type: general
+  election_date: "2026-11-03"
+  offices: ["U.S. Senate (special)", "Governor", "U.S. House (all districts)", "Statewide offices & Legislature"]
+  registration_deadline: "2026-10-05"
+  early_voting_start: "2026-10-06"
+  early_voting_end: "2026-11-01"
+  confidence: official
+  source_url: "https://www.ohiosos.gov/elections/voting-schedule"
+  source_retrieved_at: "2026-07-21T18:00:00Z"
+  notes: "The U.S. Senate race is a SPECIAL election for the seat vacated by JD Vance and filled by appointee Jon Husted (no regular Ohio Senate seat is up in 2026); Governor's race is open (Gov. DeWine term-limited)."
+
+- state: OK
+  jurisdiction_type: state
+  jurisdiction_name: "Oklahoma"
+  election_type: runoff
+  election_date: "2026-08-25"
+  offices: ["U.S. Senate", "Governor", "U.S. House (all districts)", "Statewide offices & Legislature"]
+  registration_deadline: "2026-07-31"
+  confidence: official
+  source_url: "https://oklahoma.gov/elections/voters/military-overseas-voters/2026-election-notice-runoff-primary-election1.html"
+  source_retrieved_at: "2026-07-21T18:00:00Z"
+  notes: "Runoff applies only to races in which no candidate received a majority in the June 16, 2026 primary."
+
+- state: OK
+  jurisdiction_type: state
+  jurisdiction_name: "Oklahoma"
+  election_type: general
+  election_date: "2026-11-03"
+  offices: ["U.S. Senate", "Governor", "U.S. House (all districts)", "Statewide offices & Legislature"]
+  registration_deadline: "2026-10-09"
+  confidence: official
+  source_url: "https://oklahoma.gov/content/dam/ok/en/elections/dates-and-deadlines/2026-statutory-election-dates-deadlines.pdf"
+  source_retrieved_at: "2026-07-21T18:00:00Z"
+
+- state: OR
+  jurisdiction_type: state
+  jurisdiction_name: "Oregon"
+  election_type: general
+  election_date: "2026-11-03"
+  offices: ["U.S. Senate", "Governor", "U.S. House (all districts)", "Statewide offices & Legislature"]
+  registration_deadline: "2026-10-13"
+  confidence: official
+  source_url: "https://sos.oregon.gov/elections/pages/current-election.aspx"
+  source_retrieved_at: "2026-07-21T18:00:00Z"
+  notes: "All-mail voting state; ballots mailed to registered voters beginning 2026-10-14."
+
+- state: PA
+  jurisdiction_type: state
+  jurisdiction_name: "Pennsylvania"
+  election_type: general
+  election_date: "2026-11-03"
+  offices: ["Governor", "U.S. House (all districts)", "State Legislature"]
+  registration_deadline: "2026-10-19"
+  confidence: official
+  source_url: "https://www.pa.gov/agencies/vote/elections/upcoming-elections"
+  source_retrieved_at: "2026-07-21T18:00:00Z"
+  notes: "No traditional early in-person voting in PA (mail ballot application deadline is 5:00 p.m. October 27, 2026); Lieutenant Governor and state legislative seats also on the ballot."
+
+- state: RI
+  jurisdiction_type: state
+  jurisdiction_name: "Rhode Island"
+  election_type: primary
+  election_date: "2026-09-09"
+  offices: ["U.S. Senate", "Governor", "U.S. House (all districts)", "Statewide offices & Legislature"]
+  registration_deadline: "2026-08-10"
+  early_voting_start: "2026-08-20"
+  early_voting_end: "2026-09-08"
+  confidence: official
+  source_url: "https://vote.sos.ri.gov/Forms/Elections/Guides/2026ElecCal.pdf"
+  source_retrieved_at: "2026-07-21T18:00:00Z"
+  notes: "Primary held on a Wednesday; RI Department of State confirms the new 2026 primary date of September 9 due to the Labor Day holiday."
+
+- state: RI
+  jurisdiction_type: state
+  jurisdiction_name: "Rhode Island"
+  election_type: general
+  election_date: "2026-11-03"
+  offices: ["U.S. Senate", "Governor", "U.S. House (all districts)", "Statewide offices & Legislature"]
+  registration_deadline: "2026-10-04"
+  early_voting_start: "2026-10-14"
+  early_voting_end: "2026-11-02"
+  confidence: official
+  source_url: "https://vote.sos.ri.gov/Forms/Elections/Guides/2026ElecCal.pdf"
+  source_retrieved_at: "2026-07-21T18:00:00Z"
+
+- state: SC
+  jurisdiction_type: state
+  jurisdiction_name: "South Carolina"
+  election_type: general
+  election_date: "2026-11-03"
+  offices: ["U.S. Senate", "Governor", "U.S. House (all districts)", "Statewide offices & Legislature"]
+  early_voting_start: "2026-10-19"
+  early_voting_end: "2026-10-31"
+  confidence: official
+  source_url: "https://scvotes.gov/wp-content/uploads/2026/04/2026-Election-Calendar-Draft-scVOTES_.pdf"
+  source_retrieved_at: "2026-07-21T18:00:00Z"
+  notes: "Early voting runs daily 8:30 a.m.-6 p.m., closed Sunday during the period; statewide primaries were held June 9, 2026 (runoffs two weeks later); open governor's race (McMaster term-limited) and the Class 2 U.S. Senate seat are on the ballot."
+
+- state: SD
+  jurisdiction_type: state
+  jurisdiction_name: "South Dakota"
+  election_type: runoff
+  election_date: "2026-07-28"
+  offices: ["Governor"]
+  registration_deadline: "2026-07-13"
+  confidence: official
+  source_url: "https://sdsos.gov/elections-voting/upcoming-elections/general-information/default.aspx"
+  source_retrieved_at: "2026-07-21T18:00:00Z"
+  notes: "Republican primary runoff for Governor (Toby Doeden vs. incumbent Larry Rhoden), required because no candidate received 35% in the June 2, 2026 primary; absentee voting began June 12, 2026."
+
+- state: SD
+  jurisdiction_type: state
+  jurisdiction_name: "South Dakota"
+  election_type: general
+  election_date: "2026-11-03"
+  offices: ["U.S. Senate", "Governor", "U.S. House (all districts)", "Statewide offices & Legislature"]
+  registration_deadline: "2026-10-19"
+  confidence: official
+  source_url: "https://sdsos.gov/elections-voting/assets/2026%20Documents/2026ElectionCALENDAR.pdf"
+  source_retrieved_at: "2026-07-21T18:00:00Z"
+  notes: "No same-day registration; absentee voting (including in person) begins September 18, 2026."
+
+- state: TN
+  jurisdiction_type: state
+  jurisdiction_name: "Tennessee"
+  election_type: primary
+  election_date: "2026-08-06"
+  offices: ["U.S. Senate", "Governor", "U.S. House (all districts)", "Statewide offices & Legislature"]
+  registration_deadline: "2026-07-07"
+  early_voting_start: "2026-07-17"
+  early_voting_end: "2026-08-01"
+  confidence: official
+  source_url: "https://sos.tn.gov/press-releases/tennessees-early-voting-period-for-the-august-6th-election-day-runs-from-friday-july"
+  source_retrieved_at: "2026-07-21T18:00:00Z"
+  notes: "State primary (held concurrently with county general elections) nominating candidates for the Nov. 3 general."
+
+- state: TN
+  jurisdiction_type: state
+  jurisdiction_name: "Tennessee"
+  election_type: general
+  election_date: "2026-11-03"
+  offices: ["U.S. Senate", "Governor", "U.S. House (all districts)", "Statewide offices & Legislature"]
+  registration_deadline: "2026-10-05"
+  early_voting_start: "2026-10-14"
+  early_voting_end: "2026-10-29"
+  confidence: official
+  source_url: "https://sos-prod.tnsosgovfiles.com/s3fs-public/document/Key%20Dates%20-%202026_0.pdf?VersionId=BlUofb7_chmj7rEfMw.akqY6xaoaoQF9"
+  source_retrieved_at: "2026-07-21T18:00:00Z"
+
+- state: TX
+  jurisdiction_type: state
+  jurisdiction_name: "Texas"
+  election_type: general
+  election_date: "2026-11-03"
+  offices: ["U.S. Senate", "Governor", "U.S. House (all districts)", "Statewide offices & Legislature"]
+  registration_deadline: "2026-10-05"
+  early_voting_start: "2026-10-19"
+  early_voting_end: "2026-10-30"
+  confidence: official
+  source_url: "https://www.sos.state.tx.us/elections/voter/important-election-dates.shtml"
+  source_retrieved_at: "2026-07-21T18:00:00Z"
+  notes: "The statewide primary was held March 3, 2026 (runoff in May); U.S. Senate seat (Class 2) and Governor are both on the 2026 ballot."
+
+- state: UT
+  jurisdiction_type: state
+  jurisdiction_name: "Utah"
+  election_type: general
+  election_date: "2026-11-03"
+  offices: ["U.S. House (all districts)", "Statewide offices & Legislature"]
+  confidence: official
+  source_url: "https://vote.utah.gov/current-election-information/"
+  source_retrieved_at: "2026-07-21T18:00:00Z"
+  notes: "All-mail voting state; ballots mailed to registered voters; same-day voter registration available (in person with two forms of ID); no Governor or U.S. Senate race in Utah in 2026."
+
+- state: VA
+  jurisdiction_type: state
+  jurisdiction_name: "Virginia"
+  election_type: primary
+  election_date: "2026-08-04"
+  offices: ["U.S. Senate", "U.S. House (all districts)"]
+  confidence: official
+  source_url: "https://www.elections.virginia.gov/news-releases/primary-election-moved-to-august-4-1.html"
+  source_retrieved_at: "2026-07-21T18:00:00Z"
+  notes: "Virginia's 2026 primary, originally set for June 16, was moved to August 4, 2026 per an official Department of Elections news release; primaries are held only for offices/parties with contested nominations."
+
+- state: VA
+  jurisdiction_type: state
+  jurisdiction_name: "Virginia"
+  election_type: general
+  election_date: "2026-11-03"
+  offices: ["U.S. Senate", "U.S. House (all districts)"]
+  confidence: official
+  source_url: "https://www.elections.virginia.gov/casting-a-ballot/calendars-schedules/upcoming-elections.html"
+  source_retrieved_at: "2026-07-21T18:00:00Z"
+  notes: "No governor or General Assembly races in 2026 (odd-year offices); a district-level House of Delegates District 20 special election also appears on the Nov 3 ballot; same-day registration with a provisional ballot is available through Election Day."
+
+- state: VT
+  jurisdiction_type: state
+  jurisdiction_name: "Vermont"
+  election_type: primary
+  election_date: "2026-08-11"
+  offices: ["Governor", "U.S. House (all districts)", "Statewide offices & Legislature"]
+  confidence: official
+  source_url: "https://sos.vermont.gov/elections/election-info-resources/candidates"
+  source_retrieved_at: "2026-07-21T18:00:00Z"
+  notes: "Same-day voter registration available."
+
+- state: VT
+  jurisdiction_type: state
+  jurisdiction_name: "Vermont"
+  election_type: general
+  election_date: "2026-11-03"
+  offices: ["Governor", "U.S. House (all districts)", "Statewide offices & Legislature"]
+  confidence: official
+  source_url: "https://sos.vermont.gov/elections/election-info-resources/candidates"
+  source_retrieved_at: "2026-07-21T18:00:00Z"
+  notes: "Same-day voter registration available."
+
+- state: WA
+  jurisdiction_type: state
+  jurisdiction_name: "Washington"
+  election_type: primary
+  election_date: "2026-08-04"
+  offices: ["U.S. House (all districts)", "Statewide offices & Legislature"]
+  registration_deadline: "2026-07-27"
+  confidence: official
+  source_url: "https://www.sos.wa.gov/sites/default/files/2026-07/PrimaryElectionFacts2026.pdf"
+  source_retrieved_at: "2026-07-21T18:00:00Z"
+  notes: "Top-two primary; ballot includes U.S. Representative, State Senator/Representative, and statewide judicial (Supreme Court, Court of Appeals) — no U.S. Senate or Governor race in 2026 and no statewide executive offices; all-mail voting with ballots mailed by July 17, so no traditional early-voting period; registration deadline is online/mail, in-person through Election Day."
+
+- state: WA
+  jurisdiction_type: state
+  jurisdiction_name: "Washington"
+  election_type: general
+  election_date: "2026-11-03"
+  offices: ["U.S. House (all districts)", "Statewide offices & Legislature"]
+  registration_deadline: "2026-10-26"
+  confidence: official
+  source_url: "https://www.sos.wa.gov/elections/elections-calendar/dates-and-deadlines"
+  source_retrieved_at: "2026-07-21T18:00:00Z"
+  notes: "No U.S. Senate seat and no Governor's race in Washington in 2026; ballot has all 10 U.S. House districts, the Legislature, and statewide judicial offices; all-mail voting state (no traditional early-voting window); registration deadline is online/mail, with in-person registration through Election Day Nov 3."
+
+- state: WI
+  jurisdiction_type: state
+  jurisdiction_name: "Wisconsin"
+  election_type: primary
+  election_date: "2026-08-11"
+  offices: ["Governor", "U.S. House (all districts)", "Statewide offices & Legislature"]
+  confidence: official
+  source_url: "https://elections.wi.gov/2026"
+  source_retrieved_at: "2026-07-21T18:00:00Z"
+  notes: "Same-day voter registration available."
+
+- state: WI
+  jurisdiction_type: state
+  jurisdiction_name: "Wisconsin"
+  election_type: general
+  election_date: "2026-11-03"
+  offices: ["Governor", "U.S. House (all districts)", "Statewide offices & Legislature"]
+  confidence: official
+  source_url: "https://elections.wi.gov/2026"
+  source_retrieved_at: "2026-07-21T18:00:00Z"
+  notes: "Same-day voter registration available."
+
+- state: WV
+  jurisdiction_type: state
+  jurisdiction_name: "West Virginia"
+  election_type: general
+  election_date: "2026-11-03"
+  offices: ["U.S. Senate", "U.S. House (all districts)", "State Legislature"]
+  registration_deadline: "2026-10-13"
+  early_voting_start: "2026-10-21"
+  early_voting_end: "2026-10-31"
+  confidence: official
+  source_url: "https://sos.wv.gov/media/467/download?inline="
+  source_retrieved_at: "2026-07-21T18:00:00Z"
+  notes: "State legislative seats also on the ballot; no Governor race in 2026 (next in 2028)."
+
+- state: WY
+  jurisdiction_type: state
+  jurisdiction_name: "Wyoming"
+  election_type: primary
+  election_date: "2026-08-18"
+  offices: ["U.S. Senate", "Governor", "U.S. House (all districts)", "Statewide offices & Legislature"]
+  confidence: official
+  source_url: "https://sos.wyo.gov/Elections/Docs/2026/2026_Key_Election_Dates.pdf"
+  source_retrieved_at: "2026-07-21T18:00:00Z"
+  notes: "Same-day voter registration available (register and vote at the polls); advance registration closed August 3, 2026."
+
+- state: WY
+  jurisdiction_type: state
+  jurisdiction_name: "Wyoming"
+  election_type: general
+  election_date: "2026-11-03"
+  offices: ["U.S. Senate", "Governor", "U.S. House (all districts)", "Statewide offices & Legislature"]
+  confidence: official
+  source_url: "https://sos.wyo.gov/Elections/Docs/2026/2026_Key_Election_Dates.pdf"
+  source_retrieved_at: "2026-07-21T18:00:00Z"
+  notes: "Same-day voter registration available (register and vote at the polls); advance registration closes October 19, 2026."

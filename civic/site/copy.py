@@ -3,36 +3,34 @@ desk, calm and nonpartisan. Kept in one place so tone stays consistent."""
 from __future__ import annotations
 
 BRAND = "Plumbline"
-TAGLINE = "Verified dates for the elections between the elections."
+TAGLINE = "Verified dates for the 2026 midterms — and every election in between."
 
 HOME_HERO = {
-    "eyebrow": "Off-cycle & local elections, United States",
+    "eyebrow": "The 2026 midterm cycle · United States",
     "h1": "Know when your next election really is.",
     "subhead": (
-        "Plumbline is a verified, continuously sourced calendar of off-cycle and "
-        "local elections — the primaries, runoffs, municipal races, school-board "
-        "seats, and ballot measures that decide the most and get announced the "
-        "least. Every date shows its source, its confidence level, and the day we "
-        "last checked it."
+        "Plumbline is a verified, continuously sourced calendar of the 2026 "
+        "midterm cycle — every remaining statewide primary, every runoff, and the "
+        "November 3 general — plus the special, municipal, and off-cycle elections "
+        "in between. Every date shows its source, its confidence level, and the "
+        "day we last checked it."
     ),
 }
 
-WHAT_IS_OFF_CYCLE = [
-    "Most people know the big November elections — the ones with a president or a "
-    "governor at the top of the ticket. An off-cycle election is nearly everything "
-    "else: a race, runoff, or ballot measure held on some other date. Many land in "
-    "odd-numbered years, in spring or summer, or on a Tuesday that isn't on anyone's "
-    "radar.",
-    "These are the elections that fill your city council and school board, pass or "
-    "reject local bond measures, recall officials, and fill seats left open "
-    "mid-term. Turnout is often a fraction of a presidential year, which means each "
-    "vote carries more weight — and the deadlines to register, request a mail "
-    "ballot, or vote early usually arrive weeks before a date almost no one has "
-    "marked.",
-    "That's the gap Plumbline exists to close. We track off-cycle primaries, general "
-    "and special elections, municipal and school-board races, runoffs, and ballot "
-    "measures across states, counties, cities, and special districts — with the key "
-    "dates and deadlines for each, kept current and clearly sourced.",
+WHY_DATES_GET_MISSED = [
+    "Everyone knows there's an election in November 2026. Far fewer people could "
+    "name the date of their state's primary, the runoff that follows it, or the "
+    "registration deadline that quietly closes weeks earlier. A midterm year is a "
+    "chain of dates, and the big one at the end is the only link anyone marks.",
+    "The rest of the chain is where votes are actually won and lost: primaries "
+    "that decide most seats before November, runoffs scheduled on short notice, "
+    "special elections for seats left open mid-term, and the registration, "
+    "mail-ballot, and early-voting windows that close before each of them. Miss "
+    "one deadline and the election is over for you before it starts.",
+    "That's the gap Plumbline exists to close. We track every statewide primary, "
+    "runoff, and general in the 2026 cycle — and the special, municipal, and "
+    "off-cycle elections around it — with the key dates and deadlines for each, "
+    "kept current and clearly sourced.",
 ]
 
 ABOUT = [
@@ -114,11 +112,12 @@ DATA_PRODUCT_CLOSER = (
 )
 
 FOOTER_BLURB = (
-    "Plumbline is an independent, nonpartisan reference for off-cycle and local "
-    "election dates and deadlines across the United States. Every date is sourced, "
-    "confidence-rated, and human-verified — but dates change, so always confirm "
-    "with your official local election office before you rely on one. Not "
-    "affiliated with any government agency, political party, or campaign."
+    "Plumbline is an independent, nonpartisan reference for U.S. election dates "
+    "and deadlines — the 2026 midterm cycle plus the off-cycle and local races "
+    "around it. Every date is sourced, confidence-rated, and human-verified — but "
+    "dates change, so always confirm with your official local election office "
+    "before you rely on one. Not affiliated with any government agency, political "
+    "party, or campaign."
 )
 
 # aria-label, when present, MUST begin with the visible link text so it satisfies

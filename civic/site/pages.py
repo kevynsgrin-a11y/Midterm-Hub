@@ -141,7 +141,7 @@ def render_home(cfg: SiteConfig, site: SiteData) -> str:
         "How we verify",
         (
             '<div class="trust-band">'
-            f'<div class="prose">{"".join(f"<p>{p}</p>" for p in copy.WHAT_IS_OFF_CYCLE[2:])}'
+            f'<div class="prose">{"".join(f"<p>{p}</p>" for p in copy.WHY_DATES_GET_MISSED[2:])}'
             f'<p><a href="{rel(cfg, "/methodology/")}">{copy.CTA["read_methodology"]} →</a></p></div>'
             f"{C.confidence_legend()}"
             "</div>"
@@ -182,13 +182,14 @@ def render_home(cfg: SiteConfig, site: SiteData) -> str:
 
     main = hero + on_calendar + browse + trust + exports
     desc = (
-        f"Verified dates and deadlines for off-cycle, municipal, and local U.S. "
-        f"elections. Every record cites an official source and shows a confidence "
-        f"level. {site.total_elections} elections across {site.total_states} states."
+        f"Verified dates and deadlines for the 2026 midterm elections — statewide "
+        f"primaries, runoffs, and the November 3 general. Every record cites an "
+        f"official source and shows a confidence level. {site.total_elections} "
+        f"elections across {site.total_states} states."
     )
     return render_page(
         cfg, site, path="/",
-        title=f"{BRAND} — U.S. Off-Cycle & Local Election Dates",
+        title=f"{BRAND} — 2026 Midterm Election Dates & Deadlines",
         description=desc, main_html=main, edition=True, body_class="page-home",
         jsonld=[seo.home_graph(cfg, site)],
     )
@@ -206,7 +207,7 @@ def render_states_index(cfg: SiteConfig, site: SiteData) -> str:
     main = (
         '<div class="wrap page-head"><p class="dateline num">UPDATED '
         f'{esc(site.version)}</p><h1>Elections by state</h1>'
-        '<p class="lede">Browse verified off-cycle and local election calendars by '
+        '<p class="lede">Browse verified 2026 election calendars by '
         f'state — {site.total_states} covered.</p></div>'
         f'<div class="wrap" data-reveal="block">{art.us_cartogram(cfg, counts)}</div>'
         f'<div class="wrap" data-reveal="block"><h2 class="section-h2">All states</h2>{grid}</div>'
@@ -214,10 +215,10 @@ def render_states_index(cfg: SiteConfig, site: SiteData) -> str:
     items = [(s.name, s.url) for s in site.states]
     return render_page(
         cfg, site, path="/states/",
-        title="Elections by State — Plumbline",
+        title="2026 Elections by State — Plumbline",
         description=(
-            "Browse verified off-cycle and local election calendars by state — "
-            "dates, voter-registration deadlines, and early-voting windows."
+            "Browse verified 2026 election calendars by state — primary and "
+            "general dates, voter-registration deadlines, and early-voting windows."
         ),
         main_html=main, breadcrumb_items=[HOME, STATES],
         jsonld=[
@@ -261,19 +262,19 @@ def render_state_hub(cfg: SiteConfig, site: SiteData, s: StateView) -> str:
     breadcrumb = [HOME, STATES, (s.name, s.url)]
     if s.next_election:
         desc = (
-            f"Upcoming {s.name} local & off-cycle elections. Next: "
+            f"Upcoming {s.name} elections in the 2026 cycle. Next: "
             f"{s.next_election.title} on {s.next_election.date_short}, plus "
             f"{max(s.election_count - 1, 0)} more. Verified dates, deadlines, sources."
         )
     else:
         desc = (
-            f"Verified off-cycle and local election records for {s.name}: dates, "
+            f"Verified 2026 election records for {s.name}: dates, "
             f"registration deadlines, and early voting."
         )
     items = [(e.title, e.url) for e in s.elections]
     return render_page(
         cfg, site, path=s.url,
-        title=f"{s.name} Off-Cycle & Local Elections — Plumbline",
+        title=f"{s.name} 2026 Elections & Deadlines — Plumbline",
         description=desc, main_html=main, breadcrumb_items=breadcrumb,
         jsonld=[
             seo.collection_ld(cfg, f"{s.name} elections", s.url, items),
@@ -447,7 +448,7 @@ def render_about(cfg: SiteConfig, site: SiteData) -> str:
     return _prose_page(
         cfg, site, path="/about/", title="About Plumbline — Public-Interest Election Data",
         h1="About Plumbline",
-        desc="Plumbline is an independent, nonpartisan reference for U.S. off-cycle and local election dates — sourced, confidence-rated, and human-verified.",
+        desc="Plumbline is an independent, nonpartisan reference for U.S. election dates — the 2026 midterm cycle and beyond, sourced, confidence-rated, and human-verified.",
         body=body, breadcrumb=breadcrumb,
         dateline=f"UPDATED {site.version}",
         lede="Curation-first, nonpartisan, and candid about its limits — the whole product is being right, and being able to show why.",
@@ -558,8 +559,8 @@ def render_data(cfg: SiteConfig, site: SiteData) -> str:
         cfg, site, path="/data/",
         title="Election Data Exports (CSV, JSON, ICS) — Plumbline",
         description=(
-            f"Download the full versioned dataset of U.S. off-cycle and local "
-            f"elections: CSV with changelog, per-state JSON, and per-jurisdiction "
+            f"Download the full versioned dataset of 2026 U.S. elections: CSV "
+            f"with changelog, per-state JSON, and per-jurisdiction "
             f"calendars (.ics). Current version {site.version}."
         ),
         main_html=body, breadcrumb_items=breadcrumb,
