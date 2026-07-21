@@ -81,6 +81,20 @@ def render_home(cfg: SiteConfig, site: SiteData) -> str:
         )
         + "</ul>"
     )
+    next_card = ""
+    if up:
+        e0 = up[0]
+        chips = "".join(C.deadline_chip(dl, e0._today) for dl in e0.deadlines[:2])
+        next_card = (
+            f'<a class="hero__next" href="{esc(rel(cfg, e0.url))}">'
+            '<span class="overline">Next election</span>'
+            f'<span class="hero__next-row">{C.date_block(e0)}'
+            f'<span class="hero__next-lines"><span class="hero__next-name">'
+            f'{esc(e0.jurisdiction_name)}</span>'
+            f'<span class="hero__next-meta num">{esc(e0.date_short)} · {esc(e0.countdown)}</span>'
+            "</span></span>"
+            f'<span class="hero__next-chips">{chips}</span></a>'
+        )
     hero = (
         '<section class="hero">'
         f"{art.guilloche_svg()}"
@@ -92,7 +106,7 @@ def render_home(cfg: SiteConfig, site: SiteData) -> str:
         f'<a class="hero__secondary" href="{rel(cfg, "/methodology/")}">'
         f'or see how we verify →</a></div>'
         f"{trust_bar}{kpi}</div>"
-        f'<div class="hero__instrument">{icons.hero_plumbline()}</div>'
+        f'<div class="hero__instrument">{icons.hero_plumbline()}{next_card}</div>'
         "</div></section>"
     )
 
@@ -194,8 +208,8 @@ def render_states_index(cfg: SiteConfig, site: SiteData) -> str:
         f'{esc(site.version)}</p><h1>Elections by state</h1>'
         '<p class="lede">Browse verified off-cycle and local election calendars by '
         f'state — {site.total_states} covered.</p></div>'
-        f'<div class="wrap">{art.us_cartogram(cfg, counts)}</div>'
-        f'<div class="wrap"><h2 class="section-h2">All states</h2>{grid}</div>'
+        f'<div class="wrap" data-reveal="block">{art.us_cartogram(cfg, counts)}</div>'
+        f'<div class="wrap" data-reveal="block"><h2 class="section-h2">All states</h2>{grid}</div>'
     )
     items = [(s.name, s.url) for s in site.states]
     return render_page(
@@ -230,7 +244,7 @@ def render_state_hub(cfg: SiteConfig, site: SiteData, s: StateView) -> str:
     sections = []
     for j in s.jurisdictions:
         sections.append(
-            f'<section class="juris-block"><h2 class="juris-block__title">'
+            f'<section class="juris-block" data-reveal="block"><h2 class="juris-block__title">'
             f'<a href="{esc(rel(cfg, j.url))}">{esc(j.name)}</a>'
             f'<span class="juris-block__type overline">{esc(j.jurisdiction_type_label)}</span></h2>'
             f"{_cards(cfg, j.elections)}</section>"
@@ -292,7 +306,7 @@ def render_jurisdiction(cfg: SiteConfig, site: SiteData, j: JurisdictionView) ->
         f'{len(j.elections)} verified record'
         f'{"s" if len(j.elections) != 1 else ""}.</p>'
         f'<div class="page-head__actions">{subscribe}</div>{lead}</div>'
-        f'<div class="wrap"><h2 class="section-h2">Election records</h2>'
+        f'<div class="wrap" data-reveal="block"><h2 class="section-h2">Election records</h2>'
         f"{_cards(cfg, j.elections)}</div>"
     )
     breadcrumb = [HOME, STATES, (j.state_name, f"/states/{j.state}/"), (j.name, j.url)]
@@ -325,7 +339,7 @@ def render_election(cfg: SiteConfig, site: SiteData, e: ElectionView) -> str:
     if e.offices:
         lis = "".join(f"<li>{esc(o)}</li>" for o in e.offices)
         offices = (
-            '<section class="detail-section"><h2>On the ballot</h2>'
+            '<section class="detail-section" data-reveal="block"><h2>On the ballot</h2>'
             f'<ul class="offices-list">{lis}</ul></section>'
         )
     ics_href = rel(cfg, f"/downloads/ics/{e.state}/{e.jurisdiction_slug}.ics")
@@ -333,10 +347,15 @@ def render_election(cfg: SiteConfig, site: SiteData, e: ElectionView) -> str:
         f'<a class="btn btn--primary" href="{ics_href}" download>'
         f'{icons.ICON_CALENDAR} {copy.CTA["add_to_calendar"]}</a>'
     )
+    verified_line = (
+        f'<p class="dateline num">VERIFIED {esc(e.verified_at[:10])}</p>'
+        if e.verified_at else ""
+    )
     hero = (
         '<div class="wrap detail-hero">'
         f"{C.date_block(e, large=True)}"
         '<div class="detail-hero__body">'
+        f"{verified_line}"
         f'<p class="overline">{esc(e.jurisdiction_type_label)} · {esc(e.state_name)}</p>'
         f'<h1 class="detail-hero__title">{esc(e.jurisdiction_name)} '
         f'{esc(e.election_type_label)} Election</h1>'
@@ -349,11 +368,11 @@ def render_election(cfg: SiteConfig, site: SiteData, e: ElectionView) -> str:
         "</div></div>"
     )
     rail = (
-        '<section class="detail-section"><h2>Key dates &amp; deadlines</h2>'
+        '<section class="detail-section" data-reveal="block"><h2>Key dates &amp; deadlines</h2>'
         f'{C.deadline_rail(cfg, e)}</section>'
     )
     trust = (
-        '<section class="detail-section detail-trust"><h2>Sourcing &amp; confidence</h2>'
+        '<section class="detail-section detail-trust" data-reveal="block"><h2>Sourcing &amp; confidence</h2>'
         f'<p class="detail-trust__blurb">{esc(e.confidence_blurb)}</p>'
         f"{C.provenance(cfg, e)}"
         f'<p class="detail-trust__foot"><a href="{rel(cfg, "/methodology/#confidence")}">'
@@ -400,11 +419,13 @@ def render_election(cfg: SiteConfig, site: SiteData, e: ElectionView) -> str:
 
 def _prose_page(
     cfg: SiteConfig, site: SiteData, *, path: str, title: str, h1: str, desc: str,
-    body: str, breadcrumb, jsonld=None, lede: bool = True,
+    body: str, breadcrumb, jsonld=None, dateline: str = "", lede: str = "",
 ) -> str:
+    dl = f'<p class="dateline num">{esc(dateline)}</p>' if dateline else ""
+    ld = f'<p class="lede">{esc(lede)}</p>' if lede else ""
     main = (
-        '<div class="wrap page-head"><h1>' + h1 + "</h1></div>"
-        f'<article class="wrap prose">{body}</article>'
+        f'<div class="wrap page-head">{dl}<h1>{esc(h1)}</h1>{ld}</div>'
+        f'<article class="wrap prose" data-reveal="block">{body}</article>'
     )
     return render_page(
         cfg, site, path=path, title=title, description=desc, main_html=main,
@@ -428,6 +449,8 @@ def render_about(cfg: SiteConfig, site: SiteData) -> str:
         h1="About Plumbline",
         desc="Plumbline is an independent, nonpartisan reference for U.S. off-cycle and local election dates — sourced, confidence-rated, and human-verified.",
         body=body, breadcrumb=breadcrumb,
+        dateline=f"UPDATED {site.version}",
+        lede="Curation-first, nonpartisan, and candid about its limits — the whole product is being right, and being able to show why.",
         jsonld=[seo.breadcrumb_ld(cfg, breadcrumb)],
     )
 
@@ -443,7 +466,6 @@ def render_methodology(cfg: SiteConfig, site: SiteData) -> str:
         for c in ("official", "secondary", "inferred")
     )
     body = (
-        f"<p class='prose__lede'>{copy.METHODOLOGY_INTRO}</p>"
         f"<ol class='method-steps'>{steps}</ol>"
         '<h2 id="confidence">Confidence levels</h2>'
         "<p>Every date is labeled with how firm it is. These labels appear on every "
@@ -459,6 +481,7 @@ def render_methodology(cfg: SiteConfig, site: SiteData) -> str:
         h1="Our methodology",
         desc="How Plumbline sources, tiers, verifies, protects, and versions every election date — and what official, secondary, and inferred mean.",
         body=body, breadcrumb=breadcrumb,
+        dateline=f"VERSION {site.version}", lede=copy.METHODOLOGY_INTRO,
         jsonld=[seo.defined_terms_ld(cfg), seo.breadcrumb_ld(cfg, breadcrumb)],
     )
 
@@ -522,7 +545,7 @@ def render_data(cfg: SiteConfig, site: SiteData) -> str:
         '<p class="lede">Plumbline Data is the same verified record set, packaged as '
         "versioned flat files you can drop straight into a model, a CRM, or a field "
         "plan.</p></div>"
-        f'<div class="wrap"><h2 class="section-h2">Downloads</h2>{cards}</div>'
+        f'<div class="wrap" data-reveal="block"><h2 class="section-h2">Downloads</h2>{cards}</div>'
         f"{json_index}"
         f'<section class="section section--tinted"><div class="wrap prose">{intro}'
         f"<h2>Built for teams that plan around dates</h2><ul>{audiences}</ul>"

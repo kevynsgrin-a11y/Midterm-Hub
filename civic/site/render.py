@@ -5,7 +5,7 @@ from __future__ import annotations
 import json
 from typing import Any, Optional
 
-from . import copy, icons
+from . import art, copy, icons
 from .base import SiteConfig, absu, asset, attrs, esc, rel
 from .components import confidence_legend
 from .data import SiteData
@@ -55,9 +55,10 @@ def _masthead(cfg: SiteConfig, site: SiteData, path: str, edition: bool) -> str:
     )
     edition_row = ""
     if edition:
+        host = cfg.origin.split("://", 1)[-1]
         edition_row = (
             '<div class="masthead__edition">'
-            f'<span class="overline">{esc(copy.BRAND)}</span>'
+            f'<span class="overline">{esc(copy.BRAND)} · {esc(host)}</span>'
             f'<span class="dateline num">Edition {esc(site.version)} · '
             f"Updated {esc(site.last_modified[:10])}</span></div>"
         )
@@ -86,6 +87,7 @@ def _footer(cfg: SiteConfig, site: SiteData) -> str:
     )
     return (
         '<footer class="site-footer">'
+        f'{art.guilloche_svg(760, 120, lines=7, cls="footer__guilloche")}'
         '<div class="site-footer__inner">'
         f'<div class="footer__cols">{"".join(cols)}</div>'
         f'<div class="footer__legend"><p class="overline">Every date is confidence-rated</p>'

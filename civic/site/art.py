@@ -26,7 +26,9 @@ US_TILEGRID: dict[str, tuple[int, int]] = {
 }
 
 
-def guilloche_svg(width: int = 760, height: int = 520, lines: int = 11) -> str:
+def guilloche_svg(
+    width: int = 760, height: int = 520, lines: int = 11, cls: str = "hero__guilloche"
+) -> str:
     """A currency-grade guilloché band: a family of phase-offset interference waves
     engraved in `currentColor`. Purely decorative (aria-hidden); the caller sets the
     color (brass) and opacity. Reads as a certified / security-document texture."""
@@ -52,7 +54,7 @@ def guilloche_svg(width: int = 760, height: int = 520, lines: int = 11) -> str:
             f'stroke="currentColor" stroke-width="0.6"/>'
         )
     return (
-        f'<svg class="hero__guilloche" viewBox="0 0 {width} {height}" '
+        f'<svg class="{cls}" viewBox="0 0 {width} {height}" '
         f'width="{width}" height="{height}" aria-hidden="true" focusable="false" '
         f'preserveAspectRatio="xMidYMid slice">{"".join(polylines)}</svg>'
     )
@@ -93,15 +95,18 @@ def us_cartogram(cfg: SiteConfig, counts: dict[str, int], *, compact: bool = Fal
         '<i class="cart-b0"></i><i class="cart-b1"></i><i class="cart-b2"></i>'
         '<i class="cart-b3"></i><i class="cart-b4"></i><span>More upcoming</span></div>'
     )
+    # Wrapped in an sr-only DIV (not a bare sr-only table) so table auto-layout can't
+    # expand past the viewport and cause horizontal scroll; still read by AT.
     table = (
-        '<table class="sr-only"><caption>Upcoming tracked elections by state</caption>'
+        '<div class="sr-only"><table>'
+        '<caption>Upcoming tracked elections by state</caption>'
         '<thead><tr><th scope="col">State</th><th scope="col">Upcoming</th></tr></thead>'
-        f'<tbody>{"".join(rows) or "<tr><td>No upcoming elections tracked yet.</td></tr>"}</tbody></table>'
+        f'<tbody>{"".join(rows) or "<tr><td>No upcoming elections tracked yet.</td></tr>"}</tbody></table></div>'
     )
     cls = "cartogram cartogram--compact" if compact else "cartogram"
     return (
         '<figure class="cartogram-fig">'
-        f'<div class="{cls}" role="img" '
-        'aria-label="Map of U.S. states shaded by number of upcoming tracked elections.">'
+        f'<div class="{cls}" role="group" '
+        'aria-label="U.S. states by number of upcoming tracked elections; select a state to view it.">'
         f'{"".join(cells)}</div>{legend}{table}</figure>'
     )
