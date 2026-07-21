@@ -157,8 +157,12 @@ def verify_cmd(
     by: str = typer.Option(..., "--by", help="Verifier name."),
 ) -> None:
     """Mark an election verified."""
-    with get_connection() as conn:
-        ok = verify(conn, election_id, by)
+    try:
+        with get_connection() as conn:
+            ok = verify(conn, election_id, by)
+    except ValueError as exc:
+        typer.secho(str(exc), fg=typer.colors.RED)
+        raise typer.Exit(code=1)
     if not ok:
         typer.secho(f"No such election: {election_id}", fg=typer.colors.RED)
         raise typer.Exit(code=1)
@@ -268,6 +272,9 @@ def site_build(
     demo: bool = typer.Option(
         False, "--demo", help="Render a site-wide banner marking the data as illustrative."
     ),
+    cname: Optional[str] = typer.Option(
+        None, "--cname", help="Custom domain; writes a CNAME file for GitHub Pages."
+    ),
 ) -> None:
     """Generate the complete static website from verified records."""
     from .site.build import build_site
@@ -277,12 +284,13 @@ def site_build(
     out_dir = out or (settings.export_dir.rstrip("/") + "/site")
     origin = origin if origin is not None else settings.site_origin
     base_path = base_path if base_path is not None else settings.site_base_path
+    cname = cname if cname is not None else (settings.site_cname or None)
 
     with get_connection() as conn:
         result = build_site(
             conn, out_dir, origin=origin, base_path=base_path, version=version,
             include_unverified=include_unverified, with_downloads=not no_downloads,
-            demo=demo,
+            demo=demo, cname=cname,
         )
     typer.secho(
         f"Built {result.pages_written} page(s) into {result.out_dir} "

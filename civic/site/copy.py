@@ -150,6 +150,14 @@ FOOTER_COLUMNS = [
     ]),
 ]
 
+# Above-the-fold trust bar: (icon key, label). Quieter than the CTA.
+TRUST_BAR = [
+    ("official", "Cites an official source"),
+    ("verified", "Human-verified"),
+    ("nonpartisan", "Independent & nonpartisan"),
+    ("versioned", "Versioned & auditable"),
+]
+
 CTA = {
     "find_state": "Find your state",
     "browse_states": "Browse all states",

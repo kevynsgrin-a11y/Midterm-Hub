@@ -114,14 +114,21 @@ class ElectionView:
     notes: Optional[str]
     deadlines: list[Deadline]
     _today: datetime.date
+    # URL slug — equals jurisdiction_slug unless disambiguated for a same-slug,
+    # different-type collision within the state (set during grouping).
+    url_slug: str = ""
+
+    @property
+    def _slug(self) -> str:
+        return self.url_slug or self.jurisdiction_slug
 
     @property
     def url(self) -> str:
-        return f"/elections/{self.state}/{self.jurisdiction_slug}/{self.id}/"
+        return f"/elections/{self.state}/{self._slug}/{self.id}/"
 
     @property
     def jurisdiction_url(self) -> str:
-        return f"/elections/{self.state}/{self.jurisdiction_slug}/"
+        return f"/elections/{self.state}/{self._slug}/"
 
     @property
     def state_url(self) -> str:
@@ -178,10 +185,16 @@ class JurisdictionView:
     jurisdiction_type: str
     jurisdiction_type_label: str
     elections: list[ElectionView] = field(default_factory=list)
+    # Disambiguated URL slug (see ElectionView.url_slug).
+    url_slug: str = ""
+
+    @property
+    def _slug(self) -> str:
+        return self.url_slug or self.slug
 
     @property
     def url(self) -> str:
-        return f"/elections/{self.state}/{self.slug}/"
+        return f"/elections/{self.state}/{self._slug}/"
 
     @property
     def ics_filename(self) -> str:
@@ -190,7 +203,7 @@ class JurisdictionView:
     @property
     def ics_url(self) -> str:
         # Points at the real per-jurisdiction feed emitted by the ICS exporter into
-        # the site's /downloads/ tree, so the link works on the deployed site.
+        # the site's /downloads/ tree (keyed by the raw slug), so the link resolves.
         return f"/downloads/ics/{self.state}/{self.slug}.ics"
 
     @property
@@ -243,6 +256,8 @@ class SiteData:
     # When True, the build renders a site-wide banner stating the records are
     # illustrative sample data — so a demo build never presents fake elections as real.
     demo: bool = False
+    # Open Graph card paths: {"default": "/og/default.png"|None, "elections": {id: path}}.
+    og: dict = field(default_factory=dict)
 
     @property
     def upcoming(self) -> list[ElectionView]:
@@ -321,6 +336,7 @@ def _to_view(rec: dict, today: datetime.date) -> ElectionView:
         notes=rec.get("notes"),
         deadlines=_build_deadlines(rec, today),
         _today=today,
+        url_slug=rec["jurisdiction_slug"],
     )
 
 
@@ -340,10 +356,11 @@ def load_site_data(
     elections = [_to_view(row_to_record(r), today) for r in rows]
     elections.sort(key=lambda e: (e.election_date, e.state, e.jurisdiction_name))
 
-    # Group into jurisdictions then states.
-    juris_map: dict[tuple[str, str], JurisdictionView] = {}
+    # Group into jurisdictions keyed by (state, TYPE, slug) so a county and a city that
+    # share a name are never merged into one mislabeled view.
+    juris_map: dict[tuple[str, str, str], JurisdictionView] = {}
     for e in elections:
-        key = (e.state, e.jurisdiction_slug)
+        key = (e.state, e.jurisdiction_type, e.jurisdiction_slug)
         jv = juris_map.get(key)
         if jv is None:
             jv = JurisdictionView(
@@ -357,6 +374,18 @@ def load_site_data(
             juris_map[key] = jv
         jv.elections.append(e)
 
+    # Disambiguate URL slugs when one state has multiple jurisdiction TYPES sharing a
+    # slug, so their hub pages/URLs never collide and overwrite each other.
+    per_state_slug: dict[tuple[str, str], list[JurisdictionView]] = {}
+    for jv in juris_map.values():
+        per_state_slug.setdefault((jv.state, jv.slug), []).append(jv)
+    for group in per_state_slug.values():
+        if len(group) > 1:
+            for jv in group:
+                jv.url_slug = f"{jv.slug}-{jv.jurisdiction_type}"
+                for e in jv.elections:
+                    e.url_slug = jv.url_slug
+
     state_map: dict[str, StateView] = {}
     for e in elections:
         sv = state_map.get(e.state)
@@ -364,7 +393,7 @@ def load_site_data(
             sv = StateView(code=e.state, name=e.state_name)
             state_map[e.state] = sv
         sv.elections.append(e)
-    for (st, _slug), jv in juris_map.items():
+    for (st, _jtype, _slug), jv in juris_map.items():
         state_map[st].jurisdictions.append(jv)
 
     jurisdictions = sorted(juris_map.values(), key=lambda j: (j.state_name, j.name))

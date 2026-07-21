@@ -65,14 +65,22 @@ def _previous_csv_since(conn: sqlite3.Connection) -> str:
         "SELECT created_at FROM export_runs WHERE kind = 'csv' ORDER BY id DESC LIMIT 1"
     ).fetchone()
     if row and row["created_at"]:
-        return row["created_at"][:10]
+        # Full timestamp (not just the date) so a second export the same day doesn't
+        # re-list records already reported by the earlier one.
+        return row["created_at"]
     return "1970-01-01"
 
 
 def _render_changelog(
-    conn: sqlite3.Connection, since: str, version: str, generated_at: str
+    conn: sqlite3.Connection, since: str, version: str, generated_at: str,
+    include_unverified: bool = False,
 ) -> str:
-    groups = diff_since(conn, since)
+    # The changelog ships alongside the verified-only CSV, so it must apply the SAME
+    # status filter — otherwise unverified records leak into a verified export artifact.
+    allowed = (
+        {"verified", "unverified", "needs_review"} if include_unverified else {"verified"}
+    )
+    groups = [g for g in diff_since(conn, since) if g["election"]["status"] in allowed]
     by_state: dict[str, list[dict[str, Any]]] = defaultdict(list)
     for g in groups:
         by_state[g["election"]["state"]].append(g)
@@ -134,7 +142,8 @@ def export_csv(
 
     changelog_path = target / "CHANGELOG.md"
     changelog_path.write_text(
-        _render_changelog(conn, since, version, generated_at), encoding="utf-8"
+        _render_changelog(conn, since, version, generated_at, include_unverified),
+        encoding="utf-8",
     )
 
     manifest = [

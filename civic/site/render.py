@@ -5,7 +5,7 @@ from __future__ import annotations
 import json
 from typing import Any, Optional
 
-from . import copy, icons
+from . import art, copy, icons
 from .base import SiteConfig, absu, asset, attrs, esc, rel
 from .components import confidence_legend
 from .data import SiteData
@@ -55,9 +55,10 @@ def _masthead(cfg: SiteConfig, site: SiteData, path: str, edition: bool) -> str:
     )
     edition_row = ""
     if edition:
+        host = cfg.origin.split("://", 1)[-1]
         edition_row = (
             '<div class="masthead__edition">'
-            f'<span class="overline">{esc(copy.BRAND)}</span>'
+            f'<span class="overline">{esc(copy.BRAND)} · {esc(host)}</span>'
             f'<span class="dateline num">Edition {esc(site.version)} · '
             f"Updated {esc(site.last_modified[:10])}</span></div>"
         )
@@ -86,6 +87,7 @@ def _footer(cfg: SiteConfig, site: SiteData) -> str:
     )
     return (
         '<footer class="site-footer">'
+        f'{art.guilloche_svg(760, 120, lines=7, cls="footer__guilloche")}'
         '<div class="site-footer__inner">'
         f'<div class="footer__cols">{"".join(cols)}</div>'
         f'<div class="footer__legend"><p class="overline">Every date is confidence-rated</p>'
@@ -123,11 +125,22 @@ def render_page(
     omit_canonical: bool = False,
     article_published: Optional[str] = None,
     article_modified: Optional[str] = None,
+    og_image: Optional[str] = None,
+    og_image_alt: Optional[str] = None,
 ) -> str:
     """Assemble a complete, self-contained HTML document."""
     from .components import breadcrumb as _breadcrumb
 
     canonical = None if omit_canonical else absu(cfg, path)
+
+    # Resolve the OG share image: explicit for this page, else the site default card.
+    og_rel = og_image
+    og_alt = og_image_alt
+    if og_rel is None:
+        og_rel = (getattr(site, "og", {}) or {}).get("default")
+        if og_rel and not og_alt:
+            og_alt = f"{copy.BRAND} — {copy.TAGLINE}"
+    og_url = absu(cfg, og_rel) if og_rel else None
     css_href = asset(cfg, "styles.css")
     js_href = asset(cfg, "site.js")
     favicon = asset(cfg, "favicon.svg")
@@ -161,8 +174,16 @@ def render_page(
         head.append(f'<meta property="article:published_time" content="{esc(article_published)}">')
     if article_modified:
         head.append(f'<meta property="article:modified_time" content="{esc(article_modified)}">')
+    if og_url:
+        head += [
+            f'<meta property="og:image" content="{esc(og_url)}">',
+            '<meta property="og:image:type" content="image/png">',
+            '<meta property="og:image:width" content="1200">',
+            '<meta property="og:image:height" content="630">',
+            f'<meta property="og:image:alt" content="{esc(og_alt or title)}">',
+        ]
     head += [
-        '<meta name="twitter:card" content="summary">',
+        f'<meta name="twitter:card" content="{"summary_large_image" if og_url else "summary"}">',
         f'<meta name="twitter:title" content="{esc(title)}">',
         f'<meta name="twitter:description" content="{esc(description)}">',
         f'<link rel="stylesheet" href="{esc(css_href)}">',

@@ -69,6 +69,31 @@ class TestRegistrationTime:
         with pytest.raises(ValidationError):
             _valid(registration_deadline_time="5pm")
 
+    def test_rejects_impossible_clock_time(self):
+        with pytest.raises(ValidationError):
+            _valid(registration_deadline_time="25:99")
+
+
+class TestStricterValidation:
+    def test_rejects_iso_week_and_basic_dates(self):
+        for bad in ("2027-W44-2", "20271102"):
+            with pytest.raises(ValidationError):
+                _valid(election_date=bad)
+
+    def test_rejects_whitespace_jurisdiction_name(self):
+        with pytest.raises(ValidationError):
+            _valid(jurisdiction_name="   ")
+
+    def test_historical_requires_whole_word(self):
+        import datetime as _dt
+
+        old = (_dt.date.today() - _dt.timedelta(days=400)).isoformat()
+        # 'prehistorical' must NOT disarm the staleness guard.
+        with pytest.raises(ValidationError):
+            _valid(election_date=old, notes="near a prehistorical dig site")
+        # whole-word 'historical' does.
+        assert _valid(election_date=old, notes="historical backfill").election_date.isoformat() == old
+
 
 class TestOffices:
     def test_rejects_empty_string_office(self):

@@ -66,6 +66,16 @@ ICON_CALENDAR = _svg(
 ICON_DOWNLOAD = _svg("<path d='M12 3v12m0 0 4-4m-4 4-4-4M5 21h14'/>", 16)
 
 
+# Small line-icons for the above-the-fold trust bar.
+TRUST_ICONS = {
+    "official": _svg("<path d='M3 21h18M4 21V10l8-5 8 5v11M9 21v-6h6v6'/>", 15),  # landmark
+    "verified": _svg("<path d='M12 2 4 5v6c0 5 3.4 8.5 8 10 4.6-1.5 8-5 8-10V5Z'/>"
+                     "<path d='m9 12 2 2 4-4'/>", 15),  # shield-check
+    "nonpartisan": _svg("<path d='M12 3v18M5 7h14M6 7l-3 6a3 3 0 0 0 6 0Zm12 0-3 6a3 3 0 0 0 6 0Z'/>", 15),  # scales
+    "versioned": _svg("<path d='M12 3 2 8l10 5 10-5-10-5Z'/><path d='m2 13 10 5 10-5M2 18l10 5 10-5'/>", 15),  # layers
+}
+
+
 def confidence_meter(level: str) -> str:
     """Three rising bars; `level` fills 3/2/1 for official/secondary/inferred."""
     filled = {"official": 3, "secondary": 2, "inferred": 1}.get(level, 1)
@@ -80,6 +90,59 @@ def confidence_meter(level: str) -> str:
     return (
         "<svg class='confidence-meter' width='14' height='12' viewBox='0 0 13 12' "
         "aria-hidden='true' focusable='false'>" + "".join(bars) + "</svg>"
+    )
+
+
+def hero_plumbline() -> str:
+    """The hero instrument: a fixed anchor beam, a measurement scale (the 'countdown
+    spine'), and a swinging string + brass plumb bob that settles to true. The
+    `.pl-swing` group carries the one-shot damped-pendulum motion (CSS)."""
+    # Measurement-scale ticks down the left rail (longer every 4th).
+    ticks = []
+    y = 78
+    n = 0
+    while y <= 350:
+        long = n % 4 == 0
+        x2 = 96 if long else 88
+        w = 1.6 if long else 1.1
+        ticks.append(
+            f'<line x1="72" y1="{y}" x2="{x2}" y2="{y}" stroke="var(--brass)" '
+            f'stroke-width="{w}"/>'
+        )
+        y += 17
+        n += 1
+    scale = f'<g opacity="0.55">{"".join(ticks)}' \
+            f'<line x1="72" y1="74" x2="72" y2="354" stroke="var(--brass)" stroke-width="1.4"/></g>'
+    return (
+        '<svg class="hero-instrument" viewBox="0 0 300 448" width="300" height="448" '
+        'role="img" aria-label="A plumb line — the surveyor\'s tool for finding true — '
+        'hanging still and level." focusable="false">'
+        "<defs>"
+        '<linearGradient id="pl-brass" x1="0" y1="0" x2="0.35" y2="1">'
+        '<stop offset="0" stop-color="var(--brass-hi)"/>'
+        '<stop offset="0.46" stop-color="var(--brass-bright)"/>'
+        '<stop offset="1" stop-color="var(--brass-ink)"/></linearGradient>'
+        '<linearGradient id="pl-beam" x1="0" y1="0" x2="0" y2="1">'
+        '<stop offset="0" stop-color="var(--brass-bright)"/>'
+        '<stop offset="1" stop-color="var(--brass-ink)"/></linearGradient>'
+        "</defs>"
+        f"{scale}"
+        # Fixed anchor beam.
+        '<rect x="94" y="44" width="128" height="11" rx="3" fill="url(#pl-beam)"/>'
+        '<rect x="94" y="45" width="128" height="3" rx="2" fill="var(--brass-hi)" opacity="0.6"/>'
+        # Swinging plumb: string + brass bob (elongated diamond) + highlight.
+        '<g class="pl-swing">'
+        '<line x1="158" y1="55" x2="158" y2="352" stroke="var(--primary)" '
+        'stroke-width="2.5" stroke-linecap="round"/>'
+        '<path d="M158 340 L177 372 L158 422 L139 372 Z" fill="url(#pl-brass)" '
+        'stroke="var(--brass-ink)" stroke-width="1" stroke-linejoin="round"/>'
+        '<path d="M158 340 L177 372 L158 372 Z" fill="var(--brass-hi)" opacity="0.5"/>'
+        '<circle cx="158" cy="352" r="3.2" fill="var(--brass-ink)"/>'
+        "</g>"
+        # Level baseline the bob points true to.
+        '<line x1="40" y1="426" x2="276" y2="426" stroke="var(--brass)" '
+        'stroke-width="1.2" stroke-dasharray="2 5" opacity="0.5"/>'
+        "</svg>"
     )
 
 

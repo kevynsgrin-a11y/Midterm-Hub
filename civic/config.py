@@ -19,6 +19,7 @@ class Settings:
     rate_limit_seconds: float
     site_origin: str
     site_base_path: str
+    site_cname: str
 
 
 def get_settings() -> Settings:
@@ -36,4 +37,5 @@ def get_settings() -> Settings:
         # hosting (e.g. '/Midterm-Hub'), or '' for domain-root hosting.
         site_origin=os.environ.get("CIVIC_SITE_ORIGIN", "https://plumbline.example"),
         site_base_path=os.environ.get("CIVIC_SITE_BASE_PATH", ""),
+        site_cname=os.environ.get("CIVIC_SITE_CNAME", ""),
     )

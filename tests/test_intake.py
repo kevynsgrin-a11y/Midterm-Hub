@@ -92,6 +92,57 @@ def test_non_list_file_rejected(tmp_path):
         load_intake(_write(tmp_path, "state: VA\n"))
 
 
+def test_duplicate_election_in_file_rejects(conn, tmp_path):
+    dup = """
+- state: VA
+  jurisdiction_type: municipality
+  jurisdiction_name: "Town of Alpha"
+  election_type: municipal
+  election_date: "2027-05-04"
+  source_url: "https://x/1"
+- state: VA
+  jurisdiction_type: municipality
+  jurisdiction_name: "Town of Alpha"
+  election_type: municipal
+  election_date: "2027-05-04"
+  source_url: "https://x/2"
+"""
+    with pytest.raises(IntakeError) as exc:
+        ingest_intake(conn, _write(tmp_path, dup), actor="c")
+    assert any("duplicate election" in e for e in exc.value.errors)
+    assert conn.execute("SELECT COUNT(*) FROM elections").fetchone()[0] == 0
+
+
+def test_non_string_key_rejected_cleanly(conn, tmp_path):
+    # PyYAML coerces `on:` to boolean True — must surface as an IntakeError, not a crash.
+    bad = """
+- state: VA
+  jurisdiction_type: municipality
+  jurisdiction_name: "Town of Alpha"
+  election_type: municipal
+  election_date: "2027-05-04"
+  source_url: "https://x/1"
+  on: something
+"""
+    with pytest.raises(IntakeError):
+        ingest_intake(conn, _write(tmp_path, bad), actor="c")
+    assert conn.execute("SELECT COUNT(*) FROM elections").fetchone()[0] == 0
+
+
+def test_duplicate_yaml_key_rejected(tmp_path):
+    dup_key = """
+- state: VA
+  state: NJ
+  jurisdiction_type: municipality
+  jurisdiction_name: "Town of Alpha"
+  election_type: municipal
+  election_date: "2027-05-04"
+  source_url: "https://x/1"
+"""
+    with pytest.raises(IntakeError):
+        load_intake(_write(tmp_path, dup_key))
+
+
 def test_sample_fixture_is_valid(conn):
     """The shipped sample_intake.yaml must load and upsert cleanly."""
     results = ingest_intake(conn, FIXTURES / "sample_intake.yaml", actor="curator")
