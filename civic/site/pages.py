@@ -18,7 +18,7 @@ STATES = ("States", "/states/")
 
 def _cards(cfg: SiteConfig, elections: list[ElectionView]) -> str:
     return (
-        '<div class="card-grid">'
+        '<div class="card-grid" data-reveal="cards">'
         + "".join(C.election_card(cfg, e) for e in elections)
         + "</div>"
     )
@@ -35,7 +35,7 @@ def _section(
         f'<p class="section__index" aria-hidden="true">{esc(index)}</p>' if index else ""
     )
     return (
-        f'<section class="{cls}"{idattr}>'
+        f'<section class="{cls}"{idattr} data-reveal="block">'
         f'<div class="wrap">{index_html}<h2 class="section__title">{title}</h2>'
         f"{lead_html}{body}</div></section>"
     )
@@ -115,7 +115,13 @@ def render_home(cfg: SiteConfig, site: SiteData) -> str:
         + "".join(C.state_tile(cfg, s) for s in site.states)
         + "</div>"
     )
-    browse = _section("Browse by state", state_grid, id="states", tinted=True, index="02")
+    counts = {s.code: len(s.upcoming) for s in site.states}
+    browse = _section(
+        "Browse by state",
+        f'<div class="browse-layout">{art.us_cartogram(cfg, counts, compact=True)}'
+        f"{state_grid}</div>",
+        id="states", tinted=True, index="02",
+    )
 
     trust = _section(
         "How we verify",
@@ -182,12 +188,14 @@ def render_states_index(cfg: SiteConfig, site: SiteData) -> str:
         + "".join(C.state_tile(cfg, s) for s in site.states)
         + "</div>"
     )
+    counts = {s.code: len(s.upcoming) for s in site.states}
     main = (
         '<div class="wrap page-head"><p class="dateline num">UPDATED '
         f'{esc(site.version)}</p><h1>Elections by state</h1>'
         '<p class="lede">Browse verified off-cycle and local election calendars by '
         f'state — {site.total_states} covered.</p></div>'
-        f'<div class="wrap">{grid}</div>'
+        f'<div class="wrap">{art.us_cartogram(cfg, counts)}</div>'
+        f'<div class="wrap"><h2 class="section-h2">All states</h2>{grid}</div>'
     )
     items = [(s.name, s.url) for s in site.states]
     return render_page(
