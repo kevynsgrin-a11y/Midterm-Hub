@@ -387,6 +387,8 @@ def render_election(cfg: SiteConfig, site: SiteData, e: ElectionView) -> str:
         title=f"{e.jurisdiction_name} {e.election_type_label} Election — {e.date_short}",
         description=desc, main_html=main, breadcrumb_items=breadcrumb, og_type="article",
         article_published=e.source_retrieved_at, article_modified=e.verified_at,
+        og_image=(site.og.get("elections", {}) or {}).get(e.id),
+        og_image_alt=f"{e.jurisdiction_name} {e.election_type_label} election — {e.date_short}",
         jsonld=[
             seo.event_ld(cfg, e),
             seo.breadcrumb_ld(cfg, breadcrumb),

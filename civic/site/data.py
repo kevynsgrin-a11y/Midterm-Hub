@@ -243,6 +243,8 @@ class SiteData:
     # When True, the build renders a site-wide banner stating the records are
     # illustrative sample data — so a demo build never presents fake elections as real.
     demo: bool = False
+    # Open Graph card paths: {"default": "/og/default.png"|None, "elections": {id: path}}.
+    og: dict = field(default_factory=dict)
 
     @property
     def upcoming(self) -> list[ElectionView]:

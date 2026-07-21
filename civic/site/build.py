@@ -85,6 +85,7 @@ def build_site(
     site.demo = demo
 
     out = Path(out_dir)
+    # (og cards are generated below, after the output tree is created)
     # Rebuild the managed tree from scratch so removed pages/downloads never linger
     # and diverge from sitemap.xml. Guard against nuking a root/home directory.
     resolved = out.resolve()
@@ -93,6 +94,12 @@ def build_site(
     if out.exists():
         shutil.rmtree(out)
     out.mkdir(parents=True, exist_ok=True)
+
+    # Generate Open Graph share cards BEFORE rendering pages, so each page can point
+    # og:image only at a card that actually exists (best-effort; empty if unavailable).
+    from . import ogcards
+
+    site.og = ogcards.generate(site, out, demo=demo)
 
     count = 0
     # Static top-level pages.

@@ -178,6 +178,23 @@ class TestQaHardening:
         # No clickable javascript: href survives, even though the string may appear as text.
         assert 'href="javascript:' not in html.lower()
 
+    def test_og_cards_generated_and_referenced(self, conn, make_record, tmp_path):
+        r = upsert(conn, make_record(), actor="t")
+        verify(conn, r.election_id, "c")
+        _build(conn, tmp_path, demo=True)
+        from civic.site import ogcards
+
+        if not ogcards.available():  # environment without fonts/Pillow
+            return
+        assert (tmp_path / "og" / "default.png").exists()
+        card = tmp_path / "og" / "VA" / "town-of-example" / f"{r.election_id}.png"
+        assert card.exists()
+        detail = (
+            tmp_path / f"elections/VA/town-of-example/{r.election_id}/index.html"
+        ).read_text()
+        assert f'og:image" content="{ORIGIN}/og/VA/town-of-example/{r.election_id}.png"' in detail
+        assert 'twitter:card" content="summary_large_image"' in detail
+
     def test_stale_tree_pruned(self, conn, make_record, tmp_path):
         r = upsert(conn, make_record(jurisdiction_name="Town of Example"), actor="t")
         verify(conn, r.election_id, "c")
