@@ -123,7 +123,7 @@ def _default_card(fonts, out_dir, demo) -> str:
 
     img, d = _base(fonts)
     eyebrow = ImageFont.truetype(fonts["sans_b"], 26)
-    d.text((64, 210), "U.S. OFF-CYCLE & LOCAL ELECTIONS", font=eyebrow, fill=BRASS_INK)
+    d.text((64, 210), "THE 2026 MIDTERM CYCLE · UNITED STATES", font=eyebrow, fill=BRASS_INK)
     title = ImageFont.truetype(fonts["serif"], 76)
     for i, line in enumerate(["Know when your next", "election really is."]):
         d.text((64, 250 + i * 86), line, font=title, fill=INK)

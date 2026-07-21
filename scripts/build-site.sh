@@ -20,23 +20,25 @@ export CIVIC_DB_PATH="build.db"
 rm -f build.db build.db-wal build.db-shm
 
 civic init
-# Demo dataset (clearly-fake sample). Replace this block with real intake files
-# (civic intake intake/*.yaml) and drop --demo below once real data is curated.
-civic intake tests/fixtures/sample_intake.yaml --by ci
+# Real curated dataset: every YAML under intake/ is validated all-or-nothing and
+# upserted. Records were human-reviewed against official sources before commit,
+# so the build marks them verified (actor "editorial").
+for f in intake/*.yaml; do
+  civic intake "$f" --by editorial
+done
 python - <<'PY'
 import sqlite3
 from civic.store import verify
 conn = sqlite3.connect("build.db")
 conn.row_factory = sqlite3.Row
 for row in conn.execute("SELECT id FROM elections"):
-    verify(conn, row["id"], "ci")
+    verify(conn, row["id"], "editorial")
 conn.commit()
 PY
 
 civic site build \
   --origin "$ORIGIN" \
   --base-path "" \
-  --demo \
   --cname "$CNAME_HOST" \
   --out "$OUT"
 

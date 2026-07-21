@@ -3,8 +3,8 @@ name: deploy-site
 # Builds the Plumbline static site (midtermwatch.com) and publishes it to GitHub Pages.
 # Cloudflare Pages is an alternative host — same scripts/build-site.sh, output "dist".
 # See DEPLOY.md for the one-time host + Cloudflare DNS setup.
-# The demo dataset is the clearly-fake sample intake; swap in real verified data
-# by committing an intake file / DB step here when going live.
+# Data comes from the curated intake/*.yaml files — every record verified against
+# an official source before commit.
 
 # Runs on the default branch and on manual dispatch only — not on feature branches,
 # so an un-provisioned Pages site never shows as a failing check on a PR.

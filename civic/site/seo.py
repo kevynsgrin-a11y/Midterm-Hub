@@ -38,8 +38,8 @@ def _org(cfg: SiteConfig) -> dict:
         "name": BRAND,
         "url": absu(cfg, "/"),
         "description": (
-            "Independent, nonpartisan reference for U.S. off-cycle and local "
-            "election dates and deadlines."
+            "Independent, nonpartisan reference for U.S. election dates and "
+            "deadlines — the 2026 midterm cycle plus off-cycle and local races."
         ),
     }
 
@@ -65,7 +65,7 @@ def home_graph(cfg: SiteConfig, site: SiteData) -> dict:
                 "@type": "WebPage",
                 "@id": absu(cfg, "/") + "#webpage",
                 "url": absu(cfg, "/"),
-                "name": f"{BRAND} — U.S. Off-Cycle & Local Election Dates",
+                "name": f"{BRAND} — 2026 Midterm Election Dates & Deadlines",
                 "isPartOf": {"@id": website_id(cfg)},
                 "about": {"@id": org_id(cfg)},
                 "dateModified": site.last_modified,
@@ -227,10 +227,11 @@ def dataset_ld(cfg: SiteConfig, site: SiteData) -> dict:
     dataset = {
         "@type": "Dataset",
         "@id": absu(cfg, "/data/") + "#dataset",
-        "name": "U.S. Off-Cycle & Local Elections dataset",
+        "name": "U.S. Elections 2026 dataset",
         "description": (
-            "Curation-first, versioned dataset of U.S. off-cycle and local election "
-            "dates and deadlines, with provenance and confidence levels."
+            "Curation-first, versioned dataset of U.S. election dates and "
+            "deadlines for the 2026 midterm cycle, with provenance and "
+            "confidence levels."
         ),
         "url": absu(cfg, "/data/"),
         "version": site.version,
