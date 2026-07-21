@@ -39,7 +39,10 @@ pip install -e .                      # exposes the `civic` command
 # 1. Create the database (data/civic.db by default).
 civic init
 
-# 2. Author (or reuse) an intake YAML file. A clearly-fake sample ships in the repo:
+# 2. Author (or reuse) an intake YAML file. The real curated 2026 dataset lives
+#    in intake/ (every record cites an official source); a clearly-fake sample
+#    for experiments ships in tests/fixtures/:
+cat intake/2026-statewide.yaml
 cat tests/fixtures/sample_intake.yaml
 
 # 3. Validate + upsert the whole file (all-or-nothing).
