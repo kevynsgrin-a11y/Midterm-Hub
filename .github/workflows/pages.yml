@@ -1,6 +1,8 @@
 name: deploy-site
 
-# Builds the Plumbline static site and publishes it to GitHub Pages.
+# Builds the Plumbline static site (midtermwatch.com) and publishes it to GitHub Pages.
+# Cloudflare Pages is an alternative host — same scripts/build-site.sh, output "dist".
+# See DEPLOY.md for the one-time host + Cloudflare DNS setup.
 # The demo dataset is the clearly-fake sample intake; swap in real verified data
 # by committing an intake file / DB step here when going live.
 
@@ -35,33 +37,11 @@ jobs:
           python-version: "3.11"
           cache: pip
 
-      - name: Install
-        run: |
-          python -m pip install --upgrade pip
-          pip install -r requirements.txt
-          pip install -e .
-
-      - name: Build dataset + site
+      - name: Build dataset + site (midtermwatch.com)
         env:
-          CIVIC_DB_PATH: data/civic.db
-        run: |
-          civic init
-          civic intake tests/fixtures/sample_intake.yaml --by ci
-          python - <<'PY'
-          import sqlite3
-          from civic.store import verify
-          c = sqlite3.connect("data/civic.db")
-          c.row_factory = sqlite3.Row
-          for r in c.execute("SELECT id FROM elections"):
-              verify(c, r["id"], "ci")
-          c.commit()
-          PY
-          REPO_NAME="${GITHUB_REPOSITORY#*/}"   # robust across push/dispatch/schedule
-          civic site build \
-            --origin "https://${{ github.repository_owner }}.github.io" \
-            --base-path "/${REPO_NAME}" \
-            --demo \
-            --out _site
+          SITE_ORIGIN: https://midtermwatch.com
+          SITE_CNAME: midtermwatch.com
+        run: bash scripts/build-site.sh _site
 
       - uses: actions/configure-pages@v5
         with:

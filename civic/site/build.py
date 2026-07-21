@@ -71,6 +71,7 @@ def build_site(
     include_unverified: bool = False,
     with_downloads: bool = True,
     demo: bool = False,
+    cname: Optional[str] = None,
 ) -> BuildResult:
     if generated_at is None:
         generated_at = datetime.datetime.now(datetime.timezone.utc).strftime(
@@ -117,6 +118,10 @@ def build_site(
     _write(out, "/robots.txt", seo.robots_txt(cfg))
 
     _copy_assets(out)
+
+    # Custom-domain marker for GitHub Pages (harmless on other hosts).
+    if cname:
+        (out / "CNAME").write_text(cname.strip() + "\n", encoding="utf-8")
 
     if with_downloads:
         downloads = out / "downloads"
