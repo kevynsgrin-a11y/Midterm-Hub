@@ -33,11 +33,13 @@ def _nav(cfg: SiteConfig, path: str) -> str:
 
 
 def _theme_toggle() -> str:
+    """Action-labelled button. No aria-pressed: pairing a changing action name
+    with a pressed state announces "Switch to light theme, pressed", which is
+    pressed with respect to nothing. The label alone carries the meaning."""
     return (
         '<button type="button" class="btn--icon theme-toggle" '
-        'aria-label="Switch color theme" aria-pressed="false">'
-        f"{icons.ICON_SUN}{icons.ICON_MOON}"
-        '<span class="sr-only">Switch color theme</span></button>'
+        'aria-label="Switch to dark theme">'
+        f"{icons.ICON_SUN}{icons.ICON_MOON}</button>"
     )
 
 
@@ -56,9 +58,11 @@ def _masthead(cfg: SiteConfig, site: SiteData, path: str, edition: bool) -> str:
     edition_row = ""
     if edition:
         host = cfg.origin.split("://", 1)[-1]
+        # The wordmark is 58px above this line; repeating the brand here spent the
+        # tallest element on the page saying "Plumbline" twice.
         edition_row = (
             '<div class="masthead__edition">'
-            f'<span class="overline">{esc(copy.BRAND)} · {esc(host)}</span>'
+            f'<span class="overline">{esc(host)}</span>'
             f'<span class="dateline num">Edition {esc(site.version)} · '
             f"Updated {esc(site.last_modified[:10])}</span></div>"
         )
@@ -85,13 +89,26 @@ def _footer(cfg: SiteConfig, site: SiteData) -> str:
         f'<p class="footer__disclaimer">{esc(copy.FOOTER_BLURB)}</p>'
         "</div>"
     )
+    # A three-chip legend is only informative when more than one tier is in play.
+    # With a single tier it advertises doubt the data does not warrant, so make
+    # the claim instead.
+    tiers = {e.confidence for e in site.elections}
+    if len(tiers) > 1:
+        legend = (
+            '<div class="footer__legend"><p class="overline">Every date is confidence-rated</p>'
+            f"{confidence_legend()}</div>"
+        )
+    else:
+        legend = (
+            '<div class="footer__legend">'
+            f'<p class="footer__legend-solo">{esc(copy.FOOTER_LEGEND_SOLO)}</p></div>'
+        )
     return (
         '<footer class="site-footer">'
-        f'{art.guilloche_svg(760, 120, lines=7, cls="footer__guilloche")}'
+        f'{art.guilloche_svg(760, 120, lines=4, cls="footer__guilloche")}'
         '<div class="site-footer__inner">'
         f'<div class="footer__cols">{"".join(cols)}</div>'
-        f'<div class="footer__legend"><p class="overline">Every date is confidence-rated</p>'
-        f"{confidence_legend()}</div>"
+        f"{legend}"
         f"{colophon}</div></footer>"
     )
 
@@ -158,6 +175,7 @@ def render_page(
     if canonical:
         head.append(f'<link rel="canonical" href="{esc(canonical)}">')
     head += [
+        '<meta name="color-scheme" content="light dark">',
         '<meta name="theme-color" content="#F5F3EC" media="(prefers-color-scheme: light)">',
         '<meta name="theme-color" content="#131316" media="(prefers-color-scheme: dark)">',
         f'<link rel="icon" type="image/svg+xml" href="{esc(favicon)}">',
@@ -186,8 +204,21 @@ def render_page(
         f'<meta name="twitter:card" content="{"summary_large_image" if og_url else "summary"}">',
         f'<meta name="twitter:title" content="{esc(title)}">',
         f'<meta name="twitter:description" content="{esc(description)}">',
-        f'<link rel="stylesheet" href="{esc(css_href)}">',
+        # twitter:image falls back to og:image, but twitter:image:alt has no
+        # fallback — without this the alt text is silently dropped on Twitter.
+        (f'<meta name="twitter:image:alt" content="{esc(og_alt or title)}">' if og_url else ""),
         f"<script>{THEME_SCRIPT}</script>",
+        # Above-the-fold rules inline, the rest non-blocking. The media/onload
+        # swap keeps the full sheet off the critical path; <noscript> covers the
+        # case where the swap can never fire.
+        (f"<style>{cfg.critical_css}</style>" if cfg.critical_css else ""),
+        (
+            f'<link rel="stylesheet" href="{esc(css_href)}" media="print" '
+            f"onload=\"this.media='all'\">"
+            f'<noscript><link rel="stylesheet" href="{esc(css_href)}"></noscript>'
+            if cfg.critical_css
+            else f'<link rel="stylesheet" href="{esc(css_href)}">'
+        ),
         _jsonld_scripts(jsonld),
         "</head>",
     ]

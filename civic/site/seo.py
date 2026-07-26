@@ -74,14 +74,23 @@ def home_graph(cfg: SiteConfig, site: SiteData) -> dict:
     }
 
 
-def breadcrumb_ld(cfg: SiteConfig, items: list[tuple[str, Optional[str]]]) -> dict:
+def breadcrumb_ld(
+    cfg: SiteConfig, items: list[tuple[str, Optional[str]]], path: Optional[str] = None
+) -> dict:
     elements = []
     for i, (label, url) in enumerate(items, start=1):
         el: dict[str, Any] = {"@type": "ListItem", "position": i, "name": label}
         if url:
             el["item"] = absu(cfg, url)
         elements.append(el)
-    return {"@context": CONTEXT, "@type": "BreadcrumbList", "itemListElement": elements}
+    node: dict[str, Any] = {
+        "@context": CONTEXT,
+        "@type": "BreadcrumbList",
+        "itemListElement": elements,
+    }
+    if path:
+        node["@id"] = absu(cfg, path) + "#breadcrumb"
+    return node
 
 
 def _place(e: ElectionView) -> dict:
@@ -117,7 +126,7 @@ def _registration_start(e: ElectionView) -> Optional[str]:
     return reg.date.isoformat()
 
 
-def event_ld(cfg: SiteConfig, e: ElectionView) -> dict:
+def event_ld(cfg: SiteConfig, e: ElectionView, og_path: Optional[str] = None) -> dict:
     sub_events = []
     for dl in e.deadlines:
         if dl.key == "registration_deadline":
@@ -126,7 +135,20 @@ def event_ld(cfg: SiteConfig, e: ElectionView) -> dict:
             continue  # folded into the early-voting window below
         else:
             start = dl.date.isoformat()
-        node: dict[str, Any] = {"@type": "Event", "name": dl.label, "startDate": start}
+        # Google validates nested Events too: location/eventStatus/eventAttendanceMode
+        # are required, and omitting them threw "Missing field 'location'" on every
+        # deadline node across the site.
+        node: dict[str, Any] = {
+            "@type": "Event",
+            "@id": absu(cfg, e.url) + f"#{dl.key}",
+            "name": dl.label,
+            "startDate": start,
+            "location": _place(e),
+            "eventStatus": "https://schema.org/EventScheduled",
+            "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+            "url": absu(cfg, e.url),
+            "superEvent": {"@id": absu(cfg, e.url) + "#event"},
+        }
         if dl.key == "early_voting_start":
             end = next((d for d in e.deadlines if d.key == "early_voting_end"), None)
             node["name"] = "Early voting"
@@ -151,7 +173,7 @@ def event_ld(cfg: SiteConfig, e: ElectionView) -> dict:
 
     # No relative countdown here: JSON-LD is indexed and would go stale between builds.
     desc = (
-        f"The {e.jurisdiction_name}, {e.state_name} {e.election_type_label.lower()} "
+        f"The {e.place_phrase} {e.election_type_label.lower()} "
         f"election is {e.date_full}."
     )
     if e.offices_summary:
@@ -175,6 +197,10 @@ def event_ld(cfg: SiteConfig, e: ElectionView) -> dict:
         node["about"] = [{"@type": "Thing", "name": o} for o in e.offices]
     if sub_events:
         node["subEvent"] = sub_events
+    # A unique 1200x630 card already exists per election; `image` is what drives
+    # the thumbnail in Event rich results.
+    if og_path:
+        node["image"] = [absu(cfg, og_path)]
     return {"@context": CONTEXT, "@graph": [node]}
 
 
@@ -200,7 +226,10 @@ def collection_ld(
     }
     if modified:
         page["dateModified"] = modified
-    return {"@context": CONTEXT, "@graph": [page]}
+    # Include the entities this page's @id references. Without them, `isPartOf`
+    # points at a WebSite node defined only on the homepage, leaving a dangling
+    # reference on every collection page.
+    return {"@context": CONTEXT, "@graph": [page, _website(cfg), _org(cfg)]}
 
 
 def defined_terms_ld(cfg: SiteConfig) -> dict:
@@ -270,8 +299,8 @@ def sitemap_xml(cfg: SiteConfig, site: SiteData) -> str:
     entries.append(_url_entry(absu(cfg, "/"), lm, "1.0"))
     entries.append(_url_entry(absu(cfg, "/states/"), lm, "0.8"))
     entries.append(_url_entry(absu(cfg, "/data/"), lm, "0.8"))
-    entries.append(_url_entry(absu(cfg, "/about/"), None, "0.5"))
-    entries.append(_url_entry(absu(cfg, "/methodology/"), None, "0.5"))
+    entries.append(_url_entry(absu(cfg, "/about/"), lm, "0.5"))
+    entries.append(_url_entry(absu(cfg, "/methodology/"), lm, "0.5"))
 
     def maxmod(elections: list[ElectionView]) -> str:
         stamps = [e.verified_at for e in elections if e.verified_at]

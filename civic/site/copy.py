@@ -3,19 +3,76 @@ desk, calm and nonpartisan. Kept in one place so tone stays consistent."""
 from __future__ import annotations
 
 BRAND = "Plumbline"
-TAGLINE = "Verified dates for the 2026 midterms — and every election in between."
+TAGLINE = "Every 2026 election date — and the deadlines that come first."
 
 HOME_HERO = {
-    "eyebrow": "The 2026 midterm cycle · United States",
-    "h1": "Know when your next election really is.",
+    "eyebrow": "2026 midterms · 50 states + DC",
+    "h1": "Your next election, and every deadline before it.",
     "subhead": (
-        "Plumbline is a verified, continuously sourced calendar of the 2026 "
-        "midterm cycle — every remaining statewide primary, every runoff, and the "
-        "November 3 general — plus the special, municipal, and off-cycle elections "
-        "in between. Every date shows its source, its confidence level, and the "
-        "day we last checked it."
+        "Pick your state to see every 2026 election date — plus the registration "
+        "and early-voting deadlines that close weeks earlier. Every date links to "
+        "the election office it came from."
     ),
+    # Rendered inside <noscript> under the state select.
+    "nojs": "Or scroll down to the A–Z list of states.",
 }
+
+# Inline, directly under the deadline rail on state hubs and detail pages — where
+# someone is deciding whether they still have time, not buried in the footer.
+CONFIRM_NOTE = (
+    "Deadlines move. Confirm with your election office before you rely on a date — "
+    "this record links to theirs."
+)
+
+# Shown when an upcoming election's registration deadline has already passed.
+REG_CLOSED_NOTE = (
+    "Voter registration for this election closed on {date}. Some states still allow "
+    "you to register in person or on election day — your election office has the "
+    "final word."
+)
+
+BALLOT_INTRO = (
+    "What you'll be voting on. Offices are listed as the state publishes them; your "
+    "own ballot also carries local races and any measures for your address."
+)
+
+REMIND_INTRO = (
+    "We can't email you — Plumbline has no accounts and collects nothing about you. "
+    "What we can do is hand your calendar the dates. Add the file below and your "
+    "phone will remind you before each deadline, the same way it reminds you of "
+    "anything else."
+)
+
+FAQ_PAGE = [
+    ("When is the 2026 general election?",
+     "Tuesday, November 3, 2026, nationwide. Most states also hold a primary earlier "
+     "in the year, and some hold a runoff after it. Your state's page lists every "
+     "date that's left."),
+    ("How do I register to vote?",
+     "Registration is run by your state, and the rules differ in every one — the "
+     "deadline, whether you can register online, and whether you can still register "
+     "on election day. Your state's page shows the registration deadline for each "
+     "election and links to the office that handles it. Start there; it's the only "
+     "source that can actually register you."),
+    ("What's on my ballot?",
+     "Every election page lists the offices the state has published — U.S. Senate, "
+     "governor, U.S. House, statewide offices, the legislature. Your own ballot also "
+     "carries local races and any ballot measures for your address, which only your "
+     "county or city election office can show you."),
+    ("I missed my registration deadline. Is it over?",
+     "Not necessarily. A number of states allow registration in person, or on "
+     "election day itself. We don't publish those rules because they vary by state "
+     "and change — check with your election office before you assume you're out."),
+    ("Where do these dates come from?",
+     "Each one is taken from an official election-authority page, recorded with the "
+     "link and the date we retrieved it, and checked by a person before it's "
+     "published. Every record on the site shows its source; you can open it and see "
+     "for yourself."),
+    ("A date here looks wrong. What do I do?",
+     "Tell us and we'll check it. Every correction is logged and dated. If it's "
+     "urgent — an election is close — trust your election office over us and let us "
+     "fix the record afterwards."),
+]
 
 WHY_DATES_GET_MISSED = [
     "Everyone knows there's an election in November 2026. Far fewer people could "
@@ -112,12 +169,18 @@ DATA_PRODUCT_CLOSER = (
 )
 
 FOOTER_BLURB = (
+    "Dates change. Always confirm with your official state or local election "
+    "office before you rely on one — every record here links straight to theirs. "
     "Plumbline is an independent, nonpartisan reference for U.S. election dates "
-    "and deadlines — the 2026 midterm cycle plus the off-cycle and local races "
-    "around it. Every date is sourced, confidence-rated, and human-verified — but "
-    "dates change, so always confirm with your official local election office "
-    "before you rely on one. Not affiliated with any government agency, political "
-    "party, or campaign."
+    "and deadlines, not affiliated with any government agency, political party, "
+    "or campaign."
+)
+
+# Replaces the three-chip legend when only one confidence tier exists in the data.
+# Advertising "some of our dates are inferred" to a first-time visitor teaches
+# doubt that the current dataset does not warrant.
+FOOTER_LEGEND_SOLO = (
+    "Every date on this site is confirmed against an official election-office page."
 )
 
 # aria-label, when present, MUST begin with the visible link text so it satisfies
@@ -151,20 +214,21 @@ FOOTER_COLUMNS = [
 
 # Above-the-fold trust bar: (icon key, label). Quieter than the CTA.
 TRUST_BAR = [
-    ("official", "Cites an official source"),
-    ("verified", "Human-verified"),
-    ("nonpartisan", "Independent & nonpartisan"),
-    ("versioned", "Versioned & auditable"),
+    ("official", "From official election offices"),
+    ("verified", "Checked by a person"),
+    ("nonpartisan", "Independent and nonpartisan"),
+    ("versioned", "Every change is logged"),
 ]
 
 CTA = {
-    "find_state": "Find your state",
+    "find_state": "Show my dates",
     "browse_states": "Browse all states",
-    "view_source": "View source",
-    "add_to_calendar": "Add to calendar (.ics)",
-    "subscribe_ics": "Subscribe to this calendar",
-    "read_methodology": "Read the methodology",
-    "how_we_verify": "How we verify",
+    "view_source": "View the official page",
+    # The .ics file IS the reminder product — sell the benefit, not the format.
+    "add_to_calendar": "Add to my calendar — get a reminder",
+    "subscribe_ics": "Add these dates to my calendar",
+    "read_methodology": "How we check every date",
+    "how_we_verify": "How we check dates",
     "get_data_access": "Get data access",
     "report_correction": "Report a correction",
     "toggle_theme": "Switch theme",
