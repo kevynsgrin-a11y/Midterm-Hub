@@ -10,9 +10,9 @@
   --control-border:#8A8479;
   --ring:#1B4079; --ring-contrast:#FFFFFF;
   --success:#245B41; --warning:#7A5310; --danger:#A62A21;
-  --conf-official-fg:#245B41; --conf-official-bg:#E6F0EA; --conf-official-line:#B7D6C5;
-  --conf-secondary-fg:#7A5310; --conf-secondary-bg:#F5ECD8; --conf-secondary-line:#E2CFA0;
-  --conf-inferred-fg:#5E5A4D; --conf-inferred-bg:#EFEBE1; --conf-inferred-line:#CFC7B4;
+  --conf-official-fg:#245B41; --conf-official-bg:#E6F0EA; --conf-official-line:#3F7A5C;
+  --conf-secondary-fg:#7A5310; --conf-secondary-bg:#F5ECD8; --conf-secondary-line:#9A7328;
+  --conf-inferred-fg:#5E5A4D; --conf-inferred-bg:#EFEBE1; --conf-inferred-line:#7E7A6B;
   --type-primary:#1B4079; --type-general:#1A1A17; --type-runoff:#8C3A2E;
   --type-special:#1E5F63; --type-municipal:#3B4A66; --type-school_board:#4E6B33;
   --type-ballot_measure:#6A3F6B;
@@ -31,7 +31,7 @@
   --dur-1:120ms; --dur-2:220ms; --dur-3:420ms;
 
   --font-sans:system-ui,-apple-system,'Segoe UI',Roboto,'Helvetica Neue',Arial,'Noto Sans',sans-serif;
-  --font-serif:'Iowan Old Style','Palatino Linotype','Book Antiqua',Palatino,Cambria,Georgia,'Times New Roman',serif;
+  --font-serif:'Iowan Old Style','Palatino Linotype','Book Antiqua',Palatino,Cambria,Georgia,'Times New Roman','Noto Serif','Liberation Serif',serif;
   --font-mono:'SF Mono',SFMono-Regular,Menlo,Consolas,'Liberation Mono','Roboto Mono',monospace;
 
   --space-3xs:.25rem; --space-2xs:.5rem; --space-xs:.75rem; --space-sm:1rem;
@@ -47,21 +47,28 @@
 
   --fs-display:clamp(2.75rem,1.8rem + 4.6vw,5rem);
   --fs-h1:clamp(2rem,1.5rem + 1.8vw,2.5rem);
+  /* Theme-varying values that used to live in [data-theme="dark"]-only rules.
+     site.js sets data-theme only on toggle click, so those rules never applied
+     to a default dark-mode visitor. As tokens they ride both dark blocks. */
+  --date-block-hi:rgba(255,255,255,.6);
+  --guilloche-hero:.42; --guilloche-hero-sm:.12; --guilloche-footer:.06;
+  --card-lip:none;
+  --header-h:6.25rem;
   color-scheme:light dark;
 }
 
 @media (prefers-color-scheme:dark){ :root:not([data-theme]){
-  --bg:#131316; --surface:#1B1B1F; --surface-2:#232329; --surface-3:#2C2C33;
-  --text:#F2EFE8; --text-muted:#A8A49B; --text-subtle:#9C988E; --text-inverse:#16150F;
+  --bg:#14120D; --surface:#1D1A14; --surface-2:#26221A; --surface-3:#302B21;
+  --text:#F2EFE8; --text-muted:#ADA492; --text-subtle:#A09883; --text-inverse:#16150F;
   --primary:#8CB2E0; --primary-hover:#A6C6EA; --primary-ink:#0E2038;
   --accent:#8CB2E0; --accent-wash:#1C2740; --link:#8CB2E0; --link-visited:#C0A8E0;
-  --border:#33333A; --border-strong:#494952; --rule-heavy:#F2EFE8;
+  --border:#3A342A; --border-strong:#544C3E; --rule-heavy:#F2EFE8;
   --control-border:#78787F;
   --ring:#8CB2E0; --ring-contrast:#0E2038;
   --success:#79C79C; --warning:#D8AE5E; --danger:#E0857B;
-  --conf-official-fg:#79C79C; --conf-official-bg:#172A20; --conf-official-line:#2E4C3A;
-  --conf-secondary-fg:#D8AE5E; --conf-secondary-bg:#2A2213; --conf-secondary-line:#4A3D20;
-  --conf-inferred-fg:#B8B2A2; --conf-inferred-bg:#232219; --conf-inferred-line:#423E31;
+  --conf-official-fg:#79C79C; --conf-official-bg:#172A20; --conf-official-line:#5E9377;
+  --conf-secondary-fg:#D8AE5E; --conf-secondary-bg:#2A2213; --conf-secondary-line:#907441;
+  --conf-inferred-fg:#B8B2A2; --conf-inferred-bg:#232219; --conf-inferred-line:#7C7767;
   --type-primary:#8CB2E0; --type-general:#E6E3DB; --type-runoff:#DFA093;
   --type-special:#6FBFC4; --type-municipal:#9BB0D6; --type-school_board:#A7C983;
   --type-ballot_measure:#C79FC8;
@@ -72,21 +79,24 @@
   --cart-text:#F4E9CF;
   --grad-civic:linear-gradient(157deg,#20406B 0%,#16294A 100%);
   --grad-civic-radial:radial-gradient(120% 140% at 82% -12%,#20406B 0%,#16294A 55%,#0E1F38 100%);
-  --grain-opacity:.025;
+  --grain-opacity:.05;
+  --date-block-hi:rgba(255,255,255,.04);
+  --guilloche-hero:.32; --guilloche-hero-sm:.14; --guilloche-footer:.05;
+  --card-lip:inset 0 1px 0 rgba(255,255,255,.045);
 }}
 
 :root[data-theme="dark"]{
-  --bg:#131316; --surface:#1B1B1F; --surface-2:#232329; --surface-3:#2C2C33;
-  --text:#F2EFE8; --text-muted:#A8A49B; --text-subtle:#9C988E; --text-inverse:#16150F;
+  --bg:#14120D; --surface:#1D1A14; --surface-2:#26221A; --surface-3:#302B21;
+  --text:#F2EFE8; --text-muted:#ADA492; --text-subtle:#A09883; --text-inverse:#16150F;
   --primary:#8CB2E0; --primary-hover:#A6C6EA; --primary-ink:#0E2038;
   --accent:#8CB2E0; --accent-wash:#1C2740; --link:#8CB2E0; --link-visited:#C0A8E0;
-  --border:#33333A; --border-strong:#494952; --rule-heavy:#F2EFE8;
+  --border:#3A342A; --border-strong:#544C3E; --rule-heavy:#F2EFE8;
   --control-border:#78787F;
   --ring:#8CB2E0; --ring-contrast:#0E2038;
   --success:#79C79C; --warning:#D8AE5E; --danger:#E0857B;
-  --conf-official-fg:#79C79C; --conf-official-bg:#172A20; --conf-official-line:#2E4C3A;
-  --conf-secondary-fg:#D8AE5E; --conf-secondary-bg:#2A2213; --conf-secondary-line:#4A3D20;
-  --conf-inferred-fg:#B8B2A2; --conf-inferred-bg:#232219; --conf-inferred-line:#423E31;
+  --conf-official-fg:#79C79C; --conf-official-bg:#172A20; --conf-official-line:#5E9377;
+  --conf-secondary-fg:#D8AE5E; --conf-secondary-bg:#2A2213; --conf-secondary-line:#907441;
+  --conf-inferred-fg:#B8B2A2; --conf-inferred-bg:#232219; --conf-inferred-line:#7C7767;
   --type-primary:#8CB2E0; --type-general:#E6E3DB; --type-runoff:#DFA093;
   --type-special:#6FBFC4; --type-municipal:#9BB0D6; --type-school_board:#A7C983;
   --type-ballot_measure:#C79FC8;
@@ -97,13 +107,18 @@
   --cart-text:#F4E9CF;
   --grad-civic:linear-gradient(157deg,#20406B 0%,#16294A 100%);
   --grad-civic-radial:radial-gradient(120% 140% at 82% -12%,#20406B 0%,#16294A 55%,#0E1F38 100%);
-  --grain-opacity:.025;
+  --grain-opacity:.05;
+  --date-block-hi:rgba(255,255,255,.04);
+  --guilloche-hero:.32; --guilloche-hero-sm:.14; --guilloche-footer:.05;
+  --card-lip:inset 0 1px 0 rgba(255,255,255,.045);
 }
 :root[data-theme="light"]{ color-scheme:light; }
 :root[data-theme="dark"]{ color-scheme:dark; }
 
 *,*::before,*::after{ box-sizing:border-box; }
-html{ -webkit-text-size-adjust:100%; scroll-padding-top:6rem; }
+/* --header-h is re-measured by site.js on load and resize; the static values in
+   the breakpoints below are the no-JS floor. */
+html{ -webkit-text-size-adjust:100%; scroll-padding-top:calc(var(--header-h) + 1.25rem); }
 /* Programmatic focus (skip-link target) should not paint a ring. */
 #main:focus{ outline:none; }
 body{
@@ -138,6 +153,11 @@ p{ margin:0 0 var(--space-sm); }
 
 .wrap{ max-width:var(--container-default); margin-inline:auto; padding-inline:var(--gutter); }
 .prose.wrap{ max-width:var(--container-prose); }
+/* One container so the page head and the article share a left edge. Previously
+   .wrap (72rem) and .prose.wrap (42rem) each centred independently — a 240px
+   mismatch between the H1 and the body text at 1440. */
+.prose-page{ max-width:calc(var(--container-prose) + 2 * var(--gutter)); }
+.prose-page .prose{ max-width:none; }
 
 /* Skip link */
 .skip-link{
@@ -205,7 +225,11 @@ html.js .theme-toggle{ display:inline-flex; }
 .breadcrumb{ max-width:var(--container-default); margin:var(--space-sm) auto 0; padding-inline:var(--gutter); }
 .breadcrumb ol{ list-style:none; display:flex; flex-wrap:wrap; gap:.25rem; margin:0; padding:0;
   font-size:.9375rem; color:var(--text-muted); }
-.breadcrumb li{ display:inline-flex; align-items:center; max-width:22rem; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+/* inline-block, not inline-flex: text-overflow only applies to block containers,
+   so a long name hard-clipped with no ellipsis. */
+.breadcrumb li{ display:inline-block; min-height:44px; line-height:44px;
+  max-width:min(22rem,60vw); overflow:hidden; text-overflow:ellipsis; white-space:nowrap;
+  vertical-align:top; }
 .breadcrumb li + li::before{ content:"/"; color:var(--border-strong); margin:0 .5rem; }
 .breadcrumb a{ color:var(--text-muted); text-decoration:none; }
 .breadcrumb a:hover{ color:var(--text); text-decoration:underline; }
@@ -242,9 +266,11 @@ html.js .theme-toggle{ display:inline-flex; }
 /* Luminous civic wash top-right + a ghosted guilloché band — both behind content. */
 .hero::before{ content:""; position:absolute; inset:0; z-index:0; pointer-events:none;
   background:var(--grad-civic-radial); opacity:.06; }
-.hero__guilloche{ position:absolute; right:-4%; top:-10%; width:min(56%,780px); z-index:0;
-  pointer-events:none; opacity:.5; color:var(--brass); }
-:root[data-theme="dark"] .hero__guilloche{ opacity:.32; }
+.hero__guilloche{ position:absolute; right:-8%; top:-14%; width:min(52%,720px); z-index:0;
+  pointer-events:none; opacity:var(--guilloche-hero); color:var(--brass);
+  /* Fade the plate's edges so the engraving never collides with the headline. */
+  -webkit-mask-image:radial-gradient(120% 90% at 78% 30%,#000 35%,transparent 78%);
+  mask-image:radial-gradient(120% 90% at 78% 30%,#000 35%,transparent 78%); }
 .hero .wrap{ position:relative; z-index:1; }
 @media (min-width:900px){
   .hero .wrap{ display:grid; grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);
@@ -299,13 +325,19 @@ html.js .theme-toggle{ display:inline-flex; }
 
 /* Hero entrance (JS + motion-safe only) */
 @keyframes pl-rise{ from{ opacity:0; transform:translateY(14px); } to{ opacity:1; transform:none; } }
+/* Transform-only, deliberately. An element painted at opacity:0 is excluded from
+   LCP candidacy, so animating the headline's opacity made Chrome report the
+   masthead dateline (area 4,650) as LCP instead of the H1 (area 54,662). It also
+   meant the full stylesheet — now deferred — could land after the text had
+   painted and blink it back out. Sliding does neither. */
+@keyframes pl-lift{ from{ transform:translateY(14px); } to{ transform:none; } }
 @media (prefers-reduced-motion:no-preference){
-  html.js .hero__eyebrow{ animation:pl-rise var(--dur-3) var(--ease-out) 40ms both; }
-  html.js .hero__title{ animation:pl-rise var(--dur-3) var(--ease-out) 90ms both; }
-  html.js .hero__subhead{ animation:pl-rise var(--dur-3) var(--ease-out) 200ms both; }
-  html.js .hero__actions{ animation:pl-rise var(--dur-3) var(--ease-out) 300ms both; }
-  html.js .trust-bar{ animation:pl-rise var(--dur-3) var(--ease-out) 360ms both; }
-  html.js .kpi-strip{ animation:pl-rise var(--dur-3) var(--ease-out) 420ms both; }
+  html.js .hero__eyebrow{ animation:pl-lift var(--dur-3) var(--ease-out) 40ms both; }
+  html.js .hero__title{ animation:pl-lift var(--dur-3) var(--ease-out) 60ms both; }
+  html.js .hero__subhead{ animation:pl-lift var(--dur-3) var(--ease-out) 100ms both; }
+  html.js .hero__actions{ animation:pl-lift var(--dur-3) var(--ease-out) 140ms both; }
+  html.js .trust-bar{ animation:pl-lift var(--dur-3) var(--ease-out) 170ms both; }
+  html.js .kpi-strip{ animation:pl-lift var(--dur-3) var(--ease-out) 200ms both; }
   /* One-shot damped pendulum on the hero bob — never loops ("finds true"). */
   html.js .pl-swing{ transform-box:fill-box; transform-origin:top center;
     animation:pl-settle 1100ms var(--ease-out) 250ms both; }
@@ -315,30 +347,65 @@ html.js .theme-toggle{ display:inline-flex; }
 
 /* Grids */
 .card-grid{ display:grid; grid-template-columns:repeat(auto-fill,minmax(min(100%,300px),1fr)); gap:var(--space-md); }
-.state-grid{ display:grid; grid-template-columns:repeat(auto-fill,minmax(min(100%,150px),1fr)); gap:var(--space-sm); }
+/* auto-fill reserves empty tracks, so one card in a 3-column grid left two thirds
+   of the row void on the most-visited page type. Track the real count instead. */
+.card-grid[data-count="1"]{ grid-template-columns:minmax(0,1fr); }
+.card-grid[data-count="2"]{ grid-template-columns:repeat(auto-fill,minmax(min(100%,420px),1fr)); }
+.card-grid[data-count="1"] .election-card{ display:grid; gap:var(--space-xs) var(--space-lg);
+  grid-template-columns:auto minmax(0,1fr); align-items:start; }
+.card-grid[data-count="1"] .election-card__kicker{ grid-column:1/-1; }
+.card-grid[data-count="1"] .election-card__head{ grid-column:1/-1; }
+.card-grid[data-count="1"] .election-card__offices{ grid-column:1/-1; max-width:60ch; }
+.card-grid[data-count="1"] .election-card__chips{ grid-column:1/-1; }
+.card-grid[data-count="1"] .election-card__foot{ grid-column:1/-1; }
+.state-grid{ display:grid; grid-template-columns:repeat(auto-fill,minmax(min(100%,132px),1fr)); gap:var(--space-sm); }
 
 /* US tile-grid cartogram */
 .cartogram-fig{ margin:0; }
-.cartogram{ display:grid; grid-template-columns:repeat(11,1fr); gap:5px; max-width:660px; }
+.cartogram{ --cart-gap:6px; display:grid; grid-template-columns:repeat(11,1fr);
+  gap:var(--cart-gap); max-width:880px; margin-inline:auto; }
 .cartogram--compact{ max-width:520px; }
-.cart-cell{ aspect-ratio:1/1; display:flex; align-items:center; justify-content:center;
-  border-radius:var(--radius-sm); font-family:var(--font-mono); font-size:.7rem; font-weight:600;
-  letter-spacing:.02em; text-decoration:none; color:var(--cart-text); }
-.cart-b0{ background:var(--surface-2); color:var(--text-subtle); }
-.cart-b1{ background:var(--seq-1); background:color-mix(in srgb,var(--brass) 14%,var(--surface)); }
-.cart-b2{ background:var(--seq-2); background:color-mix(in srgb,var(--brass) 30%,var(--surface)); }
-.cart-b3{ background:var(--seq-3); background:color-mix(in srgb,var(--brass) 46%,var(--surface)); }
-.cart-b4{ background:var(--seq-4); background:color-mix(in srgb,var(--brass) 62%,var(--surface)); }
-/* Dark mode: cap the densest bucket so cream cell text clears WCAG AA (~5:1). */
-:root[data-theme="dark"] .cart-b4{ background:color-mix(in srgb,var(--brass) 46%,var(--surface)); }
-@media (prefers-color-scheme:dark){ :root:not([data-theme]) .cart-b4{ background:color-mix(in srgb,var(--brass) 46%,var(--surface)); } }
+.cart-cell{ aspect-ratio:1/1; display:flex; flex-direction:column; align-items:center;
+  justify-content:center; gap:1px; border-radius:var(--radius-sm); font-family:var(--font-mono);
+  font-weight:600; letter-spacing:.02em; text-decoration:none; color:var(--cart-text);
+  padding:2px; text-align:center; }
+.cart-cell__code{ font-size:.8125rem; line-height:1; }
+.cart-cell__date{ font-size:.5625rem; line-height:1; opacity:.85; }
+/* States voting within a fortnight get a rule as well as a fill, so urgency is
+   not carried by colour alone. */
+.cart-cell.is-soon{ box-shadow:inset 0 3px 0 var(--rail-today); }
+/* Plain fallbacks first. A declaration containing var() parses as valid and wins
+   the cascade, then resets to the INITIAL value if substitution fails — it does
+   not fall back to an earlier declaration. So color-mix goes behind @supports,
+   otherwise every bucket goes transparent on engines without it. */
+.cart-b0{ background:var(--surface); color:var(--text-subtle); }
+.cart-b1{ background:var(--seq-1); }
+.cart-b2{ background:var(--seq-2); }
+.cart-b3{ background:var(--seq-3); }
+.cart-b4{ background:var(--seq-4); }
+@supports (background:color-mix(in srgb,red 10%,white)){
+  .cart-b1{ background:color-mix(in srgb,var(--brass) 14%,var(--surface)); }
+  .cart-b2{ background:color-mix(in srgb,var(--brass) 30%,var(--surface)); }
+  .cart-b3{ background:color-mix(in srgb,var(--brass) 46%,var(--surface)); }
+  .cart-b4{ background:color-mix(in srgb,var(--brass) 62%,var(--surface)); }
+}
+/* Dark mode: the densest bucket used to be clamped to 46% — the same value as
+   b3, so the two highest buckets rendered identically. Give b4 the fill it needs
+   and flip its ink instead, which keeps contrast at 6.4:1 and restores the step. */
+:root[data-theme="dark"] .cart-b4,
+:root[data-theme="dark"] i.cart-b4{ background:color-mix(in srgb,var(--brass) 86%,var(--surface));
+  color:var(--text-inverse); }
+@media (prefers-color-scheme:dark){ :root:not([data-theme]) .cart-b4,
+  :root:not([data-theme]) i.cart-b4{ background:color-mix(in srgb,var(--brass) 86%,var(--surface));
+  color:var(--text-inverse); } }
 a.cart-cell{ transition:transform var(--t-fast), box-shadow var(--t-base); }
 a.cart-cell:hover{ transform:translateY(-2px); box-shadow:var(--shadow-sm); }
 a.cart-cell:focus-visible{ outline:3px solid var(--ring); outline-offset:2px; }
 .cart-legend{ display:flex; align-items:center; gap:6px; margin-top:var(--space-sm);
   font-size:.75rem; color:var(--text-muted); }
 .cart-legend i{ width:16px; height:16px; border-radius:2px; display:inline-block; }
-@media (max-width:520px){ .cartogram{ gap:3px; } .cart-cell{ font-size:.58rem; } }
+@media (max-width:520px){ .cartogram{ --cart-gap:3px; }
+  .cart-cell__code{ font-size:.625rem; } .cart-cell__date{ display:none; } }
 .browse-layout{ display:grid; gap:var(--space-xl); }
 @media (min-width:960px){ .browse-layout{ grid-template-columns:auto 1fr; align-items:start; } }
 
@@ -353,16 +420,19 @@ a.cart-cell:focus-visible{ outline:3px solid var(--ring); outline-offset:2px; }
 .tag{ display:inline-block; font-family:var(--font-sans); font-weight:600; font-size:.72rem;
   letter-spacing:.09em; text-transform:uppercase; padding:3px 7px; border-radius:var(--radius-sm);
   color:var(--tc,var(--text-muted)); background:var(--surface-2);
-  background:color-mix(in srgb, var(--tc,var(--border-strong)) 10%, var(--surface));
-  border:1px solid var(--border);
-  border-color:color-mix(in srgb, var(--tc,var(--border-strong)) 28%, transparent); }
+  border:1px solid var(--border-strong); }
+@supports (background:color-mix(in srgb,red 10%,white)){
+  /* 18%/45% rather than 10%/28%: at the old ratios the chip measured 1.03:1
+     against the page and read as bare coloured text, not a component. */
+  .tag{ background:color-mix(in srgb, var(--tc,var(--border-strong)) 18%, var(--surface));
+    border-color:color-mix(in srgb, var(--tc,var(--border-strong)) 45%, transparent); }
+}
 
 /* Date block */
 .date-block{ display:grid; justify-items:center; align-content:start; gap:1px; min-width:4.5rem;
   padding:var(--space-2xs); text-align:center; background:var(--surface-2);
   border:1px solid var(--border); border-radius:var(--radius-md);
-  box-shadow:inset 0 1px 0 rgba(255,255,255,.6), inset 0 -1px 0 rgba(var(--shadow-color),.06); }
-:root[data-theme="dark"] .date-block{ box-shadow:inset 0 1px 0 rgba(255,255,255,.04); }
+  box-shadow:inset 0 1px 0 var(--date-block-hi), inset 0 -1px 0 rgba(var(--shadow-color),.06); }
 .date-block__mon{ font-family:var(--font-sans); font-weight:600; font-size:.72rem; letter-spacing:.09em; text-transform:uppercase; color:var(--primary); }
 .date-block__day{ font-family:var(--font-serif); font-weight:400; font-size:clamp(2rem,1.4rem + 2vw,2.75rem); line-height:1; color:var(--text); font-variant-numeric:tabular-nums; }
 .date-block__dow{ font-size:.8125rem; color:var(--text-muted); }
@@ -379,10 +449,6 @@ a.cart-cell:focus-visible{ outline:3px solid var(--ring); outline-offset:2px; }
 .deadline-chip--urgent{ color:var(--conf-secondary-fg); background:var(--conf-secondary-bg); border-color:var(--conf-secondary-line); }
 .deadline-chip--urgent .deadline-chip__label,.deadline-chip--urgent .deadline-chip__date{ color:var(--conf-secondary-fg); }
 .deadline-chip--today{ border-color:var(--primary); font-weight:600; }
-.deadline-chip--past{ color:var(--text-muted); }
-.deadline-chip--past .deadline-chip__label,
-.deadline-chip--past .deadline-chip__date{ color:var(--text-muted); }
-.deadline-chip--past .deadline-chip__date{ text-decoration:line-through; }
 
 /* Confidence badge */
 .confidence-badge{ display:inline-flex; align-items:center; gap:6px; padding:3px 8px;
@@ -395,7 +461,8 @@ a.cart-cell:focus-visible{ outline:3px solid var(--ring); outline-offset:2px; }
 .confidence-legend{ display:flex; flex-wrap:wrap; gap:var(--space-2xs); }
 
 /* Source link */
-.source-link{ display:inline-flex; align-items:center; gap:3px; font-family:var(--font-mono);
+.source-link{ display:inline-flex; align-items:center; gap:3px; min-height:44px;
+  padding-block:12px; font-family:var(--font-mono);
   font-size:.75rem; letter-spacing:.03em; color:var(--text-muted); text-decoration:none; position:relative; z-index:1; }
 .source-link:hover{ color:var(--primary); text-decoration:underline; }
 .source-link .icon-ext{ width:12px; height:12px; }
@@ -411,18 +478,28 @@ a.cart-cell:focus-visible{ outline:3px solid var(--ring); outline-offset:2px; }
 .election-card__jtype{ font-size:.8125rem; color:var(--text-subtle); }
 .election-card__head{ display:flex; gap:var(--space-sm); align-items:flex-start; }
 .election-card__headings{ min-width:0; }
-.election-card__title{ font-family:var(--font-serif); font-weight:700; font-size:1.375rem; line-height:1.2; margin:0; }
+.election-card__title{ font-family:var(--font-serif); font-weight:700; font-size:1.375rem;
+  line-height:1.2; margin:0; display:-webkit-box; -webkit-line-clamp:3;
+  -webkit-box-orient:vertical; overflow:hidden; overflow-wrap:break-word; }
 .election-card__title a{ color:var(--text); text-decoration:none; }
 .election-card__title a::after{ content:""; position:absolute; inset:0; }
 .election-card__title a:hover{ color:var(--primary); }
 .election-card__date{ font-family:var(--font-mono); font-weight:600; font-size:1rem; color:var(--text-muted); margin:.25rem 0 0; }
 .election-card__countdown{ color:var(--text-subtle); font-weight:400; }
+/* 3 lines, so the clamp stops firing to hide a single trailing character. */
 .election-card__offices{ font-size:.9375rem; color:var(--text-muted); margin:0;
-  display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden; }
+  display:-webkit-box; -webkit-line-clamp:3; -webkit-box-orient:vertical; overflow:hidden; }
+@media (min-width:1024px){ .election-card__offices{ -webkit-line-clamp:2; } }
 .election-card__chips{ display:flex; flex-wrap:wrap; gap:var(--space-2xs); }
 .election-card__foot{ display:flex; align-items:center; justify-content:space-between; gap:var(--space-2xs);
   margin-top:auto; padding-top:var(--space-2xs); }
-.election-card--past{ opacity:.72; }
+/* Was opacity:.72, which failed AA on 7 of 8 text pairs — and only rendered for
+   reduced-motion / no-JS users, because the pl-rise animation fill resolves
+   opacity:1 and outranks a normal declaration. */
+.election-card--past{ background:var(--surface-2); border-left-color:var(--border-strong); }
+.election-card__flag{ margin-left:auto; font-family:var(--font-sans); font-weight:600;
+  font-size:.68rem; letter-spacing:.09em; text-transform:uppercase; color:var(--text-muted);
+  border:1px solid var(--border-strong); border-radius:var(--radius-sm); padding:1px 6px; }
 
 /* Deadline rail */
 .deadline-rail{ list-style:none; margin:var(--space-md) 0; padding:0 0 0 1.5rem; position:relative; }
@@ -434,13 +511,24 @@ a.cart-cell:focus-visible{ outline:3px solid var(--ring); outline-offset:2px; }
 .rail__label{ font-family:var(--font-sans); font-weight:600; font-size:.9375rem; color:var(--text); display:block; }
 .rail__date{ font-family:var(--font-mono); font-size:.875rem; color:var(--text-muted); display:block; }
 .rail__time{ color:var(--text-subtle); }
-.rail__tag{ display:inline-block; margin-left:6px; font-size:.68rem; font-weight:600; letter-spacing:.09em; color:var(--primary); }
+/* Emitted on every node (empty when unused) so each reserves the same tag row. */
+.rail__tag{ display:block; min-height:1rem; margin-top:2px; font-size:.68rem;
+  font-weight:600; letter-spacing:.09em; color:var(--primary); }
+.rail__label{ text-wrap:balance; }
 .rail__tag--election{ color:var(--rail-today); }
-.rail__node--past{ opacity:.6; }
+/* Never put opacity on a container holding text: at .6 these dates measured
+   2.68:1. Dim the marker graphic, and state the de-emphasis in colour. */
+.rail__node--past .rail__marker{ opacity:.55; }
+.rail__node--past .rail__label,
+.rail__node--past .rail__date{ color:var(--text-muted); }
 .rail__node--next .rail__marker{ border-color:var(--primary); }
 .rail__node--election .rail__marker{ width:14px; height:14px; background:var(--primary); border-color:var(--primary); }
 @media (min-width:720px){
   .deadline-rail{ display:flex; justify-content:space-between; gap:0; padding:0; }
+  /* Flex items already stretch to equal height; pushing the date to the bottom
+     aligns all four regardless of how many lines each label wraps to. */
+  .rail__node{ display:flex; flex-direction:column; }
+  .rail__date{ margin-top:auto; }
   .deadline-rail::before{ display:none; }
   .rail__node{ flex:1; text-align:center; padding:24px .25rem 0; }
   /* Draw the track as a connector between adjacent node centers — no end overshoot. */
@@ -477,7 +565,14 @@ a.cart-cell:focus-visible{ outline:3px solid var(--ring); outline-offset:2px; }
 .count-pill{ align-self:flex-start; margin-top:auto; font-family:var(--font-mono); font-size:.75rem;
   background:var(--surface-2); border:1px solid var(--border); border-radius:var(--radius-pill); padding:1px 8px; color:var(--text-muted); }
 .count-pill--quiet{ color:var(--text-subtle); }
-.state-tile.is-quiet{ opacity:.75; }
+/* The tile carries the next date + an urgency bar, so "in 2 days" is
+   distinguishable from "in 100 days" at a glance and not by colour alone. */
+.state-tile__date{ margin-top:auto; font-family:var(--font-mono); font-size:.8125rem;
+  color:var(--text-muted); }
+.state-tile__date--quiet{ color:var(--text-subtle); font-size:.75rem; }
+.state-tile__urgency{ display:block; height:3px; margin-top:6px; border-radius:2px;
+  background:linear-gradient(90deg,var(--brass) var(--u,0%),var(--border) var(--u,0%)); }
+.state-tile.is-quiet{ background:var(--surface-2); }
 
 /* Juris block (state hub) */
 .juris-block{ margin-bottom:var(--space-xl); }
@@ -529,19 +624,20 @@ a.cart-cell:focus-visible{ outline:3px solid var(--ring); outline-offset:2px; }
 
 /* Footer */
 .site-footer{ position:relative; overflow:hidden; background:var(--surface-2); border-top:2px solid var(--rule-heavy); padding-block:var(--space-xl); margin-top:var(--space-2xl); }
-.footer__guilloche{ position:absolute; top:0; left:0; width:100%; height:120px; color:var(--brass); opacity:.06; pointer-events:none; }
-:root[data-theme="dark"] .footer__guilloche{ opacity:.05; }
+.footer__guilloche{ position:absolute; top:0; left:0; width:100%; height:120px;
+  color:var(--brass); opacity:var(--guilloche-footer); pointer-events:none; }
 .site-footer__inner{ position:relative; z-index:1; }
 .site-footer__inner{ max-width:var(--container-wide); margin-inline:auto; padding-inline:var(--gutter); }
 .footer__cols{ display:grid; grid-template-columns:repeat(auto-fit,minmax(180px,1fr)); gap:var(--space-lg); }
 .footer__head{ margin-bottom:var(--space-2xs); }
-.footer__col ul{ list-style:none; margin:0; padding:0; display:grid; gap:.35rem; }
-.footer__col a{ color:var(--text-muted); text-decoration:none; font-size:.9375rem; }
+.footer__col ul{ list-style:none; margin:0; padding:0; display:grid; gap:0; }
+.footer__col a{ display:inline-flex; align-items:center; min-height:44px;
+  color:var(--text-muted); text-decoration:none; font-size:.9375rem; }
 .footer__col a:hover{ color:var(--text); text-decoration:underline; }
 .footer__legend{ margin-top:var(--space-xl); display:grid; gap:var(--space-2xs); }
 .footer__meta{ margin-top:var(--space-lg); padding-top:var(--space-md); border-top:1px solid var(--border); }
 .footer__provenance{ display:flex; align-items:center; gap:.5rem; font-family:var(--font-mono); font-size:.8125rem; color:var(--text-muted); margin:0 0 var(--space-2xs); }
-.footer__disclaimer{ font-size:.8125rem; color:var(--text-subtle); max-width:60rem; margin:0; }
+.footer__disclaimer{ font-size:.8125rem; color:var(--text-subtle); max-width:46rem; margin:0; }
 
 /* 404 */
 .error-page{ text-align:center; padding-block:var(--space-3xl); }
@@ -557,9 +653,10 @@ a.cart-cell:focus-visible{ outline:3px solid var(--ring); outline-offset:2px; }
 .json-index-block{ padding-block:var(--space-lg); }
 .json-index{ list-style:none; margin:0 0 var(--space-md); padding:0;
   display:grid; grid-template-columns:repeat(auto-fill,minmax(160px,1fr)); gap:var(--space-2xs); }
-.json-index a{ font-family:var(--font-mono); font-size:.875rem; color:var(--link); text-decoration:none; }
+.json-index a{ display:flex; align-items:center; min-height:44px; font-family:var(--font-mono);
+  font-size:.875rem; color:var(--link); text-decoration:none; }
 .json-index a:hover{ text-decoration:underline; }
-.license-note{ font-size:.9375rem; color:var(--text-muted); }
+.license-note{ font-size:.9375rem; color:var(--text-muted); max-width:46rem; }
 
 /* Footer tagline */
 .footer__tagline{ font-family:var(--font-serif); font-size:1.0625rem; color:var(--text); margin:0 0 var(--space-2xs); }
@@ -567,46 +664,193 @@ a.cart-cell:focus-visible{ outline:3px solid var(--ring); outline-offset:2px; }
 /* Below the hero's 2-col breakpoint, dim + reposition the guilloché so it never sits
    behind the headline/body text (contrast + noise). */
 @media (max-width:899px){
-  .hero__guilloche{ opacity:.12; top:auto; bottom:-6%; right:-12%; width:min(78%,420px); }
-  :root[data-theme="dark"] .hero__guilloche{ opacity:.14; }
+  .hero__guilloche{ opacity:var(--guilloche-hero-sm); top:auto; bottom:-6%; right:-12%;
+    width:min(78%,420px); }
 }
-/* Coarse pointers: enlarge the small cartogram link cells' hit area (only NJ/VA link). */
-@media (pointer:coarse){ a.cart-cell{ position:relative; }
-  a.cart-cell::after{ content:""; position:absolute; inset:-8px; } }
+/* Coarse pointers. A hit area may never grow past half the gap: at inset:-8px
+   against a 3px gap, adjacent rects overlapped by 13px and — with no z-index —
+   the later sibling won, so the right ~21% of every tile navigated to its
+   neighbour. Scroll the figure instead of shrinking cells below 44px. */
+@media (pointer:coarse){
+  a.cart-cell{ position:relative; }
+  a.cart-cell::after{ content:""; position:absolute; inset:calc(var(--cart-gap) / -2); }
+  .cartogram-fig{ overflow-x:auto; }
+  .cartogram{ min-width:calc(11 * 44px + 10 * var(--cart-gap)); }
+}
 
 /* Mobile masthead: wrap so the nav + toggle never overflow the viewport. */
 @media (max-width:640px){
+  :root{ --header-h:10rem; }
   .masthead__inner{ flex-wrap:wrap; row-gap:var(--space-2xs); }
   .masthead__right{ width:100%; justify-content:space-between; gap:var(--space-sm); }
   .masthead__nav{ flex-wrap:wrap; gap:var(--space-xs) var(--space-md); }
   .masthead__edition{ flex-wrap:wrap; row-gap:2px; }
-  /* The wrapped masthead is taller than the default; keep anchor jumps clear of it. */
-  html{ scroll-padding-top:11rem; }
+
 }
 @media (max-width:520px){
   .hero__title{ font-size:2.25rem; }
 }
-@media (max-width:360px){
+@media (max-width:480px){
+  :root{ --header-h:13rem; }
   .masthead__nav{ gap:var(--space-2xs) var(--space-sm); font-size:.875rem; }
+  .masthead__edition{ display:none; }
+}
+/* At 400% zoom (320x256 CSS px) a sticky masthead occupied 90.6% of the viewport,
+   leaving 24px for content. Release it when there is no vertical room. */
+@media (max-height:600px),(max-width:480px){
+  .site-header{ position:static; }
 }
 
 /* Scroll-reveal — only when JS is present AND motion is welcome. Triple failsafe in
    site.js (no-IO / error / 2.5s timeout) guarantees content is never stuck hidden;
    without JS the html.js gate never applies, so everything shows immediately. */
+/* `reveal-on` is set by site.js immediately before the observer is wired, NOT by
+   the pre-paint script in <head>. If site.js never runs — blocked, 404'd, a
+   syntax error — nothing is ever hidden, so a page can only be hidden by the
+   same file that can show it again. */
 @media (prefers-reduced-motion:no-preference){
-  html.js [data-reveal]{ opacity:0; transform:translateY(14px);
+  html.reveal-on [data-reveal]{ opacity:0; transform:translateY(14px);
     transition:opacity var(--dur-3) var(--ease-out), transform var(--dur-3) var(--ease-out); }
-  html.js [data-reveal].is-in{ opacity:1; transform:none; }
-  html.js [data-reveal="cards"].is-in > *{ animation:pl-rise var(--dur-3) var(--ease-out) both; }
-  html.js [data-reveal="cards"].is-in > *:nth-child(2){ animation-delay:60ms; }
-  html.js [data-reveal="cards"].is-in > *:nth-child(3){ animation-delay:120ms; }
-  html.js [data-reveal="cards"].is-in > *:nth-child(4){ animation-delay:180ms; }
-  html.js [data-reveal="cards"].is-in > *:nth-child(5){ animation-delay:240ms; }
-  html.js [data-reveal="cards"].is-in > *:nth-child(n+6){ animation-delay:300ms; }
+  html.reveal-on [data-reveal].is-in{ opacity:1; transform:none; }
+  /* An anchor target must not be displaced while the browser computes its scroll
+     offset, or the content slides 14px up under the sticky header afterwards. */
+  html.reveal-on [data-reveal][id]{ transform:none; }
+  html.reveal-on [data-reveal="cards"].is-in > *{ animation:pl-rise var(--dur-3) var(--ease-out) both; }
+  html.reveal-on [data-reveal="cards"].is-in > *:nth-child(2){ animation-delay:60ms; }
+  html.reveal-on [data-reveal="cards"].is-in > *:nth-child(3){ animation-delay:120ms; }
+  html.reveal-on [data-reveal="cards"].is-in > *:nth-child(4){ animation-delay:180ms; }
+  html.reveal-on [data-reveal="cards"].is-in > *:nth-child(5){ animation-delay:240ms; }
+  html.reveal-on [data-reveal="cards"].is-in > *:nth-child(n+6){ animation-delay:300ms; }
   html.js .site-header{ transition:box-shadow var(--dur-2) var(--ease-out); }
-  html.js .site-header.is-pinned{ box-shadow:0 3px 0 -1px var(--bg),0 4px 0 -1px var(--border-strong),0 10px 24px -12px rgba(var(--shadow-color),.5); }
 }
+/* A static depth cue, not motion — reduced-motion users need it most, so it
+   lives outside the media query above. */
+html.js .site-header.is-pinned{ box-shadow:0 3px 0 -1px var(--bg),0 4px 0 -1px var(--border-strong),0 10px 24px -12px rgba(var(--shadow-color),.5); }
 
 @media (prefers-reduced-motion:reduce){
   *{ animation-duration:.001ms!important; transition-duration:.001ms!important; scroll-behavior:auto!important; }
 }
+
+/* ---------------------------------------------------------------- new components */
+
+/* Deadline chip status. Every state carries a WORD; strikethrough is gone, because
+   a struck-through date reads as "cancelled" or "we got this wrong" rather than
+   "this has closed" — and it was applied to early-voting START, which told voters
+   a window was over on the day it opened. */
+.deadline-chip__state{ font-weight:600; font-size:.72rem; letter-spacing:.06em;
+  text-transform:uppercase; }
+.deadline-chip--closed{ color:var(--text-muted); background:var(--surface-2);
+  border-color:var(--border); }
+.deadline-chip--closed .deadline-chip__label,
+.deadline-chip--closed .deadline-chip__date{ color:var(--text-muted); }
+.deadline-chip--open{ color:var(--conf-official-fg); background:var(--conf-official-bg);
+  border-color:var(--conf-official-line); font-weight:600; }
+.deadline-chip--open .deadline-chip__label,
+.deadline-chip--open .deadline-chip__date{ color:var(--conf-official-fg); }
+.deadline-chip--today{ border-color:var(--primary); border-width:1.5px; font-weight:600; }
+
+.confidence-badge{ border-width:1.5px; }
+
+/* Registration-closed notice — the sentence that was missing entirely. */
+.reg-closed{ display:flex; gap:var(--space-2xs); align-items:flex-start;
+  background:var(--conf-secondary-bg); border:1px solid var(--conf-secondary-line);
+  border-radius:var(--radius-md); padding:var(--space-xs) var(--space-sm);
+  color:var(--conf-secondary-fg); font-size:.9375rem; margin-top:var(--space-sm); }
+
+/* Confirm-with-your-office note, placed at the point of reliance. */
+.confirm-note{ margin-top:var(--space-sm); font-size:.875rem; color:var(--text-muted);
+  border-left:2px solid var(--brass); padding-left:var(--space-xs); max-width:46rem; }
+
+.footer__legend-solo{ font-size:.9375rem; color:var(--text-muted); margin:0; max-width:46rem; }
+
+.jump-form__nojs{ flex-basis:100%; margin:var(--space-2xs) 0 0; font-size:.875rem;
+  color:var(--text-muted); }
+
+.provenance__record{ margin-top:var(--space-2xs); }
+.provenance__record summary{ cursor:pointer; color:var(--text-subtle); font-size:.75rem; }
+.provenance__id{ margin:var(--space-3xs) 0 0; color:var(--text-muted); word-break:break-all; }
+
+/* ------------------------------------------------------- the cycle ribbon (home) */
+.ribbon-band{ padding-block:var(--space-xl) var(--space-lg); border-bottom:1px solid var(--border); }
+.ribbon-fig{ margin:var(--space-sm) 0 0; }
+.ribbon{ width:100%; height:210px; display:block; overflow:visible; }
+.ribbon__month{ font-family:var(--font-mono); font-size:11px; letter-spacing:.08em;
+  fill:var(--text-subtle); }
+.ribbon__today{ font-family:var(--font-mono); font-size:11px; letter-spacing:.1em;
+  font-weight:700; fill:var(--rail-today); }
+.ribbon__anchor{ font-family:var(--font-mono); font-size:12px; letter-spacing:.06em;
+  font-weight:700; fill:var(--primary); }
+.ribbon__mark line{ transition:stroke-width var(--t-fast); }
+.ribbon__mark:hover line{ stroke-width:5; }
+.ribbon__mark:focus-visible{ outline:none; }
+.ribbon__mark:focus-visible line{ stroke:var(--ring); stroke-width:5; }
+@media (prefers-reduced-motion:no-preference){
+  html.reveal-on .ribbon-band.is-in .ribbon__mark line{
+    animation:pl-grow 620ms var(--ease-out) both;
+    animation-delay:calc(var(--i) * 6ms); transform-box:fill-box; transform-origin:bottom; }
+}
+@keyframes pl-grow{ from{ transform:scaleY(0); opacity:0; } to{ transform:scaleY(1); opacity:1; } }
+@media (max-width:640px){ .ribbon{ height:170px; } }
+
+/* ------------------------------------------------- hero countdown instrument */
+.pl-tick{ font-family:var(--font-mono); font-size:9px; letter-spacing:.08em;
+  fill:var(--brass-ink); }
+.pl-count{ font-family:var(--font-mono); font-size:34px; font-weight:600; fill:var(--text); }
+.pl-count-label{ font-family:var(--font-sans); font-size:9px; letter-spacing:.14em;
+  font-weight:600; fill:var(--text-muted); }
+/* The bob is server-rendered at its true reading; motion only animates it there. */
+.pl-swing{ transform:translateY(var(--pl-shift,0)); }
+@media (prefers-reduced-motion:no-preference){
+  html.js .pl-swing{ transform-box:view-box; transform-origin:158px 50px;
+    animation:pl-drop 1400ms var(--ease-out) both, pl-settle 1100ms var(--ease-out) 1250ms both; }
+  @keyframes pl-drop{
+    from{ transform:translateY(calc(var(--pl-shift,0px) - 280px)); opacity:0; }
+    to{ transform:translateY(var(--pl-shift,0)); opacity:1; }
+  }
+  html.js .pl-readout{ animation:pl-rise var(--dur-3) var(--ease-out) 1500ms both; }
+  @keyframes pl-settle{
+    0%{ transform:translateY(var(--pl-shift,0)) rotate(-4deg); }
+    35%{ transform:translateY(var(--pl-shift,0)) rotate(3deg); }
+    62%{ transform:translateY(var(--pl-shift,0)) rotate(-1.8deg); }
+    83%{ transform:translateY(var(--pl-shift,0)) rotate(.9deg); }
+    100%{ transform:translateY(var(--pl-shift,0)) rotate(0); }
+  }
+}
+
+/* --------------------------------------------------------------------- print */
+/* Without this, a dark-theme reader printing a record to carry to the polls got
+   near-white text on white paper (1.15:1) — and any [data-reveal] block the
+   observer had not yet reached printed as a correctly-sized blank rectangle. */
+@media print{
+  /* :root:not([data-theme]) must be listed explicitly: the OS-dark block uses it,
+     and at (0,2,0) it outranks a bare :root no matter the source order — so
+     without this an OS-dark reader still printed #F2EFE8 text onto white paper. */
+  :root, :root:not([data-theme]), :root[data-theme="dark"], :root[data-theme="light"]{
+    --bg:#fff; --surface:#fff; --surface-2:#fff; --surface-3:#fff;
+    --text:#000; --text-muted:#333; --text-subtle:#444;
+    --border:#999; --border-strong:#666; --rule-heavy:#000;
+    --link:#000; --primary:#000; --brass:#666; --brass-ink:#444;
+    color-scheme:light;
+  }
+  html.reveal-on [data-reveal]{ opacity:1 !important; transform:none !important; }
+  .site-header{ position:static; box-shadow:none; }
+  body::before, .hero__guilloche, .footer__guilloche, .hero-instrument,
+  .theme-toggle, .ribbon-band, .cartogram-fig, .jump-form, .skip-link{ display:none; }
+  .election-card, .lead-card, .provenance, .export-card{ break-inside:avoid; }
+  .deadline-rail{ break-inside:avoid; }
+  a[href^="http"]::after{ content:" (" attr(href) ")"; font-size:.8em; word-break:break-all; }
+  .footer__cols{ display:none; }
+}
+
+.trust-band__claim{ font-family:var(--font-serif); font-size:1.125rem; line-height:1.4;
+  color:var(--text); border-left:2px solid var(--brass); padding-left:var(--space-sm);
+  margin:0; }
+.related__cols{ display:grid; gap:var(--space-lg); grid-template-columns:1fr; }
+@media (min-width:720px){ .related__cols{ grid-template-columns:repeat(2,minmax(0,1fr)); } }
+.related__h{ font-family:var(--font-sans); font-weight:600; font-size:1rem;
+  margin:0 0 var(--space-2xs); }
+.related__list{ list-style:none; margin:0; padding:0; display:grid; gap:2px; }
+.related__list a{ display:inline-flex; align-items:center; min-height:36px;
+  text-decoration:none; }
+.related__list a:hover{ text-decoration:underline; }
+.related__more{ margin:var(--space-2xs) 0 0; font-size:.875rem; color:var(--text-subtle); }

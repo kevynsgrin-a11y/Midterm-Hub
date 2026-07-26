@@ -45,12 +45,22 @@ class TestFileEmission:
         for rel in (
             "index.html", "states/index.html", "about/index.html",
             "methodology/index.html", "data/index.html", "404.html",
-            "sitemap.xml", "robots.txt", "assets/styles.css", "assets/site.js",
+            "sitemap.xml", "robots.txt",
             "assets/favicon.svg", "states/VA/index.html",
             "elections/VA/town-of-example/index.html",
             f"elections/VA/town-of-example/{eid}/index.html",
         ):
             assert (tmp_path / rel).exists(), rel
+        # CSS/JS ship under content-hashed names so an HTML/CSS cache skew after a
+        # rebuild can't pair new markup with a stale stylesheet.
+        assets = {p.name for p in (tmp_path / "assets").iterdir()}
+        css = [n for n in assets if re.fullmatch(r"styles\.[0-9a-f]{8}\.css", n)]
+        js = [n for n in assets if re.fullmatch(r"site\.[0-9a-f]{8}\.js", n)]
+        assert len(css) == 1, assets
+        assert len(js) == 1, assets
+        home = (tmp_path / "index.html").read_text()
+        assert f'href="/assets/{css[0]}"' in home
+        assert f'src="/assets/{js[0]}"' in home
 
 
 class TestSeo:
@@ -123,7 +133,7 @@ class TestBasePath:
         _build(conn, tmp_path, base_path="/Midterm-Hub")
         home = (tmp_path / "index.html").read_text()
         assert 'href="/Midterm-Hub/states/"' in home
-        assert 'href="/Midterm-Hub/assets/styles.css"' in home
+        assert re.search(r'href="/Midterm-Hub/assets/styles\.[0-9a-f]{8}\.css"', home)
         assert f'<link rel="canonical" href="{ORIGIN}/Midterm-Hub/">' in home
 
 

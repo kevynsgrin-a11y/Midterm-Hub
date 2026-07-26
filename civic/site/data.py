@@ -48,16 +48,22 @@ JURISDICTION_TYPE_LABELS: dict[str, str] = {
     "special_district": "Special District",
 }
 
+# Reader-facing labels describe how firm the DATE is, not how we sourced it.
+# "Inferred" reads as a guess dressed up; "Official source" describes our
+# pipeline rather than answering "can I rely on this?".
 CONFIDENCE_LABELS: dict[str, str] = {
-    "official": "Official source",
-    "secondary": "Secondary source",
-    "inferred": "Inferred",
+    "official": "Confirmed official",
+    "secondary": "Not yet official",
+    "inferred": "Expected — not yet set",
 }
 
 CONFIDENCE_BLURB: dict[str, str] = {
-    "official": "Confirmed against an official government source.",
-    "secondary": "Sourced from a reputable secondary reference; pending official confirmation.",
-    "inferred": "Inferred from statute or cycle patterns; treat as provisional.",
+    "official": "Taken from the election office's own published calendar.",
+    "secondary": "Reported by a reliable source; the election office hasn't posted it yet.",
+    "inferred": (
+        "Our best estimate from state law and past cycles. Treat it as provisional "
+        "and confirm with your election office."
+    ),
 }
 
 
@@ -80,6 +86,19 @@ def _parse(d: Optional[str]) -> Optional[datetime.date]:
     return datetime.date.fromisoformat(d) if d else None
 
 
+# Deadline keys split by what the date *means*. A CLOSES key is a door shutting —
+# once it is past, the opportunity is gone. An OPENS key is a window opening — once
+# it is past, the thing is HAPPENING NOW. Rendering them identically told voters
+# that early voting was over on the day it began, so the distinction is load-bearing.
+DEADLINE_CLOSES = frozenset({
+    "candidate_filing_deadline",
+    "registration_deadline",
+    "mail_ballot_request_deadline",
+    "early_voting_end",
+})
+DEADLINE_OPENS = frozenset({"early_voting_start"})
+
+
 @dataclass(frozen=True)
 class Deadline:
     key: str
@@ -87,6 +106,11 @@ class Deadline:
     date: datetime.date
     formatted: str
     time: Optional[str] = None
+
+    @property
+    def opens(self) -> bool:
+        """True when this date opens a window rather than closing a door."""
+        return self.key in DEADLINE_OPENS
 
 
 @dataclass
@@ -151,6 +175,10 @@ class ElectionView:
         return self.election_date.isoformat()
 
     @property
+    def date_compact(self) -> str:
+        return fmt_compact(self.election_date)
+
+    @property
     def days_until(self) -> int:
         return (self.election_date - self._today).days
 
@@ -168,12 +196,58 @@ class ElectionView:
         if n > 1:
             return f"in {n} days"
         if n == -1:
-            return "yesterday"
+            return "Yesterday"
         return f"{abs(n)} days ago"
 
     @property
     def offices_summary(self) -> str:
         return ", ".join(self.offices) if self.offices else ""
+
+    @property
+    def place_phrase(self) -> str:
+        """How to name this election's place in prose.
+
+        Statewide records carry ``jurisdiction_name == state_name``, so composing
+        the two produces "Texas, Texas". Collapse to a single name unless the
+        jurisdiction is genuinely narrower than the state.
+        """
+        if self.jurisdiction_type == "state" or self.jurisdiction_name == self.state_name:
+            return self.state_name
+        return f"{self.jurisdiction_name}, {self.state_name}"
+
+    @property
+    def is_statewide(self) -> bool:
+        return self.jurisdiction_type == "state" or self.jurisdiction_name == self.state_name
+
+    @property
+    def early_voting_open(self) -> bool:
+        """True when today falls inside the early-voting window."""
+        start = next((d for d in self.deadlines if d.key == "early_voting_start"), None)
+        if start is None or start.date > self._today:
+            return False
+        end = next((d for d in self.deadlines if d.key == "early_voting_end"), None)
+        return end is None or self._today <= end.date
+
+    @property
+    def early_voting_end_date(self) -> Optional[datetime.date]:
+        end = next((d for d in self.deadlines if d.key == "early_voting_end"), None)
+        return end.date if end else None
+
+    @property
+    def registration_closed(self) -> bool:
+        """Registration has passed but the election itself has not."""
+        reg = next((d for d in self.deadlines if d.key == "registration_deadline"), None)
+        return bool(reg and reg.date < self._today and self.is_upcoming)
+
+    @property
+    def registration_deadline_formatted(self) -> Optional[str]:
+        reg = next((d for d in self.deadlines if d.key == "registration_deadline"), None)
+        return reg.formatted if reg else None
+
+    @property
+    def next_deadline(self) -> Optional[Deadline]:
+        """The soonest deadline still ahead — the date that should drive behaviour."""
+        return next((d for d in self.deadlines if d.date >= self._today), None)
 
 
 @dataclass
@@ -350,7 +424,12 @@ def load_site_data(
 ) -> SiteData:
     """Assemble the full site view model from verified election records."""
     if today is None:
-        today = datetime.date.today()
+        # UTC, not the builder's local date: CI runs at 06:00 UTC, which is still
+        # the previous calendar day in Hawaii, Alaska, and the Pacific territories.
+        # A naive date.today() also makes local builds differ from CI for identical
+        # input. Browser-side recomputation (site.js) gives each reader their own
+        # "today"; this is the honest server-side default.
+        today = datetime.datetime.now(datetime.timezone.utc).date()
 
     rows = fetch_elections(conn, include_unverified)
     elections = [_to_view(row_to_record(r), today) for r in rows]
