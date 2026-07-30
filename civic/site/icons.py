@@ -2,6 +2,8 @@
 meaningful marks carry role/title. System-hermetic — no external assets."""
 from __future__ import annotations
 
+from .base import esc
+
 # The Plumb Bob wordmark mark (anchor bar + plumb line + filled bob).
 LOGO_MARK = (
     "<svg class='pl-mark' width='20' height='20' viewBox='0 0 20 20' "
@@ -64,6 +66,9 @@ ICON_CALENDAR = _svg(
     16,
 )
 ICON_DOWNLOAD = _svg("<path d='M12 3v12m0 0 4-4m-4 4-4-4M5 21h14'/>", 16)
+ICON_ALERT = _svg(
+    "<circle cx='12' cy='12' r='9'/><path d='M12 8v5M12 16.5v.01'/>", 18
+)
 
 
 # Small line-icons for the above-the-fold trust bar.
@@ -93,30 +98,77 @@ def confidence_meter(level: str) -> str:
     )
 
 
-def hero_plumbline() -> str:
-    """The hero instrument: a fixed anchor beam, a measurement scale (the 'countdown
-    spine'), and a swinging string + brass plumb bob that settles to true. The
-    `.pl-swing` group carries the one-shot damped-pendulum motion (CSS)."""
-    # Measurement-scale ticks down the left rail (longer every 4th).
+def hero_plumbline(
+    days_remaining: int | None = None,
+    cycle_days: int | None = None,
+    target_label: str = "",
+    month_ticks: list[tuple[float, str]] | None = None,
+) -> str:
+    """The hero instrument, carrying the countdown as its reading.
+
+    The bob hangs against its own graduated scale and comes to rest at today's
+    position in the cycle, so the brand object states a fact instead of
+    decorating one. Passing no arguments renders the plain instrument.
+
+    ``month_ticks`` is a list of ``(fraction, label)`` where fraction is 0..1 down
+    the scale — computed at build time so the scale is real, not decorative.
+    """
+    SCALE_TOP, SCALE_BOT = 74.0, 354.0
+    has_data = days_remaining is not None and cycle_days
+
+    # Graduated scale, now on the string's own axis rather than floating beside it.
     ticks = []
-    y = 78
+    y = SCALE_TOP + 4
     n = 0
-    while y <= 350:
+    while y <= SCALE_BOT:
         long = n % 4 == 0
-        x2 = 96 if long else 88
+        x2 = 170 if long else 164
         w = 1.6 if long else 1.1
         ticks.append(
-            f'<line x1="72" y1="{y}" x2="{x2}" y2="{y}" stroke="var(--brass)" '
+            f'<line x1="146" y1="{y:.0f}" x2="{x2}" y2="{y:.0f}" stroke="var(--brass)" '
             f'stroke-width="{w}"/>'
         )
         y += 17
         n += 1
-    scale = f'<g opacity="0.55">{"".join(ticks)}' \
-            f'<line x1="72" y1="74" x2="72" y2="354" stroke="var(--brass)" stroke-width="1.4"/></g>'
+    labels = ""
+    if month_ticks:
+        labels = "".join(
+            f'<text x="178" y="{SCALE_TOP + f * (SCALE_BOT - SCALE_TOP) + 3:.1f}" '
+            f'class="pl-tick">{esc(lbl)}</text>'
+            for f, lbl in month_ticks
+        )
+    scale = (
+        f'<g opacity="0.6">{"".join(ticks)}'
+        f'<line x1="146" y1="{SCALE_TOP}" x2="146" y2="{SCALE_BOT}" '
+        f'stroke="var(--brass)" stroke-width="1.4"/></g>{labels}'
+    )
+
+    # Where the bob comes to rest: fraction of the cycle already elapsed.
+    if has_data:
+        progress = 1 - max(0, min(days_remaining, cycle_days)) / cycle_days
+    else:
+        progress = 1.0
+    bob_y = SCALE_TOP + progress * (SCALE_BOT - SCALE_TOP)
+    shift = bob_y - SCALE_BOT  # the base art is drawn at the bottom of the scale
+
+    readout = ""
+    if has_data:
+        readout = (
+            f'<g class="pl-readout" transform="translate(0 {shift:.1f})">'
+            f'<line x1="106" y1="{SCALE_BOT}" x2="196" y2="{SCALE_BOT}" '
+            f'stroke="var(--primary)" stroke-width="2"/>'
+            f'<text x="206" y="{SCALE_BOT + 12:.0f}" class="pl-count">{days_remaining}</text>'
+            f'<text x="206" y="{SCALE_BOT + 28:.0f}" class="pl-count-label">DAYS</text>'
+            f"</g>"
+        )
+    aria = (
+        f"Countdown instrument: {days_remaining} days remaining until {target_label}."
+        if has_data
+        else "A plumb line — the surveyor's tool for finding true — hanging still and level."
+    )
     return (
         '<svg class="hero-instrument" viewBox="0 0 300 448" width="300" height="448" '
-        'role="img" aria-label="A plumb line — the surveyor\'s tool for finding true — '
-        'hanging still and level." focusable="false">'
+        f'role="img" aria-label="{esc(aria)}" focusable="false">'
         "<defs>"
         '<linearGradient id="pl-brass" x1="0" y1="0" x2="0.35" y2="1">'
         '<stop offset="0" stop-color="var(--brass-hi)"/>'
@@ -130,18 +182,17 @@ def hero_plumbline() -> str:
         # Fixed anchor beam.
         '<rect x="94" y="44" width="128" height="11" rx="3" fill="url(#pl-beam)"/>'
         '<rect x="94" y="45" width="128" height="3" rx="2" fill="var(--brass-hi)" opacity="0.6"/>'
-        # Swinging plumb: string + brass bob (elongated diamond) + highlight.
-        '<g class="pl-swing">'
-        '<line x1="158" y1="55" x2="158" y2="352" stroke="var(--primary)" '
+        # Swinging plumb: string + brass bob. The group is translated to today's
+        # reading; .pl-swing keeps the one-shot damped settle (CSS, motion-safe).
+        f'<g class="pl-swing" style="--pl-shift:{shift:.1f}px">'
+        f'<line x1="158" y1="55" x2="158" y2="{SCALE_BOT - 2:.0f}" stroke="var(--primary)" '
         'stroke-width="2.5" stroke-linecap="round"/>'
         '<path d="M158 340 L177 372 L158 422 L139 372 Z" fill="url(#pl-brass)" '
         'stroke="var(--brass-ink)" stroke-width="1" stroke-linejoin="round"/>'
         '<path d="M158 340 L177 372 L158 372 Z" fill="var(--brass-hi)" opacity="0.5"/>'
         '<circle cx="158" cy="352" r="3.2" fill="var(--brass-ink)"/>'
         "</g>"
-        # Level baseline the bob points true to.
-        '<line x1="40" y1="426" x2="276" y2="426" stroke="var(--brass)" '
-        'stroke-width="1.2" stroke-dasharray="2 5" opacity="0.5"/>'
+        f"{readout}"
         "</svg>"
     )
 

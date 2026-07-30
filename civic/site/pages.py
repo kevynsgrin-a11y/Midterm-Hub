@@ -16,10 +16,32 @@ HOME = ("Home", "/")
 STATES = ("States", "/states/")
 
 
-def _cards(cfg: SiteConfig, elections: list[ElectionView]) -> str:
+def _crumbs(items: list) -> list:
+    """Collapse consecutive identical labels, keeping the shallower URL.
+
+    Every record is statewide, so ``jurisdiction_name == state_name`` and the raw
+    chain renders "Home / States / Texas / Texas" — visibly, and in the
+    BreadcrumbList JSON-LD that Google prints in the SERP.
+    """
+    out: list = []
+    for label, url in items:
+        if out and out[-1][0] == label:
+            continue
+        out.append((label, url))
+    return out
+
+
+def _cards(cfg: SiteConfig, elections: list[ElectionView], *, context: str = "global") -> str:
+    """A card grid that tracks its own content count.
+
+    ``auto-fill`` reserves empty tracks, so one card in a 3-column grid left two
+    thirds of the row void on the most-visited page type. ``data-count`` lets CSS
+    pick a track template that the content actually fills.
+    """
+    n = len(elections)
     return (
-        '<div class="card-grid" data-reveal="cards">'
-        + "".join(C.election_card(cfg, e) for e in elections)
+        f'<div class="card-grid" data-count="{min(n, 3)}" data-reveal="cards">'
+        + "".join(C.election_card(cfg, e, context=context) for e in elections)
         + "</div>"
     )
 
@@ -52,14 +74,18 @@ def render_home(cfg: SiteConfig, site: SiteData) -> str:
         f'<option value="{esc(s.code)}" data-url="{esc(rel(cfg, s.url))}">{esc(s.name)}</option>'
         for s in site.states
     )
+    # Without JS the query string is meaningless on a static host, so the form
+    # targets the A–Z list anchor: the button then does exactly what it says,
+    # and the noscript line tells the reader where they are about to land.
     jump = (
-        f'<form class="jump-form" action="{rel(cfg, "/states/")}" method="get" '
-        'role="search" aria-label="Jump to a state">'
+        f'<form class="jump-form" action="{esc(rel(cfg, "/states/#all-states"))}" '
+        'method="get" role="search" aria-label="Jump to a state">'
         '<label for="state-jump" class="sr-only">Choose a state</label>'
         '<select id="state-jump" name="state" class="select" data-jump>'
         '<option value="">Choose a state…</option>'
         f"{jump_options}</select>"
         f'<button class="btn btn--primary" type="submit">{copy.CTA["find_state"]}</button>'
+        f'<noscript><p class="jump-form__nojs">{esc(copy.HOME_HERO["nojs"])}</p></noscript>'
         "</form>"
     )
     kpi = (
@@ -84,17 +110,44 @@ def render_home(cfg: SiteConfig, site: SiteData) -> str:
     next_card = ""
     if up:
         e0 = up[0]
-        chips = "".join(C.deadline_chip(dl, e0._today) for dl in e0.deadlines[:2])
+        chips = "".join(
+            C.deadline_chip(dl, e0._today, window_end=e0.early_voting_end_date)
+            for dl in e0.deadlines[:2]
+        )
         next_card = (
             f'<a class="hero__next" href="{esc(rel(cfg, e0.url))}">'
-            '<span class="overline">Next election</span>'
+            '<span class="overline">Next election in the country</span>'
             f'<span class="hero__next-row">{C.date_block(e0)}'
             f'<span class="hero__next-lines"><span class="hero__next-name">'
-            f'{esc(e0.jurisdiction_name)}</span>'
-            f'<span class="hero__next-meta num">{esc(e0.date_short)} · {esc(e0.countdown)}</span>'
+            f'{esc(e0.jurisdiction_name)} {esc(e0.election_type_label.lower())}</span>'
+            f'<span class="hero__next-meta num">{esc(e0.date_short)} · '
+            f"{C.countdown_span(e0)}</span>"
             "</span></span>"
             f'<span class="hero__next-chips">{chips}</span></a>'
         )
+    # The instrument reads the cycle: bob position = today's place between the
+    # earliest tracked date and the general election.
+    instrument = icons.hero_plumbline()
+    generals = [e for e in site.elections if e.election_type == "general"]
+    if generals and site.elections:
+        target = max(generals, key=lambda e: sum(1 for x in generals if x.election_date == e.election_date))
+        first = min(e.election_date for e in site.elections)
+        cycle_days = max((target.election_date - first).days, 1)
+        days_left = (target.election_date - site.today).days
+        month_ticks = []
+        cur = first.replace(day=1)
+        while cur <= target.election_date:
+            frac = (cur - first).days / cycle_days
+            if 0 <= frac <= 1:
+                month_ticks.append((frac, cur.strftime("%b").upper()))
+            cur = cur.replace(year=cur.year + cur.month // 12, month=cur.month % 12 + 1)
+        instrument = icons.hero_plumbline(
+            days_remaining=max(days_left, 0),
+            cycle_days=cycle_days,
+            target_label=f"the {target.date_short} general election",
+            month_ticks=month_ticks,
+        )
+
     hero = (
         '<section class="hero">'
         f"{art.guilloche_svg()}"
@@ -104,9 +157,15 @@ def render_home(cfg: SiteConfig, site: SiteData) -> str:
         f'<p class="hero__subhead">{esc(copy.HOME_HERO["subhead"])}</p>'
         f'<div class="hero__actions">{jump}'
         f'<a class="hero__secondary" href="{rel(cfg, "/methodology/")}">'
-        f'or see how we verify →</a></div>'
+        f'or see how we check every date →</a></div>'
         f"{trust_bar}{kpi}</div>"
-        f'<div class="hero__instrument">{icons.hero_plumbline()}{next_card}</div>'
+        f'<div class="hero__instrument">{instrument}{next_card}</div>'
+        "</div></section>"
+    )
+    ribbon = (
+        '<section class="ribbon-band" data-reveal="block"><div class="wrap">'
+        '<p class="section__index" aria-hidden="true">The 2026 cycle</p>'
+        f"{art.cycle_ribbon(cfg, site.elections, site.today)}"
         "</div></section>"
     )
 
@@ -115,6 +174,12 @@ def render_home(cfg: SiteConfig, site: SiteData) -> str:
         if up
         else '<p class="empty">No upcoming elections are on the calendar yet.</p>'
     )
+    days_to_next = {
+        s.code: s.next_election.days_until for s in site.states if s.next_election
+    }
+    next_dates = {
+        s.code: s.next_election.date_compact for s in site.states if s.next_election
+    }
     on_calendar = _section(
         "On the calendar now",
         upcoming_body + (
@@ -132,18 +197,33 @@ def render_home(cfg: SiteConfig, site: SiteData) -> str:
     counts = {s.code: len(s.upcoming) for s in site.states}
     browse = _section(
         "Browse by state",
-        f'<div class="browse-layout">{art.us_cartogram(cfg, counts, compact=True)}'
-        f"{state_grid}</div>",
+        # The map is a second presentation of the tile grid below it, so it is
+        # not a second set of 51 tab stops.
+        '<div class="browse-layout">'
+        + art.us_cartogram(
+            cfg, counts, days_to_next=days_to_next, next_dates=next_dates,
+            interactive=False,
+        )
+        + f"{state_grid}</div>",
         id="states", tinted=True, index="02",
     )
 
+    # Only show the tier legend when more than one tier is actually in the data;
+    # otherwise it advertises doubt this dataset doesn't warrant. The methodology
+    # page always explains all three, which is where that belongs.
+    tiers = {e.confidence for e in site.elections}
+    aside = (
+        C.confidence_legend()
+        if len(tiers) > 1
+        else f'<p class="trust-band__claim">{esc(copy.FOOTER_LEGEND_SOLO)}</p>'
+    )
     trust = _section(
         "How we verify",
         (
             '<div class="trust-band">'
             f'<div class="prose">{"".join(f"<p>{p}</p>" for p in copy.WHY_DATES_GET_MISSED[2:])}'
             f'<p><a href="{rel(cfg, "/methodology/")}">{copy.CTA["read_methodology"]} →</a></p></div>'
-            f"{C.confidence_legend()}"
+            f"{aside}"
             "</div>"
         ),
         index="03",
@@ -180,12 +260,13 @@ def render_home(cfg: SiteConfig, site: SiteData) -> str:
         index="04",
     )
 
-    main = hero + on_calendar + browse + trust + exports
+    main = hero + ribbon + on_calendar + browse + trust + exports
+    # Budgeted under 160: Google truncates around there, and the trust clause is
+    # the differentiator — it has to survive.
     desc = (
-        f"Verified dates and deadlines for the 2026 midterm elections — statewide "
-        f"primaries, runoffs, and the November 3 general. Every record cites an "
-        f"official source and shows a confidence level. {site.total_elections} "
-        f"elections across {site.total_states} states."
+        f"Every 2026 election date and the deadlines that close weeks earlier. "
+        f"{site.total_elections} elections across {site.total_states} states, each "
+        f"linked to the election office it came from."
     )
     return render_page(
         cfg, site, path="/",
@@ -204,13 +285,24 @@ def render_states_index(cfg: SiteConfig, site: SiteData) -> str:
         + "</div>"
     )
     counts = {s.code: len(s.upcoming) for s in site.states}
+    days_to_next = {
+        s.code: s.next_election.days_until for s in site.states if s.next_election
+    }
+    next_dates = {
+        s.code: s.next_election.date_compact for s in site.states if s.next_election
+    }
+    cartogram = art.us_cartogram(
+        cfg, counts, days_to_next=days_to_next, next_dates=next_dates,
+        interactive=False,
+    )
     main = (
         '<div class="wrap page-head"><p class="dateline num">UPDATED '
         f'{esc(site.version)}</p><h1>Elections by state</h1>'
         '<p class="lede">Browse verified 2026 election calendars by '
         f'state — {site.total_states} covered.</p></div>'
-        f'<div class="wrap" data-reveal="block">{art.us_cartogram(cfg, counts)}</div>'
-        f'<div class="wrap" data-reveal="block"><h2 class="section-h2">All states</h2>{grid}</div>'
+        f'<div class="wrap" data-reveal="block">{cartogram}</div>'
+        f'<div class="wrap" data-reveal="block"><h2 class="section-h2" id="all-states">'
+        f"All states</h2>{grid}</div>"
     )
     items = [(s.name, s.url) for s in site.states]
     return render_page(
@@ -223,7 +315,7 @@ def render_states_index(cfg: SiteConfig, site: SiteData) -> str:
         main_html=main, breadcrumb_items=[HOME, STATES],
         jsonld=[
             seo.collection_ld(cfg, "Elections by state", "/states/", items, site.last_modified),
-            seo.breadcrumb_ld(cfg, [HOME, STATES]),
+            seo.breadcrumb_ld(cfg, [HOME, STATES], "/states/"),
         ],
     )
 
@@ -239,32 +331,57 @@ def render_state_hub(cfg: SiteConfig, site: SiteData, s: StateView) -> str:
             f'{esc(s.name)}</p><a class="lead-card__link" href="{esc(rel(cfg, ne.url))}">'
             f'{C.date_block(ne)}<span class="lead-card__title">{esc(ne.jurisdiction_name)} — '
             f'{esc(ne.election_type_label)}</span><span class="lead-card__meta num">'
-            f'{esc(ne.date_full)} · {esc(ne.countdown)}</span></a></div>'
+            f'{esc(ne.date_full)} · {C.countdown_span(ne)}</span></a></div>'
         )
 
+    # A single statewide jurisdiction adds no grouping information, so its heading
+    # would just repeat the page's own H1. Render the cards directly in that case.
+    single = len(s.jurisdictions) == 1 and s.jurisdictions[0].name == s.name
     sections = []
-    for j in s.jurisdictions:
+    if single:
         sections.append(
-            f'<section class="juris-block" data-reveal="block"><h2 class="juris-block__title">'
-            f'<a href="{esc(rel(cfg, j.url))}">{esc(j.name)}</a>'
-            f'<span class="juris-block__type overline">{esc(j.jurisdiction_type_label)}</span></h2>'
-            f"{_cards(cfg, j.elections)}</section>"
+            '<section class="juris-block" data-reveal="block">'
+            f'<h2 class="section-h2">Every {esc(s.name)} election left in 2026</h2>'
+            f"{_cards(cfg, s.jurisdictions[0].elections, context='state')}</section>"
         )
+    else:
+        for j in s.jurisdictions:
+            sections.append(
+                f'<section class="juris-block" data-reveal="block"><h2 class="juris-block__title">'
+                f'<a href="{esc(rel(cfg, j.url))}">{esc(j.name)}</a>'
+                f'<span class="juris-block__type overline">{esc(j.jurisdiction_type_label)}</span></h2>'
+                f"{_cards(cfg, j.elections)}</section>"
+            )
 
+    n_up = len(s.upcoming)
+    if n_up == 1:
+        lede = (
+            f"One election left on {s.name}'s 2026 calendar. Here's the date and "
+            "every deadline before it."
+        )
+    elif n_up:
+        lede = (
+            f"{n_up} elections left on {s.name}'s 2026 calendar, with every "
+            "deadline before each one."
+        )
+    else:
+        lede = (
+            f"No {s.name} elections are on the 2026 calendar yet. We add each one "
+            "as the state publishes it."
+        )
     main = (
         f'<div class="wrap page-head"><p class="dateline num">UPDATED {esc(site.version)}</p>'
-        f"<h1>{esc(s.name)} elections</h1>"
-        f'<p class="lede">{s.election_count} verified election'
-        f'{"s" if s.election_count != 1 else ""} across {s.jurisdiction_count} '
-        f'jurisdiction{"s" if s.jurisdiction_count != 1 else ""}.</p>{lead}</div>'
+        f"<h1>{esc(s.name)} election dates</h1>"
+        f'<p class="lede">{esc(lede)}</p>{lead}</div>'
         f'<div class="wrap">{"".join(sections)}</div>'
     )
     breadcrumb = [HOME, STATES, (s.name, s.url)]
     if s.next_election:
         desc = (
-            f"Upcoming {s.name} elections in the 2026 cycle. Next: "
-            f"{s.next_election.title} on {s.next_election.date_short}, plus "
-            f"{max(s.election_count - 1, 0)} more. Verified dates, deadlines, sources."
+            f"{s.name} 2026 elections: next is the "
+            f"{s.next_election.election_type_label.lower()} on "
+            f"{s.next_election.date_short}. Every registration and early-voting "
+            f"deadline, officially sourced."
         )
     else:
         desc = (
@@ -276,14 +393,60 @@ def render_state_hub(cfg: SiteConfig, site: SiteData, s: StateView) -> str:
         cfg, site, path=s.url,
         title=f"{s.name} 2026 Elections & Deadlines — Plumbline",
         description=desc, main_html=main, breadcrumb_items=breadcrumb,
+        og_image=(site.og.get("states", {}) or {}).get(s.code),
+        og_image_alt=f"{s.name} 2026 election calendar — Plumbline",
         jsonld=[
             seo.collection_ld(cfg, f"{s.name} elections", s.url, items),
-            seo.breadcrumb_ld(cfg, breadcrumb),
+            seo.breadcrumb_ld(cfg, breadcrumb, s.url),
         ],
     )
 
 
 # ------------------------------------------------------------------- jurisdiction
+
+def _related(cfg: SiteConfig, site: SiteData, e: ElectionView) -> str:
+    """Lateral links out of a leaf page.
+
+    Election pages linked only upward, so 51 of 74 records share one date and no
+    page connected them. These blocks are the only way to move sideways.
+    """
+    same_day = [
+        x for x in site.elections if x.date_iso == e.date_iso and x.id != e.id
+    ][:6]
+    same_state = [
+        x for x in site.elections if x.state == e.state and x.id != e.id
+    ][:4]
+    blocks = []
+    if same_day:
+        links = "".join(
+            f'<li><a href="{esc(rel(cfg, x.url))}">{esc(x.state_name)} '
+            f"{esc(x.election_type_label.lower())}</a></li>"
+            for x in same_day
+        )
+        total = sum(1 for x in site.elections if x.date_iso == e.date_iso)
+        blocks.append(
+            f'<div class="related__col"><h3 class="related__h">Also voting '
+            f'{esc(e.date_short)}</h3><ul class="related__list">{links}</ul>'
+            f'<p class="related__more">{total} elections share this date.</p></div>'
+        )
+    if same_state:
+        links = "".join(
+            f'<li><a href="{esc(rel(cfg, x.url))}">{esc(x.election_type_label)} '
+            f"— {esc(x.date_short)}</a></li>"
+            for x in same_state
+        )
+        blocks.append(
+            f'<div class="related__col"><h3 class="related__h">More in '
+            f'{esc(e.state_name)}</h3><ul class="related__list">{links}</ul></div>'
+        )
+    if not blocks:
+        return ""
+    return (
+        '<section class="detail-section related" data-reveal="block">'
+        "<h2>Related elections</h2>"
+        f'<div class="related__cols">{"".join(blocks)}</div></section>'
+    )
+
 
 def render_jurisdiction(cfg: SiteConfig, site: SiteData, j: JurisdictionView) -> str:
     subscribe = (
@@ -296,27 +459,80 @@ def render_jurisdiction(cfg: SiteConfig, site: SiteData, j: JurisdictionView) ->
         lead = (
             '<div class="lead-card"><p class="overline">Next election</p>'
             f'<a class="lead-card__link" href="{esc(rel(cfg, ne.url))}">{C.date_block(ne)}'
-            f'<span class="lead-card__title">{esc(ne.election_type_label)} Election</span>'
-            f'<span class="lead-card__meta num">{esc(ne.date_full)} · {esc(ne.countdown)}</span></a>'
+            f'<span class="lead-card__title">{esc(ne.election_type_label)} election</span>'
+            f'<span class="lead-card__meta num">{esc(ne.date_full)} · {C.countdown_span(ne)}</span></a>'
             f'<div class="lead-card__rail">{C.deadline_rail(cfg, ne)}</div></div>'
+        )
+    n = len(j.elections)
+    lede = (
+        f"One election left on {j.name}'s 2026 calendar."
+        if n == 1
+        else f"{n} elections left on {j.name}'s 2026 calendar."
+    )
+    # With one record the lead card above IS the record — repeating it in a grid
+    # below stated the same fact twice on more than half the jurisdictions.
+    records = (
+        ""
+        if n <= 1
+        else (
+            f'<div class="wrap" data-reveal="block">'
+            f'<h2 class="section-h2">Every election record</h2>'
+            f"{_cards(cfg, j.elections, context='state')}</div>"
+        )
+    )
+    # With one record this page used to be a lead card over 700px of nothing.
+    # Fold the substance up: what's on the ballot, where the date came from, and
+    # somewhere to go next.
+    extras = ""
+    if ne:
+        offices = ""
+        if ne.offices:
+            lis = "".join(f"<li>{esc(o)}</li>" for o in ne.offices)
+            offices = (
+                '<section class="detail-section" data-reveal="block"><h2>On the ballot</h2>'
+                f'<p class="detail-trust__blurb">{esc(copy.BALLOT_INTRO)}</p>'
+                f'<ul class="offices-list">{lis}</ul></section>'
+            )
+        reg_notice = ""
+        if ne.registration_closed:
+            reg_notice = (
+                f'<p class="reg-closed">{icons.ICON_ALERT}<span>'
+                f'{esc(copy.REG_CLOSED_NOTE.format(date=ne.registration_deadline_formatted))}'
+                "</span></p>"
+            )
+        sourcing = (
+            '<section class="detail-section detail-trust" data-reveal="block">'
+            "<h2>Where these dates came from</h2>"
+            f'<p class="detail-trust__blurb">{esc(ne.confidence_blurb)}</p>'
+            f"{C.provenance(cfg, ne)}</section>"
+        )
+        extras = (
+            f'<div class="wrap detail-body">{reg_notice}'
+            f'<p class="confirm-note">{esc(copy.CONFIRM_NOTE)}</p>'
+            f"{offices}{sourcing}{_related(cfg, site, ne)}</div>"
         )
     main = (
         f'<div class="wrap page-head"><p class="dateline num">UPDATED {esc(site.version)}</p>'
-        f"<h1>{esc(j.name)} elections</h1>"
-        f'<p class="lede">{esc(j.jurisdiction_type_label)} · {esc(j.state_name)}. '
-        f'{len(j.elections)} verified record'
-        f'{"s" if len(j.elections) != 1 else ""}.</p>'
+        f"<h1>{esc(j.name)} election dates</h1>"
+        f'<p class="lede">{esc(lede)}</p>'
         f'<div class="page-head__actions">{subscribe}</div>{lead}</div>'
-        f'<div class="wrap" data-reveal="block"><h2 class="section-h2">Election records</h2>'
-        f"{_cards(cfg, j.elections)}</div>"
+        f"{records}{extras}"
     )
-    breadcrumb = [HOME, STATES, (j.state_name, f"/states/{j.state}/"), (j.name, j.url)]
-    desc = (
-        f"Every verified election for {j.name}, {j.state_name}: dates, registration "
-        f"deadlines, early voting."
+    breadcrumb = _crumbs(
+        [HOME, STATES, (j.state_name, f"/states/{j.state}/"), (j.name, j.url)]
     )
+    place = j.state_name if j.name == j.state_name else f"{j.name}, {j.state_name}"
     if ne:
-        desc += f" Next: {ne.title} on {ne.date_short}. Subscribe via .ics."
+        desc = (
+            f"{place} elections: next is the {ne.election_type_label.lower()} on "
+            f"{ne.date_short}. Registration and early-voting deadlines, each linked "
+            f"to its official source."
+        )
+    else:
+        desc = (
+            f"Every verified {place} election: dates, registration deadlines, "
+            f"and early voting, each linked to its official source."
+        )
     items = [(e.title, e.url) for e in j.elections]
     ld = seo.collection_ld(cfg, f"{j.name} elections", j.url, items)
     ld["@graph"][0]["hasPart"] = {
@@ -325,11 +541,14 @@ def render_jurisdiction(cfg: SiteConfig, site: SiteData, j: JurisdictionView) ->
         "encodingFormat": "text/calendar",
         "contentUrl": seo.absu(cfg, j.ics_url),
     }
+    juris_title = j.name if j.name == j.state_name else f"{j.name}, {j.state}"
     return render_page(
         cfg, site, path=j.url,
-        title=f"{j.name}, {j.state} Elections & Deadlines — Plumbline",
+        title=f"{juris_title} Elections & Deadlines — Plumbline",
         description=desc, main_html=main, breadcrumb_items=breadcrumb,
-        jsonld=[ld, seo.breadcrumb_ld(cfg, breadcrumb)],
+        og_image=(site.og.get("states", {}) or {}).get(j.state),
+        og_image_alt=f"{j.name} 2026 election calendar — Plumbline",
+        jsonld=[ld, seo.breadcrumb_ld(cfg, breadcrumb, j.url)],
     )
 
 
@@ -345,7 +564,7 @@ def render_election(cfg: SiteConfig, site: SiteData, e: ElectionView) -> str:
         )
     ics_href = rel(cfg, f"/downloads/ics/{e.state}/{e.jurisdiction_slug}.ics")
     add_cal = (
-        f'<a class="btn btn--primary" href="{ics_href}" download>'
+        f'<a class="btn btn--primary" href="{esc(ics_href)}" download>'
         f'{icons.ICON_CALENDAR} {copy.CTA["add_to_calendar"]}</a>'
     )
     verified_line = (
@@ -361,16 +580,26 @@ def render_election(cfg: SiteConfig, site: SiteData, e: ElectionView) -> str:
         f'<h1 class="detail-hero__title">{esc(e.jurisdiction_name)} '
         f'{esc(e.election_type_label)} Election</h1>'
         f'<p class="detail-hero__date num">{esc(e.date_full)} '
-        f'<span class="detail-hero__countdown">· {esc(e.countdown)}</span></p>'
+        f'<span class="detail-hero__countdown">· {C.countdown_span(e)}</span></p>'
         f'<div class="detail-hero__meta">{C.tag(e.election_type, e.election_type_label)}'
         f'{C.confidence_badge(e.confidence)}</div>'
         f'<div class="detail-hero__actions">{add_cal}'
         f'{C.source_link(cfg, e.source_url)}</div>'
         "</div></div>"
     )
+    # A closed registration window used to be signalled by a strikethrough and
+    # nothing else — no sentence, no next step. Say it, and point somewhere useful.
+    reg_notice = ""
+    if e.registration_closed:
+        reg_notice = (
+            f'<p class="reg-closed">{icons.ICON_ALERT}<span>'
+            f'{esc(copy.REG_CLOSED_NOTE.format(date=e.registration_deadline_formatted))}'
+            "</span></p>"
+        )
     rail = (
         '<section class="detail-section" data-reveal="block"><h2>Key dates &amp; deadlines</h2>'
-        f'{C.deadline_rail(cfg, e)}</section>'
+        f"{C.deadline_rail(cfg, e)}{reg_notice}"
+        f'<p class="confirm-note">{esc(copy.CONFIRM_NOTE)}</p></section>'
     )
     trust = (
         '<section class="detail-section detail-trust" data-reveal="block"><h2>Sourcing &amp; confidence</h2>'
@@ -384,24 +613,25 @@ def render_election(cfg: SiteConfig, site: SiteData, e: ElectionView) -> str:
         f'<div class="wrap detail-body">{rail}{offices}{trust}</div>'
     )
 
-    breadcrumb = [
+    breadcrumb = _crumbs([
         HOME, STATES, (e.state_name, e.state_url),
         (e.jurisdiction_name, e.jurisdiction_url),
         (f"{e.election_type_label} — {e.date_short}", e.url),
-    ]
+    ])
     reg = next((d for d in e.deadlines if d.key == "registration_deadline"), None)
     # Absolute date only — no relative countdown, which would go stale in the index.
+    # Budgeted to ~160 chars so the trust signal survives Google's truncation.
     desc = (
-        f"The {e.jurisdiction_name}, {e.state_name} {e.election_type_label.lower()} "
-        f"election is {e.date_full}."
+        f"{e.place_phrase} {e.election_type_label.lower()} election: {e.date_full}."
     )
     if reg:
-        desc += f" Voter registration deadline {reg.formatted}."
-    if e.offices_summary:
-        desc += f" {e.offices_summary}."
-    desc += f" Source-verified ({e.confidence_label})."
-    if e.confidence == "inferred":
-        desc += " (provisional)"
+        desc += f" Register by {reg.formatted}."
+    offices = e.offices_summary
+    if offices and len(desc) + len(offices) + 20 < 140:
+        desc += f" On the ballot: {offices}."
+    elif e.offices:
+        desc += f" {len(e.offices)} offices on the ballot."
+    desc += " Official source." if e.confidence == "official" else " Provisional date."
     return render_page(
         cfg, site, path=e.url,
         title=f"{e.jurisdiction_name} {e.election_type_label} Election — {e.date_short}",
@@ -410,8 +640,8 @@ def render_election(cfg: SiteConfig, site: SiteData, e: ElectionView) -> str:
         og_image=(site.og.get("elections", {}) or {}).get(e.id),
         og_image_alt=f"{e.jurisdiction_name} {e.election_type_label} election — {e.date_short}",
         jsonld=[
-            seo.event_ld(cfg, e),
-            seo.breadcrumb_ld(cfg, breadcrumb),
+            seo.event_ld(cfg, e, (site.og.get("elections", {}) or {}).get(e.id)),
+            seo.breadcrumb_ld(cfg, breadcrumb, e.url),
         ],
     )
 
@@ -424,9 +654,14 @@ def _prose_page(
 ) -> str:
     dl = f'<p class="dateline num">{esc(dateline)}</p>' if dateline else ""
     ld = f'<p class="lede">{esc(lede)}</p>' if lede else ""
+    # One container, one measure. Previously .wrap (72rem) and .prose.wrap (42rem)
+    # each centred independently, so the H1 and the body text sat on different
+    # left edges — a 240px mismatch at 1440.
     main = (
-        f'<div class="wrap page-head">{dl}<h1>{esc(h1)}</h1>{ld}</div>'
-        f'<article class="wrap prose" data-reveal="block">{body}</article>'
+        '<div class="wrap prose-page">'
+        f'<div class="page-head">{dl}<h1>{esc(h1)}</h1>{ld}</div>'
+        f'<article class="prose" data-reveal="block">{body}</article>'
+        "</div>"
     )
     return render_page(
         cfg, site, path=path, title=title, description=desc, main_html=main,
@@ -494,7 +729,7 @@ def render_data(cfg: SiteConfig, site: SiteData) -> str:
         for who, what in copy.DATA_PRODUCT_AUDIENCES
     )
     json_links = "".join(
-        f'<li><a href="{rel(cfg, "/downloads/json/" + s.code + "/index.json")}">'
+        f'<li><a href="{esc(rel(cfg, "/downloads/json/" + s.code + "/index.json"))}">'
         f"{esc(s.name)}</a></li>"
         for s in site.states
     )
@@ -518,16 +753,16 @@ def render_data(cfg: SiteConfig, site: SiteData) -> str:
             cfg, "CSV + changelog",
             f"The full verified dataset, version {site.version}, with a human-readable "
             "changelog of every change.",
-            f'<a class="btn btn--secondary" href="{csv_href}" download>'
+            f'<a class="btn btn--secondary" href="{esc(csv_href)}" download>'
             f'{icons.ICON_DOWNLOAD} Download CSV</a>'
-            f'<a class="btn btn--ghost" href="{changelog_href}">See what changed</a>',
+            f'<a class="btn btn--ghost" href="{esc(changelog_href)}">See what changed</a>',
         )
         + C.export_card(
             cfg, "JSON",
             "The same records as structured JSON, one file per state plus per-"
             "jurisdiction files.",
             (
-                f'<a class="btn btn--secondary" href="{rel(cfg, "/downloads/json/" + site.states[0].code + "/index.json")}">View JSON</a>'
+                f'<a class="btn btn--secondary" href="{esc(rel(cfg, "/downloads/json/" + site.states[0].code + "/index.json"))}">View JSON</a>'
                 if site.states else '<span class="export-card__soon">Available with published data</span>'
             ),
         )
@@ -559,9 +794,8 @@ def render_data(cfg: SiteConfig, site: SiteData) -> str:
         cfg, site, path="/data/",
         title="Election Data Exports (CSV, JSON, ICS) — Plumbline",
         description=(
-            f"Download the full versioned dataset of 2026 U.S. elections: CSV "
-            f"with changelog, per-state JSON, and per-jurisdiction "
-            f"calendars (.ics). Current version {site.version}."
+            f"The full 2026 U.S. election dataset as versioned CSV, per-state JSON, "
+            f"and .ics calendar feeds. Version {site.version}, CC BY 4.0."
         ),
         main_html=body, breadcrumb_items=breadcrumb,
         jsonld=[seo.dataset_ld(cfg, site), seo.breadcrumb_ld(cfg, breadcrumb)],
