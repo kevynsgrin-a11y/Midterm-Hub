@@ -25,7 +25,7 @@ export default function Home() {
 
     <section className="border-b bg-primary text-primary-foreground">
       <div className="mx-auto grid max-w-7xl grid-cols-2 divide-x divide-primary-foreground/20 px-5 md:grid-cols-4 lg:px-8">
-        {stats.map(([number, label]) => <div key={label} className="px-4 py-6"><strong className="font-serif text-3xl text-secondary">{number}</strong><span className="mt-1 block rule-label text-primary-foreground/70">{label}</span></div>)}
+        {stats.map(([number, label]) => <div key={label} className="px-4 py-6"><strong className="font-serif text-3xl text-highlight">{number}</strong><span className="mt-1 block rule-label text-primary-foreground/70">{label}</span></div>)}
       </div>
     </section>
 
