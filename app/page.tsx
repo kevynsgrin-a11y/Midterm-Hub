@@ -16,7 +16,7 @@ export default function Home() {
         <div className="paper-grid flex flex-col justify-center gap-7 px-5 py-16 md:px-10 md:py-24 xl:pl-[max(2rem,calc((100vw-80rem)/2))]">
           <p className="rule-label text-secondary">The 2026 midterm cycle · civic reference no. 01</p>
           <h1 className="max-w-4xl text-balance font-serif text-5xl font-bold leading-[.98] tracking-tight md:text-7xl">Every election date, held to a higher standard.</h1>
-          <p className="max-w-2xl text-pretty text-lg leading-relaxed text-muted-foreground">Plumbline tracks official election dates and voter deadlines back to their source—so the civic calendar stays straight, legible, and accountable.</p>
+          <p className="max-w-2xl text-pretty text-lg leading-relaxed text-muted-foreground">Midterm Watch tracks official election dates and voter deadlines back to their source—so the civic calendar stays straight, legible, and accountable.</p>
           <div className="max-w-lg"><StateSelector /></div>
         </div>
         <LeadPhoto />
