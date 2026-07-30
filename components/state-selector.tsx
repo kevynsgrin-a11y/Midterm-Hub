@@ -1,0 +1,6 @@
+"use client";
+import * as Select from "@radix-ui/react-select";
+import { Check, ChevronDown, MapPin } from "lucide-react";
+import { useRouter } from "next/navigation";
+import { states, stateHref } from "@/lib/data";
+export function StateSelector(){const router=useRouter();return <Select.Root onValueChange={(code)=>router.push(stateHref(code))}><Select.Trigger className="flex min-h-14 w-full items-center justify-between gap-3 rounded-sm border border-border bg-card px-4 text-left font-bold focus:outline-none focus:ring-2 focus:ring-ring" aria-label="Choose your state"><span className="flex items-center gap-3"><MapPin aria-hidden="true"/><Select.Value placeholder="Choose your state"/></span><Select.Icon><ChevronDown/></Select.Icon></Select.Trigger><Select.Portal><Select.Content className="max-h-80 overflow-hidden rounded-sm border bg-card shadow-xl"><Select.Viewport className="p-1">{states.map(([code,name])=><Select.Item key={code} value={code} className="relative flex cursor-pointer items-center rounded-sm py-2 pl-9 pr-4 text-sm outline-none focus:bg-muted"><Select.ItemIndicator className="absolute left-3"><Check className="size-4"/></Select.ItemIndicator><Select.ItemText>{name}</Select.ItemText></Select.Item>)}</Select.Viewport></Select.Content></Select.Portal></Select.Root>}

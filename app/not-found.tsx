@@ -1,0 +1,3 @@
+import Link from "next/link";
+import { Button } from "@/components/ui/button";
+export default function NotFound(){return <div className="mx-auto flex min-h-[60vh] max-w-4xl flex-col justify-center px-5"><p className="rule-label text-secondary">404 / off the line</p><h1 className="mt-4 font-serif text-5xl font-bold">This record isn&apos;t on the calendar.</h1><p className="mt-5 max-w-xl text-lg text-muted-foreground">The page may have moved, or the election date has not been verified for publication.</p><Button asChild className="mt-8 w-fit"><Link href="/states/">Browse state calendars</Link></Button></div>}
