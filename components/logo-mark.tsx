@@ -1,41 +1,32 @@
-// Midterm Watch — eye/ballot logo mark, fully transparent SVG
-// Red eyelids, navy iris disc, white checkmark. No background fill.
-export function LogoMark({ size = 52, className = "" }: { size?: number; className?: string }) {
+// Midterm Watch — sleek eye/ballot logo mark, fully transparent SVG.
+// Thin red eye outline, small navy iris, subtle white checkmark. No background fill.
+export function LogoMark({ size = 36, className = "" }: { size?: number; className?: string }) {
   return (
     <svg
       width={size}
       height={size}
-      viewBox="0 0 52 52"
+      viewBox="0 0 36 36"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
       aria-hidden="true"
       className={className}
     >
-      {/* Upper eyelid */}
+      {/* Eye outline — single continuous almond shape */}
       <path
-        d="M6 26C6 26 14 10 26 10C38 10 46 26 46 26"
+        d="M4 18C4 18 10 8 18 8C26 8 32 18 32 18C32 18 26 28 18 28C10 28 4 18 4 18Z"
         stroke="#b1222f"
-        strokeWidth="3.5"
+        strokeWidth="1.75"
         strokeLinecap="round"
+        strokeLinejoin="round"
         fill="none"
       />
-      {/* Lower eyelid */}
-      <path
-        d="M6 26C6 26 14 42 26 42C38 42 46 26 46 26"
-        stroke="#b1222f"
-        strokeWidth="3.5"
-        strokeLinecap="round"
-        fill="none"
-      />
-      {/* Iris disc */}
-      <circle cx="26" cy="26" r="10" fill="#0f2f66" />
-      {/* Gloss highlight on iris */}
-      <ellipse cx="23" cy="22" rx="3.5" ry="2" fill="white" fillOpacity="0.22" />
+      {/* Iris */}
+      <circle cx="18" cy="18" r="6.5" fill="#0f2f66" />
       {/* Checkmark */}
       <path
-        d="M20.5 26.5L24 30L31.5 22.5"
+        d="M14.5 18.5L17 21L21.5 15.5"
         stroke="white"
-        strokeWidth="2.5"
+        strokeWidth="1.75"
         strokeLinecap="round"
         strokeLinejoin="round"
       />
