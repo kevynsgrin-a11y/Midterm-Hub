@@ -14,7 +14,7 @@ function rewriteLocation(location, upstreamUrl) {
   return canonicalUrl(target);
 }
 
-export default {
+const worker = {
   async fetch(request) {
     const incomingUrl = new URL(request.url);
 
@@ -47,3 +47,5 @@ export default {
     });
   },
 };
+
+export default worker;

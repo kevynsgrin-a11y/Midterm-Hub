@@ -25,7 +25,7 @@
     toggle.addEventListener("click", function () {
       var next = currentTheme() === "dark" ? "light" : "dark";
       root.setAttribute("data-theme", next);
-      try { localStorage.setItem(KEY, next); } catch (e) {}
+      try { localStorage.setItem(KEY, next); } catch {}
       syncToggle(toggle);
     });
     // The OS theme can change while the page is open; keep the label truthful.
@@ -100,7 +100,7 @@
       if (slot) slot.textContent = state;
     }
   }
-  try { refreshCountdowns(); } catch (e) {}
+  try { refreshCountdowns(); } catch {}
 
   // ------------------------------------------------------------- scroll reveal
   // The class that HIDES content is added here, not by the pre-paint script in
@@ -137,7 +137,7 @@
         );
         for (var j2 = 0; j2 < reveals.length; j2++) io.observe(reveals[j2]);
         setTimeout(revealAll, 2500);
-      } catch (e) {
+      } catch {
         revealAll();
       }
     }
