@@ -3,12 +3,14 @@ import { spawnSync } from 'node:child_process';
 import { resolve } from 'node:path';
 import { pathToFileURL } from 'node:url';
 
-// The host must install requirements.txt; never silently skip data validation.
-// Prefer the checkout's venv, then an explicitly configured/system Python.
-const candidates = [process.env.PYTHON, resolve('.venv', process.platform === 'win32' ? 'Scripts/python.exe' : 'bin/python'), 'python3', 'python'].filter(Boolean);
+// The host installs requirements.txt into .venv; never skip data validation.
+// Prefer that isolated environment over an ambient PYTHON or system interpreter.
+export function interpreterCandidates({ cwd = process.cwd(), platform = process.platform, python = process.env.PYTHON } = {}) {
+  return [resolve(cwd, '.venv', platform === 'win32' ? 'Scripts/python.exe' : 'bin/python'), python, 'python3', 'python'].filter(Boolean);
+}
 const probeCode = 'import sys; assert sys.version_info >= (3, 11); import yaml; from pydantic import BaseModel, ValidationInfo, field_validator, model_validator';
 
-export function runGenerator({ interpreters = candidates, spawn = spawnSync, exists = existsSync } = {}) {
+export function runGenerator({ interpreters = interpreterCandidates(), spawn = spawnSync, exists = existsSync } = {}) {
 for (const candidate of interpreters) {
   if (candidate.includes('/') || candidate.includes('\\')) {
     if (!exists(candidate)) continue;

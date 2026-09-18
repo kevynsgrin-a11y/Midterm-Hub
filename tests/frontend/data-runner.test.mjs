@@ -1,6 +1,39 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
-import { runGenerator } from '../../scripts/run-data.mjs';
+import { resolve } from 'node:path';
+import { interpreterCandidates, runGenerator } from '../../scripts/run-data.mjs';
+
+for (const platform of ['linux', 'win32']) {
+  test(`the checkout environment wins over an ambient Python on ${platform}`, () => {
+    const prepared = resolve('.venv', platform === 'win32' ? 'Scripts/python.exe' : 'bin/python');
+    const calls = [];
+    const code = runGenerator({
+      interpreters: interpreterCandidates({ platform, python: 'ambient-python' }),
+      exists: () => true,
+      spawn(command, args) {
+        calls.push([command, args]);
+        return { status: 0 };
+      },
+    });
+    assert.equal(code, 0);
+    assert.deepEqual(calls.map(([command]) => command), [prepared, prepared]);
+    assert.deepEqual(calls[1][1], ['scripts/build-frontend-data.py']);
+  });
+}
+
+test('a missing checkout environment still allows a prepared explicit Python', () => {
+  const calls = [];
+  const code = runGenerator({
+    interpreters: interpreterCandidates({ python: 'prepared-python' }),
+    exists: () => false,
+    spawn(command) {
+      calls.push(command);
+      return { status: 0 };
+    },
+  });
+  assert.equal(code, 0);
+  assert.deepEqual(calls, ['prepared-python', 'prepared-python']);
+});
 
 test('skip an incompatible interpreter and use the prepared candidate', () => {
   const calls = [];
