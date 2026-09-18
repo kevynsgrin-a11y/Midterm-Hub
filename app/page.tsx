@@ -1,14 +1,13 @@
 import Link from "next/link";
 import { ArrowRight, Database, Scale, ShieldCheck } from "lucide-react";
 import { CycleRibbon, StateCartogram } from "@/components/data-visuals";
-import { ElectionCard } from "@/components/election-card";
+import { UpcomingElections } from "@/components/upcoming-elections";
 import { LeadPhoto, PhotoEssay } from "@/components/editorial-media";
 import { StateSelector } from "@/components/state-selector";
 import { Button } from "@/components/ui/button";
 import { data, elections, states } from "@/lib/data";
 
 export default function Home() {
-  const upcoming = elections.filter((e) => e.election_type === "primary").slice(0, 3);
   const stats = [[elections.length, "verified records"], [states.length, "states + DC"], [new Set(elections.map((e) => e.source_url)).size, "official sources"], ["Nov 3", "general election"]];
   return <>
     <section className="border-b">
@@ -40,7 +39,7 @@ export default function Home() {
       <div className="grid gap-10 lg:grid-cols-[.8fr_1.2fr]"><div><p className="rule-label">The national desk</p><h2 className="mt-2 text-balance font-serif text-4xl font-bold">Start with a state. Follow every date to its source.</h2><p className="mt-4 text-muted-foreground">The cartogram is a navigation tool, not a geographic map. Each tile opens the state desk and its reviewed election records.</p><Button asChild className="mt-6"><Link href="/states/">Browse all states <ArrowRight data-icon="inline-end" /></Link></Button></div><StateCartogram /></div>
     </section>
 
-    <section className="border-y bg-card"><div className="mx-auto max-w-7xl px-5 py-20 lg:px-8"><div className="flex items-end justify-between border-b pb-6"><div><p className="rule-label">Next on the calendar</p><h2 className="mt-2 font-serif text-4xl font-bold">Upcoming primaries</h2></div><Link href="/states/" className="editorial-link hidden text-sm md:block">Full state index</Link></div><div className="mt-8 grid gap-5 md:grid-cols-3">{upcoming.map((e, index) => <ElectionCard key={e.id} election={e} featured={index === 0} />)}</div></div></section>
+    <UpcomingElections initialDate={new Date().toISOString().slice(0, 10)} />
 
     <section className="mx-auto max-w-7xl px-5 py-20 lg:px-8"><div className="grid gap-8 md:grid-cols-3">{[[ShieldCheck, "Source first", "Every published date points to an official election authority."], [Scale, "Confidence stated", "Our confidence level is visible, with uncertainty never hidden."], [Database, "Open by design", "Download the underlying CSV and JSON used to build this edition."]].map(([Icon, title, copy]) => { const Mark = Icon as typeof ShieldCheck; return <div key={String(title)} className="border-t-2 border-secondary pt-5"><Mark className="size-6 text-secondary" aria-hidden="true"/><h3 className="mt-4 font-serif text-2xl font-bold">{String(title)}</h3><p className="mt-2 text-sm text-muted-foreground">{String(copy)}</p></div>; })}</div><p className="mt-12 text-center font-mono text-xs text-muted-foreground">Edition {data.edition} · Generated {new Date(data.generated_at).toLocaleDateString("en-US", { dateStyle: "long" })}</p></section>
   </>;

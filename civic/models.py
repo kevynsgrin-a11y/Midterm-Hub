@@ -17,6 +17,7 @@ from pydantic import (
     BaseModel,
     ConfigDict,
     Field,
+    ValidationInfo,
     field_validator,
     model_validator,
 )
@@ -177,7 +178,7 @@ class ElectionRecord(BaseModel):
         return data
 
     @model_validator(mode="after")
-    def _ordering_and_recency(self) -> "ElectionRecord":
+    def _ordering_and_recency(self, info: ValidationInfo) -> "ElectionRecord":
         if not (self.jurisdiction_slug or "").strip():
             raise ValueError("jurisdiction_slug is empty")
         warnings: list[str] = []
@@ -211,7 +212,12 @@ class ElectionRecord(BaseModel):
 
         # Hard failure: stale record without an explicit historical-backfill marker.
         age_days = (datetime.date.today() - ed).days
-        if age_days > 30 and not re.search(r"\bhistorical\b", self.notes or "", re.I):
+        # Rendering an unchanged, previously published archive record is not a
+        # new intake. Only the frontend exporter passes this full prior record;
+        # a new/edited field (including its provenance) still hits the age gate.
+        previous = (info.context or {}).get("previously_published")
+        unchanged_archive = previous is not None and self.model_dump(mode="json") == previous
+        if age_days > 30 and not unchanged_archive and not re.search(r"\bhistorical\b", self.notes or "", re.I):
             raise ValueError(
                 f"election_date {ed} is more than 30 days in the past; add "
                 f"'historical' to notes to intentionally backfill"

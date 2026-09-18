@@ -8,13 +8,16 @@ from __future__ import annotations
 import datetime as dt
 import hashlib
 import json
+import sys
 from pathlib import Path
+
+ROOT = Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(ROOT))
 
 import yaml
 from civic.models import ElectionRecord
 from civic.site.data import STATE_NAMES
 
-ROOT = Path(__file__).resolve().parents[1]
 OUT = ROOT / "generated" / "elections.json"
 
 
@@ -23,10 +26,17 @@ def slug(value: str) -> str:
 
 
 def main() -> None:
+    previous = json.loads(OUT.read_text(encoding="utf-8")) if OUT.exists() else {}
+    published = {
+        (item["state"], item["jurisdiction_name"], item["election_type"], item["election_date"]):
+            {key: value for key, value in item.items() if key in ElectionRecord.model_fields and key != "warnings"}
+        for item in previous.get("elections", []) if item.get("verified") is True
+    }
     records: list[dict] = []
     for path in sorted((ROOT / "intake").glob("*.yaml")):
         for raw in yaml.safe_load(path.read_text(encoding="utf-8")) or []:
-            record = ElectionRecord(**raw)
+            key = (raw.get("state", "").strip().upper(), raw.get("jurisdiction_name"), raw.get("election_type"), str(raw.get("election_date")))
+            record = ElectionRecord.model_validate(raw, context={"previously_published": published.get(key)})
             data = record.model_dump(mode="json")
             identity = f"{record.state}|{record.jurisdiction_name}|{record.election_type}|{record.election_date}"
             data["id"] = hashlib.sha256(identity.encode()).hexdigest()[:16]
@@ -35,6 +45,10 @@ def main() -> None:
             data["verified"] = True
             records.append(data)
     records.sort(key=lambda x: (x["election_date"], x["state"], x["jurisdiction_name"]))
+    # Rebuilding the same data does not mean its sources were reviewed today.
+    if records == previous.get("elections"):
+        print(f"Validated {len(records)} unchanged elections; retained generated_at")
+        return
     payload = {
         "edition": "2026 Midterm Cycle",
         "generated_at": dt.datetime.now(dt.timezone.utc).replace(microsecond=0).isoformat().replace("+00:00", "Z"),
