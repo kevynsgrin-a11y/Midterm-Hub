@@ -14,9 +14,19 @@ function rewriteLocation(location, upstreamUrl) {
   return canonicalUrl(target);
 }
 
-export default {
+const worker = {
   async fetch(request) {
     const incomingUrl = new URL(request.url);
+
+    // Old published links used uppercase state codes, but Next exports lowercase
+    // directories. Normalize only this route family; election URLs stay intact.
+    if (/^\/states\/[A-Za-z]{2}\/?$/.test(incomingUrl.pathname)) {
+      const normalized = incomingUrl.pathname.toLowerCase().replace(/\/?$/, "/");
+      if (incomingUrl.pathname !== normalized) {
+        incomingUrl.pathname = normalized;
+        return Response.redirect(canonicalUrl(incomingUrl), 308);
+      }
+    }
 
     if (incomingUrl.hostname === "www.midtermwatch.com") {
       return Response.redirect(canonicalUrl(incomingUrl), 308);
@@ -37,3 +47,5 @@ export default {
     });
   },
 };
+
+export default worker;
