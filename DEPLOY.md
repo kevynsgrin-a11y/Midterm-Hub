@@ -9,7 +9,14 @@ bash scripts/build-site.sh dist    # → ./dist, built for https://midtermwatch.
 `dist/` contains the full site (HTML, `/assets`, `/downloads`, `sitemap.xml`,
 `robots.txt`, and a `CNAME` file). Pick one host below.
 
-> The build ingests the real curated dataset in `intake/*.yaml` — every record
+> **Optional reference refresh (TrueAPI):** `node scripts/refresh-trueapi.mjs` writes
+`generated/trueapi-reference.json` — the official Google Civic elections list and the
+FEC-declared 2026 congressional candidates — read entirely from the portfolio's warm
+ingest cache (`ingest.oakandmain.dev`). No API key, no upstream call, and never a
+build input: the build stays hermetic; this is a reviewer cross-check for the curated
+calendar.
+
+The build ingests the real curated dataset in `intake/*.yaml` — every record
 > was verified against an official source (see each record's `source_url`).
 > To update data: edit/add intake YAML, and the next build picks it up.
 

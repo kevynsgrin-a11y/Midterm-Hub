@@ -19,6 +19,7 @@ env/
 .pytest_cache/
 .mypy_cache/
 .ruff_cache/
+.wrangler/
 .coverage
 htmlcov/
 
@@ -32,3 +33,10 @@ htmlcov/
 *.swp
 .idea/
 .vscode/
+
+# Next.js and local package/tool caches
+node_modules/
+.next/
+*.tsbuildinfo
+next-env.d.ts
+.repair-cache/
