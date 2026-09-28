@@ -2,7 +2,9 @@
 # Every record was verified against the cited source on the retrieval date;
 # agent-researched, independently cross-checked against statutory anchors,
 # and human-reviewed before commit. Accuracy over completeness: optional
-# deadline fields appear only where an official source states the exact date.
+# deadline fields appear only where an official source states the exact date,
+# or where a single national compilation (NCSL) states the statutory rule —
+# those records carry the cross-check date and provenance in their notes.
 
 - state: AK
   jurisdiction_type: state
@@ -36,10 +38,11 @@
   election_type: general
   election_date: "2026-11-03"
   offices: ["U.S. Senate", "Governor", "U.S. House (all districts)", "Statewide offices & Legislature"]
+  registration_deadline: "2026-10-19"
   confidence: official
   source_url: "https://www.sos.alabama.gov/alabama-votes/voter/election-information/2026"
   source_retrieved_at: "2026-07-21T18:00:00Z"
-  notes: "Statewide primary was held May 19, 2026, with runoffs in June; Alabama has no early in-person voting; Governor (Ivey term-limited) and the Class 2 U.S. Senate seat are both on the ballot."
+  notes: "Statewide primary was held May 19, 2026, with runoffs in June; Alabama has no early in-person voting; Governor (Ivey term-limited) and the Class 2 U.S. Senate seat are both on the ballot. Registration closes 15 days before the election (Oct 19; per NCSL voter-registration table updated 2026-05-20, cross-checked 2026-09-28); no same-day registration."
 
 - state: AR
   jurisdiction_type: state
@@ -85,10 +88,11 @@
   election_type: general
   election_date: "2026-11-03"
   offices: ["U.S. Senate", "Governor", "U.S. House (all districts)", "Statewide offices & Legislature"]
+  registration_deadline: "2026-10-26"
   confidence: official
   source_url: "https://www.sos.state.co.us/pubs/elections/calendars/2026ElectionCalendar.pdf"
   source_retrieved_at: "2026-07-21T18:00:00Z"
-  notes: "All-mail voting state; every voter receives a mail ballot; same-day voter registration available in person through Election Day."
+  notes: "All-mail voting state; every voter receives a mail ballot; same-day voter registration available in person through Election Day. Registration deadline shown is the online/by-mail cutoff 8 days before the election (Oct 26; per NCSL table updated 2026-05-20, cross-checked 2026-09-28); same-day registration is available during early voting and on Election Day."
 
 - state: CT
   jurisdiction_type: state
@@ -109,12 +113,13 @@
   election_type: general
   election_date: "2026-11-03"
   offices: ["Governor", "U.S. House (all districts)", "Statewide offices & Legislature"]
+  registration_deadline: "2026-10-27"
   early_voting_start: "2026-10-19"
   early_voting_end: "2026-11-01"
   confidence: official
   source_url: "https://portal.ct.gov/-/media/sots/electionservices/calendars/2026-elections/2026-election-calendar-122325.pdf?rev=340f2bcacc9748c1a2ed8f49d1774f52&hash=471ECCC3D26999C2D53BB5636927C0EB"
   source_retrieved_at: "2026-07-21T18:00:00Z"
-  notes: "Same-day voter registration available."
+  notes: "Same-day voter registration available. Registration closes 7 days before the election (Oct 27; per NCSL table updated 2026-05-20, cross-checked 2026-09-28); Election Day registration is available."
 
 - state: DC
   jurisdiction_type: state
@@ -122,12 +127,13 @@
   election_type: general
   election_date: "2026-11-03"
   offices: ["Mayor", "DC Council", "Delegate to U.S. House", "Attorney General"]
+  registration_deadline: "2026-10-13"
   early_voting_start: "2026-10-26"
   early_voting_end: "2026-11-01"
   confidence: official
   source_url: "https://dcboe.org/elections/2026-elections"
   source_retrieved_at: "2026-07-21T18:00:00Z"
-  notes: "Same-day voter registration available."
+  notes: "Same-day voter registration available. Registration closes 21 days before the election (Oct 13; per NCSL table updated 2026-05-20, cross-checked 2026-09-28); same-day registration is available during early voting and on Election Day."
 
 - state: DE
   jurisdiction_type: state
@@ -230,12 +236,13 @@
   election_type: general
   election_date: "2026-11-03"
   offices: ["Governor", "U.S. House (all districts)", "Statewide offices & Legislature"]
+  registration_deadline: "2026-10-24"
   early_voting_start: "2026-10-20"
   early_voting_end: "2026-11-03"
   confidence: official
   source_url: "https://elections.hawaii.gov/"
   source_retrieved_at: "2026-07-21T18:00:00Z"
-  notes: "Same-day voter registration available; early-voting dates are voter service center in-person voting through Election Day (excluding Sundays)."
+  notes: "Same-day voter registration available; early-voting dates are voter service center in-person voting through Election Day (excluding Sundays). Registration closes 10 days before the election (Oct 24; per NCSL table updated 2026-05-20, cross-checked 2026-09-28); same-day registration is available at early-voting sites and on Election Day."
 
 - state: IA
   jurisdiction_type: state
@@ -243,12 +250,13 @@
   election_type: general
   election_date: "2026-11-03"
   offices: ["U.S. Senate", "Governor", "U.S. House (all districts)", "Statewide offices & Legislature"]
+  registration_deadline: "2026-10-19"
   early_voting_start: "2026-10-14"
   early_voting_end: "2026-11-02"
   confidence: official
   source_url: "https://sos.iowa.gov/general-election"
   source_retrieved_at: "2026-07-21T18:00:00Z"
-  notes: "Same-day voter registration available (pre-registration deadline is 5:00 p.m. Monday, October 19, 2026); early voting shown is in-person absentee at the county auditor's office."
+  notes: "Same-day voter registration available (pre-registration deadline is 5:00 p.m. Monday, October 19, 2026); early voting shown is in-person absentee at the county auditor's office. Mail registrations must be postmarked 15 days before the election (Oct 19; per NCSL table updated 2026-05-20, cross-checked 2026-09-28); same-day registration is available during in-person absentee voting and on Election Day."
 
 - state: ID
   jurisdiction_type: state
@@ -256,10 +264,11 @@
   election_type: general
   election_date: "2026-11-03"
   offices: ["U.S. Senate", "Governor", "U.S. House (all districts)", "Statewide offices & Legislature"]
+  registration_deadline: "2026-10-23"
   confidence: official
   source_url: "https://voteidaho.gov/election-information/"
   source_retrieved_at: "2026-07-21T18:00:00Z"
-  notes: "Same-day voter registration available at the polls on Election Day; early in-person voting offered only in counties that choose to conduct it."
+  notes: "Same-day voter registration available at the polls on Election Day; early in-person voting offered only in counties that choose to conduct it. Registration closes 11 days before the election (Oct 23; per NCSL table updated 2026-05-20, cross-checked 2026-09-28); Election Day registration is available."
 
 - state: IL
   jurisdiction_type: state
@@ -267,12 +276,13 @@
   election_type: general
   election_date: "2026-11-03"
   offices: ["U.S. Senate", "Governor", "U.S. House (all districts)", "Statewide offices & Legislature"]
+  registration_deadline: "2026-10-06"
   early_voting_start: "2026-09-24"
   early_voting_end: "2026-11-02"
   confidence: official
   source_url: "https://elections.il.gov/"
   source_retrieved_at: "2026-07-21T18:00:00Z"
-  notes: "Open U.S. Senate seat (Sen. Dick Durbin not seeking re-election) plus Governor, all 17 U.S. House districts, statewide constitutional officers, and the General Assembly; early voting begins Sept 24 at election-authority main sites, with additional permanent sites opening later (e.g., Oct 19 in some jurisdictions)."
+  notes: "Open U.S. Senate seat (Sen. Dick Durbin not seeking re-election) plus Governor, all 17 U.S. House districts, statewide constitutional officers, and the General Assembly; early voting begins Sept 24 at election-authority main sites, with additional permanent sites opening later (e.g., Oct 19 in some jurisdictions). Mail registration closes 28 days before the election (Oct 6; per NCSL table updated 2026-05-20, cross-checked 2026-09-28); online registration remains open through Oct 18, with grace-period and same-day registration through Election Day."
 
 - state: IN
   jurisdiction_type: state
@@ -374,6 +384,7 @@
   election_type: general
   election_date: "2026-11-03"
   offices: ["U.S. Senate", "Governor", "U.S. House (all districts)", "Statewide offices & Legislature"]
+  registration_deadline: "2026-10-24"
   early_voting_start: "2026-10-17"
   early_voting_end: "2026-10-30"
   confidence: official
@@ -386,12 +397,13 @@
   election_type: general
   election_date: "2026-11-03"
   offices: ["Governor", "U.S. House (all districts)", "Statewide offices & Legislature"]
+  registration_deadline: "2026-10-13"
   early_voting_start: "2026-10-22"
   early_voting_end: "2026-10-29"
   confidence: official
   source_url: "https://elections.maryland.gov/elections/2026/index.html"
   source_retrieved_at: "2026-07-21T18:00:00Z"
-  notes: "Same-day voter registration available."
+  notes: "Same-day voter registration available. Registration closes 21 days before the election (Oct 13; per NCSL table updated 2026-05-20, cross-checked 2026-09-28); same-day registration is available during early voting and on Election Day."
 
 - state: ME
   jurisdiction_type: state
@@ -399,10 +411,11 @@
   election_type: general
   election_date: "2026-11-03"
   offices: ["U.S. Senate", "Governor", "U.S. House (all districts)", "Statewide offices & Legislature"]
+  registration_deadline: "2026-10-13"
   confidence: official
   source_url: "https://www.maine.gov/sos/elections-voting/upcoming-elections"
   source_retrieved_at: "2026-07-21T18:00:00Z"
-  notes: "Same-day voter registration available; Maine's statewide primary was held June 9, 2026."
+  notes: "Same-day voter registration available; Maine's statewide primary was held June 9, 2026. Registration closes 21 days before the election (Oct 13; per NCSL table updated 2026-05-20, cross-checked 2026-09-28); same-day registration is available on Election Day."
 
 - state: MI
   jurisdiction_type: state
@@ -451,11 +464,12 @@
   election_type: general
   election_date: "2026-11-03"
   offices: ["U.S. Senate", "Governor", "U.S. House (all districts)", "Statewide offices & Legislature"]
+  registration_deadline: "2026-10-13"
   early_voting_start: "2026-09-18"
   confidence: official
   source_url: "https://sos.mn.gov/about-the-office/news-room/secretary-simon-highlights-2026-election-dates/"
   source_retrieved_at: "2026-07-21T18:00:00Z"
-  notes: "Same-day voter registration available."
+  notes: "Same-day voter registration available. Registration closes 21 days before the election (Oct 13; per NCSL table updated 2026-05-20, cross-checked 2026-09-28); same-day registration is available at early-voting locations and polling places (Minnesota Secretary of State, checked 2026-09-28)."
 
 - state: MO
   jurisdiction_type: state
@@ -486,10 +500,11 @@
   election_type: general
   election_date: "2026-11-03"
   offices: ["U.S. Senate", "U.S. House (all districts)"]
+  registration_deadline: "2026-10-04"
   confidence: official
   source_url: "https://www.sos.ms.gov/content/documents/elections/2026%20Elections%20Calendar.pdf"
   source_retrieved_at: "2026-07-21T18:00:00Z"
-  notes: "Ballot also includes nonpartisan judicial races (Supreme Court, Court of Appeals, trial courts); no governor or legislature in 2026 (odd-year offices); Mississippi has no standard early in-person voting (in-person absentee only). The statewide primary and runoff were held in June 2026."
+  notes: "Ballot also includes nonpartisan judicial races (Supreme Court, Court of Appeals, trial courts); no governor or legislature in 2026 (odd-year offices); Mississippi has no standard early in-person voting (in-person absentee only). The statewide primary and runoff were held in June 2026. Registration closes 30 days before the election (Oct 4; per NCSL table updated 2026-05-20, cross-checked 2026-09-28); no same-day registration."
 
 - state: MS
   jurisdiction_type: state
@@ -508,10 +523,11 @@
   election_type: general
   election_date: "2026-11-03"
   offices: ["U.S. Senate", "U.S. House (all districts)", "Statewide offices & Legislature"]
+  registration_deadline: "2026-10-04"
   confidence: official
   source_url: "https://sosmt.gov/elections/calendars/"
   source_retrieved_at: "2026-07-21T18:00:00Z"
-  notes: "No Governor race in 2026 (Montana elects its governor in presidential years); late voter registration available until noon on Election Day."
+  notes: "No Governor race in 2026 (Montana elects its governor in presidential years); late voter registration available until noon on Election Day. Registration closes 30 days before the election (Oct 4; per NCSL table updated 2026-05-20, cross-checked 2026-09-28); late registration runs at county election offices until noon the day before the election."
 
 - state: NC
   jurisdiction_type: state
@@ -536,7 +552,7 @@
   confidence: official
   source_url: "https://www.sos.nd.gov/elections/voter/elections-currentpast"
   source_retrieved_at: "2026-07-21T18:00:00Z"
-  notes: "North Dakota has no voter registration requirement; no U.S. Senate or Governor race in 2026."
+  notes: "North Dakota has no voter registration requirement; no U.S. Senate or Governor race in 2026. North Dakota does not require voter registration (per NCSL, cross-checked 2026-09-28)."
 
 - state: NE
   jurisdiction_type: state
@@ -544,10 +560,11 @@
   election_type: general
   election_date: "2026-11-03"
   offices: ["U.S. Senate", "Governor", "U.S. House (all districts)", "Statewide offices & Legislature"]
+  registration_deadline: "2026-10-16"
   confidence: official
   source_url: "https://sos.nebraska.gov/sites/default/files/doc/elections/2026/2026_Election_Calendar.pdf"
   source_retrieved_at: "2026-07-21T18:00:00Z"
-  notes: "Class II U.S. Senate seat and Governor both on the 2026 ballot; Secretary of State, Attorney General, Treasurer and Auditor also up."
+  notes: "Class II U.S. Senate seat and Governor both on the 2026 ballot; Secretary of State, Attorney General, Treasurer and Auditor also up. Online/by-mail registration closes 18 days before the election (Oct 16; per NCSL table updated 2026-05-20, cross-checked 2026-09-28); in-person registration runs through Oct 23, and Election Day registration is available."
 
 - state: NH
   jurisdiction_type: state
@@ -569,7 +586,7 @@
   confidence: official
   source_url: "https://www.sos.nh.gov/2026-election-details"
   source_retrieved_at: "2026-07-21T18:00:00Z"
-  notes: "Same-day voter registration available."
+  notes: "Same-day voter registration available. Registration deadlines vary by municipality 6-13 days before the election (per NCSL table updated 2026-05-20, cross-checked 2026-09-28); same-day registration is available on Election Day."
 
 - state: NJ
   jurisdiction_type: state
@@ -591,10 +608,11 @@
   election_type: general
   election_date: "2026-11-03"
   offices: ["U.S. Senate", "Governor", "U.S. House (all districts)", "Statewide offices & Legislature"]
+  registration_deadline: "2026-10-06"
   confidence: official
   source_url: "https://www.sos.nm.gov/candidate-and-campaigns/how-to-become-a-candidate/2026-elections-candidate-information/"
   source_retrieved_at: "2026-07-21T18:00:00Z"
-  notes: "Same-day voter registration available during early voting and on Election Day."
+  notes: "Same-day voter registration available during early voting and on Election Day. Registration closes 28 days before the election (Oct 6; per NCSL table updated 2026-05-20, cross-checked 2026-09-28); same-day registration is available during early voting and on Election Day."
 
 - state: NV
   jurisdiction_type: state
@@ -602,12 +620,13 @@
   election_type: general
   election_date: "2026-11-03"
   offices: ["Governor", "U.S. House (all districts)", "Statewide offices & Legislature"]
+  registration_deadline: "2026-10-06"
   early_voting_start: "2026-10-17"
   early_voting_end: "2026-10-30"
   confidence: official
   source_url: "https://www.nvsos.gov/elections/election-information/2026-election-information"
   source_retrieved_at: "2026-07-21T18:00:00Z"
-  notes: "Active registered voters receive mail ballots; same-day voter registration available; no U.S. Senate seat on Nevada's 2026 ballot."
+  notes: "Active registered voters receive mail ballots; same-day voter registration available; no U.S. Senate seat on Nevada's 2026 ballot. In-person registration closes 28 days before the election (Oct 6; per NCSL table updated 2026-05-20, cross-checked 2026-09-28); online registration remains open through Oct 29, and same-day registration is available during early voting and on Election Day."
 
 - state: NY
   jurisdiction_type: state
@@ -717,12 +736,13 @@
   election_type: general
   election_date: "2026-11-03"
   offices: ["U.S. Senate", "Governor", "U.S. House (all districts)", "Statewide offices & Legislature"]
+  registration_deadline: "2026-10-04"
   early_voting_start: "2026-10-19"
   early_voting_end: "2026-10-31"
   confidence: official
   source_url: "https://scvotes.gov/wp-content/uploads/2026/04/2026-Election-Calendar-Draft-scVOTES_.pdf"
   source_retrieved_at: "2026-07-21T18:00:00Z"
-  notes: "Early voting runs daily 8:30 a.m.-6 p.m., closed Sunday during the period; statewide primaries were held June 9, 2026 (runoffs two weeks later); open governor's race (McMaster term-limited) and the Class 2 U.S. Senate seat are on the ballot."
+  notes: "Early voting runs daily 8:30 a.m.-6 p.m., closed Sunday during the period; statewide primaries were held June 9, 2026 (runoffs two weeks later); open governor's race (McMaster term-limited) and the Class 2 U.S. Senate seat are on the ballot. Registration closes 30 days before the election (Oct 4; per NCSL table updated 2026-05-20, cross-checked 2026-09-28); no same-day registration."
 
 - state: SD
   jurisdiction_type: state
@@ -795,10 +815,11 @@
   election_type: general
   election_date: "2026-11-03"
   offices: ["U.S. House (all districts)", "Statewide offices & Legislature"]
+  registration_deadline: "2026-10-23"
   confidence: official
   source_url: "https://vote.utah.gov/current-election-information/"
   source_retrieved_at: "2026-07-21T18:00:00Z"
-  notes: "All-mail voting state; ballots mailed to registered voters; same-day voter registration available (in person with two forms of ID); no Governor or U.S. Senate race in Utah in 2026."
+  notes: "All-mail voting state; ballots mailed to registered voters; same-day voter registration available (in person with two forms of ID); no Governor or U.S. Senate race in Utah in 2026. Registration closes 11 days before the election (Oct 23; per NCSL table updated 2026-05-20, cross-checked 2026-09-28); same-day registration is available during early voting and on Election Day."
 
 - state: VA
   jurisdiction_type: state
@@ -817,10 +838,11 @@
   election_type: general
   election_date: "2026-11-03"
   offices: ["U.S. Senate", "U.S. House (all districts)"]
+  registration_deadline: "2026-10-23"
   confidence: official
   source_url: "https://www.elections.virginia.gov/casting-a-ballot/calendars-schedules/upcoming-elections.html"
   source_retrieved_at: "2026-07-21T18:00:00Z"
-  notes: "No governor or General Assembly races in 2026 (odd-year offices); a district-level House of Delegates District 20 special election also appears on the Nov 3 ballot; same-day registration with a provisional ballot is available through Election Day."
+  notes: "No governor or General Assembly races in 2026 (odd-year offices); a district-level House of Delegates District 20 special election also appears on the Nov 3 ballot; same-day registration with a provisional ballot is available through Election Day. Registration closes 11 days before the election (Oct 23; per elections.virginia.gov, checked 2026-09-28); voters may also register through Election Day and vote a provisional ballot."
 
 - state: VT
   jurisdiction_type: state
@@ -839,10 +861,11 @@
   election_type: general
   election_date: "2026-11-03"
   offices: ["Governor", "U.S. House (all districts)", "Statewide offices & Legislature"]
+  registration_deadline: "2026-11-03"
   confidence: official
   source_url: "https://sos.vermont.gov/elections/election-info-resources/candidates"
   source_retrieved_at: "2026-07-21T18:00:00Z"
-  notes: "Same-day voter registration available."
+  notes: "Same-day voter registration available. Same-day voter registration is available through Election Day (per NCSL, cross-checked 2026-09-28)."
 
 - state: WA
   jurisdiction_type: state
@@ -885,10 +908,11 @@
   election_type: general
   election_date: "2026-11-03"
   offices: ["Governor", "U.S. House (all districts)", "Statewide offices & Legislature"]
+  registration_deadline: "2026-10-14"
   confidence: official
   source_url: "https://elections.wi.gov/2026"
   source_retrieved_at: "2026-07-21T18:00:00Z"
-  notes: "Same-day voter registration available."
+  notes: "Same-day voter registration available. Online/by-mail registration closes 20 days before the election (Oct 14; per NCSL table updated 2026-05-20, cross-checked 2026-09-28); in-person registration runs through Oct 30, and same-day registration is available on Election Day."
 
 - state: WV
   jurisdiction_type: state
@@ -921,7 +945,8 @@
   election_type: general
   election_date: "2026-11-03"
   offices: ["U.S. Senate", "Governor", "U.S. House (all districts)", "Statewide offices & Legislature"]
+  registration_deadline: "2026-10-20"
   confidence: official
   source_url: "https://sos.wyo.gov/Elections/Docs/2026/2026_Key_Election_Dates.pdf"
   source_retrieved_at: "2026-07-21T18:00:00Z"
-  notes: "Same-day voter registration available (register and vote at the polls); advance registration closes October 19, 2026."
+  notes: "Same-day voter registration available (register and vote at the polls); advance registration closes October 19, 2026. Registration closes 14 days before the election (Oct 20; per NCSL table updated 2026-05-20, cross-checked 2026-09-28); same-day registration is available on Election Day."
