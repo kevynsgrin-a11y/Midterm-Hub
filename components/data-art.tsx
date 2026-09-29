@@ -1,9 +1,10 @@
 "use client";
 
 import Link from "next/link";
-import { useEffect, useState, type CSSProperties } from "react";
+import { useEffect, useState } from "react";
 import { elections, formatDate, stateHref, stateNames } from "@/lib/data";
 import { localCalendarDate } from "@/lib/calendar";
+import { DEADLINE_BANDS, NULL_DEADLINE_HATCH, nullDeadlineLabel, tileFill } from "@/lib/deadline-cartogram.mjs";
 import { cn } from "@/lib/utils";
 
 /* Data art, not photojournalism: this site deliberately carries no photographic
@@ -65,7 +66,7 @@ export function CountdownMasthead({ date, eyebrow, caption, initialDate, classNa
 /* 51 tiles in approximate geographic position, filled on a single neutral hue
  * by days until the state's general-election registration deadline. Never a
  * red/blue scale — color must never read as a party cue. Null deadline states
- * are hatched ("date pending" or the state's stated reason). */
+ * are hatched and labeled with the state's reason where known. */
 const CARTO_GRID = ["WA MT ND MN WI MI VT NH ME", "OR ID SD IA IL IN OH PA NY MA", "CA NV WY NE MO KY WV VA MD NJ CT RI", "AZ UT CO KS AR TN NC SC DE DC", "NM TX OK LA MS AL GA FL", "AK HI"].map((row) => row.split(" "));
 
 type Tile = { days: number | null; label: string; noRegistration?: boolean };
@@ -77,9 +78,9 @@ function registrationTiles(today: string): Map<string, Tile> {
   for (const e of generals) {
     if (e.election_date !== latestGeneral) continue;
     if (e.state === "ND") {
-      tiles.set(e.state, { days: null, label: "North Dakota does not require voter registration", noRegistration: true });
+      tiles.set(e.state, { days: null, label: nullDeadlineLabel(e.state), noRegistration: true });
     } else if (!e.registration_deadline) {
-      tiles.set(e.state, { days: null, label: "Registration deadline pending in this edition" });
+      tiles.set(e.state, { days: null, label: nullDeadlineLabel(e.state) });
     } else {
       const days = civilDaysUntil(today, e.registration_deadline);
       tiles.set(e.state, {
@@ -91,14 +92,6 @@ function registrationTiles(today: string): Map<string, Tile> {
     }
   }
   return tiles;
-}
-
-const HATCH = "repeating-linear-gradient(45deg, var(--muted) 0 2px, transparent 2px 6px)";
-
-function tileFill(days: number | null): { style: CSSProperties; lightText: boolean } {
-  if (days === null) return { style: { backgroundImage: HATCH }, lightText: false };
-  const pct = days <= 7 ? 92 : days <= 14 ? 76 : days <= 21 ? 58 : days <= 30 ? 40 : 24;
-  return { style: { backgroundColor: `color-mix(in srgb, var(--muted-foreground) ${pct}%, transparent)` }, lightText: pct >= 58 };
 }
 
 export function RegistrationCartogram({ initialDate }: { initialDate: string }) {
@@ -121,8 +114,7 @@ export function RegistrationCartogram({ initialDate }: { initialDate: string }) 
                     aria-label={`${stateNames[code] ?? code}: ${tile?.label ?? "no record in this edition"}`}
                     className={cn(
                       "flex size-10 items-center justify-center border font-mono text-[11px] font-bold focus:outline-none focus:ring-2 focus:ring-ring",
-                      tile?.noRegistration ? "border-primary bg-primary text-primary-foreground" : fill.lightText ? "border-transparent text-background" : "border-border text-foreground",
-                      tile && tile.days !== null && tile.days < 0 && "text-muted-foreground"
+                      tile?.noRegistration ? "border-primary bg-primary text-primary-foreground" : "border-border text-foreground",
                     )}
                     style={tile?.noRegistration ? undefined : fill.style}
                   >
@@ -136,11 +128,14 @@ export function RegistrationCartogram({ initialDate }: { initialDate: string }) 
       </div>
       <div className="mt-4 flex flex-wrap gap-x-5 gap-y-2 text-xs text-muted-foreground">
         <span className="rule-label" style={{ color: "inherit" }}>Days to register:</span>
-        <span><i className="mr-2 inline-block size-3 border" style={{ backgroundColor: "color-mix(in srgb, var(--muted-foreground) 92%, transparent)" }} />≤ 7</span>
-        <span><i className="mr-2 inline-block size-3 border" style={{ backgroundColor: "color-mix(in srgb, var(--muted-foreground) 58%, transparent)" }} />8–21</span>
-        <span><i className="mr-2 inline-block size-3 border" style={{ backgroundColor: "color-mix(in srgb, var(--muted-foreground) 24%, transparent)" }} />30+</span>
-        <span><i className="mr-2 inline-block size-3 border" style={{ backgroundImage: HATCH }} />Pending</span>
-        <span><i className="mr-2 inline-block size-3 border bg-primary" />No registration (ND)</span>
+        {DEADLINE_BANDS.map((band) => (
+          <span key={band.id}>
+            <i className="mr-2 inline-block size-3 border" style={{ backgroundColor: `var(${band.fillToken})` }} />
+            {band.label}
+          </span>
+        ))}
+        <span><i className="mr-2 inline-block size-3 border" style={{ backgroundImage: NULL_DEADLINE_HATCH }} />No statewide date on file; NH registration timing varies by municipality (6–13 days before Election Day)</span>
+        <span><i className="mr-2 inline-block size-3 border bg-primary" />No registration required (ND)</span>
       </div>
       <p className="mt-3 max-w-3xl text-xs leading-relaxed text-muted-foreground">
         Each tile shows days until that state&rsquo;s registration deadline for the general election, from this edition&rsquo;s reviewed records. States differ: many offer same-day registration even after the mailed/online cutoff — open a state desk for the sourced dates and rules.
