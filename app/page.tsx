@@ -1,13 +1,15 @@
 import Link from "next/link";
 import { ArrowRight, Database, Scale, ShieldCheck } from "lucide-react";
 import { CycleRibbon, StateCartogram } from "@/components/data-visuals";
+import { CountdownMasthead, DeadlineBoard } from "@/components/data-art";
 import { UpcomingElections } from "@/components/upcoming-elections";
-import { LeadPhoto, PhotoEssay } from "@/components/editorial-media";
 import { StateSelector } from "@/components/state-selector";
 import { Button } from "@/components/ui/button";
 import { data, elections, states } from "@/lib/data";
 
 export default function Home() {
+  const today = new Date().toISOString().slice(0, 10);
+  const generalDate = elections.filter((e) => e.election_type === "general").map((e) => e.election_date).sort().pop() ?? "2026-11-03";
   const stats = [[elections.length, "verified records"], [states.length, "states + DC"], [new Set(elections.map((e) => e.source_url)).size, "official sources"], ["Nov 3", "general election"]];
   return <>
     <section className="border-b">
@@ -18,7 +20,13 @@ export default function Home() {
           <p className="max-w-2xl text-pretty text-lg leading-relaxed text-muted-foreground">Midterm Watch tracks official election dates and voter deadlines back to their source—so the civic calendar stays straight, legible, and accountable.</p>
           <div className="max-w-lg"><StateSelector /></div>
         </div>
-        <LeadPhoto />
+        <CountdownMasthead
+          date={generalDate}
+          initialDate={today}
+          eyebrow="Election day · general"
+          caption="Counted in civil calendar days from this edition. Every date this board shows traces to an official source on the record below."
+          className="min-h-[24rem] border-0 md:min-h-[36rem]"
+        />
       </div>
     </section>
 
@@ -33,7 +41,7 @@ export default function Home() {
       <CycleRibbon />
     </section>
 
-    <PhotoEssay />
+    <DeadlineBoard initialDate={today} />
 
     <section className="mx-auto max-w-7xl px-5 py-20 lg:px-8">
       <div className="grid gap-10 lg:grid-cols-[.8fr_1.2fr]"><div><p className="rule-label">The national desk</p><h2 className="mt-2 text-balance font-serif text-4xl font-bold">Start with a state. Follow every date to its source.</h2><p className="mt-4 text-muted-foreground">The cartogram is a navigation tool, not a geographic map. Each tile opens the state desk and its reviewed election records.</p><Button asChild className="mt-6"><Link href="/states/">Browse all states <ArrowRight data-icon="inline-end" /></Link></Button></div><StateCartogram /></div>
