@@ -6,7 +6,7 @@ import { importFromRepo } from './resolve-repo.mjs';
 const payload = JSON.parse(readFileSync(new URL('../../generated/elections.json', import.meta.url)));
 const elections = payload.elections;
 
-const { elections: dataElections, stateNames, states, stateCount, primaryCoverage, forState, findElection, electionHref, formatDate, titleCase } =
+const { elections: dataElections, stateNames, states, stateCount, primaryCoverage, forState, findElection, electionHref, formatDate, titleCase, lateRegistrationLabel } =
   await importFromRepo('../../lib/data.ts');
 
 test('the published election index is the edition payload verbatim', () => {
@@ -102,5 +102,23 @@ test('every election type in the payload title-cases into a presentable label', 
     const label = titleCase(election.election_type);
     assert.ok(label.length > 0, `${election.id} has no readable election type`);
     assert.ok(!label.includes('_'), `${election.id} label still contains an underscore`);
+  }
+});
+
+test('late registration reads as a plain label and anything unknown shows nothing', () => {
+  assert.equal(lateRegistrationLabel('none'), 'Closed after the deadline');
+  assert.equal(lateRegistrationLabel('early_voting'), 'Open during early voting');
+  assert.equal(lateRegistrationLabel('election_day'), 'Open through Election Day');
+  assert.equal(lateRegistrationLabel('not_required'), 'No registration required');
+  for (const value of [undefined, null, '', 'unclear', 'toString', 'constructor']) {
+    assert.equal(lateRegistrationLabel(value), null, `${String(value)} must not produce a label`);
+  }
+});
+
+test('every published late-registration value is one the site can label', () => {
+  for (const election of elections) {
+    if (election.late_registration == null) continue;
+    assert.ok(lateRegistrationLabel(election.late_registration), `${election.id} has an unlabelled value ${election.late_registration}`);
+    assert.equal(election.election_type, 'general', `${election.id}: late registration is only classified for general elections`);
   }
 });

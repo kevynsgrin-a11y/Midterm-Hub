@@ -6,7 +6,7 @@ BEGIN:VEVENT
 SUMMARY:Alaska: general election
 DTSTART;VALUE=DATE:20261103
 DTEND;VALUE=DATE:20261104
-DTSTAMP:20261009T065249Z
+DTSTAMP:20261009T065706Z
 UID:30dcca9c60cc51ae@midtermwatch.com
 DESCRIPTION:Offices: U.S. Senate\; Governor\; U.S. House (all districts)\;
   Statewide offices & Legislature\nSource: https://www.elections.alaska.gov
@@ -17,19 +17,19 @@ BEGIN:VEVENT
 SUMMARY:Alaska: voter registration deadline
 DTSTART;VALUE=DATE:20261004
 DTEND;VALUE=DATE:20261005
-DTSTAMP:20261009T065249Z
+DTSTAMP:20261009T065706Z
 UID:30dcca9c60cc51ae@midtermwatch.com#registration
 DESCRIPTION:Register by this date to vote in the 2026-11-03 general electi
  on. Mail\, online and in-person deadlines can differ\; see the election pa
- ge.\nSource: https://www.elections.alaska.gov/calendar/\nDeadlines can cha
- nge. Confirm with your state or local election office before you rely on a
-  date.
+ ge. Late registration: Closed after the deadline.\nSource: https://www.ele
+ ctions.alaska.gov/calendar/\nDeadlines can change. Confirm with your state
+  or local election office before you rely on a date.
 END:VEVENT
 BEGIN:VEVENT
 SUMMARY:Alaska: early voting
 DTSTART;VALUE=DATE:20261019
 DTEND;VALUE=DATE:20261020
-DTSTAMP:20261009T065249Z
+DTSTAMP:20261009T065706Z
 UID:30dcca9c60cc51ae@midtermwatch.com#early-voting
 DESCRIPTION:Early voting for the 2026-11-03 general election.\nSource: htt
  ps://www.elections.alaska.gov/calendar/\nDeadlines can change. Confirm wit
@@ -39,7 +39,7 @@ BEGIN:VEVENT
 SUMMARY:Alaska: mail ballot request deadline
 DTSTART;VALUE=DATE:20261024
 DTEND;VALUE=DATE:20261025
-DTSTAMP:20261009T065249Z
+DTSTAMP:20261009T065706Z
 UID:30dcca9c60cc51ae@midtermwatch.com#mail-ballot-request
 DESCRIPTION:Last day to request a mail ballot for the 2026-11-03 general e
  lection.\nSource: https://www.elections.alaska.gov/calendar/\nDeadlines ca
@@ -50,7 +50,7 @@ BEGIN:VEVENT
 SUMMARY:Alabama: general election
 DTSTART;VALUE=DATE:20261103
 DTEND;VALUE=DATE:20261104
-DTSTAMP:20261009T065249Z
+DTSTAMP:20261009T065706Z
 UID:8003990fb29e52ee@midtermwatch.com
 DESCRIPTION:Offices: U.S. Senate\; Governor\; U.S. House (all districts)\;
   Statewide offices & Legislature\nSource: https://www.sos.alabama.gov/alab
@@ -61,19 +61,20 @@ BEGIN:VEVENT
 SUMMARY:Alabama: voter registration deadline
 DTSTART;VALUE=DATE:20261019
 DTEND;VALUE=DATE:20261020
-DTSTAMP:20261009T065249Z
+DTSTAMP:20261009T065706Z
 UID:8003990fb29e52ee@midtermwatch.com#registration
 DESCRIPTION:Register by this date to vote in the 2026-11-03 general electi
  on. Mail\, online and in-person deadlines can differ\; see the election pa
- ge.\nSource: https://www.sos.alabama.gov/alabama-votes/voter/election-info
- rmation/2026\nDeadlines can change. Confirm with your state or local elect
- ion office before you rely on a date.
+ ge. Late registration: Closed after the deadline.\nSource: https://www.sos
+ .alabama.gov/alabama-votes/voter/election-information/2026\nDeadlines can 
+ change. Confirm with your state or local election office before you rely o
+ n a date.
 END:VEVENT
 BEGIN:VEVENT
 SUMMARY:Alabama: mail ballot request deadline
 DTSTART;VALUE=DATE:20261027
 DTEND;VALUE=DATE:20261028
-DTSTAMP:20261009T065249Z
+DTSTAMP:20261009T065706Z
 UID:8003990fb29e52ee@midtermwatch.com#mail-ballot-request
 DESCRIPTION:Last day to request a mail ballot for the 2026-11-03 general e
  lection.\nSource: https://www.sos.alabama.gov/alabama-votes/voter/election
@@ -84,7 +85,7 @@ BEGIN:VEVENT
 SUMMARY:Arkansas: general election
 DTSTART;VALUE=DATE:20261103
 DTEND;VALUE=DATE:20261104
-DTSTAMP:20261009T065249Z
+DTSTAMP:20261009T065706Z
 UID:44c594be06a5521e@midtermwatch.com
 DESCRIPTION:Offices: U.S. Senate\; Governor\; U.S. House (all districts)\;
   Statewide offices & Legislature\nSource: https://www.sos.arkansas.gov/upl
@@ -96,19 +97,20 @@ BEGIN:VEVENT
 SUMMARY:Arkansas: voter registration deadline
 DTSTART;VALUE=DATE:20261005
 DTEND;VALUE=DATE:20261006
-DTSTAMP:20261009T065249Z
+DTSTAMP:20261009T065706Z
 UID:44c594be06a5521e@midtermwatch.com#registration
 DESCRIPTION:Register by this date to vote in the 2026-11-03 general electi
  on. Mail\, online and in-person deadlines can differ\; see the election pa
- ge.\nSource: https://www.sos.arkansas.gov/uploads/elections/2026_Election_
- Calendar_Rev._6-2025_.pdf\nDeadlines can change. Confirm with your state o
- r local election office before you rely on a date.
+ ge. Late registration: Closed after the deadline.\nSource: https://www.sos
+ .arkansas.gov/uploads/elections/2026_Election_Calendar_Rev._6-2025_.pdf\nD
+ eadlines can change. Confirm with your state or local election office befo
+ re you rely on a date.
 END:VEVENT
 BEGIN:VEVENT
 SUMMARY:Arkansas: early voting
 DTSTART;VALUE=DATE:20261019
 DTEND;VALUE=DATE:20261103
-DTSTAMP:20261009T065249Z
+DTSTAMP:20261009T065706Z
 UID:44c594be06a5521e@midtermwatch.com#early-voting
 DESCRIPTION:Early voting for the 2026-11-03 general election.\nSource: htt
  ps://www.sos.arkansas.gov/uploads/elections/2026_Election_Calendar_Rev._6-
@@ -119,7 +121,7 @@ BEGIN:VEVENT
 SUMMARY:Arkansas: mail ballot request deadline
 DTSTART;VALUE=DATE:20261027
 DTEND;VALUE=DATE:20261028
-DTSTAMP:20261009T065249Z
+DTSTAMP:20261009T065706Z
 UID:44c594be06a5521e@midtermwatch.com#mail-ballot-request
 DESCRIPTION:Last day to request a mail ballot for the 2026-11-03 general e
  lection.\nSource: https://www.sos.arkansas.gov/uploads/elections/2026_Elec
@@ -130,7 +132,7 @@ BEGIN:VEVENT
 SUMMARY:Arizona: general election
 DTSTART;VALUE=DATE:20261103
 DTEND;VALUE=DATE:20261104
-DTSTAMP:20261009T065249Z
+DTSTAMP:20261009T065706Z
 UID:5dca68fbbea3221a@midtermwatch.com
 DESCRIPTION:Offices: Governor\; U.S. House (all districts)\; Statewide off
  ices & Legislature\nSource: https://azsos.gov/elections/election-informati
@@ -141,19 +143,20 @@ BEGIN:VEVENT
 SUMMARY:Arizona: voter registration deadline
 DTSTART;VALUE=DATE:20261005
 DTEND;VALUE=DATE:20261006
-DTSTAMP:20261009T065249Z
+DTSTAMP:20261009T065706Z
 UID:5dca68fbbea3221a@midtermwatch.com#registration
 DESCRIPTION:Register by this date to vote in the 2026-11-03 general electi
  on. Mail\, online and in-person deadlines can differ\; see the election pa
- ge.\nSource: https://azsos.gov/elections/election-information/2026-electio
- n-info\nDeadlines can change. Confirm with your state or local election of
- fice before you rely on a date.
+ ge. Late registration: Closed after the deadline.\nSource: https://azsos.g
+ ov/elections/election-information/2026-election-info\nDeadlines can change
+ . Confirm with your state or local election office before you rely on a da
+ te.
 END:VEVENT
 BEGIN:VEVENT
 SUMMARY:Arizona: early voting
 DTSTART;VALUE=DATE:20261007
 DTEND;VALUE=DATE:20261031
-DTSTAMP:20261009T065249Z
+DTSTAMP:20261009T065706Z
 UID:5dca68fbbea3221a@midtermwatch.com#early-voting
 DESCRIPTION:Early voting for the 2026-11-03 general election.\nSource: htt
  ps://azsos.gov/elections/election-information/2026-election-info\nDeadline
@@ -164,7 +167,7 @@ BEGIN:VEVENT
 SUMMARY:Arizona: mail ballot request deadline
 DTSTART;VALUE=DATE:20261023
 DTEND;VALUE=DATE:20261024
-DTSTAMP:20261009T065249Z
+DTSTAMP:20261009T065706Z
 UID:5dca68fbbea3221a@midtermwatch.com#mail-ballot-request
 DESCRIPTION:Last day to request a mail ballot for the 2026-11-03 general e
  lection.\nSource: https://azsos.gov/elections/election-information/2026-el
@@ -175,7 +178,7 @@ BEGIN:VEVENT
 SUMMARY:California: general election
 DTSTART;VALUE=DATE:20261103
 DTEND;VALUE=DATE:20261104
-DTSTAMP:20261009T065249Z
+DTSTAMP:20261009T065706Z
 UID:ac2c1a098cca9ba4@midtermwatch.com
 DESCRIPTION:Offices: Governor\; U.S. House (all districts)\; Statewide off
  ices & Legislature\nSource: https://www.sos.ca.gov/elections/upcoming-elec
@@ -187,19 +190,20 @@ BEGIN:VEVENT
 SUMMARY:California: voter registration deadline
 DTSTART;VALUE=DATE:20261019
 DTEND;VALUE=DATE:20261020
-DTSTAMP:20261009T065249Z
+DTSTAMP:20261009T065706Z
 UID:ac2c1a098cca9ba4@midtermwatch.com#registration
 DESCRIPTION:Register by this date to vote in the 2026-11-03 general electi
  on. Mail\, online and in-person deadlines can differ\; see the election pa
- ge.\nSource: https://www.sos.ca.gov/elections/upcoming-elections/general-e
- lection-november-3-2026/key-dates-deadlines\nDeadlines can change. Confirm
-  with your state or local election office before you rely on a date.
+ ge. Late registration: Open through Election Day.\nSource: https://www.sos
+ .ca.gov/elections/upcoming-elections/general-election-november-3-2026/key-
+ dates-deadlines\nDeadlines can change. Confirm with your state or local el
+ ection office before you rely on a date.
 END:VEVENT
 BEGIN:VEVENT
 SUMMARY:Colorado: general election
 DTSTART;VALUE=DATE:20261103
 DTEND;VALUE=DATE:20261104
-DTSTAMP:20261009T065249Z
+DTSTAMP:20261009T065706Z
 UID:af0088b451e4e9b7@midtermwatch.com
 DESCRIPTION:Offices: U.S. Senate\; Governor\; U.S. House (all districts)\;
   Statewide offices & Legislature\nSource: https://www.sos.state.co.us/pubs
@@ -210,19 +214,20 @@ BEGIN:VEVENT
 SUMMARY:Colorado: voter registration deadline
 DTSTART;VALUE=DATE:20261026
 DTEND;VALUE=DATE:20261027
-DTSTAMP:20261009T065249Z
+DTSTAMP:20261009T065706Z
 UID:af0088b451e4e9b7@midtermwatch.com#registration
 DESCRIPTION:Register by this date to vote in the 2026-11-03 general electi
  on. Mail\, online and in-person deadlines can differ\; see the election pa
- ge.\nSource: https://www.sos.state.co.us/pubs/elections/calendars/2026Elec
- tionCalendar.pdf\nDeadlines can change. Confirm with your state or local e
- lection office before you rely on a date.
+ ge. Late registration: Open through Election Day.\nSource: https://www.sos
+ .state.co.us/pubs/elections/calendars/2026ElectionCalendar.pdf\nDeadlines 
+ can change. Confirm with your state or local election office before you re
+ ly on a date.
 END:VEVENT
 BEGIN:VEVENT
 SUMMARY:Colorado: early voting
 DTSTART;VALUE=DATE:20261019
 DTEND;VALUE=DATE:20261104
-DTSTAMP:20261009T065249Z
+DTSTAMP:20261009T065706Z
 UID:af0088b451e4e9b7@midtermwatch.com#early-voting
 DESCRIPTION:Early voting for the 2026-11-03 general election.\nSource: htt
  ps://www.sos.state.co.us/pubs/elections/calendars/2026ElectionCalendar.pdf
@@ -233,7 +238,7 @@ BEGIN:VEVENT
 SUMMARY:Connecticut: general election
 DTSTART;VALUE=DATE:20261103
 DTEND;VALUE=DATE:20261104
-DTSTAMP:20261009T065249Z
+DTSTAMP:20261009T065706Z
 UID:e8d01ef932e108bf@midtermwatch.com
 DESCRIPTION:Offices: Governor\; U.S. House (all districts)\; Statewide off
  ices & Legislature\nSource: https://portal.ct.gov/-/media/sots/electionser
@@ -246,21 +251,21 @@ BEGIN:VEVENT
 SUMMARY:Connecticut: voter registration deadline
 DTSTART;VALUE=DATE:20261016
 DTEND;VALUE=DATE:20261017
-DTSTAMP:20261009T065249Z
+DTSTAMP:20261009T065706Z
 UID:e8d01ef932e108bf@midtermwatch.com#registration
 DESCRIPTION:Register by this date to vote in the 2026-11-03 general electi
  on. Mail\, online and in-person deadlines can differ\; see the election pa
- ge.\nSource: https://portal.ct.gov/-/media/sots/electionservices/calendars
- /2026-elections/2026-election-calendar-122325.pdf?rev=340f2bcacc9748c1a2ed
- 8f49d1774f52&hash=471ECCC3D26999C2D53BB5636927C0EB\nDeadlines can change. 
- Confirm with your state or local election office before you rely on a date
- .
+ ge. Late registration: Open through Election Day.\nSource: https://portal.
+ ct.gov/-/media/sots/electionservices/calendars/2026-elections/2026-electio
+ n-calendar-122325.pdf?rev=340f2bcacc9748c1a2ed8f49d1774f52&hash=471ECCC3D2
+ 6999C2D53BB5636927C0EB\nDeadlines can change. Confirm with your state or l
+ ocal election office before you rely on a date.
 END:VEVENT
 BEGIN:VEVENT
 SUMMARY:Connecticut: early voting
 DTSTART;VALUE=DATE:20261019
 DTEND;VALUE=DATE:20261102
-DTSTAMP:20261009T065249Z
+DTSTAMP:20261009T065706Z
 UID:e8d01ef932e108bf@midtermwatch.com#early-voting
 DESCRIPTION:Early voting for the 2026-11-03 general election.\nSource: htt
  ps://portal.ct.gov/-/media/sots/electionservices/calendars/2026-elections/
@@ -272,7 +277,7 @@ BEGIN:VEVENT
 SUMMARY:Connecticut: mail ballot request deadline
 DTSTART;VALUE=DATE:20261102
 DTEND;VALUE=DATE:20261103
-DTSTAMP:20261009T065249Z
+DTSTAMP:20261009T065706Z
 UID:e8d01ef932e108bf@midtermwatch.com#mail-ballot-request
 DESCRIPTION:Last day to request a mail ballot for the 2026-11-03 general e
  lection.\nSource: https://portal.ct.gov/-/media/sots/electionservices/cale
@@ -285,7 +290,7 @@ BEGIN:VEVENT
 SUMMARY:District of Columbia: general election
 DTSTART;VALUE=DATE:20261103
 DTEND;VALUE=DATE:20261104
-DTSTAMP:20261009T065249Z
+DTSTAMP:20261009T065706Z
 UID:0421deebb9bc32b0@midtermwatch.com
 DESCRIPTION:Offices: Mayor\; DC Council\; Delegate to U.S. House\; Attorne
  y General\nSource: https://dcboe.org/elections/2026-elections\nDeadlines c
@@ -296,19 +301,19 @@ BEGIN:VEVENT
 SUMMARY:District of Columbia: voter registration deadline
 DTSTART;VALUE=DATE:20261013
 DTEND;VALUE=DATE:20261014
-DTSTAMP:20261009T065249Z
+DTSTAMP:20261009T065706Z
 UID:0421deebb9bc32b0@midtermwatch.com#registration
 DESCRIPTION:Register by this date to vote in the 2026-11-03 general electi
  on. Mail\, online and in-person deadlines can differ\; see the election pa
- ge.\nSource: https://dcboe.org/elections/2026-elections\nDeadlines can cha
- nge. Confirm with your state or local election office before you rely on a
-  date.
+ ge. Late registration: Open through Election Day.\nSource: https://dcboe.o
+ rg/elections/2026-elections\nDeadlines can change. Confirm with your state
+  or local election office before you rely on a date.
 END:VEVENT
 BEGIN:VEVENT
 SUMMARY:District of Columbia: early voting
 DTSTART;VALUE=DATE:20261026
 DTEND;VALUE=DATE:20261102
-DTSTAMP:20261009T065249Z
+DTSTAMP:20261009T065706Z
 UID:0421deebb9bc32b0@midtermwatch.com#early-voting
 DESCRIPTION:Early voting for the 2026-11-03 general election.\nSource: htt
  ps://dcboe.org/elections/2026-elections\nDeadlines can change. Confirm wit
@@ -318,7 +323,7 @@ BEGIN:VEVENT
 SUMMARY:Delaware: general election
 DTSTART;VALUE=DATE:20261103
 DTEND;VALUE=DATE:20261104
-DTSTAMP:20261009T065249Z
+DTSTAMP:20261009T065706Z
 UID:a7e39751c0dcc473@midtermwatch.com
 DESCRIPTION:Offices: U.S. Senate\; U.S. House (all districts)\; Statewide 
  offices & Legislature\nSource: https://elections.delaware.gov/elections/ge
@@ -329,19 +334,19 @@ BEGIN:VEVENT
 SUMMARY:Delaware: voter registration deadline
 DTSTART;VALUE=DATE:20261010
 DTEND;VALUE=DATE:20261011
-DTSTAMP:20261009T065249Z
+DTSTAMP:20261009T065706Z
 UID:a7e39751c0dcc473@midtermwatch.com#registration
 DESCRIPTION:Register by this date to vote in the 2026-11-03 general electi
  on. Mail\, online and in-person deadlines can differ\; see the election pa
- ge.\nSource: https://elections.delaware.gov/elections/general/general.html
- \nDeadlines can change. Confirm with your state or local election office b
- efore you rely on a date.
+ ge. Late registration: Closed after the deadline.\nSource: https://electio
+ ns.delaware.gov/elections/general/general.html\nDeadlines can change. Conf
+ irm with your state or local election office before you rely on a date.
 END:VEVENT
 BEGIN:VEVENT
 SUMMARY:Delaware: early voting
 DTSTART;VALUE=DATE:20261022
 DTEND;VALUE=DATE:20261102
-DTSTAMP:20261009T065249Z
+DTSTAMP:20261009T065706Z
 UID:a7e39751c0dcc473@midtermwatch.com#early-voting
 DESCRIPTION:Early voting for the 2026-11-03 general election.\nSource: htt
  ps://elections.delaware.gov/elections/general/general.html\nDeadlines can 
@@ -352,7 +357,7 @@ BEGIN:VEVENT
 SUMMARY:Delaware: mail ballot request deadline
 DTSTART;VALUE=DATE:20261030
 DTEND;VALUE=DATE:20261031
-DTSTAMP:20261009T065249Z
+DTSTAMP:20261009T065706Z
 UID:a7e39751c0dcc473@midtermwatch.com#mail-ballot-request
 DESCRIPTION:Last day to request a mail ballot for the 2026-11-03 general e
  lection.\nSource: https://elections.delaware.gov/elections/general/general
@@ -363,7 +368,7 @@ BEGIN:VEVENT
 SUMMARY:Florida: general election
 DTSTART;VALUE=DATE:20261103
 DTEND;VALUE=DATE:20261104
-DTSTAMP:20261009T065249Z
+DTSTAMP:20261009T065706Z
 UID:2f3103a2c1704428@midtermwatch.com
 DESCRIPTION:Offices: U.S. Senate (special)\; Governor\; U.S. House (all di
  stricts)\; Statewide offices & Legislature\nSource: https://dos.fl.gov/ele
@@ -374,19 +379,19 @@ BEGIN:VEVENT
 SUMMARY:Florida: voter registration deadline
 DTSTART;VALUE=DATE:20261005
 DTEND;VALUE=DATE:20261006
-DTSTAMP:20261009T065249Z
+DTSTAMP:20261009T065706Z
 UID:2f3103a2c1704428@midtermwatch.com#registration
 DESCRIPTION:Register by this date to vote in the 2026-11-03 general electi
  on. Mail\, online and in-person deadlines can differ\; see the election pa
- ge.\nSource: https://dos.fl.gov/elections/for-voters/election-dates/\nDead
- lines can change. Confirm with your state or local election office before 
- you rely on a date.
+ ge. Late registration: Closed after the deadline.\nSource: https://dos.fl.
+ gov/elections/for-voters/election-dates/\nDeadlines can change. Confirm wi
+ th your state or local election office before you rely on a date.
 END:VEVENT
 BEGIN:VEVENT
 SUMMARY:Florida: early voting
 DTSTART;VALUE=DATE:20261024
 DTEND;VALUE=DATE:20261101
-DTSTAMP:20261009T065249Z
+DTSTAMP:20261009T065706Z
 UID:2f3103a2c1704428@midtermwatch.com#early-voting
 DESCRIPTION:Early voting for the 2026-11-03 general election.\nSource: htt
  ps://dos.fl.gov/elections/for-voters/election-dates/\nDeadlines can change
@@ -397,7 +402,7 @@ BEGIN:VEVENT
 SUMMARY:Florida: mail ballot request deadline
 DTSTART;VALUE=DATE:20261022
 DTEND;VALUE=DATE:20261023
-DTSTAMP:20261009T065249Z
+DTSTAMP:20261009T065706Z
 UID:2f3103a2c1704428@midtermwatch.com#mail-ballot-request
 DESCRIPTION:Last day to request a mail ballot for the 2026-11-03 general e
  lection.\nSource: https://dos.fl.gov/elections/for-voters/election-dates/\
@@ -408,7 +413,7 @@ BEGIN:VEVENT
 SUMMARY:Georgia: general election
 DTSTART;VALUE=DATE:20261103
 DTEND;VALUE=DATE:20261104
-DTSTAMP:20261009T065249Z
+DTSTAMP:20261009T065706Z
 UID:ae9f36da2d07e1e9@midtermwatch.com
 DESCRIPTION:Offices: U.S. Senate\; Governor\; U.S. House (all districts)\;
   Statewide offices & Legislature\nSource: https://sos.ga.gov/sites/default
@@ -420,19 +425,20 @@ BEGIN:VEVENT
 SUMMARY:Georgia: voter registration deadline
 DTSTART;VALUE=DATE:20261005
 DTEND;VALUE=DATE:20261006
-DTSTAMP:20261009T065249Z
+DTSTAMP:20261009T065706Z
 UID:ae9f36da2d07e1e9@midtermwatch.com#registration
 DESCRIPTION:Register by this date to vote in the 2026-11-03 general electi
  on. Mail\, online and in-person deadlines can differ\; see the election pa
- ge.\nSource: https://sos.ga.gov/sites/default/files/forms/2026%20Election%
- 20Calendar%20Summary.pdf\nDeadlines can change. Confirm with your state or
-  local election office before you rely on a date.
+ ge. Late registration: Closed after the deadline.\nSource: https://sos.ga.
+ gov/sites/default/files/forms/2026%20Election%20Calendar%20Summary.pdf\nDe
+ adlines can change. Confirm with your state or local election office befor
+ e you rely on a date.
 END:VEVENT
 BEGIN:VEVENT
 SUMMARY:Georgia: early voting
 DTSTART;VALUE=DATE:20261013
 DTEND;VALUE=DATE:20261031
-DTSTAMP:20261009T065249Z
+DTSTAMP:20261009T065706Z
 UID:ae9f36da2d07e1e9@midtermwatch.com#early-voting
 DESCRIPTION:Early voting for the 2026-11-03 general election.\nSource: htt
  ps://sos.ga.gov/sites/default/files/forms/2026%20Election%20Calendar%20Sum
@@ -443,7 +449,7 @@ BEGIN:VEVENT
 SUMMARY:Georgia: mail ballot request deadline
 DTSTART;VALUE=DATE:20261023
 DTEND;VALUE=DATE:20261024
-DTSTAMP:20261009T065249Z
+DTSTAMP:20261009T065706Z
 UID:ae9f36da2d07e1e9@midtermwatch.com#mail-ballot-request
 DESCRIPTION:Last day to request a mail ballot for the 2026-11-03 general e
  lection.\nSource: https://sos.ga.gov/sites/default/files/forms/2026%20Elec
@@ -454,7 +460,7 @@ BEGIN:VEVENT
 SUMMARY:Hawaii: general election
 DTSTART;VALUE=DATE:20261103
 DTEND;VALUE=DATE:20261104
-DTSTAMP:20261009T065249Z
+DTSTAMP:20261009T065706Z
 UID:1740fc79debed87a@midtermwatch.com
 DESCRIPTION:Offices: Governor\; U.S. House (all districts)\; Statewide off
  ices & Legislature\nSource: https://elections.hawaii.gov/\nDeadlines can c
@@ -465,18 +471,19 @@ BEGIN:VEVENT
 SUMMARY:Hawaii: voter registration deadline
 DTSTART;VALUE=DATE:20261026
 DTEND;VALUE=DATE:20261027
-DTSTAMP:20261009T065249Z
+DTSTAMP:20261009T065706Z
 UID:1740fc79debed87a@midtermwatch.com#registration
 DESCRIPTION:Register by this date to vote in the 2026-11-03 general electi
  on. Mail\, online and in-person deadlines can differ\; see the election pa
- ge.\nSource: https://elections.hawaii.gov/\nDeadlines can change. Confirm 
- with your state or local election office before you rely on a date.
+ ge. Late registration: Open through Election Day.\nSource: https://electio
+ ns.hawaii.gov/\nDeadlines can change. Confirm with your state or local ele
+ ction office before you rely on a date.
 END:VEVENT
 BEGIN:VEVENT
 SUMMARY:Hawaii: early voting
 DTSTART;VALUE=DATE:20261020
 DTEND;VALUE=DATE:20261104
-DTSTAMP:20261009T065249Z
+DTSTAMP:20261009T065706Z
 UID:1740fc79debed87a@midtermwatch.com#early-voting
 DESCRIPTION:Early voting for the 2026-11-03 general election.\nSource: htt
  ps://elections.hawaii.gov/\nDeadlines can change. Confirm with your state 
@@ -486,7 +493,7 @@ BEGIN:VEVENT
 SUMMARY:Iowa: general election
 DTSTART;VALUE=DATE:20261103
 DTEND;VALUE=DATE:20261104
-DTSTAMP:20261009T065249Z
+DTSTAMP:20261009T065706Z
 UID:a68173209426fdea@midtermwatch.com
 DESCRIPTION:Offices: U.S. Senate\; Governor\; U.S. House (all districts)\;
   Statewide offices & Legislature\nSource: https://sos.iowa.gov/three-year-
@@ -497,19 +504,19 @@ BEGIN:VEVENT
 SUMMARY:Iowa: voter registration deadline
 DTSTART;VALUE=DATE:20261019
 DTEND;VALUE=DATE:20261020
-DTSTAMP:20261009T065249Z
+DTSTAMP:20261009T065706Z
 UID:a68173209426fdea@midtermwatch.com#registration
 DESCRIPTION:Register by this date at 17:00 to vote in the 2026-11-03 gener
  al election. Mail\, online and in-person deadlines can differ\; see the el
- ection page.\nSource: https://sos.iowa.gov/three-year-election-calendar\nD
- eadlines can change. Confirm with your state or local election office befo
- re you rely on a date.
+ ection page. Late registration: Open through Election Day.\nSource: https:
+ //sos.iowa.gov/three-year-election-calendar\nDeadlines can change. Confirm
+  with your state or local election office before you rely on a date.
 END:VEVENT
 BEGIN:VEVENT
 SUMMARY:Iowa: early voting
 DTSTART;VALUE=DATE:20261014
 DTEND;VALUE=DATE:20261103
-DTSTAMP:20261009T065249Z
+DTSTAMP:20261009T065706Z
 UID:a68173209426fdea@midtermwatch.com#early-voting
 DESCRIPTION:Early voting for the 2026-11-03 general election.\nSource: htt
  ps://sos.iowa.gov/three-year-election-calendar\nDeadlines can change. Conf
@@ -519,7 +526,7 @@ BEGIN:VEVENT
 SUMMARY:Iowa: mail ballot request deadline
 DTSTART;VALUE=DATE:20261019
 DTEND;VALUE=DATE:20261020
-DTSTAMP:20261009T065249Z
+DTSTAMP:20261009T065706Z
 UID:a68173209426fdea@midtermwatch.com#mail-ballot-request
 DESCRIPTION:Last day to request a mail ballot for the 2026-11-03 general e
  lection.\nSource: https://sos.iowa.gov/three-year-election-calendar\nDeadl
@@ -530,7 +537,7 @@ BEGIN:VEVENT
 SUMMARY:Idaho: general election
 DTSTART;VALUE=DATE:20261103
 DTEND;VALUE=DATE:20261104
-DTSTAMP:20261009T065249Z
+DTSTAMP:20261009T065706Z
 UID:770fd3b87e2ec427@midtermwatch.com
 DESCRIPTION:Offices: U.S. Senate\; Governor\; U.S. House (all districts)\;
   Statewide offices & Legislature\nSource: https://voteidaho.gov/election-i
@@ -541,19 +548,19 @@ BEGIN:VEVENT
 SUMMARY:Idaho: voter registration deadline
 DTSTART;VALUE=DATE:20261023
 DTEND;VALUE=DATE:20261024
-DTSTAMP:20261009T065249Z
+DTSTAMP:20261009T065706Z
 UID:770fd3b87e2ec427@midtermwatch.com#registration
 DESCRIPTION:Register by this date to vote in the 2026-11-03 general electi
  on. Mail\, online and in-person deadlines can differ\; see the election pa
- ge.\nSource: https://voteidaho.gov/election-information/\nDeadlines can ch
- ange. Confirm with your state or local election office before you rely on 
- a date.
+ ge. Late registration: Open through Election Day.\nSource: https://voteida
+ ho.gov/election-information/\nDeadlines can change. Confirm with your stat
+ e or local election office before you rely on a date.
 END:VEVENT
 BEGIN:VEVENT
 SUMMARY:Idaho: mail ballot request deadline
 DTSTART;VALUE=DATE:20261023
 DTEND;VALUE=DATE:20261024
-DTSTAMP:20261009T065249Z
+DTSTAMP:20261009T065706Z
 UID:770fd3b87e2ec427@midtermwatch.com#mail-ballot-request
 DESCRIPTION:Last day to request a mail ballot for the 2026-11-03 general e
  lection.\nSource: https://voteidaho.gov/election-information/\nDeadlines c
@@ -564,7 +571,7 @@ BEGIN:VEVENT
 SUMMARY:Illinois: general election
 DTSTART;VALUE=DATE:20261103
 DTEND;VALUE=DATE:20261104
-DTSTAMP:20261009T065249Z
+DTSTAMP:20261009T065706Z
 UID:3dbd6b80d1615e6e@midtermwatch.com
 DESCRIPTION:Offices: U.S. Senate\; Governor\; U.S. House (all districts)\;
   Statewide offices & Legislature\nSource: https://elections.il.gov/\nDeadl
@@ -575,18 +582,19 @@ BEGIN:VEVENT
 SUMMARY:Illinois: voter registration deadline
 DTSTART;VALUE=DATE:20261006
 DTEND;VALUE=DATE:20261007
-DTSTAMP:20261009T065249Z
+DTSTAMP:20261009T065706Z
 UID:3dbd6b80d1615e6e@midtermwatch.com#registration
 DESCRIPTION:Register by this date to vote in the 2026-11-03 general electi
  on. Mail\, online and in-person deadlines can differ\; see the election pa
- ge.\nSource: https://elections.il.gov/\nDeadlines can change. Confirm with
-  your state or local election office before you rely on a date.
+ ge. Late registration: Open through Election Day.\nSource: https://electio
+ ns.il.gov/\nDeadlines can change. Confirm with your state or local electio
+ n office before you rely on a date.
 END:VEVENT
 BEGIN:VEVENT
 SUMMARY:Illinois: early voting
 DTSTART;VALUE=DATE:20260924
 DTEND;VALUE=DATE:20261103
-DTSTAMP:20261009T065249Z
+DTSTAMP:20261009T065706Z
 UID:3dbd6b80d1615e6e@midtermwatch.com#early-voting
 DESCRIPTION:Early voting for the 2026-11-03 general election.\nSource: htt
  ps://elections.il.gov/\nDeadlines can change. Confirm with your state or l
@@ -596,7 +604,7 @@ BEGIN:VEVENT
 SUMMARY:Illinois: mail ballot request deadline
 DTSTART;VALUE=DATE:20261029
 DTEND;VALUE=DATE:20261030
-DTSTAMP:20261009T065249Z
+DTSTAMP:20261009T065706Z
 UID:3dbd6b80d1615e6e@midtermwatch.com#mail-ballot-request
 DESCRIPTION:Last day to request a mail ballot for the 2026-11-03 general e
  lection.\nSource: https://elections.il.gov/\nDeadlines can change. Confirm
@@ -606,7 +614,7 @@ BEGIN:VEVENT
 SUMMARY:Indiana: general election
 DTSTART;VALUE=DATE:20261103
 DTEND;VALUE=DATE:20261104
-DTSTAMP:20261009T065249Z
+DTSTAMP:20261009T065706Z
 UID:0c5500b812343bb1@midtermwatch.com
 DESCRIPTION:Offices: U.S. House (all districts)\; Statewide offices & Legi
  slature\nSource: https://www.in.gov/sos/elections/files/2026-Calendar-Broc
@@ -617,19 +625,20 @@ BEGIN:VEVENT
 SUMMARY:Indiana: voter registration deadline
 DTSTART;VALUE=DATE:20261005
 DTEND;VALUE=DATE:20261006
-DTSTAMP:20261009T065249Z
+DTSTAMP:20261009T065706Z
 UID:0c5500b812343bb1@midtermwatch.com#registration
 DESCRIPTION:Register by this date to vote in the 2026-11-03 general electi
  on. Mail\, online and in-person deadlines can differ\; see the election pa
- ge.\nSource: https://www.in.gov/sos/elections/files/2026-Calendar-Brochure
- .FINAL-VERSION.pdf\nDeadlines can change. Confirm with your state or local
-  election office before you rely on a date.
+ ge. Late registration: Closed after the deadline.\nSource: https://www.in.
+ gov/sos/elections/files/2026-Calendar-Brochure.FINAL-VERSION.pdf\nDeadline
+ s can change. Confirm with your state or local election office before you 
+ rely on a date.
 END:VEVENT
 BEGIN:VEVENT
 SUMMARY:Indiana: early voting
 DTSTART;VALUE=DATE:20261006
 DTEND;VALUE=DATE:20261103
-DTSTAMP:20261009T065249Z
+DTSTAMP:20261009T065706Z
 UID:0c5500b812343bb1@midtermwatch.com#early-voting
 DESCRIPTION:Early voting for the 2026-11-03 general election.\nSource: htt
  ps://www.in.gov/sos/elections/files/2026-Calendar-Brochure.FINAL-VERSION.p
@@ -640,7 +649,7 @@ BEGIN:VEVENT
 SUMMARY:Indiana: mail ballot request deadline
 DTSTART;VALUE=DATE:20261022
 DTEND;VALUE=DATE:20261023
-DTSTAMP:20261009T065249Z
+DTSTAMP:20261009T065706Z
 UID:0c5500b812343bb1@midtermwatch.com#mail-ballot-request
 DESCRIPTION:Last day to request a mail ballot for the 2026-11-03 general e
  lection.\nSource: https://www.in.gov/sos/elections/files/2026-Calendar-Bro
@@ -651,7 +660,7 @@ BEGIN:VEVENT
 SUMMARY:Kansas: general election
 DTSTART;VALUE=DATE:20261103
 DTEND;VALUE=DATE:20261104
-DTSTAMP:20261009T065249Z
+DTSTAMP:20261009T065706Z
 UID:99358c2f425c36d9@midtermwatch.com
 DESCRIPTION:Offices: U.S. Senate\; Governor\; U.S. House (all districts)\;
   Statewide offices & Legislature\nSource: https://sos.ks.gov/Pubs/Election
@@ -662,19 +671,20 @@ BEGIN:VEVENT
 SUMMARY:Kansas: voter registration deadline
 DTSTART;VALUE=DATE:20261013
 DTEND;VALUE=DATE:20261014
-DTSTAMP:20261009T065249Z
+DTSTAMP:20261009T065706Z
 UID:99358c2f425c36d9@midtermwatch.com#registration
 DESCRIPTION:Register by this date to vote in the 2026-11-03 general electi
  on. Mail\, online and in-person deadlines can differ\; see the election pa
- ge.\nSource: https://sos.ks.gov/Pubs/Elections/2026-General-Election-Dates
- .pdf\nDeadlines can change. Confirm with your state or local election offi
- ce before you rely on a date.
+ ge. Late registration: Closed after the deadline.\nSource: https://sos.ks.
+ gov/Pubs/Elections/2026-General-Election-Dates.pdf\nDeadlines can change. 
+ Confirm with your state or local election office before you rely on a date
+ .
 END:VEVENT
 BEGIN:VEVENT
 SUMMARY:Kansas: early voting
 DTSTART;VALUE=DATE:20261014
 DTEND;VALUE=DATE:20261103
-DTSTAMP:20261009T065249Z
+DTSTAMP:20261009T065706Z
 UID:99358c2f425c36d9@midtermwatch.com#early-voting
 DESCRIPTION:Early voting for the 2026-11-03 general election.\nSource: htt
  ps://sos.ks.gov/Pubs/Elections/2026-General-Election-Dates.pdf\nDeadlines 
@@ -685,7 +695,7 @@ BEGIN:VEVENT
 SUMMARY:Kansas: mail ballot request deadline
 DTSTART;VALUE=DATE:20261027
 DTEND;VALUE=DATE:20261028
-DTSTAMP:20261009T065249Z
+DTSTAMP:20261009T065706Z
 UID:99358c2f425c36d9@midtermwatch.com#mail-ballot-request
 DESCRIPTION:Last day to request a mail ballot for the 2026-11-03 general e
  lection.\nSource: https://sos.ks.gov/Pubs/Elections/2026-General-Election-
@@ -696,7 +706,7 @@ BEGIN:VEVENT
 SUMMARY:Kentucky: general election
 DTSTART;VALUE=DATE:20261103
 DTEND;VALUE=DATE:20261104
-DTSTAMP:20261009T065249Z
+DTSTAMP:20261009T065706Z
 UID:2465346bcb2ec77a@midtermwatch.com
 DESCRIPTION:Offices: U.S. Senate\; U.S. House (all districts)\; State Legi
  slature\nSource: https://elect.ky.gov/Resources/Documents/2026%20Election%
@@ -707,19 +717,20 @@ BEGIN:VEVENT
 SUMMARY:Kentucky: voter registration deadline
 DTSTART;VALUE=DATE:20261005
 DTEND;VALUE=DATE:20261006
-DTSTAMP:20261009T065249Z
+DTSTAMP:20261009T065706Z
 UID:2465346bcb2ec77a@midtermwatch.com#registration
 DESCRIPTION:Register by this date to vote in the 2026-11-03 general electi
  on. Mail\, online and in-person deadlines can differ\; see the election pa
- ge.\nSource: https://elect.ky.gov/Resources/Documents/2026%20Election%20Ca
- lendar.pdf\nDeadlines can change. Confirm with your state or local electio
- n office before you rely on a date.
+ ge. Late registration: Closed after the deadline.\nSource: https://elect.k
+ y.gov/Resources/Documents/2026%20Election%20Calendar.pdf\nDeadlines can ch
+ ange. Confirm with your state or local election office before you rely on 
+ a date.
 END:VEVENT
 BEGIN:VEVENT
 SUMMARY:Kentucky: early voting
 DTSTART;VALUE=DATE:20261029
 DTEND;VALUE=DATE:20261101
-DTSTAMP:20261009T065249Z
+DTSTAMP:20261009T065706Z
 UID:2465346bcb2ec77a@midtermwatch.com#early-voting
 DESCRIPTION:Early voting for the 2026-11-03 general election.\nSource: htt
  ps://elect.ky.gov/Resources/Documents/2026%20Election%20Calendar.pdf\nDead
@@ -730,7 +741,7 @@ BEGIN:VEVENT
 SUMMARY:Kentucky: mail ballot request deadline
 DTSTART;VALUE=DATE:20261020
 DTEND;VALUE=DATE:20261021
-DTSTAMP:20261009T065249Z
+DTSTAMP:20261009T065706Z
 UID:2465346bcb2ec77a@midtermwatch.com#mail-ballot-request
 DESCRIPTION:Last day to request a mail ballot for the 2026-11-03 general e
  lection.\nSource: https://elect.ky.gov/Resources/Documents/2026%20Election
@@ -741,7 +752,7 @@ BEGIN:VEVENT
 SUMMARY:Louisiana: general election
 DTSTART;VALUE=DATE:20261103
 DTEND;VALUE=DATE:20261104
-DTSTAMP:20261009T065249Z
+DTSTAMP:20261009T065706Z
 UID:b3d94b336ca36a8a@midtermwatch.com
 DESCRIPTION:Offices: U.S. Senate\; U.S. House (all districts)\nSource: htt
  ps://www.sos.la.gov/elections-voting/election-dates\nDeadlines can change.
@@ -752,19 +763,19 @@ BEGIN:VEVENT
 SUMMARY:Louisiana: voter registration deadline
 DTSTART;VALUE=DATE:20261005
 DTEND;VALUE=DATE:20261006
-DTSTAMP:20261009T065249Z
+DTSTAMP:20261009T065706Z
 UID:b3d94b336ca36a8a@midtermwatch.com#registration
 DESCRIPTION:Register by this date to vote in the 2026-11-03 general electi
  on. Mail\, online and in-person deadlines can differ\; see the election pa
- ge.\nSource: https://www.sos.la.gov/elections-voting/election-dates\nDeadl
- ines can change. Confirm with your state or local election office before y
- ou rely on a date.
+ ge. Late registration: Closed after the deadline.\nSource: https://www.sos
+ .la.gov/elections-voting/election-dates\nDeadlines can change. Confirm wit
+ h your state or local election office before you rely on a date.
 END:VEVENT
 BEGIN:VEVENT
 SUMMARY:Louisiana: early voting
 DTSTART;VALUE=DATE:20261020
 DTEND;VALUE=DATE:20261028
-DTSTAMP:20261009T065249Z
+DTSTAMP:20261009T065706Z
 UID:b3d94b336ca36a8a@midtermwatch.com#early-voting
 DESCRIPTION:Early voting for the 2026-11-03 general election.\nSource: htt
  ps://www.sos.la.gov/elections-voting/election-dates\nDeadlines can change.
@@ -775,7 +786,7 @@ BEGIN:VEVENT
 SUMMARY:Louisiana: mail ballot request deadline
 DTSTART;VALUE=DATE:20261030
 DTEND;VALUE=DATE:20261031
-DTSTAMP:20261009T065249Z
+DTSTAMP:20261009T065706Z
 UID:b3d94b336ca36a8a@midtermwatch.com#mail-ballot-request
 DESCRIPTION:Last day to request a mail ballot for the 2026-11-03 general e
  lection.\nSource: https://www.sos.la.gov/elections-voting/election-dates\n
@@ -786,7 +797,7 @@ BEGIN:VEVENT
 SUMMARY:Massachusetts: general election
 DTSTART;VALUE=DATE:20261103
 DTEND;VALUE=DATE:20261104
-DTSTAMP:20261009T065249Z
+DTSTAMP:20261009T065706Z
 UID:481927c1382ce933@midtermwatch.com
 DESCRIPTION:Offices: U.S. Senate\; Governor\; U.S. House (all districts)\;
   Statewide offices & Legislature\nSource: https://www.sec.state.ma.us/divi
@@ -798,19 +809,20 @@ BEGIN:VEVENT
 SUMMARY:Massachusetts: voter registration deadline
 DTSTART;VALUE=DATE:20261024
 DTEND;VALUE=DATE:20261025
-DTSTAMP:20261009T065249Z
+DTSTAMP:20261009T065706Z
 UID:481927c1382ce933@midtermwatch.com#registration
 DESCRIPTION:Register by this date to vote in the 2026-11-03 general electi
  on. Mail\, online and in-person deadlines can differ\; see the election pa
- ge.\nSource: https://www.sec.state.ma.us/divisions/elections/recent-update
- s/upcoming-elections.htm\nDeadlines can change. Confirm with your state or
-  local election office before you rely on a date.
+ ge. Late registration: Closed after the deadline.\nSource: https://www.sec
+ .state.ma.us/divisions/elections/recent-updates/upcoming-elections.htm\nDe
+ adlines can change. Confirm with your state or local election office befor
+ e you rely on a date.
 END:VEVENT
 BEGIN:VEVENT
 SUMMARY:Massachusetts: early voting
 DTSTART;VALUE=DATE:20261017
 DTEND;VALUE=DATE:20261031
-DTSTAMP:20261009T065249Z
+DTSTAMP:20261009T065706Z
 UID:481927c1382ce933@midtermwatch.com#early-voting
 DESCRIPTION:Early voting for the 2026-11-03 general election.\nSource: htt
  ps://www.sec.state.ma.us/divisions/elections/recent-updates/upcoming-elect
@@ -821,7 +833,7 @@ BEGIN:VEVENT
 SUMMARY:Massachusetts: mail ballot request deadline
 DTSTART;VALUE=DATE:20261027
 DTEND;VALUE=DATE:20261028
-DTSTAMP:20261009T065249Z
+DTSTAMP:20261009T065706Z
 UID:481927c1382ce933@midtermwatch.com#mail-ballot-request
 DESCRIPTION:Last day to request a mail ballot for the 2026-11-03 general e
  lection.\nSource: https://www.sec.state.ma.us/divisions/elections/recent-u
@@ -832,7 +844,7 @@ BEGIN:VEVENT
 SUMMARY:Maryland: general election
 DTSTART;VALUE=DATE:20261103
 DTEND;VALUE=DATE:20261104
-DTSTAMP:20261009T065249Z
+DTSTAMP:20261009T065706Z
 UID:b90b3ee1411a4040@midtermwatch.com
 DESCRIPTION:Offices: Governor\; U.S. House (all districts)\; Statewide off
  ices & Legislature\nSource: https://elections.maryland.gov/elections/2026/
@@ -843,19 +855,19 @@ BEGIN:VEVENT
 SUMMARY:Maryland: voter registration deadline
 DTSTART;VALUE=DATE:20261013
 DTEND;VALUE=DATE:20261014
-DTSTAMP:20261009T065249Z
+DTSTAMP:20261009T065706Z
 UID:b90b3ee1411a4040@midtermwatch.com#registration
 DESCRIPTION:Register by this date to vote in the 2026-11-03 general electi
  on. Mail\, online and in-person deadlines can differ\; see the election pa
- ge.\nSource: https://elections.maryland.gov/elections/2026/index.html\nDea
- dlines can change. Confirm with your state or local election office before
-  you rely on a date.
+ ge. Late registration: Open through Election Day.\nSource: https://electio
+ ns.maryland.gov/elections/2026/index.html\nDeadlines can change. Confirm w
+ ith your state or local election office before you rely on a date.
 END:VEVENT
 BEGIN:VEVENT
 SUMMARY:Maryland: early voting
 DTSTART;VALUE=DATE:20261022
 DTEND;VALUE=DATE:20261030
-DTSTAMP:20261009T065249Z
+DTSTAMP:20261009T065706Z
 UID:b90b3ee1411a4040@midtermwatch.com#early-voting
 DESCRIPTION:Early voting for the 2026-11-03 general election.\nSource: htt
  ps://elections.maryland.gov/elections/2026/index.html\nDeadlines can chang
@@ -866,7 +878,7 @@ BEGIN:VEVENT
 SUMMARY:Maryland: mail ballot request deadline
 DTSTART;VALUE=DATE:20261027
 DTEND;VALUE=DATE:20261028
-DTSTAMP:20261009T065249Z
+DTSTAMP:20261009T065706Z
 UID:b90b3ee1411a4040@midtermwatch.com#mail-ballot-request
 DESCRIPTION:Last day to request a mail ballot for the 2026-11-03 general e
  lection.\nSource: https://elections.maryland.gov/elections/2026/index.html
@@ -877,7 +889,7 @@ BEGIN:VEVENT
 SUMMARY:Maine: general election
 DTSTART;VALUE=DATE:20261103
 DTEND;VALUE=DATE:20261104
-DTSTAMP:20261009T065249Z
+DTSTAMP:20261009T065706Z
 UID:62b20c445a45d265@midtermwatch.com
 DESCRIPTION:Offices: U.S. Senate\; Governor\; U.S. House (all districts)\;
   State Legislature\nSource: https://www.maine.gov/sos/elections-voting/upc
@@ -888,19 +900,19 @@ BEGIN:VEVENT
 SUMMARY:Maine: voter registration deadline
 DTSTART;VALUE=DATE:20261013
 DTEND;VALUE=DATE:20261014
-DTSTAMP:20261009T065249Z
+DTSTAMP:20261009T065706Z
 UID:62b20c445a45d265@midtermwatch.com#registration
 DESCRIPTION:Register by this date to vote in the 2026-11-03 general electi
  on. Mail\, online and in-person deadlines can differ\; see the election pa
- ge.\nSource: https://www.maine.gov/sos/elections-voting/upcoming-elections
- \nDeadlines can change. Confirm with your state or local election office b
- efore you rely on a date.
+ ge. Late registration: Open through Election Day.\nSource: https://www.mai
+ ne.gov/sos/elections-voting/upcoming-elections\nDeadlines can change. Conf
+ irm with your state or local election office before you rely on a date.
 END:VEVENT
 BEGIN:VEVENT
 SUMMARY:Maine: mail ballot request deadline
 DTSTART;VALUE=DATE:20261029
 DTEND;VALUE=DATE:20261030
-DTSTAMP:20261009T065249Z
+DTSTAMP:20261009T065706Z
 UID:62b20c445a45d265@midtermwatch.com#mail-ballot-request
 DESCRIPTION:Last day to request a mail ballot for the 2026-11-03 general e
  lection.\nSource: https://www.maine.gov/sos/elections-voting/upcoming-elec
@@ -911,7 +923,7 @@ BEGIN:VEVENT
 SUMMARY:Michigan: general election
 DTSTART;VALUE=DATE:20261103
 DTEND;VALUE=DATE:20261104
-DTSTAMP:20261009T065249Z
+DTSTAMP:20261009T065706Z
 UID:9deda1284c83919a@midtermwatch.com
 DESCRIPTION:Offices: U.S. Senate\; Governor\; U.S. House (all districts)\;
   Statewide offices & Legislature\nSource: https://www.michigan.gov/sos/-/m
@@ -923,19 +935,20 @@ BEGIN:VEVENT
 SUMMARY:Michigan: voter registration deadline
 DTSTART;VALUE=DATE:20261019
 DTEND;VALUE=DATE:20261020
-DTSTAMP:20261009T065249Z
+DTSTAMP:20261009T065706Z
 UID:9deda1284c83919a@midtermwatch.com#registration
 DESCRIPTION:Register by this date to vote in the 2026-11-03 general electi
  on. Mail\, online and in-person deadlines can differ\; see the election pa
- ge.\nSource: https://www.michigan.gov/sos/-/media/Project/Websites/sos/Ele
- ction-Administrators/Election-Dates.pdf\nDeadlines can change. Confirm wit
- h your state or local election office before you rely on a date.
+ ge. Late registration: Open through Election Day.\nSource: https://www.mic
+ higan.gov/sos/-/media/Project/Websites/sos/Election-Administrators/Electio
+ n-Dates.pdf\nDeadlines can change. Confirm with your state or local electi
+ on office before you rely on a date.
 END:VEVENT
 BEGIN:VEVENT
 SUMMARY:Michigan: early voting
 DTSTART;VALUE=DATE:20261024
 DTEND;VALUE=DATE:20261102
-DTSTAMP:20261009T065249Z
+DTSTAMP:20261009T065706Z
 UID:9deda1284c83919a@midtermwatch.com#early-voting
 DESCRIPTION:Early voting for the 2026-11-03 general election.\nSource: htt
  ps://www.michigan.gov/sos/-/media/Project/Websites/sos/Election-Administra
@@ -946,7 +959,7 @@ BEGIN:VEVENT
 SUMMARY:Michigan: mail ballot request deadline
 DTSTART;VALUE=DATE:20261030
 DTEND;VALUE=DATE:20261031
-DTSTAMP:20261009T065249Z
+DTSTAMP:20261009T065706Z
 UID:9deda1284c83919a@midtermwatch.com#mail-ballot-request
 DESCRIPTION:Last day to request a mail ballot for the 2026-11-03 general e
  lection.\nSource: https://www.michigan.gov/sos/-/media/Project/Websites/so
@@ -957,7 +970,7 @@ BEGIN:VEVENT
 SUMMARY:Minnesota: general election
 DTSTART;VALUE=DATE:20261103
 DTEND;VALUE=DATE:20261104
-DTSTAMP:20261009T065249Z
+DTSTAMP:20261009T065706Z
 UID:fb89569b604ee1fb@midtermwatch.com
 DESCRIPTION:Offices: U.S. Senate\; Governor\; U.S. House (all districts)\;
   Statewide offices & Legislature\nSource: https://sos.mn.gov/about-the-off
@@ -969,19 +982,20 @@ BEGIN:VEVENT
 SUMMARY:Minnesota: voter registration deadline
 DTSTART;VALUE=DATE:20261013
 DTEND;VALUE=DATE:20261014
-DTSTAMP:20261009T065249Z
+DTSTAMP:20261009T065706Z
 UID:fb89569b604ee1fb@midtermwatch.com#registration
 DESCRIPTION:Register by this date to vote in the 2026-11-03 general electi
  on. Mail\, online and in-person deadlines can differ\; see the election pa
- ge.\nSource: https://sos.mn.gov/about-the-office/news-room/secretary-simon
- -highlights-2026-election-dates/\nDeadlines can change. Confirm with your 
- state or local election office before you rely on a date.
+ ge. Late registration: Open through Election Day.\nSource: https://sos.mn.
+ gov/about-the-office/news-room/secretary-simon-highlights-2026-election-da
+ tes/\nDeadlines can change. Confirm with your state or local election offi
+ ce before you rely on a date.
 END:VEVENT
 BEGIN:VEVENT
 SUMMARY:Minnesota: early voting
 DTSTART;VALUE=DATE:20260918
 DTEND;VALUE=DATE:20261103
-DTSTAMP:20261009T065249Z
+DTSTAMP:20261009T065706Z
 UID:fb89569b604ee1fb@midtermwatch.com#early-voting
 DESCRIPTION:Early voting for the 2026-11-03 general election.\nSource: htt
  ps://sos.mn.gov/about-the-office/news-room/secretary-simon-highlights-2026
@@ -992,7 +1006,7 @@ BEGIN:VEVENT
 SUMMARY:Minnesota: mail ballot request deadline
 DTSTART;VALUE=DATE:20261102
 DTEND;VALUE=DATE:20261103
-DTSTAMP:20261009T065249Z
+DTSTAMP:20261009T065706Z
 UID:fb89569b604ee1fb@midtermwatch.com#mail-ballot-request
 DESCRIPTION:Last day to request a mail ballot for the 2026-11-03 general e
  lection.\nSource: https://sos.mn.gov/about-the-office/news-room/secretary-
@@ -1003,7 +1017,7 @@ BEGIN:VEVENT
 SUMMARY:Missouri: general election
 DTSTART;VALUE=DATE:20261103
 DTEND;VALUE=DATE:20261104
-DTSTAMP:20261009T065249Z
+DTSTAMP:20261009T065706Z
 UID:e5172fe801db3b7f@midtermwatch.com
 DESCRIPTION:Offices: U.S. House (all districts)\; Statewide offices & Legi
  slature\nSource: https://www.sos.mo.gov/elections/calendar\nDeadlines can 
@@ -1014,19 +1028,19 @@ BEGIN:VEVENT
 SUMMARY:Missouri: voter registration deadline
 DTSTART;VALUE=DATE:20261007
 DTEND;VALUE=DATE:20261008
-DTSTAMP:20261009T065249Z
+DTSTAMP:20261009T065706Z
 UID:e5172fe801db3b7f@midtermwatch.com#registration
 DESCRIPTION:Register by this date to vote in the 2026-11-03 general electi
  on. Mail\, online and in-person deadlines can differ\; see the election pa
- ge.\nSource: https://www.sos.mo.gov/elections/calendar\nDeadlines can chan
- ge. Confirm with your state or local election office before you rely on a 
- date.
+ ge. Late registration: Closed after the deadline.\nSource: https://www.sos
+ .mo.gov/elections/calendar\nDeadlines can change. Confirm with your state 
+ or local election office before you rely on a date.
 END:VEVENT
 BEGIN:VEVENT
 SUMMARY:Missouri: early voting
 DTSTART;VALUE=DATE:20261020
 DTEND;VALUE=DATE:20261103
-DTSTAMP:20261009T065249Z
+DTSTAMP:20261009T065706Z
 UID:e5172fe801db3b7f@midtermwatch.com#early-voting
 DESCRIPTION:Early voting for the 2026-11-03 general election.\nSource: htt
  ps://www.sos.mo.gov/elections/calendar\nDeadlines can change. Confirm with
@@ -1036,7 +1050,7 @@ BEGIN:VEVENT
 SUMMARY:Missouri: mail ballot request deadline
 DTSTART;VALUE=DATE:20261021
 DTEND;VALUE=DATE:20261022
-DTSTAMP:20261009T065249Z
+DTSTAMP:20261009T065706Z
 UID:e5172fe801db3b7f@midtermwatch.com#mail-ballot-request
 DESCRIPTION:Last day to request a mail ballot for the 2026-11-03 general e
  lection.\nSource: https://www.sos.mo.gov/elections/calendar\nDeadlines can
@@ -1047,7 +1061,7 @@ BEGIN:VEVENT
 SUMMARY:Mississippi: general election
 DTSTART;VALUE=DATE:20261103
 DTEND;VALUE=DATE:20261104
-DTSTAMP:20261009T065249Z
+DTSTAMP:20261009T065706Z
 UID:3797282158f8d62f@midtermwatch.com
 DESCRIPTION:Offices: U.S. Senate\; U.S. House (all districts)\nSource: htt
  ps://www.sos.ms.gov/content/documents/elections/2026%20Elections%20Calenda
@@ -1058,19 +1072,20 @@ BEGIN:VEVENT
 SUMMARY:Mississippi: voter registration deadline
 DTSTART;VALUE=DATE:20261005
 DTEND;VALUE=DATE:20261006
-DTSTAMP:20261009T065249Z
+DTSTAMP:20261009T065706Z
 UID:3797282158f8d62f@midtermwatch.com#registration
 DESCRIPTION:Register by this date to vote in the 2026-11-03 general electi
  on. Mail\, online and in-person deadlines can differ\; see the election pa
- ge.\nSource: https://www.sos.ms.gov/content/documents/elections/2026%20Ele
- ctions%20Calendar.pdf\nDeadlines can change. Confirm with your state or lo
- cal election office before you rely on a date.
+ ge. Late registration: Closed after the deadline.\nSource: https://www.sos
+ .ms.gov/content/documents/elections/2026%20Elections%20Calendar.pdf\nDeadl
+ ines can change. Confirm with your state or local election office before y
+ ou rely on a date.
 END:VEVENT
 BEGIN:VEVENT
 SUMMARY:Montana: general election
 DTSTART;VALUE=DATE:20261103
 DTEND;VALUE=DATE:20261104
-DTSTAMP:20261009T065249Z
+DTSTAMP:20261009T065706Z
 UID:b74d541b6ce4741a@midtermwatch.com
 DESCRIPTION:Offices: U.S. Senate\; U.S. House (all districts)\; State Legi
  slature\nSource: https://sosmt.gov/elections/calendars/\nDeadlines can cha
@@ -1081,19 +1096,19 @@ BEGIN:VEVENT
 SUMMARY:Montana: voter registration deadline
 DTSTART;VALUE=DATE:20261005
 DTEND;VALUE=DATE:20261006
-DTSTAMP:20261009T065249Z
+DTSTAMP:20261009T065706Z
 UID:b74d541b6ce4741a@midtermwatch.com#registration
 DESCRIPTION:Register by this date at 17:00 to vote in the 2026-11-03 gener
  al election. Mail\, online and in-person deadlines can differ\; see the el
- ection page.\nSource: https://sosmt.gov/elections/calendars/\nDeadlines ca
- n change. Confirm with your state or local election office before you rely
-  on a date.
+ ection page. Late registration: Open through Election Day.\nSource: https:
+ //sosmt.gov/elections/calendars/\nDeadlines can change. Confirm with your 
+ state or local election office before you rely on a date.
 END:VEVENT
 BEGIN:VEVENT
 SUMMARY:Montana: mail ballot request deadline
 DTSTART;VALUE=DATE:20261102
 DTEND;VALUE=DATE:20261103
-DTSTAMP:20261009T065249Z
+DTSTAMP:20261009T065706Z
 UID:b74d541b6ce4741a@midtermwatch.com#mail-ballot-request
 DESCRIPTION:Last day to request a mail ballot for the 2026-11-03 general e
  lection.\nSource: https://sosmt.gov/elections/calendars/\nDeadlines can ch
@@ -1104,7 +1119,7 @@ BEGIN:VEVENT
 SUMMARY:North Carolina: general election
 DTSTART;VALUE=DATE:20261103
 DTEND;VALUE=DATE:20261104
-DTSTAMP:20261009T065249Z
+DTSTAMP:20261009T065706Z
 UID:41981dedc4c142f3@midtermwatch.com
 DESCRIPTION:Offices: U.S. Senate\; U.S. House (all districts)\; State Legi
  slature\nSource: https://www.ncsbe.gov/voting/upcoming-election\nDeadlines
@@ -1115,19 +1130,19 @@ BEGIN:VEVENT
 SUMMARY:North Carolina: voter registration deadline
 DTSTART;VALUE=DATE:20261009
 DTEND;VALUE=DATE:20261010
-DTSTAMP:20261009T065249Z
+DTSTAMP:20261009T065706Z
 UID:41981dedc4c142f3@midtermwatch.com#registration
 DESCRIPTION:Register by this date at 17:00 to vote in the 2026-11-03 gener
  al election. Mail\, online and in-person deadlines can differ\; see the el
- ection page.\nSource: https://www.ncsbe.gov/voting/upcoming-election\nDead
- lines can change. Confirm with your state or local election office before 
- you rely on a date.
+ ection page. Late registration: Open during early voting.\nSource: https:/
+ /www.ncsbe.gov/voting/upcoming-election\nDeadlines can change. Confirm wit
+ h your state or local election office before you rely on a date.
 END:VEVENT
 BEGIN:VEVENT
 SUMMARY:North Carolina: early voting
 DTSTART;VALUE=DATE:20261015
 DTEND;VALUE=DATE:20261101
-DTSTAMP:20261009T065249Z
+DTSTAMP:20261009T065706Z
 UID:41981dedc4c142f3@midtermwatch.com#early-voting
 DESCRIPTION:Early voting for the 2026-11-03 general election.\nSource: htt
  ps://www.ncsbe.gov/voting/upcoming-election\nDeadlines can change. Confirm
@@ -1137,7 +1152,7 @@ BEGIN:VEVENT
 SUMMARY:North Carolina: mail ballot request deadline
 DTSTART;VALUE=DATE:20261020
 DTEND;VALUE=DATE:20261021
-DTSTAMP:20261009T065249Z
+DTSTAMP:20261009T065706Z
 UID:41981dedc4c142f3@midtermwatch.com#mail-ballot-request
 DESCRIPTION:Last day to request a mail ballot for the 2026-11-03 general e
  lection.\nSource: https://www.ncsbe.gov/voting/upcoming-election\nDeadline
@@ -1148,7 +1163,7 @@ BEGIN:VEVENT
 SUMMARY:North Dakota: general election
 DTSTART;VALUE=DATE:20261103
 DTEND;VALUE=DATE:20261104
-DTSTAMP:20261009T065249Z
+DTSTAMP:20261009T065706Z
 UID:97518b12fbf3749b@midtermwatch.com
 DESCRIPTION:Offices: U.S. House (all districts)\; Statewide offices & Legi
  slature\nSource: https://www.sos.nd.gov/elections/voter/elections-currentp
@@ -1159,7 +1174,7 @@ BEGIN:VEVENT
 SUMMARY:North Dakota: mail ballot request deadline
 DTSTART;VALUE=DATE:20261102
 DTEND;VALUE=DATE:20261103
-DTSTAMP:20261009T065249Z
+DTSTAMP:20261009T065706Z
 UID:97518b12fbf3749b@midtermwatch.com#mail-ballot-request
 DESCRIPTION:Last day to request a mail ballot for the 2026-11-03 general e
  lection.\nSource: https://www.sos.nd.gov/elections/voter/elections-current
@@ -1170,7 +1185,7 @@ BEGIN:VEVENT
 SUMMARY:Nebraska: general election
 DTSTART;VALUE=DATE:20261103
 DTEND;VALUE=DATE:20261104
-DTSTAMP:20261009T065249Z
+DTSTAMP:20261009T065706Z
 UID:0c143d47b8d67f55@midtermwatch.com
 DESCRIPTION:Offices: U.S. Senate\; Governor\; U.S. House (all districts)\;
   Statewide offices & Legislature\nSource: https://sos.nebraska.gov/sites/d
@@ -1182,19 +1197,20 @@ BEGIN:VEVENT
 SUMMARY:Nebraska: voter registration deadline
 DTSTART;VALUE=DATE:20261016
 DTEND;VALUE=DATE:20261017
-DTSTAMP:20261009T065249Z
+DTSTAMP:20261009T065706Z
 UID:0c143d47b8d67f55@midtermwatch.com#registration
 DESCRIPTION:Register by this date to vote in the 2026-11-03 general electi
  on. Mail\, online and in-person deadlines can differ\; see the election pa
- ge.\nSource: https://sos.nebraska.gov/sites/default/files/doc/elections/20
- 26/2026_Election_Calendar.pdf\nDeadlines can change. Confirm with your sta
- te or local election office before you rely on a date.
+ ge. Late registration: Closed after the deadline.\nSource: https://sos.neb
+ raska.gov/sites/default/files/doc/elections/2026/2026_Election_Calendar.pd
+ f\nDeadlines can change. Confirm with your state or local election office 
+ before you rely on a date.
 END:VEVENT
 BEGIN:VEVENT
 SUMMARY:Nebraska: early voting
 DTSTART;VALUE=DATE:20261005
 DTEND;VALUE=DATE:20261103
-DTSTAMP:20261009T065249Z
+DTSTAMP:20261009T065706Z
 UID:0c143d47b8d67f55@midtermwatch.com#early-voting
 DESCRIPTION:Early voting for the 2026-11-03 general election.\nSource: htt
  ps://sos.nebraska.gov/sites/default/files/doc/elections/2026/2026_Election
@@ -1205,7 +1221,7 @@ BEGIN:VEVENT
 SUMMARY:Nebraska: mail ballot request deadline
 DTSTART;VALUE=DATE:20261023
 DTEND;VALUE=DATE:20261024
-DTSTAMP:20261009T065249Z
+DTSTAMP:20261009T065706Z
 UID:0c143d47b8d67f55@midtermwatch.com#mail-ballot-request
 DESCRIPTION:Last day to request a mail ballot for the 2026-11-03 general e
  lection.\nSource: https://sos.nebraska.gov/sites/default/files/doc/electio
@@ -1216,7 +1232,7 @@ BEGIN:VEVENT
 SUMMARY:New Hampshire: general election
 DTSTART;VALUE=DATE:20261103
 DTEND;VALUE=DATE:20261104
-DTSTAMP:20261009T065249Z
+DTSTAMP:20261009T065706Z
 UID:7fe40f2715f6e61f@midtermwatch.com
 DESCRIPTION:Offices: U.S. Senate\; Governor\; U.S. House (all districts)\;
   State Legislature\nSource: https://www.sos.nh.gov/2026-election-details\n
@@ -1227,7 +1243,7 @@ BEGIN:VEVENT
 SUMMARY:New Hampshire: mail ballot request deadline
 DTSTART;VALUE=DATE:20261102
 DTEND;VALUE=DATE:20261103
-DTSTAMP:20261009T065249Z
+DTSTAMP:20261009T065706Z
 UID:7fe40f2715f6e61f@midtermwatch.com#mail-ballot-request
 DESCRIPTION:Last day to request a mail ballot for the 2026-11-03 general e
  lection.\nSource: https://www.sos.nh.gov/2026-election-details\nDeadlines 
@@ -1238,7 +1254,7 @@ BEGIN:VEVENT
 SUMMARY:New Jersey: general election
 DTSTART;VALUE=DATE:20261103
 DTEND;VALUE=DATE:20261104
-DTSTAMP:20261009T065249Z
+DTSTAMP:20261009T065706Z
 UID:25d07b77505031a8@midtermwatch.com
 DESCRIPTION:Offices: U.S. Senate\; U.S. House (all districts)\nSource: htt
  ps://www.nj.gov/state/elections/election-information-2026.shtml\nDeadlines
@@ -1249,19 +1265,20 @@ BEGIN:VEVENT
 SUMMARY:New Jersey: voter registration deadline
 DTSTART;VALUE=DATE:20261013
 DTEND;VALUE=DATE:20261014
-DTSTAMP:20261009T065249Z
+DTSTAMP:20261009T065706Z
 UID:25d07b77505031a8@midtermwatch.com#registration
 DESCRIPTION:Register by this date to vote in the 2026-11-03 general electi
  on. Mail\, online and in-person deadlines can differ\; see the election pa
- ge.\nSource: https://www.nj.gov/state/elections/election-information-2026.
- shtml\nDeadlines can change. Confirm with your state or local election off
- ice before you rely on a date.
+ ge. Late registration: Closed after the deadline.\nSource: https://www.nj.
+ gov/state/elections/election-information-2026.shtml\nDeadlines can change.
+  Confirm with your state or local election office before you rely on a dat
+ e.
 END:VEVENT
 BEGIN:VEVENT
 SUMMARY:New Jersey: early voting
 DTSTART;VALUE=DATE:20261024
 DTEND;VALUE=DATE:20261102
-DTSTAMP:20261009T065249Z
+DTSTAMP:20261009T065706Z
 UID:25d07b77505031a8@midtermwatch.com#early-voting
 DESCRIPTION:Early voting for the 2026-11-03 general election.\nSource: htt
  ps://www.nj.gov/state/elections/election-information-2026.shtml\nDeadlines
@@ -1272,7 +1289,7 @@ BEGIN:VEVENT
 SUMMARY:New Jersey: mail ballot request deadline
 DTSTART;VALUE=DATE:20261027
 DTEND;VALUE=DATE:20261028
-DTSTAMP:20261009T065249Z
+DTSTAMP:20261009T065706Z
 UID:25d07b77505031a8@midtermwatch.com#mail-ballot-request
 DESCRIPTION:Last day to request a mail ballot for the 2026-11-03 general e
  lection.\nSource: https://www.nj.gov/state/elections/election-information-
@@ -1283,7 +1300,7 @@ BEGIN:VEVENT
 SUMMARY:New Mexico: general election
 DTSTART;VALUE=DATE:20261103
 DTEND;VALUE=DATE:20261104
-DTSTAMP:20261009T065249Z
+DTSTAMP:20261009T065706Z
 UID:fc1866c67b88090c@midtermwatch.com
 DESCRIPTION:Offices: U.S. Senate\; Governor\; U.S. House (all districts)\;
   Statewide offices & Legislature\nSource: https://www.sos.nm.gov/candidate
@@ -1295,19 +1312,20 @@ BEGIN:VEVENT
 SUMMARY:New Mexico: voter registration deadline
 DTSTART;VALUE=DATE:20261006
 DTEND;VALUE=DATE:20261007
-DTSTAMP:20261009T065249Z
+DTSTAMP:20261009T065706Z
 UID:fc1866c67b88090c@midtermwatch.com#registration
 DESCRIPTION:Register by this date to vote in the 2026-11-03 general electi
  on. Mail\, online and in-person deadlines can differ\; see the election pa
- ge.\nSource: https://www.sos.nm.gov/candidate-and-campaigns/how-to-become-
- a-candidate/2026-elections-candidate-information/\nDeadlines can change. C
- onfirm with your state or local election office before you rely on a date.
+ ge. Late registration: Open through Election Day.\nSource: https://www.sos
+ .nm.gov/candidate-and-campaigns/how-to-become-a-candidate/2026-elections-c
+ andidate-information/\nDeadlines can change. Confirm with your state or lo
+ cal election office before you rely on a date.
 END:VEVENT
 BEGIN:VEVENT
 SUMMARY:New Mexico: early voting
 DTSTART;VALUE=DATE:20261006
 DTEND;VALUE=DATE:20261101
-DTSTAMP:20261009T065249Z
+DTSTAMP:20261009T065706Z
 UID:fc1866c67b88090c@midtermwatch.com#early-voting
 DESCRIPTION:Early voting for the 2026-11-03 general election.\nSource: htt
  ps://www.sos.nm.gov/candidate-and-campaigns/how-to-become-a-candidate/2026
@@ -1318,7 +1336,7 @@ BEGIN:VEVENT
 SUMMARY:New Mexico: mail ballot request deadline
 DTSTART;VALUE=DATE:20261020
 DTEND;VALUE=DATE:20261021
-DTSTAMP:20261009T065249Z
+DTSTAMP:20261009T065706Z
 UID:fc1866c67b88090c@midtermwatch.com#mail-ballot-request
 DESCRIPTION:Last day to request a mail ballot for the 2026-11-03 general e
  lection.\nSource: https://www.sos.nm.gov/candidate-and-campaigns/how-to-be
@@ -1330,7 +1348,7 @@ BEGIN:VEVENT
 SUMMARY:Nevada: general election
 DTSTART;VALUE=DATE:20261103
 DTEND;VALUE=DATE:20261104
-DTSTAMP:20261009T065249Z
+DTSTAMP:20261009T065706Z
 UID:f154e42fbce56b7f@midtermwatch.com
 DESCRIPTION:Offices: Governor\; U.S. House (all districts)\; Statewide off
  ices & Legislature\nSource: https://www.nvsos.gov/elections/election-infor
@@ -1341,19 +1359,20 @@ BEGIN:VEVENT
 SUMMARY:Nevada: voter registration deadline
 DTSTART;VALUE=DATE:20261006
 DTEND;VALUE=DATE:20261007
-DTSTAMP:20261009T065249Z
+DTSTAMP:20261009T065706Z
 UID:f154e42fbce56b7f@midtermwatch.com#registration
 DESCRIPTION:Register by this date to vote in the 2026-11-03 general electi
  on. Mail\, online and in-person deadlines can differ\; see the election pa
- ge.\nSource: https://www.nvsos.gov/elections/election-information/2026-ele
- ction-information\nDeadlines can change. Confirm with your state or local 
- election office before you rely on a date.
+ ge. Late registration: Open through Election Day.\nSource: https://www.nvs
+ os.gov/elections/election-information/2026-election-information\nDeadlines
+  can change. Confirm with your state or local election office before you r
+ ely on a date.
 END:VEVENT
 BEGIN:VEVENT
 SUMMARY:Nevada: early voting
 DTSTART;VALUE=DATE:20261017
 DTEND;VALUE=DATE:20261031
-DTSTAMP:20261009T065249Z
+DTSTAMP:20261009T065706Z
 UID:f154e42fbce56b7f@midtermwatch.com#early-voting
 DESCRIPTION:Early voting for the 2026-11-03 general election.\nSource: htt
  ps://www.nvsos.gov/elections/election-information/2026-election-informatio
@@ -1364,7 +1383,7 @@ BEGIN:VEVENT
 SUMMARY:New York: general election
 DTSTART;VALUE=DATE:20261103
 DTEND;VALUE=DATE:20261104
-DTSTAMP:20261009T065249Z
+DTSTAMP:20261009T065706Z
 UID:e8bfd276f9615154@midtermwatch.com
 DESCRIPTION:Offices: Governor\; U.S. House (all districts)\; Statewide off
  ices & Legislature\nSource: https://elections.ny.gov/registration-and-voti
@@ -1375,19 +1394,19 @@ BEGIN:VEVENT
 SUMMARY:New York: voter registration deadline
 DTSTART;VALUE=DATE:20261024
 DTEND;VALUE=DATE:20261025
-DTSTAMP:20261009T065249Z
+DTSTAMP:20261009T065706Z
 UID:e8bfd276f9615154@midtermwatch.com#registration
 DESCRIPTION:Register by this date to vote in the 2026-11-03 general electi
  on. Mail\, online and in-person deadlines can differ\; see the election pa
- ge.\nSource: https://elections.ny.gov/registration-and-voting-deadlines\nD
- eadlines can change. Confirm with your state or local election office befo
- re you rely on a date.
+ ge. Late registration: Closed after the deadline.\nSource: https://electio
+ ns.ny.gov/registration-and-voting-deadlines\nDeadlines can change. Confirm
+  with your state or local election office before you rely on a date.
 END:VEVENT
 BEGIN:VEVENT
 SUMMARY:New York: early voting
 DTSTART;VALUE=DATE:20261024
 DTEND;VALUE=DATE:20261102
-DTSTAMP:20261009T065249Z
+DTSTAMP:20261009T065706Z
 UID:e8bfd276f9615154@midtermwatch.com#early-voting
 DESCRIPTION:Early voting for the 2026-11-03 general election.\nSource: htt
  ps://elections.ny.gov/registration-and-voting-deadlines\nDeadlines can cha
@@ -1398,7 +1417,7 @@ BEGIN:VEVENT
 SUMMARY:New York: mail ballot request deadline
 DTSTART;VALUE=DATE:20261024
 DTEND;VALUE=DATE:20261025
-DTSTAMP:20261009T065249Z
+DTSTAMP:20261009T065706Z
 UID:e8bfd276f9615154@midtermwatch.com#mail-ballot-request
 DESCRIPTION:Last day to request a mail ballot for the 2026-11-03 general e
  lection.\nSource: https://elections.ny.gov/registration-and-voting-deadlin
@@ -1409,7 +1428,7 @@ BEGIN:VEVENT
 SUMMARY:Ohio: general election
 DTSTART;VALUE=DATE:20261103
 DTEND;VALUE=DATE:20261104
-DTSTAMP:20261009T065249Z
+DTSTAMP:20261009T065706Z
 UID:2c820dc4fa28d5f4@midtermwatch.com
 DESCRIPTION:Offices: U.S. Senate (special)\; Governor\; U.S. House (all di
  stricts)\; Statewide offices & Legislature\nSource: https://www.ohiosos.go
@@ -1420,19 +1439,19 @@ BEGIN:VEVENT
 SUMMARY:Ohio: voter registration deadline
 DTSTART;VALUE=DATE:20261005
 DTEND;VALUE=DATE:20261006
-DTSTAMP:20261009T065249Z
+DTSTAMP:20261009T065706Z
 UID:2c820dc4fa28d5f4@midtermwatch.com#registration
 DESCRIPTION:Register by this date to vote in the 2026-11-03 general electi
  on. Mail\, online and in-person deadlines can differ\; see the election pa
- ge.\nSource: https://www.ohiosos.gov/elections/voting-schedule\nDeadlines 
- can change. Confirm with your state or local election office before you re
- ly on a date.
+ ge. Late registration: Closed after the deadline.\nSource: https://www.ohi
+ osos.gov/elections/voting-schedule\nDeadlines can change. Confirm with you
+ r state or local election office before you rely on a date.
 END:VEVENT
 BEGIN:VEVENT
 SUMMARY:Ohio: early voting
 DTSTART;VALUE=DATE:20261006
 DTEND;VALUE=DATE:20261102
-DTSTAMP:20261009T065249Z
+DTSTAMP:20261009T065706Z
 UID:2c820dc4fa28d5f4@midtermwatch.com#early-voting
 DESCRIPTION:Early voting for the 2026-11-03 general election.\nSource: htt
  ps://www.ohiosos.gov/elections/voting-schedule\nDeadlines can change. Conf
@@ -1442,7 +1461,7 @@ BEGIN:VEVENT
 SUMMARY:Ohio: mail ballot request deadline
 DTSTART;VALUE=DATE:20261027
 DTEND;VALUE=DATE:20261028
-DTSTAMP:20261009T065249Z
+DTSTAMP:20261009T065706Z
 UID:2c820dc4fa28d5f4@midtermwatch.com#mail-ballot-request
 DESCRIPTION:Last day to request a mail ballot for the 2026-11-03 general e
  lection.\nSource: https://www.ohiosos.gov/elections/voting-schedule\nDeadl
@@ -1453,7 +1472,7 @@ BEGIN:VEVENT
 SUMMARY:Oklahoma: general election
 DTSTART;VALUE=DATE:20261103
 DTEND;VALUE=DATE:20261104
-DTSTAMP:20261009T065249Z
+DTSTAMP:20261009T065706Z
 UID:2ce2b11ac6581d07@midtermwatch.com
 DESCRIPTION:Offices: U.S. Senate\; Governor\; U.S. House (all districts)\;
   Statewide offices & Legislature\nSource: https://oklahoma.gov/content/dam
@@ -1465,20 +1484,20 @@ BEGIN:VEVENT
 SUMMARY:Oklahoma: voter registration deadline
 DTSTART;VALUE=DATE:20261009
 DTEND;VALUE=DATE:20261010
-DTSTAMP:20261009T065249Z
+DTSTAMP:20261009T065706Z
 UID:2ce2b11ac6581d07@midtermwatch.com#registration
 DESCRIPTION:Register by this date to vote in the 2026-11-03 general electi
  on. Mail\, online and in-person deadlines can differ\; see the election pa
- ge.\nSource: https://oklahoma.gov/content/dam/ok/en/elections/dates-and-de
- adlines/2026-statutory-election-dates-deadlines.pdf\nDeadlines can change.
-  Confirm with your state or local election office before you rely on a dat
- e.
+ ge. Late registration: Closed after the deadline.\nSource: https://oklahom
+ a.gov/content/dam/ok/en/elections/dates-and-deadlines/2026-statutory-elect
+ ion-dates-deadlines.pdf\nDeadlines can change. Confirm with your state or 
+ local election office before you rely on a date.
 END:VEVENT
 BEGIN:VEVENT
 SUMMARY:Oklahoma: early voting
 DTSTART;VALUE=DATE:20261028
 DTEND;VALUE=DATE:20261101
-DTSTAMP:20261009T065249Z
+DTSTAMP:20261009T065706Z
 UID:2ce2b11ac6581d07@midtermwatch.com#early-voting
 DESCRIPTION:Early voting for the 2026-11-03 general election.\nSource: htt
  ps://oklahoma.gov/content/dam/ok/en/elections/dates-and-deadlines/2026-sta
@@ -1489,7 +1508,7 @@ BEGIN:VEVENT
 SUMMARY:Oklahoma: mail ballot request deadline
 DTSTART;VALUE=DATE:20261019
 DTEND;VALUE=DATE:20261020
-DTSTAMP:20261009T065249Z
+DTSTAMP:20261009T065706Z
 UID:2ce2b11ac6581d07@midtermwatch.com#mail-ballot-request
 DESCRIPTION:Last day to request a mail ballot for the 2026-11-03 general e
  lection.\nSource: https://oklahoma.gov/content/dam/ok/en/elections/dates-a
@@ -1501,7 +1520,7 @@ BEGIN:VEVENT
 SUMMARY:Oregon: general election
 DTSTART;VALUE=DATE:20261103
 DTEND;VALUE=DATE:20261104
-DTSTAMP:20261009T065249Z
+DTSTAMP:20261009T065706Z
 UID:5a5d0cbe7c84f5f1@midtermwatch.com
 DESCRIPTION:Offices: U.S. Senate\; Governor\; U.S. House (all districts)\;
   Statewide offices & Legislature\nSource: https://sos.oregon.gov/elections
@@ -1512,19 +1531,19 @@ BEGIN:VEVENT
 SUMMARY:Oregon: voter registration deadline
 DTSTART;VALUE=DATE:20261013
 DTEND;VALUE=DATE:20261014
-DTSTAMP:20261009T065249Z
+DTSTAMP:20261009T065706Z
 UID:5a5d0cbe7c84f5f1@midtermwatch.com#registration
 DESCRIPTION:Register by this date to vote in the 2026-11-03 general electi
  on. Mail\, online and in-person deadlines can differ\; see the election pa
- ge.\nSource: https://sos.oregon.gov/elections/pages/current-election.aspx\
- nDeadlines can change. Confirm with your state or local election office be
- fore you rely on a date.
+ ge. Late registration: Closed after the deadline.\nSource: https://sos.ore
+ gon.gov/elections/pages/current-election.aspx\nDeadlines can change. Confi
+ rm with your state or local election office before you rely on a date.
 END:VEVENT
 BEGIN:VEVENT
 SUMMARY:Pennsylvania: general election
 DTSTART;VALUE=DATE:20261103
 DTEND;VALUE=DATE:20261104
-DTSTAMP:20261009T065249Z
+DTSTAMP:20261009T065706Z
 UID:ae2df4c4d0c9f875@midtermwatch.com
 DESCRIPTION:Offices: Governor\; U.S. House (all districts)\; State Legisla
  ture\nSource: https://www.pa.gov/agencies/vote/elections/upcoming-election
@@ -1535,19 +1554,19 @@ BEGIN:VEVENT
 SUMMARY:Pennsylvania: voter registration deadline
 DTSTART;VALUE=DATE:20261019
 DTEND;VALUE=DATE:20261020
-DTSTAMP:20261009T065249Z
+DTSTAMP:20261009T065706Z
 UID:ae2df4c4d0c9f875@midtermwatch.com#registration
 DESCRIPTION:Register by this date to vote in the 2026-11-03 general electi
  on. Mail\, online and in-person deadlines can differ\; see the election pa
- ge.\nSource: https://www.pa.gov/agencies/vote/elections/upcoming-elections
- \nDeadlines can change. Confirm with your state or local election office b
- efore you rely on a date.
+ ge. Late registration: Closed after the deadline.\nSource: https://www.pa.
+ gov/agencies/vote/elections/upcoming-elections\nDeadlines can change. Conf
+ irm with your state or local election office before you rely on a date.
 END:VEVENT
 BEGIN:VEVENT
 SUMMARY:Pennsylvania: mail ballot request deadline
 DTSTART;VALUE=DATE:20261027
 DTEND;VALUE=DATE:20261028
-DTSTAMP:20261009T065249Z
+DTSTAMP:20261009T065706Z
 UID:ae2df4c4d0c9f875@midtermwatch.com#mail-ballot-request
 DESCRIPTION:Last day to request a mail ballot for the 2026-11-03 general e
  lection.\nSource: https://www.pa.gov/agencies/vote/elections/upcoming-elec
@@ -1558,7 +1577,7 @@ BEGIN:VEVENT
 SUMMARY:Rhode Island: general election
 DTSTART;VALUE=DATE:20261103
 DTEND;VALUE=DATE:20261104
-DTSTAMP:20261009T065249Z
+DTSTAMP:20261009T065706Z
 UID:4a72496d5087dfa5@midtermwatch.com
 DESCRIPTION:Offices: U.S. Senate\; Governor\; U.S. House (all districts)\;
   Statewide offices & Legislature\nSource: https://vote.sos.ri.gov/Forms/El
@@ -1569,19 +1588,19 @@ BEGIN:VEVENT
 SUMMARY:Rhode Island: voter registration deadline
 DTSTART;VALUE=DATE:20261004
 DTEND;VALUE=DATE:20261005
-DTSTAMP:20261009T065249Z
+DTSTAMP:20261009T065706Z
 UID:4a72496d5087dfa5@midtermwatch.com#registration
 DESCRIPTION:Register by this date to vote in the 2026-11-03 general electi
  on. Mail\, online and in-person deadlines can differ\; see the election pa
- ge.\nSource: https://vote.sos.ri.gov/Forms/Elections/Guides/2026ElecCal.pd
- f\nDeadlines can change. Confirm with your state or local election office 
- before you rely on a date.
+ ge. Late registration: Closed after the deadline.\nSource: https://vote.so
+ s.ri.gov/Forms/Elections/Guides/2026ElecCal.pdf\nDeadlines can change. Con
+ firm with your state or local election office before you rely on a date.
 END:VEVENT
 BEGIN:VEVENT
 SUMMARY:Rhode Island: early voting
 DTSTART;VALUE=DATE:20261014
 DTEND;VALUE=DATE:20261103
-DTSTAMP:20261009T065249Z
+DTSTAMP:20261009T065706Z
 UID:4a72496d5087dfa5@midtermwatch.com#early-voting
 DESCRIPTION:Early voting for the 2026-11-03 general election.\nSource: htt
  ps://vote.sos.ri.gov/Forms/Elections/Guides/2026ElecCal.pdf\nDeadlines can
@@ -1592,7 +1611,7 @@ BEGIN:VEVENT
 SUMMARY:Rhode Island: mail ballot request deadline
 DTSTART;VALUE=DATE:20261013
 DTEND;VALUE=DATE:20261014
-DTSTAMP:20261009T065249Z
+DTSTAMP:20261009T065706Z
 UID:4a72496d5087dfa5@midtermwatch.com#mail-ballot-request
 DESCRIPTION:Last day to request a mail ballot for the 2026-11-03 general e
  lection.\nSource: https://vote.sos.ri.gov/Forms/Elections/Guides/2026ElecC
@@ -1603,7 +1622,7 @@ BEGIN:VEVENT
 SUMMARY:South Carolina: general election
 DTSTART;VALUE=DATE:20261103
 DTEND;VALUE=DATE:20261104
-DTSTAMP:20261009T065249Z
+DTSTAMP:20261009T065706Z
 UID:4e275a7dcd5eb15a@midtermwatch.com
 DESCRIPTION:Offices: U.S. Senate\; Governor\; U.S. House (all districts)\;
   Statewide offices & Legislature\nSource: https://scvotes.gov/wp-content/u
@@ -1615,19 +1634,20 @@ BEGIN:VEVENT
 SUMMARY:South Carolina: voter registration deadline
 DTSTART;VALUE=DATE:20261004
 DTEND;VALUE=DATE:20261005
-DTSTAMP:20261009T065249Z
+DTSTAMP:20261009T065706Z
 UID:4e275a7dcd5eb15a@midtermwatch.com#registration
 DESCRIPTION:Register by this date to vote in the 2026-11-03 general electi
  on. Mail\, online and in-person deadlines can differ\; see the election pa
- ge.\nSource: https://scvotes.gov/wp-content/uploads/2026/08/2026-08-31-Ele
- ction-Calendar-Draft-scVOTES_.pdf\nDeadlines can change. Confirm with your
-  state or local election office before you rely on a date.
+ ge. Late registration: Closed after the deadline.\nSource: https://scvotes
+ .gov/wp-content/uploads/2026/08/2026-08-31-Election-Calendar-Draft-scVOTES
+ _.pdf\nDeadlines can change. Confirm with your state or local election off
+ ice before you rely on a date.
 END:VEVENT
 BEGIN:VEVENT
 SUMMARY:South Carolina: early voting
 DTSTART;VALUE=DATE:20261019
 DTEND;VALUE=DATE:20261101
-DTSTAMP:20261009T065249Z
+DTSTAMP:20261009T065706Z
 UID:4e275a7dcd5eb15a@midtermwatch.com#early-voting
 DESCRIPTION:Early voting for the 2026-11-03 general election.\nSource: htt
  ps://scvotes.gov/wp-content/uploads/2026/08/2026-08-31-Election-Calendar-D
@@ -1638,7 +1658,7 @@ BEGIN:VEVENT
 SUMMARY:South Carolina: mail ballot request deadline
 DTSTART;VALUE=DATE:20261023
 DTEND;VALUE=DATE:20261024
-DTSTAMP:20261009T065249Z
+DTSTAMP:20261009T065706Z
 UID:4e275a7dcd5eb15a@midtermwatch.com#mail-ballot-request
 DESCRIPTION:Last day to request a mail ballot for the 2026-11-03 general e
  lection.\nSource: https://scvotes.gov/wp-content/uploads/2026/08/2026-08-3
@@ -1649,7 +1669,7 @@ BEGIN:VEVENT
 SUMMARY:South Dakota: general election
 DTSTART;VALUE=DATE:20261103
 DTEND;VALUE=DATE:20261104
-DTSTAMP:20261009T065249Z
+DTSTAMP:20261009T065706Z
 UID:3dc08d24d18ad74e@midtermwatch.com
 DESCRIPTION:Offices: U.S. Senate\; Governor\; U.S. House (all districts)\;
   Statewide offices & Legislature\nSource: https://sdsos.gov/elections-voti
@@ -1662,21 +1682,21 @@ BEGIN:VEVENT
 SUMMARY:South Dakota: voter registration deadline
 DTSTART;VALUE=DATE:20261019
 DTEND;VALUE=DATE:20261020
-DTSTAMP:20261009T065249Z
+DTSTAMP:20261009T065706Z
 UID:3dc08d24d18ad74e@midtermwatch.com#registration
 DESCRIPTION:Register by this date at 17:00 to vote in the 2026-11-03 gener
  al election. Mail\, online and in-person deadlines can differ\; see the el
- ection page.\nSource: https://sdsos.gov/elections-voting/upcoming-election
- s/general-information/2026%20Election%20Information/2026%20Election%20Asse
- ts/Election%20Information/updated2026electioncalendar.pdf\nDeadlines can c
- hange. Confirm with your state or local election office before you rely on
-  a date.
+ ection page. Late registration: Closed after the deadline.\nSource: https:
+ //sdsos.gov/elections-voting/upcoming-elections/general-information/2026%2
+ 0Election%20Information/2026%20Election%20Assets/Election%20Information/up
+ dated2026electioncalendar.pdf\nDeadlines can change. Confirm with your sta
+ te or local election office before you rely on a date.
 END:VEVENT
 BEGIN:VEVENT
 SUMMARY:South Dakota: early voting
 DTSTART;VALUE=DATE:20260918
 DTEND;VALUE=DATE:20261103
-DTSTAMP:20261009T065249Z
+DTSTAMP:20261009T065706Z
 UID:3dc08d24d18ad74e@midtermwatch.com#early-voting
 DESCRIPTION:Early voting for the 2026-11-03 general election.\nSource: htt
  ps://sdsos.gov/elections-voting/upcoming-elections/general-information/202
@@ -1688,7 +1708,7 @@ BEGIN:VEVENT
 SUMMARY:South Dakota: mail ballot request deadline
 DTSTART;VALUE=DATE:20261102
 DTEND;VALUE=DATE:20261103
-DTSTAMP:20261009T065249Z
+DTSTAMP:20261009T065706Z
 UID:3dc08d24d18ad74e@midtermwatch.com#mail-ballot-request
 DESCRIPTION:Last day to request a mail ballot for the 2026-11-03 general e
  lection.\nSource: https://sdsos.gov/elections-voting/upcoming-elections/ge
@@ -1701,7 +1721,7 @@ BEGIN:VEVENT
 SUMMARY:Tennessee: general election
 DTSTART;VALUE=DATE:20261103
 DTEND;VALUE=DATE:20261104
-DTSTAMP:20261009T065249Z
+DTSTAMP:20261009T065706Z
 UID:57f7b4682a86fe6c@midtermwatch.com
 DESCRIPTION:Offices: U.S. Senate\; Governor\; U.S. House (all districts)\;
   Statewide offices & Legislature\nSource: https://sos.tn.gov/elections/cal
@@ -1712,19 +1732,19 @@ BEGIN:VEVENT
 SUMMARY:Tennessee: voter registration deadline
 DTSTART;VALUE=DATE:20261005
 DTEND;VALUE=DATE:20261006
-DTSTAMP:20261009T065249Z
+DTSTAMP:20261009T065706Z
 UID:57f7b4682a86fe6c@midtermwatch.com#registration
 DESCRIPTION:Register by this date to vote in the 2026-11-03 general electi
  on. Mail\, online and in-person deadlines can differ\; see the election pa
- ge.\nSource: https://sos.tn.gov/elections/calendar\nDeadlines can change. 
- Confirm with your state or local election office before you rely on a date
- .
+ ge. Late registration: Closed after the deadline.\nSource: https://sos.tn.
+ gov/elections/calendar\nDeadlines can change. Confirm with your state or l
+ ocal election office before you rely on a date.
 END:VEVENT
 BEGIN:VEVENT
 SUMMARY:Tennessee: early voting
 DTSTART;VALUE=DATE:20261014
 DTEND;VALUE=DATE:20261030
-DTSTAMP:20261009T065249Z
+DTSTAMP:20261009T065706Z
 UID:57f7b4682a86fe6c@midtermwatch.com#early-voting
 DESCRIPTION:Early voting for the 2026-11-03 general election.\nSource: htt
  ps://sos.tn.gov/elections/calendar\nDeadlines can change. Confirm with you
@@ -1734,7 +1754,7 @@ BEGIN:VEVENT
 SUMMARY:Tennessee: mail ballot request deadline
 DTSTART;VALUE=DATE:20261024
 DTEND;VALUE=DATE:20261025
-DTSTAMP:20261009T065249Z
+DTSTAMP:20261009T065706Z
 UID:57f7b4682a86fe6c@midtermwatch.com#mail-ballot-request
 DESCRIPTION:Last day to request a mail ballot for the 2026-11-03 general e
  lection.\nSource: https://sos.tn.gov/elections/calendar\nDeadlines can cha
@@ -1745,7 +1765,7 @@ BEGIN:VEVENT
 SUMMARY:Texas: general election
 DTSTART;VALUE=DATE:20261103
 DTEND;VALUE=DATE:20261104
-DTSTAMP:20261009T065249Z
+DTSTAMP:20261009T065706Z
 UID:281e31b4764561af@midtermwatch.com
 DESCRIPTION:Offices: U.S. Senate\; Governor\; U.S. House (all districts)\;
   Statewide offices & Legislature\nSource: https://www.sos.state.tx.us/elec
@@ -1756,19 +1776,20 @@ BEGIN:VEVENT
 SUMMARY:Texas: voter registration deadline
 DTSTART;VALUE=DATE:20261005
 DTEND;VALUE=DATE:20261006
-DTSTAMP:20261009T065249Z
+DTSTAMP:20261009T065706Z
 UID:281e31b4764561af@midtermwatch.com#registration
 DESCRIPTION:Register by this date to vote in the 2026-11-03 general electi
  on. Mail\, online and in-person deadlines can differ\; see the election pa
- ge.\nSource: https://www.sos.state.tx.us/elections/voter/important-electio
- n-dates.shtml\nDeadlines can change. Confirm with your state or local elec
- tion office before you rely on a date.
+ ge. Late registration: Closed after the deadline.\nSource: https://www.sos
+ .state.tx.us/elections/voter/important-election-dates.shtml\nDeadlines can
+  change. Confirm with your state or local election office before you rely 
+ on a date.
 END:VEVENT
 BEGIN:VEVENT
 SUMMARY:Texas: early voting
 DTSTART;VALUE=DATE:20261019
 DTEND;VALUE=DATE:20261031
-DTSTAMP:20261009T065249Z
+DTSTAMP:20261009T065706Z
 UID:281e31b4764561af@midtermwatch.com#early-voting
 DESCRIPTION:Early voting for the 2026-11-03 general election.\nSource: htt
  ps://www.sos.state.tx.us/elections/voter/important-election-dates.shtml\nD
@@ -1779,7 +1800,7 @@ BEGIN:VEVENT
 SUMMARY:Texas: mail ballot request deadline
 DTSTART;VALUE=DATE:20261023
 DTEND;VALUE=DATE:20261024
-DTSTAMP:20261009T065249Z
+DTSTAMP:20261009T065706Z
 UID:281e31b4764561af@midtermwatch.com#mail-ballot-request
 DESCRIPTION:Last day to request a mail ballot for the 2026-11-03 general e
  lection.\nSource: https://www.sos.state.tx.us/elections/voter/important-el
@@ -1790,7 +1811,7 @@ BEGIN:VEVENT
 SUMMARY:Utah: general election
 DTSTART;VALUE=DATE:20261103
 DTEND;VALUE=DATE:20261104
-DTSTAMP:20261009T065249Z
+DTSTAMP:20261009T065706Z
 UID:45dbd4ead8b8de48@midtermwatch.com
 DESCRIPTION:Offices: U.S. House (all districts)\; Statewide offices & Legi
  slature\nSource: https://vote.utah.gov/current-election-information/\nDead
@@ -1801,19 +1822,19 @@ BEGIN:VEVENT
 SUMMARY:Utah: voter registration deadline
 DTSTART;VALUE=DATE:20261023
 DTEND;VALUE=DATE:20261024
-DTSTAMP:20261009T065249Z
+DTSTAMP:20261009T065706Z
 UID:45dbd4ead8b8de48@midtermwatch.com#registration
 DESCRIPTION:Register by this date at 17:00 to vote in the 2026-11-03 gener
  al election. Mail\, online and in-person deadlines can differ\; see the el
- ection page.\nSource: https://vote.utah.gov/current-election-information/\
- nDeadlines can change. Confirm with your state or local election office be
- fore you rely on a date.
+ ection page. Late registration: Open through Election Day.\nSource: https:
+ //vote.utah.gov/current-election-information/\nDeadlines can change. Confi
+ rm with your state or local election office before you rely on a date.
 END:VEVENT
 BEGIN:VEVENT
 SUMMARY:Utah: early voting
 DTSTART;VALUE=DATE:20261020
 DTEND;VALUE=DATE:20261021
-DTSTAMP:20261009T065249Z
+DTSTAMP:20261009T065706Z
 UID:45dbd4ead8b8de48@midtermwatch.com#early-voting
 DESCRIPTION:Early voting for the 2026-11-03 general election.\nSource: htt
  ps://vote.utah.gov/current-election-information/\nDeadlines can change. Co
@@ -1823,7 +1844,7 @@ BEGIN:VEVENT
 SUMMARY:Utah: mail ballot request deadline
 DTSTART;VALUE=DATE:20261027
 DTEND;VALUE=DATE:20261028
-DTSTAMP:20261009T065249Z
+DTSTAMP:20261009T065706Z
 UID:45dbd4ead8b8de48@midtermwatch.com#mail-ballot-request
 DESCRIPTION:Last day to request a mail ballot for the 2026-11-03 general e
  lection.\nSource: https://vote.utah.gov/current-election-information/\nDea
@@ -1834,7 +1855,7 @@ BEGIN:VEVENT
 SUMMARY:Virginia: general election
 DTSTART;VALUE=DATE:20261103
 DTEND;VALUE=DATE:20261104
-DTSTAMP:20261009T065249Z
+DTSTAMP:20261009T065706Z
 UID:c6271fa0ceb3c1e7@midtermwatch.com
 DESCRIPTION:Offices: U.S. Senate\; U.S. House (all districts)\nSource: htt
  ps://www.elections.virginia.gov/casting-a-ballot/calendars-schedules/upcom
@@ -1845,19 +1866,20 @@ BEGIN:VEVENT
 SUMMARY:Virginia: voter registration deadline
 DTSTART;VALUE=DATE:20261023
 DTEND;VALUE=DATE:20261024
-DTSTAMP:20261009T065249Z
+DTSTAMP:20261009T065706Z
 UID:c6271fa0ceb3c1e7@midtermwatch.com#registration
 DESCRIPTION:Register by this date to vote in the 2026-11-03 general electi
  on. Mail\, online and in-person deadlines can differ\; see the election pa
- ge.\nSource: https://www.elections.virginia.gov/casting-a-ballot/calendars
- -schedules/upcoming-elections.html\nDeadlines can change. Confirm with you
- r state or local election office before you rely on a date.
+ ge. Late registration: Open through Election Day.\nSource: https://www.ele
+ ctions.virginia.gov/casting-a-ballot/calendars-schedules/upcoming-election
+ s.html\nDeadlines can change. Confirm with your state or local election of
+ fice before you rely on a date.
 END:VEVENT
 BEGIN:VEVENT
 SUMMARY:Virginia: early voting
 DTSTART;VALUE=DATE:20260918
 DTEND;VALUE=DATE:20261101
-DTSTAMP:20261009T065249Z
+DTSTAMP:20261009T065706Z
 UID:c6271fa0ceb3c1e7@midtermwatch.com#early-voting
 DESCRIPTION:Early voting for the 2026-11-03 general election.\nSource: htt
  ps://www.elections.virginia.gov/casting-a-ballot/calendars-schedules/upcom
@@ -1868,7 +1890,7 @@ BEGIN:VEVENT
 SUMMARY:Virginia: mail ballot request deadline
 DTSTART;VALUE=DATE:20261023
 DTEND;VALUE=DATE:20261024
-DTSTAMP:20261009T065249Z
+DTSTAMP:20261009T065706Z
 UID:c6271fa0ceb3c1e7@midtermwatch.com#mail-ballot-request
 DESCRIPTION:Last day to request a mail ballot for the 2026-11-03 general e
  lection.\nSource: https://www.elections.virginia.gov/casting-a-ballot/cale
@@ -1879,7 +1901,7 @@ BEGIN:VEVENT
 SUMMARY:Vermont: general election
 DTSTART;VALUE=DATE:20261103
 DTEND;VALUE=DATE:20261104
-DTSTAMP:20261009T065249Z
+DTSTAMP:20261009T065706Z
 UID:1505a0276fd96edb@midtermwatch.com
 DESCRIPTION:Offices: Governor\; U.S. House (all districts)\; Statewide off
  ices & Legislature\nSource: https://sos.vermont.gov/elections/election-inf
@@ -1890,19 +1912,20 @@ BEGIN:VEVENT
 SUMMARY:Vermont: voter registration deadline
 DTSTART;VALUE=DATE:20261103
 DTEND;VALUE=DATE:20261104
-DTSTAMP:20261009T065249Z
+DTSTAMP:20261009T065706Z
 UID:1505a0276fd96edb@midtermwatch.com#registration
 DESCRIPTION:Register by this date to vote in the 2026-11-03 general electi
  on. Mail\, online and in-person deadlines can differ\; see the election pa
- ge.\nSource: https://sos.vermont.gov/elections/election-info-resources/can
- didates\nDeadlines can change. Confirm with your state or local election o
- ffice before you rely on a date.
+ ge. Late registration: Open through Election Day.\nSource: https://sos.ver
+ mont.gov/elections/election-info-resources/candidates\nDeadlines can chang
+ e. Confirm with your state or local election office before you rely on a d
+ ate.
 END:VEVENT
 BEGIN:VEVENT
 SUMMARY:Vermont: early voting
 DTSTART;VALUE=DATE:20260919
 DTEND;VALUE=DATE:20261103
-DTSTAMP:20261009T065249Z
+DTSTAMP:20261009T065706Z
 UID:1505a0276fd96edb@midtermwatch.com#early-voting
 DESCRIPTION:Early voting for the 2026-11-03 general election.\nSource: htt
  ps://sos.vermont.gov/elections/election-info-resources/candidates\nDeadlin
@@ -1913,7 +1936,7 @@ BEGIN:VEVENT
 SUMMARY:Vermont: mail ballot request deadline
 DTSTART;VALUE=DATE:20261102
 DTEND;VALUE=DATE:20261103
-DTSTAMP:20261009T065249Z
+DTSTAMP:20261009T065706Z
 UID:1505a0276fd96edb@midtermwatch.com#mail-ballot-request
 DESCRIPTION:Last day to request a mail ballot for the 2026-11-03 general e
  lection.\nSource: https://sos.vermont.gov/elections/election-info-resource
@@ -1924,7 +1947,7 @@ BEGIN:VEVENT
 SUMMARY:Washington: general election
 DTSTART;VALUE=DATE:20261103
 DTEND;VALUE=DATE:20261104
-DTSTAMP:20261009T065249Z
+DTSTAMP:20261009T065706Z
 UID:843be40f79e5c908@midtermwatch.com
 DESCRIPTION:Offices: U.S. House (all districts)\; Statewide offices & Legi
  slature\nSource: https://www.sos.wa.gov/elections/elections-calendar/dates
@@ -1935,19 +1958,20 @@ BEGIN:VEVENT
 SUMMARY:Washington: voter registration deadline
 DTSTART;VALUE=DATE:20261026
 DTEND;VALUE=DATE:20261027
-DTSTAMP:20261009T065249Z
+DTSTAMP:20261009T065706Z
 UID:843be40f79e5c908@midtermwatch.com#registration
 DESCRIPTION:Register by this date to vote in the 2026-11-03 general electi
  on. Mail\, online and in-person deadlines can differ\; see the election pa
- ge.\nSource: https://www.sos.wa.gov/elections/elections-calendar/dates-and
- -deadlines\nDeadlines can change. Confirm with your state or local electio
- n office before you rely on a date.
+ ge. Late registration: Open through Election Day.\nSource: https://www.sos
+ .wa.gov/elections/elections-calendar/dates-and-deadlines\nDeadlines can ch
+ ange. Confirm with your state or local election office before you rely on 
+ a date.
 END:VEVENT
 BEGIN:VEVENT
 SUMMARY:Wisconsin: general election
 DTSTART;VALUE=DATE:20261103
 DTEND;VALUE=DATE:20261104
-DTSTAMP:20261009T065249Z
+DTSTAMP:20261009T065706Z
 UID:ae829a2a8988d088@midtermwatch.com
 DESCRIPTION:Offices: Governor\; U.S. House (all districts)\; Statewide off
  ices & Legislature\nSource: https://elections.wi.gov/2026\nDeadlines can c
@@ -1958,18 +1982,19 @@ BEGIN:VEVENT
 SUMMARY:Wisconsin: voter registration deadline
 DTSTART;VALUE=DATE:20261014
 DTEND;VALUE=DATE:20261015
-DTSTAMP:20261009T065249Z
+DTSTAMP:20261009T065706Z
 UID:ae829a2a8988d088@midtermwatch.com#registration
 DESCRIPTION:Register by this date to vote in the 2026-11-03 general electi
  on. Mail\, online and in-person deadlines can differ\; see the election pa
- ge.\nSource: https://elections.wi.gov/2026\nDeadlines can change. Confirm 
- with your state or local election office before you rely on a date.
+ ge. Late registration: Open through Election Day.\nSource: https://electio
+ ns.wi.gov/2026\nDeadlines can change. Confirm with your state or local ele
+ ction office before you rely on a date.
 END:VEVENT
 BEGIN:VEVENT
 SUMMARY:Wisconsin: mail ballot request deadline
 DTSTART;VALUE=DATE:20261029
 DTEND;VALUE=DATE:20261030
-DTSTAMP:20261009T065249Z
+DTSTAMP:20261009T065706Z
 UID:ae829a2a8988d088@midtermwatch.com#mail-ballot-request
 DESCRIPTION:Last day to request a mail ballot for the 2026-11-03 general e
  lection.\nSource: https://elections.wi.gov/2026\nDeadlines can change. Con
@@ -1979,7 +2004,7 @@ BEGIN:VEVENT
 SUMMARY:West Virginia: general election
 DTSTART;VALUE=DATE:20261103
 DTEND;VALUE=DATE:20261104
-DTSTAMP:20261009T065249Z
+DTSTAMP:20261009T065706Z
 UID:f5d6893c1f767416@midtermwatch.com
 DESCRIPTION:Offices: U.S. Senate\; U.S. House (all districts)\; State Legi
  slature\nSource: https://sos.wv.gov/media/467/download?inline=\nDeadlines 
@@ -1990,19 +2015,19 @@ BEGIN:VEVENT
 SUMMARY:West Virginia: voter registration deadline
 DTSTART;VALUE=DATE:20261013
 DTEND;VALUE=DATE:20261014
-DTSTAMP:20261009T065249Z
+DTSTAMP:20261009T065706Z
 UID:f5d6893c1f767416@midtermwatch.com#registration
 DESCRIPTION:Register by this date to vote in the 2026-11-03 general electi
  on. Mail\, online and in-person deadlines can differ\; see the election pa
- ge.\nSource: https://sos.wv.gov/media/467/download?inline=\nDeadlines can 
- change. Confirm with your state or local election office before you rely o
- n a date.
+ ge. Late registration: Closed after the deadline.\nSource: https://sos.wv.
+ gov/media/467/download?inline=\nDeadlines can change. Confirm with your st
+ ate or local election office before you rely on a date.
 END:VEVENT
 BEGIN:VEVENT
 SUMMARY:West Virginia: early voting
 DTSTART;VALUE=DATE:20261021
 DTEND;VALUE=DATE:20261101
-DTSTAMP:20261009T065249Z
+DTSTAMP:20261009T065706Z
 UID:f5d6893c1f767416@midtermwatch.com#early-voting
 DESCRIPTION:Early voting for the 2026-11-03 general election.\nSource: htt
  ps://sos.wv.gov/media/467/download?inline=\nDeadlines can change. Confirm 
@@ -2012,7 +2037,7 @@ BEGIN:VEVENT
 SUMMARY:West Virginia: mail ballot request deadline
 DTSTART;VALUE=DATE:20261028
 DTEND;VALUE=DATE:20261029
-DTSTAMP:20261009T065249Z
+DTSTAMP:20261009T065706Z
 UID:f5d6893c1f767416@midtermwatch.com#mail-ballot-request
 DESCRIPTION:Last day to request a mail ballot for the 2026-11-03 general e
  lection.\nSource: https://sos.wv.gov/media/467/download?inline=\nDeadlines
@@ -2023,7 +2048,7 @@ BEGIN:VEVENT
 SUMMARY:Wyoming: general election
 DTSTART;VALUE=DATE:20261103
 DTEND;VALUE=DATE:20261104
-DTSTAMP:20261009T065249Z
+DTSTAMP:20261009T065706Z
 UID:73e06e32fa98dc44@midtermwatch.com
 DESCRIPTION:Offices: U.S. Senate\; Governor\; U.S. House (all districts)\;
   Statewide offices & Legislature\nSource: https://sos.wyo.gov/Elections/Do
@@ -2034,19 +2059,20 @@ BEGIN:VEVENT
 SUMMARY:Wyoming: voter registration deadline
 DTSTART;VALUE=DATE:20261019
 DTEND;VALUE=DATE:20261020
-DTSTAMP:20261009T065249Z
+DTSTAMP:20261009T065706Z
 UID:73e06e32fa98dc44@midtermwatch.com#registration
 DESCRIPTION:Register by this date to vote in the 2026-11-03 general electi
  on. Mail\, online and in-person deadlines can differ\; see the election pa
- ge.\nSource: https://sos.wyo.gov/Elections/Docs/2026/2026_Key_Election_Dat
- es.pdf\nDeadlines can change. Confirm with your state or local election of
- fice before you rely on a date.
+ ge. Late registration: Open through Election Day.\nSource: https://sos.wyo
+ .gov/Elections/Docs/2026/2026_Key_Election_Dates.pdf\nDeadlines can change
+ . Confirm with your state or local election office before you rely on a da
+ te.
 END:VEVENT
 BEGIN:VEVENT
 SUMMARY:Wyoming: early voting
 DTSTART;VALUE=DATE:20261006
 DTEND;VALUE=DATE:20261103
-DTSTAMP:20261009T065249Z
+DTSTAMP:20261009T065706Z
 UID:73e06e32fa98dc44@midtermwatch.com#early-voting
 DESCRIPTION:Early voting for the 2026-11-03 general election.\nSource: htt
  ps://sos.wyo.gov/Elections/Docs/2026/2026_Key_Election_Dates.pdf\nDeadline
@@ -2057,7 +2083,7 @@ BEGIN:VEVENT
 SUMMARY:Wyoming: mail ballot request deadline
 DTSTART;VALUE=DATE:20261102
 DTEND;VALUE=DATE:20261103
-DTSTAMP:20261009T065249Z
+DTSTAMP:20261009T065706Z
 UID:73e06e32fa98dc44@midtermwatch.com#mail-ballot-request
 DESCRIPTION:Last day to request a mail ballot for the 2026-11-03 general e
  lection.\nSource: https://sos.wyo.gov/Elections/Docs/2026/2026_Key_Electio
@@ -2068,7 +2094,7 @@ BEGIN:VEVENT
 SUMMARY:Georgia: runoff election
 DTSTART;VALUE=DATE:20261201
 DTEND;VALUE=DATE:20261202
-DTSTAMP:20261009T065249Z
+DTSTAMP:20261009T065706Z
 UID:da691886f7a6ce57@midtermwatch.com
 DESCRIPTION:Offices: U.S. Senate\; Governor\; U.S. House (all districts)\;
   Statewide offices & Legislature\nSource: https://sos.ga.gov/sites/default
@@ -2080,7 +2106,7 @@ BEGIN:VEVENT
 SUMMARY:Georgia: voter registration deadline
 DTSTART;VALUE=DATE:20261005
 DTEND;VALUE=DATE:20261006
-DTSTAMP:20261009T065249Z
+DTSTAMP:20261009T065706Z
 UID:da691886f7a6ce57@midtermwatch.com#registration
 DESCRIPTION:Register by this date to vote in the 2026-12-01 runoff electio
  n. Mail\, online and in-person deadlines can differ\; see the election pag
@@ -2092,7 +2118,7 @@ BEGIN:VEVENT
 SUMMARY:Georgia: mail ballot request deadline
 DTSTART;VALUE=DATE:20261120
 DTEND;VALUE=DATE:20261121
-DTSTAMP:20261009T065249Z
+DTSTAMP:20261009T065706Z
 UID:da691886f7a6ce57@midtermwatch.com#mail-ballot-request
 DESCRIPTION:Last day to request a mail ballot for the 2026-12-01 runoff el
  ection.\nSource: https://sos.ga.gov/sites/default/files/forms/2026%20Elect
@@ -2103,7 +2129,7 @@ BEGIN:VEVENT
 SUMMARY:Mississippi: runoff election
 DTSTART;VALUE=DATE:20261201
 DTEND;VALUE=DATE:20261202
-DTSTAMP:20261009T065249Z
+DTSTAMP:20261009T065706Z
 UID:b7d3d9575f9d794c@midtermwatch.com
 DESCRIPTION:Offices: Judicial & special-election runoffs\nSource: https://
  www.sos.ms.gov/content/documents/elections/2026%20Elections%20Calendar.pdf
@@ -2114,7 +2140,7 @@ BEGIN:VEVENT
 SUMMARY:Louisiana: runoff election
 DTSTART;VALUE=DATE:20261212
 DTEND;VALUE=DATE:20261213
-DTSTAMP:20261009T065249Z
+DTSTAMP:20261009T065706Z
 UID:09415b40828a4a01@midtermwatch.com
 DESCRIPTION:Offices: U.S. House (districts without a majority winner)\; Ot
  her open-primary offices without a majority winner\; State Senate District
@@ -2126,7 +2152,7 @@ BEGIN:VEVENT
 SUMMARY:Louisiana: voter registration deadline
 DTSTART;VALUE=DATE:20261112
 DTEND;VALUE=DATE:20261113
-DTSTAMP:20261009T065249Z
+DTSTAMP:20261009T065706Z
 UID:09415b40828a4a01@midtermwatch.com#registration
 DESCRIPTION:Register by this date to vote in the 2026-12-12 runoff electio
  n. Mail\, online and in-person deadlines can differ\; see the election pag
@@ -2138,7 +2164,7 @@ BEGIN:VEVENT
 SUMMARY:Louisiana: early voting
 DTSTART;VALUE=DATE:20261128
 DTEND;VALUE=DATE:20261206
-DTSTAMP:20261009T065249Z
+DTSTAMP:20261009T065706Z
 UID:09415b40828a4a01@midtermwatch.com#early-voting
 DESCRIPTION:Early voting for the 2026-12-12 runoff election.\nSource: http
  s://www.sos.la.gov/elections-voting/election-dates\nDeadlines can change. 
@@ -2149,7 +2175,7 @@ BEGIN:VEVENT
 SUMMARY:Louisiana: mail ballot request deadline
 DTSTART;VALUE=DATE:20261208
 DTEND;VALUE=DATE:20261209
-DTSTAMP:20261009T065249Z
+DTSTAMP:20261009T065706Z
 UID:09415b40828a4a01@midtermwatch.com#mail-ballot-request
 DESCRIPTION:Last day to request a mail ballot for the 2026-12-12 runoff el
  ection.\nSource: https://www.sos.la.gov/elections-voting/election-dates\nD

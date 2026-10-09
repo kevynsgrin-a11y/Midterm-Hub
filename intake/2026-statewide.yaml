@@ -2,9 +2,9 @@
 # Every record was verified against the cited source on the retrieval date;
 # agent-researched, independently cross-checked against statutory anchors,
 # and human-reviewed before commit. Accuracy over completeness: optional
-# deadline fields appear only where an official source states the exact date,
-# or where a single national compilation (NCSL) states the statutory rule —
-# those records carry the cross-check date and provenance in their notes.
+# deadline fields appear only where official sources state the exact date
+# (two independent publishers, or the controlling authority itself); where
+# official sources disagree, the notes say so instead of picking a side.
 
 - state: AK
   jurisdiction_type: state
@@ -26,6 +26,7 @@
   election_date: "2026-11-03"
   offices: ["U.S. Senate", "Governor", "U.S. House (all districts)", "Statewide offices & Legislature"]
   registration_deadline: "2026-10-04"
+  late_registration: "none"
   early_voting_start: "2026-10-19"
   mail_ballot_request_deadline: "2026-10-24"
   confidence: official
@@ -40,6 +41,7 @@
   election_date: "2026-11-03"
   offices: ["U.S. Senate", "Governor", "U.S. House (all districts)", "Statewide offices & Legislature"]
   registration_deadline: "2026-10-19"
+  late_registration: "none"
   mail_ballot_request_deadline: "2026-10-27"
   confidence: official
   source_url: "https://www.sos.alabama.gov/alabama-votes/voter/election-information/2026"
@@ -53,6 +55,7 @@
   election_date: "2026-11-03"
   offices: ["U.S. Senate", "Governor", "U.S. House (all districts)", "Statewide offices & Legislature"]
   registration_deadline: "2026-10-05"
+  late_registration: "none"
   early_voting_start: "2026-10-19"
   early_voting_end: "2026-11-02"
   mail_ballot_request_deadline: "2026-10-27"
@@ -68,6 +71,7 @@
   election_date: "2026-11-03"
   offices: ["Governor", "U.S. House (all districts)", "Statewide offices & Legislature"]
   registration_deadline: "2026-10-05"
+  late_registration: "none"
   early_voting_start: "2026-10-07"
   early_voting_end: "2026-10-30"
   mail_ballot_request_deadline: "2026-10-23"
@@ -83,6 +87,7 @@
   election_date: "2026-11-03"
   offices: ["Governor", "U.S. House (all districts)", "Statewide offices & Legislature"]
   registration_deadline: "2026-10-19"
+  late_registration: "election_day"
   confidence: official
   source_url: "https://www.sos.ca.gov/elections/upcoming-elections/general-election-november-3-2026/key-dates-deadlines"
   source_retrieved_at: "2026-10-09T12:00:00Z"
@@ -95,6 +100,7 @@
   election_date: "2026-11-03"
   offices: ["U.S. Senate", "Governor", "U.S. House (all districts)", "Statewide offices & Legislature"]
   registration_deadline: "2026-10-26"
+  late_registration: "election_day"
   early_voting_start: "2026-10-19"
   early_voting_end: "2026-11-03"
   confidence: official
@@ -123,6 +129,7 @@
   election_date: "2026-11-03"
   offices: ["Governor", "U.S. House (all districts)", "Statewide offices & Legislature"]
   registration_deadline: "2026-10-16"
+  late_registration: "election_day"
   early_voting_start: "2026-10-19"
   early_voting_end: "2026-11-01"
   mail_ballot_request_deadline: "2026-11-02"
@@ -138,6 +145,7 @@
   election_date: "2026-11-03"
   offices: ["Mayor", "DC Council", "Delegate to U.S. House", "Attorney General"]
   registration_deadline: "2026-10-13"
+  late_registration: "election_day"
   early_voting_start: "2026-10-26"
   early_voting_end: "2026-11-01"
   confidence: official
@@ -167,6 +175,7 @@
   election_date: "2026-11-03"
   offices: ["U.S. Senate", "U.S. House (all districts)", "Statewide offices & Legislature"]
   registration_deadline: "2026-10-10"
+  late_registration: "none"
   early_voting_start: "2026-10-22"
   early_voting_end: "2026-11-01"
   mail_ballot_request_deadline: "2026-10-30"
@@ -197,6 +206,7 @@
   election_date: "2026-11-03"
   offices: ["U.S. Senate (special)", "Governor", "U.S. House (all districts)", "Statewide offices & Legislature"]
   registration_deadline: "2026-10-05"
+  late_registration: "none"
   early_voting_start: "2026-10-24"
   early_voting_end: "2026-10-31"
   mail_ballot_request_deadline: "2026-10-22"
@@ -212,6 +222,7 @@
   election_date: "2026-11-03"
   offices: ["U.S. Senate", "Governor", "U.S. House (all districts)", "Statewide offices & Legislature"]
   registration_deadline: "2026-10-05"
+  late_registration: "none"
   early_voting_start: "2026-10-13"
   early_voting_end: "2026-10-30"
   mail_ballot_request_deadline: "2026-10-23"
@@ -253,6 +264,7 @@
   election_date: "2026-11-03"
   offices: ["Governor", "U.S. House (all districts)", "Statewide offices & Legislature"]
   registration_deadline: "2026-10-26"
+  late_registration: "election_day"
   early_voting_start: "2026-10-20"
   early_voting_end: "2026-11-03"
   confidence: official
@@ -268,6 +280,7 @@
   offices: ["U.S. Senate", "Governor", "U.S. House (all districts)", "Statewide offices & Legislature"]
   registration_deadline: "2026-10-19"
   registration_deadline_time: "17:00"
+  late_registration: "election_day"
   early_voting_start: "2026-10-14"
   early_voting_end: "2026-11-02"
   mail_ballot_request_deadline: "2026-10-19"
@@ -283,6 +296,7 @@
   election_date: "2026-11-03"
   offices: ["U.S. Senate", "Governor", "U.S. House (all districts)", "Statewide offices & Legislature"]
   registration_deadline: "2026-10-23"
+  late_registration: "election_day"
   mail_ballot_request_deadline: "2026-10-23"
   confidence: official
   source_url: "https://voteidaho.gov/election-information/"
@@ -296,6 +310,7 @@
   election_date: "2026-11-03"
   offices: ["U.S. Senate", "Governor", "U.S. House (all districts)", "Statewide offices & Legislature"]
   registration_deadline: "2026-10-06"
+  late_registration: "election_day"
   early_voting_start: "2026-09-24"
   early_voting_end: "2026-11-02"
   mail_ballot_request_deadline: "2026-10-29"
@@ -311,6 +326,7 @@
   election_date: "2026-11-03"
   offices: ["U.S. House (all districts)", "Statewide offices & Legislature"]
   registration_deadline: "2026-10-05"
+  late_registration: "none"
   early_voting_start: "2026-10-06"
   early_voting_end: "2026-11-02"
   mail_ballot_request_deadline: "2026-10-22"
@@ -340,6 +356,7 @@
   election_date: "2026-11-03"
   offices: ["U.S. Senate", "Governor", "U.S. House (all districts)", "Statewide offices & Legislature"]
   registration_deadline: "2026-10-13"
+  late_registration: "none"
   early_voting_start: "2026-10-14"
   early_voting_end: "2026-11-02"
   mail_ballot_request_deadline: "2026-10-27"
@@ -355,6 +372,7 @@
   election_date: "2026-11-03"
   offices: ["U.S. Senate", "U.S. House (all districts)", "State Legislature"]
   registration_deadline: "2026-10-05"
+  late_registration: "none"
   early_voting_start: "2026-10-29"
   early_voting_end: "2026-10-31"
   mail_ballot_request_deadline: "2026-10-20"
@@ -370,6 +388,7 @@
   election_date: "2026-11-03"
   offices: ["U.S. Senate", "U.S. House (all districts)"]
   registration_deadline: "2026-10-05"
+  late_registration: "none"
   early_voting_start: "2026-10-20"
   early_voting_end: "2026-10-27"
   mail_ballot_request_deadline: "2026-10-30"
@@ -413,6 +432,7 @@
   election_date: "2026-11-03"
   offices: ["U.S. Senate", "Governor", "U.S. House (all districts)", "Statewide offices & Legislature"]
   registration_deadline: "2026-10-24"
+  late_registration: "none"
   early_voting_start: "2026-10-17"
   early_voting_end: "2026-10-30"
   mail_ballot_request_deadline: "2026-10-27"
@@ -428,6 +448,7 @@
   election_date: "2026-11-03"
   offices: ["Governor", "U.S. House (all districts)", "Statewide offices & Legislature"]
   registration_deadline: "2026-10-13"
+  late_registration: "election_day"
   early_voting_start: "2026-10-22"
   early_voting_end: "2026-10-29"
   mail_ballot_request_deadline: "2026-10-27"
@@ -443,6 +464,7 @@
   election_date: "2026-11-03"
   offices: ["U.S. Senate", "Governor", "U.S. House (all districts)", "State Legislature"]
   registration_deadline: "2026-10-13"
+  late_registration: "election_day"
   early_voting_end: "2026-10-29"
   mail_ballot_request_deadline: "2026-10-29"
   confidence: official
@@ -471,6 +493,7 @@
   election_date: "2026-11-03"
   offices: ["U.S. Senate", "Governor", "U.S. House (all districts)", "Statewide offices & Legislature"]
   registration_deadline: "2026-10-19"
+  late_registration: "election_day"
   early_voting_start: "2026-10-24"
   early_voting_end: "2026-11-01"
   mail_ballot_request_deadline: "2026-10-30"
@@ -499,6 +522,7 @@
   election_date: "2026-11-03"
   offices: ["U.S. Senate", "Governor", "U.S. House (all districts)", "Statewide offices & Legislature"]
   registration_deadline: "2026-10-13"
+  late_registration: "election_day"
   early_voting_start: "2026-09-18"
   early_voting_end: "2026-11-02"
   mail_ballot_request_deadline: "2026-11-02"
@@ -525,6 +549,7 @@
   election_date: "2026-11-03"
   offices: ["U.S. House (all districts)", "Statewide offices & Legislature"]
   registration_deadline: "2026-10-07"
+  late_registration: "none"
   early_voting_start: "2026-10-20"
   early_voting_end: "2026-11-02"
   mail_ballot_request_deadline: "2026-10-21"
@@ -540,6 +565,7 @@
   election_date: "2026-11-03"
   offices: ["U.S. Senate", "U.S. House (all districts)"]
   registration_deadline: "2026-10-05"
+  late_registration: "none"
   confidence: official
   source_url: "https://www.sos.ms.gov/content/documents/elections/2026%20Elections%20Calendar.pdf"
   source_retrieved_at: "2026-10-09T12:00:00Z"
@@ -564,6 +590,7 @@
   offices: ["U.S. Senate", "U.S. House (all districts)", "State Legislature"]
   registration_deadline: "2026-10-05"
   registration_deadline_time: "17:00"
+  late_registration: "election_day"
   mail_ballot_request_deadline: "2026-11-02"
   confidence: official
   source_url: "https://sosmt.gov/elections/calendars/"
@@ -578,6 +605,7 @@
   offices: ["U.S. Senate", "U.S. House (all districts)", "State Legislature"]
   registration_deadline: "2026-10-09"
   registration_deadline_time: "17:00"
+  late_registration: "early_voting"
   early_voting_start: "2026-10-15"
   early_voting_end: "2026-10-31"
   mail_ballot_request_deadline: "2026-10-20"
@@ -592,6 +620,7 @@
   election_type: general
   election_date: "2026-11-03"
   offices: ["U.S. House (all districts)", "Statewide offices & Legislature"]
+  late_registration: "not_required"
   mail_ballot_request_deadline: "2026-11-02"
   confidence: official
   source_url: "https://www.sos.nd.gov/elections/voter/elections-currentpast"
@@ -605,6 +634,7 @@
   election_date: "2026-11-03"
   offices: ["U.S. Senate", "Governor", "U.S. House (all districts)", "Statewide offices & Legislature"]
   registration_deadline: "2026-10-16"
+  late_registration: "none"
   early_voting_start: "2026-10-05"
   early_voting_end: "2026-11-02"
   mail_ballot_request_deadline: "2026-10-23"
@@ -630,6 +660,7 @@
   election_type: general
   election_date: "2026-11-03"
   offices: ["U.S. Senate", "Governor", "U.S. House (all districts)", "State Legislature"]
+  late_registration: "election_day"
   mail_ballot_request_deadline: "2026-11-02"
   confidence: official
   source_url: "https://www.sos.nh.gov/2026-election-details"
@@ -643,6 +674,7 @@
   election_date: "2026-11-03"
   offices: ["U.S. Senate", "U.S. House (all districts)"]
   registration_deadline: "2026-10-13"
+  late_registration: "none"
   early_voting_start: "2026-10-24"
   early_voting_end: "2026-11-01"
   mail_ballot_request_deadline: "2026-10-27"
@@ -658,6 +690,7 @@
   election_date: "2026-11-03"
   offices: ["U.S. Senate", "Governor", "U.S. House (all districts)", "Statewide offices & Legislature"]
   registration_deadline: "2026-10-06"
+  late_registration: "election_day"
   early_voting_start: "2026-10-06"
   early_voting_end: "2026-10-31"
   mail_ballot_request_deadline: "2026-10-20"
@@ -673,6 +706,7 @@
   election_date: "2026-11-03"
   offices: ["Governor", "U.S. House (all districts)", "Statewide offices & Legislature"]
   registration_deadline: "2026-10-06"
+  late_registration: "election_day"
   early_voting_start: "2026-10-17"
   early_voting_end: "2026-10-30"
   confidence: official
@@ -687,6 +721,7 @@
   election_date: "2026-11-03"
   offices: ["Governor", "U.S. House (all districts)", "Statewide offices & Legislature"]
   registration_deadline: "2026-10-24"
+  late_registration: "none"
   early_voting_start: "2026-10-24"
   early_voting_end: "2026-11-01"
   mail_ballot_request_deadline: "2026-10-24"
@@ -702,6 +737,7 @@
   election_date: "2026-11-03"
   offices: ["U.S. Senate (special)", "Governor", "U.S. House (all districts)", "Statewide offices & Legislature"]
   registration_deadline: "2026-10-05"
+  late_registration: "none"
   early_voting_start: "2026-10-06"
   early_voting_end: "2026-11-01"
   mail_ballot_request_deadline: "2026-10-27"
@@ -732,6 +768,7 @@
   election_date: "2026-11-03"
   offices: ["U.S. Senate", "Governor", "U.S. House (all districts)", "Statewide offices & Legislature"]
   registration_deadline: "2026-10-09"
+  late_registration: "none"
   early_voting_start: "2026-10-28"
   early_voting_end: "2026-10-31"
   mail_ballot_request_deadline: "2026-10-19"
@@ -747,6 +784,7 @@
   election_date: "2026-11-03"
   offices: ["U.S. Senate", "Governor", "U.S. House (all districts)", "Statewide offices & Legislature"]
   registration_deadline: "2026-10-13"
+  late_registration: "none"
   confidence: official
   source_url: "https://sos.oregon.gov/elections/pages/current-election.aspx"
   source_retrieved_at: "2026-10-09T12:00:00Z"
@@ -759,6 +797,7 @@
   election_date: "2026-11-03"
   offices: ["Governor", "U.S. House (all districts)", "State Legislature"]
   registration_deadline: "2026-10-19"
+  late_registration: "none"
   mail_ballot_request_deadline: "2026-10-27"
   confidence: official
   source_url: "https://www.pa.gov/agencies/vote/elections/upcoming-elections"
@@ -787,6 +826,7 @@
   offices: ["U.S. Senate", "Governor", "U.S. House (all districts)", "Statewide offices & Legislature"]
   notes: "Deadline to register to vote: Sunday, Oct 4, 2026. Deadline to apply for a mail ballot: 4:00 p.m. on Tuesday, Oct 13, 2026. The early voting and emergency mail ballot period runs Wednesday, Oct 14 through Monday, Nov 2, ending at 4 p.m. Mail ballots must be received by the State Board of Elections or placed in an authorized drop box by 8 p.m. on Nov 3."
   registration_deadline: "2026-10-04"
+  late_registration: "none"
   early_voting_start: "2026-10-14"
   early_voting_end: "2026-11-02"
   mail_ballot_request_deadline: "2026-10-13"
@@ -801,6 +841,7 @@
   election_date: "2026-11-03"
   offices: ["U.S. Senate", "Governor", "U.S. House (all districts)", "Statewide offices & Legislature"]
   registration_deadline: "2026-10-04"
+  late_registration: "none"
   early_voting_start: "2026-10-19"
   early_voting_end: "2026-10-31"
   mail_ballot_request_deadline: "2026-10-23"
@@ -829,6 +870,7 @@
   offices: ["U.S. Senate", "Governor", "U.S. House (all districts)", "Statewide offices & Legislature"]
   registration_deadline: "2026-10-19"
   registration_deadline_time: "17:00"
+  late_registration: "none"
   early_voting_start: "2026-09-18"
   early_voting_end: "2026-11-02"
   mail_ballot_request_deadline: "2026-11-02"
@@ -859,6 +901,7 @@
   offices: ["U.S. Senate", "Governor", "U.S. House (all districts)", "Statewide offices & Legislature"]
   notes: "Registration closed Oct 5, 2026 at 11:59 p.m. (mailed applications had to be postmarked by then). Early voting runs Oct 14 through Oct 29, 2026. Absentee applications must be received by Oct 24, 2026; absentee voting by mail requires a listed reason (such as age 60 or older, being out of the county, illness or disability, or military service), and first-time voters who registered by mail or online must first vote in person unless an exception applies. Absentee ballots must be received by the county election commission by the close of polls on Nov 3 (7 p.m. in Central-time counties, 8 p.m. in Eastern-time counties)."
   registration_deadline: "2026-10-05"
+  late_registration: "none"
   early_voting_start: "2026-10-14"
   early_voting_end: "2026-10-29"
   mail_ballot_request_deadline: "2026-10-24"
@@ -873,6 +916,7 @@
   election_date: "2026-11-03"
   offices: ["U.S. Senate", "Governor", "U.S. House (all districts)", "Statewide offices & Legislature"]
   registration_deadline: "2026-10-05"
+  late_registration: "none"
   early_voting_start: "2026-10-19"
   early_voting_end: "2026-10-30"
   mail_ballot_request_deadline: "2026-10-23"
@@ -889,6 +933,7 @@
   offices: ["U.S. House (all districts)", "Statewide offices & Legislature"]
   registration_deadline: "2026-10-23"
   registration_deadline_time: "17:00"
+  late_registration: "election_day"
   early_voting_start: "2026-10-20"
   mail_ballot_request_deadline: "2026-10-27"
   confidence: official
@@ -914,6 +959,7 @@
   election_date: "2026-11-03"
   offices: ["U.S. Senate", "U.S. House (all districts)"]
   registration_deadline: "2026-10-23"
+  late_registration: "election_day"
   early_voting_start: "2026-09-18"
   early_voting_end: "2026-10-31"
   mail_ballot_request_deadline: "2026-10-23"
@@ -940,6 +986,7 @@
   election_date: "2026-11-03"
   offices: ["Governor", "U.S. House (all districts)", "Statewide offices & Legislature"]
   registration_deadline: "2026-11-03"
+  late_registration: "election_day"
   early_voting_start: "2026-09-19"
   early_voting_end: "2026-11-02"
   mail_ballot_request_deadline: "2026-11-02"
@@ -967,6 +1014,7 @@
   election_date: "2026-11-03"
   offices: ["U.S. House (all districts)", "Statewide offices & Legislature"]
   registration_deadline: "2026-10-26"
+  late_registration: "election_day"
   confidence: official
   source_url: "https://www.sos.wa.gov/elections/elections-calendar/dates-and-deadlines"
   source_retrieved_at: "2026-10-09T12:00:00Z"
@@ -990,6 +1038,7 @@
   election_date: "2026-11-03"
   offices: ["Governor", "U.S. House (all districts)", "Statewide offices & Legislature"]
   registration_deadline: "2026-10-14"
+  late_registration: "election_day"
   mail_ballot_request_deadline: "2026-10-29"
   confidence: official
   source_url: "https://elections.wi.gov/2026"
@@ -1003,6 +1052,7 @@
   election_date: "2026-11-03"
   offices: ["U.S. Senate", "U.S. House (all districts)", "State Legislature"]
   registration_deadline: "2026-10-13"
+  late_registration: "none"
   early_voting_start: "2026-10-21"
   early_voting_end: "2026-10-31"
   mail_ballot_request_deadline: "2026-10-28"
@@ -1029,6 +1079,7 @@
   election_date: "2026-11-03"
   offices: ["U.S. Senate", "Governor", "U.S. House (all districts)", "Statewide offices & Legislature"]
   registration_deadline: "2026-10-19"
+  late_registration: "election_day"
   early_voting_start: "2026-10-06"
   early_voting_end: "2026-11-02"
   mail_ballot_request_deadline: "2026-11-02"
