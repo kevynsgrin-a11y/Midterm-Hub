@@ -90,7 +90,7 @@ civic reject 7       # discard the change, restore `verified`, value unchanged
 | Command | Purpose |
 | --- | --- |
 | `civic init` | Create the DB from `schema.sql` (idempotent). |
-| `civic intake FILE.yaml` | Validate + upsert a YAML intake file. |
+| `civic intake FILE.yaml` | Validate + upsert a YAML intake file (`--by`, `--published generated/elections.json` to keep unchanged published records in the archive past the 30-day window). |
 | `civic ingest --state VA \| --all` | Run state adapters (Phase 2). |
 | `civic review` | List `needs_review` elections + pending changes. |
 | `civic approve CHANGE_ID...` | Apply pending change(s). |

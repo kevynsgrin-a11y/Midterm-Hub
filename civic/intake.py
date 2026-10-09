@@ -6,7 +6,9 @@ per-entry, per-field error messages. There is no partial ingestion.
 """
 from __future__ import annotations
 
+import json
 from pathlib import Path
+from typing import Any, Mapping, Optional
 
 import yaml
 from pydantic import ValidationError
@@ -14,6 +16,8 @@ from pydantic import ValidationError
 from .ids import election_id
 from .models import ElectionRecord
 from .store import UpsertResult, upsert
+
+PublishedIndex = Mapping[tuple[str, str, str, str], dict[str, Any]]
 
 
 class _UniqueKeyLoader(yaml.SafeLoader):
@@ -51,9 +55,53 @@ class IntakeError(Exception):
         )
 
 
-def load_intake(path: str | Path) -> list[ElectionRecord]:
+def published_key(entry: Mapping[str, Any]) -> tuple[str, str, str, str]:
+    """Identity under which an intake entry is matched to a published record."""
+    return (
+        str(entry.get("state", "")).strip().upper(),
+        str(entry.get("jurisdiction_name")),
+        str(entry.get("election_type")),
+        str(entry.get("election_date")),
+    )
+
+
+def published_index(payload: Mapping[str, Any]) -> dict[tuple[str, str, str, str], dict[str, Any]]:
+    """Index the verified records of a frontend payload (generated/elections.json) by
+    ``published_key``, keeping only the fields ``ElectionRecord`` itself serializes."""
+    return {
+        published_key(item): {
+            key: value
+            for key, value in item.items()
+            if key in ElectionRecord.model_fields and key != "warnings"
+        }
+        for item in payload.get("elections", [])
+        if item.get("verified") is True
+    }
+
+
+def load_published(path: str | Path) -> dict[tuple[str, str, str, str], dict[str, Any]]:
+    """Read a frontend payload file into a ``published_index``. Raises IntakeError if
+    the file is unreadable, so a bad path can never silently disable the archive."""
+    try:
+        payload = json.loads(Path(path).read_text(encoding="utf-8"))
+    except (OSError, ValueError) as exc:
+        raise IntakeError([f"cannot read published payload {path}: {exc}"])
+    if not isinstance(payload, dict):
+        raise IntakeError(
+            [f"published payload {path} must be a JSON object, got {type(payload).__name__}"]
+        )
+    return published_index(payload)
+
+
+def load_intake(
+    path: str | Path, published: Optional[PublishedIndex] = None
+) -> list[ElectionRecord]:
     """Parse and validate an intake file into records. Raises IntakeError on any
-    problem, having first collected errors across all entries."""
+    problem, having first collected errors across all entries.
+
+    ``published`` (see ``load_published``) lets an entry that is byte-for-byte the
+    record already published stay in the archive past the 30-day recency window.
+    Without it, or for any new or edited entry, the recency gate applies in full."""
     raw = Path(path).read_text(encoding="utf-8")
     try:
         data = yaml.load(raw, Loader=_UniqueKeyLoader)
@@ -76,7 +124,10 @@ def load_intake(path: str | Path) -> list[ElectionRecord]:
             errors.append(f"[entry {i}] must be a mapping, got {type(entry).__name__}")
             continue
         try:
-            record = ElectionRecord(**entry)
+            record = ElectionRecord.model_validate(
+                entry,
+                context={"previously_published": (published or {}).get(published_key(entry))},
+            )
         except ValidationError as exc:
             for err in exc.errors():
                 loc = ".".join(str(x) for x in err["loc"]) or "<root>"
@@ -105,8 +156,10 @@ def load_intake(path: str | Path) -> list[ElectionRecord]:
     return records
 
 
-def ingest_intake(conn, path: str | Path, actor: str) -> list[UpsertResult]:
+def ingest_intake(
+    conn, path: str | Path, actor: str, published: Optional[PublishedIndex] = None
+) -> list[UpsertResult]:
     """Validate the whole file, then upsert every record. All-or-nothing: validation
     raises before any write occurs."""
-    records = load_intake(path)
+    records = load_intake(path, published)
     return [upsert(conn, record, actor) for record in records]
