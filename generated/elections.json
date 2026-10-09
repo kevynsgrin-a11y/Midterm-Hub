@@ -1,6 +1,6 @@
 {
   "edition": "2026 Midterm Cycle",
-  "generated_at": "2026-10-09T06:57:06Z",
+  "generated_at": "2026-10-09T07:00:33Z",
   "demo": false,
   "elections": [
     {
@@ -139,7 +139,7 @@
       "timezone": null,
       "confidence": "official",
       "source_url": "https://www.elections.virginia.gov/news-releases/primary-election-moved-to-august-4-1.html",
-      "source_retrieved_at": "2026-07-21T18:00:00Z",
+      "source_retrieved_at": "2026-10-09T12:00:00Z",
       "notes": "Virginia's 2026 primary, originally set for June 16, was moved to August 4, 2026 per an official Department of Elections news release; primaries are held only for offices/parties with contested nominations. Historical \u2014 election already held; record retained for archive.",
       "id": "3b409970c92eb5fa",
       "state_name": "Virginia",
@@ -155,7 +155,7 @@
       "election_type": "primary",
       "offices": [
         "U.S. House (all districts)",
-        "Statewide offices & Legislature"
+        "State Legislature"
       ],
       "registration_deadline": "2026-07-27",
       "registration_deadline_time": null,
@@ -185,7 +185,7 @@
         "U.S. Senate",
         "Governor",
         "U.S. House (all districts)",
-        "Statewide offices & Legislature"
+        "State Legislature"
       ],
       "registration_deadline": "2026-07-07",
       "registration_deadline_time": null,
@@ -214,7 +214,7 @@
       "offices": [
         "Governor",
         "U.S. House (all districts)",
-        "Statewide offices & Legislature"
+        "State Legislature"
       ],
       "registration_deadline": null,
       "registration_deadline_time": null,
@@ -226,8 +226,8 @@
       "timezone": null,
       "confidence": "official",
       "source_url": "https://elections.hawaii.gov/",
-      "source_retrieved_at": "2026-07-21T18:00:00Z",
-      "notes": "Same-day voter registration available; all-mail election with in-person voting at voter service centers (excluding Sundays). Historical \u2014 election already held; record retained for archive.",
+      "source_retrieved_at": "2026-10-09T12:00:00Z",
+      "notes": "Same-day voter registration available; all-mail election with in-person voting at voter service centers (excluding Sundays). Hawaii elects no Attorney General, Secretary of State, Treasurer or Auditor; Office of Hawaiian Affairs trustees were also on the ballot. Historical \u2014 election already held; record retained for archive.",
       "id": "6e94c3a0f17fe283",
       "state_name": "Hawaii",
       "slug": "hawaii",
@@ -242,8 +242,8 @@
       "election_type": "primary",
       "offices": [
         "Governor",
-        "U.S. House (all districts)",
-        "Statewide offices & Legislature"
+        "U.S. House (some districts)",
+        "State Legislature (some districts)"
       ],
       "registration_deadline": "2026-07-24",
       "registration_deadline_time": null,
@@ -256,7 +256,7 @@
       "confidence": "official",
       "source_url": "https://portal.ct.gov/-/media/sots/electionservices/calendars/2026-elections/2026-election-calendar-122325.pdf?rev=340f2bcacc9748c1a2ed8f49d1774f52&hash=471ECCC3D26999C2D53BB5636927C0EB",
       "source_retrieved_at": "2026-10-09T12:00:00Z",
-      "notes": "Same-day registration is not available for primaries. The last day to register or enroll by mail was July 24, 2026; in-person registration and enrollment closed at 12:00 noon on Aug 10, 2026. Early voting ran Aug 3 through Aug 9. Historical \u2014 election already held; record retained for archive.",
+      "notes": "Only the Governor's race was statewide; congressional and legislative primaries were held only in some districts. Same-day registration is not available for primaries. The last day to register or enroll by mail was July 24, 2026; in-person registration and enrollment closed at 12:00 noon on Aug 10, 2026. Early voting ran Aug 3 through Aug 9. Historical \u2014 election already held; record retained for archive.",
       "id": "515c17ecf81eebb5",
       "state_name": "Connecticut",
       "slug": "connecticut",
@@ -343,7 +343,7 @@
       "timezone": null,
       "confidence": "official",
       "source_url": "https://elections.wi.gov/2026",
-      "source_retrieved_at": "2026-07-21T18:00:00Z",
+      "source_retrieved_at": "2026-10-09T12:00:00Z",
       "notes": "Same-day voter registration available. Historical \u2014 election already held; record retained for archive.",
       "id": "0840450df8cb3594",
       "state_name": "Wisconsin",
@@ -361,7 +361,7 @@
         "U.S. Senate",
         "Governor",
         "U.S. House (all districts)",
-        "Statewide offices & Legislature"
+        "State Legislature"
       ],
       "registration_deadline": "2026-07-19",
       "registration_deadline_time": null,
@@ -388,6 +388,7 @@
       "election_date": "2026-08-18",
       "election_type": "primary",
       "offices": [
+        "U.S. Senate (special)",
         "Governor",
         "U.S. House (all districts)",
         "Statewide offices & Legislature"
@@ -447,10 +448,7 @@
       "election_date": "2026-08-25",
       "election_type": "runoff",
       "offices": [
-        "U.S. Senate",
-        "Governor",
-        "U.S. House (all districts)",
-        "Statewide offices & Legislature"
+        "Races without a majority winner in the June 16 primary"
       ],
       "registration_deadline": "2026-07-31",
       "registration_deadline_time": null,
@@ -599,7 +597,7 @@
         "U.S. Senate",
         "Governor",
         "U.S. House (all districts)",
-        "Statewide offices & Legislature"
+        "State Legislature"
       ],
       "registration_deadline": "2026-10-04",
       "registration_deadline_time": null,
@@ -924,7 +922,7 @@
       "offices": [
         "Governor",
         "U.S. House (all districts)",
-        "Statewide offices & Legislature"
+        "State Legislature"
       ],
       "registration_deadline": "2026-10-26",
       "registration_deadline_time": null,
@@ -937,7 +935,7 @@
       "confidence": "official",
       "source_url": "https://elections.hawaii.gov/",
       "source_retrieved_at": "2026-10-09T12:00:00Z",
-      "notes": "Paper voter registration applications must be submitted to the county elections division by 4:30 p.m. Hawaii time on Oct 26, 2026, the date the state's election office lists for the general election; its general rule is the tenth day before the election, which is Saturday, Oct 24. Under the state's administrative rules a registration form received after the register closes is valid only for the next election, so after that deadline the way to register for this election is in person at a voter service center, which offers same-day registration. The online registration page is open at any time. Voter service centers are open Oct 20 through Nov 3 (excluding Sundays): main centers Monday\u2013Saturday 8 a.m.\u20134:30 p.m., and 7 a.m.\u20137 p.m. on Election Day; smaller satellite sites keep shorter schedules, so check your county. Voted ballots must be received by your county elections division by 7 p.m. Hawaii time on Election Day, by mail, drop box or voter service center. Requests for a ballot sent to a temporary alternate mailing address are due Oct 27, 2026.",
+      "notes": "Paper voter registration applications must be submitted to the county elections division by 4:30 p.m. Hawaii time on Oct 26, 2026, the date the state's election office lists for the general election; its general rule is the tenth day before the election, which is Saturday, Oct 24. Under the state's administrative rules a registration form received after the register closes is valid only for the next election, so after that deadline the way to register for this election is in person at a voter service center, which offers same-day registration. The online registration page is open at any time. Voter service centers are open Oct 20 through Nov 3 (excluding Sundays): main centers Monday\u2013Saturday 8 a.m.\u20134:30 p.m., and 7 a.m.\u20137 p.m. on Election Day; smaller satellite sites keep shorter schedules, so check your county. Voted ballots must be received by your county elections division by 7 p.m. Hawaii time on Election Day, by mail, drop box or voter service center. Requests for a ballot sent to a temporary alternate mailing address are due Oct 27, 2026. Hawaii elects no Attorney General, Secretary of State, Treasurer or Auditor; five Office of Hawaiian Affairs trustee seats are also on the ballot.",
       "id": "1740fc79debed87a",
       "state_name": "Hawaii",
       "slug": "hawaii",
@@ -1055,7 +1053,7 @@
       "confidence": "official",
       "source_url": "https://www.in.gov/sos/elections/files/2026-Calendar-Brochure.FINAL-VERSION.pdf",
       "source_retrieved_at": "2026-10-09T12:00:00Z",
-      "notes": "No U.S. Senate seat and no Governor's race in Indiana in 2026; ballot includes all 9 U.S. House districts, statewide offices (Secretary of State, Auditor/Comptroller, Treasurer), and the Legislature. Registration closed Oct 5, 2026: online at 11:59 p.m., in person at the county voter registration office's close of business. In-person early voting begins Oct 6 at the county clerk's office (satellite sites may open later) and ends at 12:00 noon prevailing local time on Nov 2; any registered voter may vote early in person, while voting an absentee ballot by mail requires one of the reasons listed in state law. An application for a mail ballot must be received by 11:59 p.m. on Oct 22. A voted absentee ballot must be received by the county election board by 6 p.m. prevailing local time on Nov 3 (postmarks do not count); a military or overseas ballot postmarked by Nov 3 may arrive until noon on Nov 13. Polls are open 6 a.m.\u20136 p.m. prevailing local time on Nov 3.",
+      "notes": "No U.S. Senate seat and no Governor's race in Indiana in 2026; ballot includes all 9 U.S. House districts, statewide offices (Secretary of State, State Comptroller, Treasurer), and the Legislature. Registration closed Oct 5, 2026: online at 11:59 p.m., in person at the county voter registration office's close of business. In-person early voting begins Oct 6 at the county clerk's office (satellite sites may open later) and ends at 12:00 noon prevailing local time on Nov 2; any registered voter may vote early in person, while voting an absentee ballot by mail requires one of the reasons listed in state law. An application for a mail ballot must be received by 11:59 p.m. on Oct 22. A voted absentee ballot must be received by the county election board by 6 p.m. prevailing local time on Nov 3 (postmarks do not count); a military or overseas ballot postmarked by Nov 3 may arrive until noon on Nov 13. Polls are open 6 a.m.\u20136 p.m. prevailing local time on Nov 3.",
       "id": "0c5500b812343bb1",
       "state_name": "Indiana",
       "slug": "indiana",
@@ -1686,7 +1684,7 @@
         "U.S. Senate",
         "Governor",
         "U.S. House (all districts)",
-        "Statewide offices & Legislature"
+        "State Legislature"
       ],
       "registration_deadline": "2026-10-13",
       "registration_deadline_time": null,
@@ -1835,7 +1833,7 @@
         "U.S. Senate",
         "Governor",
         "U.S. House (all districts)",
-        "Statewide offices & Legislature"
+        "State Legislature"
       ],
       "registration_deadline": "2026-10-05",
       "registration_deadline_time": null,
@@ -1893,7 +1891,7 @@
       "election_type": "general",
       "offices": [
         "U.S. House (all districts)",
-        "Statewide offices & Legislature"
+        "State Legislature"
       ],
       "registration_deadline": "2026-10-23",
       "registration_deadline_time": "17:00",
@@ -1906,7 +1904,7 @@
       "confidence": "official",
       "source_url": "https://vote.utah.gov/current-election-information/",
       "source_retrieved_at": "2026-10-09T12:00:00Z",
-      "notes": "All-mail voting state. Active registered voters are mailed ballots automatically beginning Oct 13, 2026; other voters may request a by-mail ballot by 5 p.m. on Oct 27, 2026 (the state's deadline; Utah County's page lists Oct 23, so confirm with your county clerk). A mailed or drop-box ballot must be physically received by the county by 8 p.m. on Nov 3, and a postmark gives ordinary voters no grace. In-person early voting can begin as early as Oct 20, 2026 (up to 14 days before Election Day, for at least four days); each county clerk sets its own dates and hours, so contact your clerk (Utah County begins Oct 26, and Salt Lake County's Government Center is also open Saturday, Oct 31 from 10 a.m. to 2 p.m.). Same-day voter registration is available in person at an early voting location or on Election Day with two forms of ID (one verifying identity and one proving residence); no Governor or U.S. Senate race in Utah in 2026.",
+      "notes": "All-mail voting state. Active registered voters are mailed ballots automatically beginning Oct 13, 2026; other voters may request a by-mail ballot by 5 p.m. on Oct 27, 2026 (the state's deadline; Utah County's page lists Oct 23, so confirm with your county clerk). A mailed or drop-box ballot must be physically received by the county by 8 p.m. on Nov 3, and a postmark gives ordinary voters no grace. In-person early voting can begin as early as Oct 20, 2026 (up to 14 days before Election Day, for at least four days); each county clerk sets its own dates and hours, so contact your clerk (Utah County begins Oct 26, and Salt Lake County's Government Center is also open Saturday, Oct 31 from 10 a.m. to 2 p.m.). Same-day voter registration is available in person at an early voting location or on Election Day with two forms of ID (one verifying identity and one proving residence); no Governor or U.S. Senate race in Utah in 2026; State Board of Education seats and judicial retention questions are also on the ballot.",
       "id": "45dbd4ead8b8de48",
       "state_name": "Utah",
       "slug": "utah",
@@ -1978,7 +1976,7 @@
       "election_type": "general",
       "offices": [
         "U.S. House (all districts)",
-        "Statewide offices & Legislature"
+        "State Legislature"
       ],
       "registration_deadline": "2026-10-26",
       "registration_deadline_time": null,
