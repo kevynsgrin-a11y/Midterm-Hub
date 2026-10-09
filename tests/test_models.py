@@ -74,6 +74,20 @@ class TestRegistrationTime:
             _valid(registration_deadline_time="25:99")
 
 
+class TestLateRegistration:
+    @pytest.mark.parametrize("value", ["none", "early_voting", "election_day", "not_required"])
+    def test_accepts_each_classification(self, value):
+        assert _valid(late_registration=value).late_registration == value
+
+    def test_is_optional(self):
+        assert _valid().late_registration is None
+
+    @pytest.mark.parametrize("value", ["same_day", "Election Day", "", "yes"])
+    def test_rejects_anything_else(self, value):
+        with pytest.raises(ValidationError):
+            _valid(late_registration=value)
+
+
 class TestStricterValidation:
     def test_rejects_iso_week_and_basic_dates(self):
         for bad in ("2027-W44-2", "20271102"):

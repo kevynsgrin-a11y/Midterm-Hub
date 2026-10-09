@@ -43,6 +43,8 @@ ElectionType = Literal[
     "primary", "general", "runoff", "special", "municipal", "school_board", "ballot_measure"
 ]
 Confidence = Literal["official", "secondary", "inferred"]
+# Whether a voter can still register for the election after the regular deadline.
+LateRegistration = Literal["none", "early_voting", "election_day", "not_required"]
 
 _TIME_RE = re.compile(r"^\d{2}:\d{2}$")
 
@@ -83,6 +85,14 @@ def _utcnow() -> datetime.datetime:
     return datetime.datetime.now(datetime.timezone.utc)
 
 
+def _matches_published(current: dict[str, Any], published: dict[str, Any]) -> bool:
+    """True when ``current`` is the record that is already published.
+
+    A payload written before an optional field existed has no key for it, so a missing key
+    counts as ``None``; every other field must match exactly."""
+    return all(current.get(key) == published.get(key) for key in {*current, *published})
+
+
 class ElectionRecord(BaseModel):
     """A validated, hashable election record."""
 
@@ -101,6 +111,9 @@ class ElectionRecord(BaseModel):
     early_voting_end: Optional[datetime.date] = None
     mail_ballot_request_deadline: Optional[datetime.date] = None
     candidate_filing_deadline: Optional[datetime.date] = None
+    # Presentation metadata for the frontend payload and downloads: it is not persisted by the
+    # legacy SQLite store and is not part of the content hash.
+    late_registration: Optional[LateRegistration] = None
     timezone: Optional[str] = None
     confidence: Confidence = "secondary"
     source_url: str
@@ -216,7 +229,7 @@ class ElectionRecord(BaseModel):
         # new intake. Only the frontend exporter passes this full prior record;
         # a new/edited field (including its provenance) still hits the age gate.
         previous = (info.context or {}).get("previously_published")
-        unchanged_archive = previous is not None and self.model_dump(mode="json") == previous
+        unchanged_archive = previous is not None and _matches_published(self.model_dump(mode="json"), previous)
         if age_days > 30 and not unchanged_archive and not re.search(r"\bhistorical\b", self.notes or "", re.I):
             raise ValueError(
                 f"election_date {ed} is more than 30 days in the past; add "

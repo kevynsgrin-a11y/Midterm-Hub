@@ -53,6 +53,20 @@ def test_csv_round_trips_every_field_and_joins_offices():
     assert rows[1]["offices"] == "" and rows[1]["early_voting_start"] == ""
 
 
+def test_csv_carries_the_late_registration_classification():
+    rows = list(csv.DictReader(io.StringIO(elections_csv([election(late_registration="election_day"), election(id="b" * 16)]).decode())))
+    assert rows[0]["late_registration"] == "election_day"
+    assert rows[1]["late_registration"] == ""
+
+
+def test_registration_event_says_what_is_possible_after_the_deadline():
+    with_late = {str(e["uid"]): e for e in events(elections_ics([election(late_registration="election_day")], GENERATED_AT))}
+    description = str(with_late["0123456789abcdef@midtermwatch.com#registration"]["description"])
+    assert "Late registration: Open through Election Day." in description
+    without = {str(e["uid"]): e for e in events(elections_ics([election()], GENERATED_AT))}
+    assert "Late registration" not in str(without["0123456789abcdef@midtermwatch.com#registration"]["description"])
+
+
 def test_calendar_has_the_expected_events_and_unique_uids():
     evs = events(elections_ics([election()], GENERATED_AT))
     by_uid = {str(e["uid"]): e for e in evs}

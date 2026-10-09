@@ -34,6 +34,7 @@ CSV_COLUMNS: tuple[str, ...] = (
     "offices",
     "registration_deadline",
     "registration_deadline_time",
+    "late_registration",
     "early_voting_start",
     "early_voting_end",
     "mail_ballot_request_deadline",
@@ -44,6 +45,14 @@ CSV_COLUMNS: tuple[str, ...] = (
     "source_retrieved_at",
     "notes",
 )
+
+# Shown beside the registration deadline; keep in step with lateRegistrationLabel in lib/data.ts.
+LATE_REGISTRATION_LABELS: dict[str, str] = {
+    "none": "Closed after the deadline",
+    "early_voting": "Open during early voting",
+    "election_day": "Open through Election Day",
+    "not_required": "No registration required",
+}
 
 _DISCLAIMER = "Deadlines can change. Confirm with your state or local election office before you rely on a date."
 
@@ -117,10 +126,12 @@ def elections_ics(elections: Iterable[dict[str, Any]], generated_at: str, domain
         if rec.get("registration_deadline"):
             when = _parse_date(rec["registration_deadline"])
             at = f" at {rec['registration_deadline_time']}" if rec.get("registration_deadline_time") else ""
+            late = LATE_REGISTRATION_LABELS.get(rec.get("late_registration") or "")
+            after = f" Late registration: {late}." if late else ""
             cal.add_component(_all_day(
                 f"{base}#registration", when, when, f"{name}: voter registration deadline",
                 f"Register by this date{at} to vote in the {rec['election_date']} {label} election. "
-                f"Mail, online and in-person deadlines can differ; see the election page.\n{tail}", stamp,
+                f"Mail, online and in-person deadlines can differ; see the election page.{after}\n{tail}", stamp,
             ))
         if rec.get("early_voting_start"):
             start = _parse_date(rec["early_voting_start"])

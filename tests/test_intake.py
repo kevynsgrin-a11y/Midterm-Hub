@@ -232,6 +232,24 @@ def test_published_copy_of_a_different_election_does_not_unlock_archive(tmp_path
         load_intake(_write(tmp_path, _STALE), published)
 
 
+def test_payload_that_predates_an_optional_field_still_counts_as_unchanged(tmp_path):
+    """Adding a field to the model must not re-open the 30-day gate for archived records:
+    a published row with no key for it is the same record as one holding None."""
+    path = _payload(tmp_path)
+    payload = json.loads(path.read_text(encoding="utf-8"))
+    for item in payload["elections"]:
+        item.pop("late_registration", None)
+    path.write_text(json.dumps(payload), encoding="utf-8")
+    (record,) = load_intake(_write(tmp_path, _STALE), load_published(path))
+    assert record.late_registration is None
+
+
+def test_setting_an_optional_field_makes_an_archived_record_a_new_intake(tmp_path):
+    published = load_published(_payload(tmp_path))
+    with pytest.raises(IntakeError, match="more than 30 days"):
+        load_intake(_write(tmp_path, _STALE + "  late_registration: election_day\n"), published)
+
+
 def test_published_context_does_not_bypass_structural_validation(tmp_path):
     published = load_published(_payload(tmp_path))
     with pytest.raises(IntakeError) as exc:
