@@ -1,11 +1,20 @@
 """Intake: whole-file all-or-nothing validation with indexed errors."""
 from __future__ import annotations
 
+import datetime as dt
+import json
 from pathlib import Path
 
 import pytest
 
-from civic.intake import IntakeError, ingest_intake, load_intake
+from civic.intake import (
+    IntakeError,
+    ingest_intake,
+    load_intake,
+    load_published,
+    published_index,
+)
+from civic.models import ElectionRecord
 
 FIXTURES = Path(__file__).parent / "fixtures"
 
@@ -148,3 +157,121 @@ def test_sample_fixture_is_valid(conn):
     results = ingest_intake(conn, FIXTURES / "sample_intake.yaml", actor="curator")
     assert len(results) == 4
     assert conn.execute("SELECT COUNT(*) FROM elections").fetchone()[0] == 4
+
+
+# --- archive window: an unchanged published record outlives the 30-day gate ---------
+
+_STALE_DATE = (dt.date.today() - dt.timedelta(days=60)).isoformat()
+_STALE = f"""
+- state: CA
+  jurisdiction_type: state
+  jurisdiction_name: "California"
+  election_type: general
+  election_date: "{_STALE_DATE}"
+  offices: ["State assembly"]
+  confidence: official
+  source_url: "https://example.gov/elections"
+  source_retrieved_at: "2026-01-01T00:00:00Z"
+  notes: "Published election record"
+"""
+
+
+def _payload(tmp_path: Path, verified: bool = True, **changes) -> Path:
+    """A generated/elections.json holding the stale record above. A stale record can
+    only be built with the 'historical' marker, so age a fresh-dated twin instead."""
+    twin = ElectionRecord(
+        state="CA", jurisdiction_type="state", jurisdiction_name="California",
+        election_type="general", election_date=dt.date.today().isoformat(),
+        offices=["State assembly"], confidence="official",
+        source_url="https://example.gov/elections",
+        source_retrieved_at="2026-01-01T00:00:00Z", notes="Published election record",
+    ).model_dump(mode="json")
+    item = {
+        **twin, "election_date": _STALE_DATE, **changes,
+        "id": "0123456789abcdef", "state_name": "California", "slug": "california",
+        "verified": verified,
+    }
+    path = tmp_path / "elections.json"
+    path.write_text(json.dumps({"elections": [item]}), encoding="utf-8")
+    return path
+
+
+def test_stale_entry_rejected_without_published_payload(tmp_path):
+    with pytest.raises(IntakeError, match="more than 30 days"):
+        load_intake(_write(tmp_path, _STALE))
+
+
+def test_unchanged_published_stale_entry_is_accepted(tmp_path):
+    published = load_published(_payload(tmp_path))
+    (record,) = load_intake(_write(tmp_path, _STALE), published)
+    assert record.election_date.isoformat() == _STALE_DATE
+
+
+@pytest.mark.parametrize("changes", [
+    {"source_url": "https://example.gov/older"},
+    {"offices": ["Governor"]},
+    {"notes": "Edited since publication"},
+    {"source_retrieved_at": "2026-02-01T00:00:00Z"},
+])
+def test_edited_stale_entry_still_needs_historical_marker(tmp_path, changes):
+    published = load_published(_payload(tmp_path, **changes))
+    with pytest.raises(IntakeError, match="more than 30 days"):
+        load_intake(_write(tmp_path, _STALE), published)
+
+
+def test_unverified_published_copy_does_not_unlock_archive(tmp_path):
+    published = load_published(_payload(tmp_path, verified=False))
+    assert published == {}
+    with pytest.raises(IntakeError, match="more than 30 days"):
+        load_intake(_write(tmp_path, _STALE), published)
+
+
+def test_published_copy_of_a_different_election_does_not_unlock_archive(tmp_path):
+    published = load_published(_payload(tmp_path, election_type="primary"))
+    with pytest.raises(IntakeError, match="more than 30 days"):
+        load_intake(_write(tmp_path, _STALE), published)
+
+
+def test_published_context_does_not_bypass_structural_validation(tmp_path):
+    published = load_published(_payload(tmp_path))
+    with pytest.raises(IntakeError) as exc:
+        load_intake(_write(tmp_path, _STALE.replace("state: CA", "state: ZZ")), published)
+    assert any("[entry 0]" in e and "state" in e for e in exc.value.errors)
+
+
+def test_published_index_keeps_only_record_fields(tmp_path):
+    index = published_index(json.loads(_payload(tmp_path).read_text(encoding="utf-8")))
+    (record,) = index.values()
+    assert set(record) == set(ElectionRecord.model_fields) - {"warnings"}
+    assert record["election_date"] == _STALE_DATE
+
+
+@pytest.mark.parametrize("content", ["not json", "[]", ""])
+def test_unreadable_published_payload_is_an_error(tmp_path, content):
+    bad = tmp_path / "bad.json"
+    bad.write_text(content, encoding="utf-8")
+    with pytest.raises(IntakeError, match="published payload"):
+        load_published(bad)
+
+
+def test_missing_published_payload_is_an_error(tmp_path):
+    with pytest.raises(IntakeError, match="cannot read published payload"):
+        load_published(tmp_path / "absent.json")
+
+
+def test_cli_published_flag_ingests_unchanged_archive(tmp_path, monkeypatch):
+    from typer.testing import CliRunner
+
+    from civic.cli import app
+
+    monkeypatch.setenv("CIVIC_DB_PATH", str(tmp_path / "cli.db"))
+    intake_file, payload = _write(tmp_path, _STALE), _payload(tmp_path)
+    runner = CliRunner()
+
+    rejected = runner.invoke(app, ["intake", str(intake_file), "--by", "t"])
+    assert rejected.exit_code == 1
+    assert "more than 30 days" in rejected.output
+
+    accepted = runner.invoke(app, ["intake", str(intake_file), "--by", "t", "--published", str(payload)])
+    assert accepted.exit_code == 0, accepted.output
+    assert "Ingested 1 record(s)" in accepted.output

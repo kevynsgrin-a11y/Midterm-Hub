@@ -18,7 +18,7 @@ from .db import get_connection
 from .exports.csv_export import export_csv
 from .exports.ics_export import export_ics
 from .exports.json_export import export_json
-from .intake import IntakeError, ingest_intake
+from .intake import IntakeError, ingest_intake, load_published
 from .store import (
     approve_change,
     pending_reviews,
@@ -61,12 +61,19 @@ def init() -> None:
 def intake(
     file: Path = typer.Argument(..., exists=True, dir_okay=False, readable=True),
     by: Optional[str] = typer.Option(None, "--by", help="Actor name for audit."),
+    published: Optional[Path] = typer.Option(
+        None, "--published", exists=True, dir_okay=False, readable=True,
+        help="Published frontend payload (generated/elections.json). An entry identical "
+             "to its published record may stay in the archive past the 30-day window "
+             "without a 'historical' note; new or edited entries still need one.",
+    ),
 ) -> None:
     """Validate and upsert a YAML intake file (all-or-nothing)."""
     actor = _actor(by)
     try:
+        index = load_published(published) if published else None
         with get_connection() as conn:
-            results = ingest_intake(conn, file, actor)
+            results = ingest_intake(conn, file, actor, index)
     except IntakeError as exc:
         typer.secho("Intake rejected — no records were written:", fg=typer.colors.RED)
         for err in exc.errors:

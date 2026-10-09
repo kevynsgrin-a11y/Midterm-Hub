@@ -15,6 +15,7 @@ ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
 
 import yaml
+from civic.intake import published_index, published_key
 from civic.models import ElectionRecord
 from civic.site.data import STATE_NAMES
 
@@ -27,16 +28,11 @@ def slug(value: str) -> str:
 
 def main() -> None:
     previous = json.loads(OUT.read_text(encoding="utf-8")) if OUT.exists() else {}
-    published = {
-        (item["state"], item["jurisdiction_name"], item["election_type"], item["election_date"]):
-            {key: value for key, value in item.items() if key in ElectionRecord.model_fields and key != "warnings"}
-        for item in previous.get("elections", []) if item.get("verified") is True
-    }
+    published = published_index(previous)
     records: list[dict] = []
     for path in sorted((ROOT / "intake").glob("*.yaml")):
         for raw in yaml.safe_load(path.read_text(encoding="utf-8")) or []:
-            key = (raw.get("state", "").strip().upper(), raw.get("jurisdiction_name"), raw.get("election_type"), str(raw.get("election_date")))
-            record = ElectionRecord.model_validate(raw, context={"previously_published": published.get(key)})
+            record = ElectionRecord.model_validate(raw, context={"previously_published": published.get(published_key(raw))})
             data = record.model_dump(mode="json")
             identity = f"{record.state}|{record.jurisdiction_name}|{record.election_type}|{record.election_date}"
             data["id"] = hashlib.sha256(identity.encode()).hexdigest()[:16]

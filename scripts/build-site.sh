@@ -23,8 +23,11 @@ civic init
 # Real curated dataset: every YAML under intake/ is validated all-or-nothing and
 # upserted. Records were human-reviewed against official sources before commit,
 # so the build marks them verified (actor "editorial").
+# --published lets records unchanged since they were published stay in the archive
+# once their election is >30 days past (as the frontend exporter already does);
+# a new or edited record still needs 'historical' in its notes.
 for f in intake/*.yaml; do
-  civic intake "$f" --by editorial
+  civic intake "$f" --by editorial --published generated/elections.json
 done
 python - <<'PY'
 import sqlite3
