@@ -6,7 +6,7 @@ import { importFromRepo } from './resolve-repo.mjs';
 const payload = JSON.parse(readFileSync(new URL('../../generated/elections.json', import.meta.url)));
 const elections = payload.elections;
 
-const { elections: dataElections, stateNames, states, forState, findElection, electionHref, formatDate, titleCase } =
+const { elections: dataElections, stateNames, states, stateCount, forState, findElection, electionHref, formatDate, titleCase } =
   await importFromRepo('../../lib/data.ts');
 
 test('the published election index is the edition payload verbatim', () => {
@@ -29,6 +29,12 @@ test('the state index is de-duplicated by code and ordered by state name', () =>
     assert.ok(name && name.length > 0, `state ${code} needs a display name`);
     assert.ok(elections.some((e) => e.state === code), `state ${code} has no election record`);
   }
+});
+
+test('the homepage "states + DC" count excludes DC (50 states, 51 jurisdictions)', () => {
+  assert.ok(states.some(([code]) => code === 'DC'), 'the edition tracks DC');
+  assert.equal(stateCount, states.length - 1);
+  assert.equal(stateCount, 50);
 });
 
 test('a state lookup returns only that state, ordered by date, leaving the source untouched', () => {
