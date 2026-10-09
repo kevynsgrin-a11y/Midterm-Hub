@@ -119,6 +119,7 @@ def built_site(tmp_path_factory) -> dict[str, str]:
             election_date="2026-09-08", offices=["Mayor"],
             registration_deadline="2026-08-17", confidence="official",
             source_url="https://elections.example.gov/town",
+            notes="Historical: fixture election already held; kept for archive rendering tests.",
         ),
     ]
     for r in recs:
