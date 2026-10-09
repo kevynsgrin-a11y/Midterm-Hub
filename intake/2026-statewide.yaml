@@ -665,7 +665,7 @@
   confidence: official
   source_url: "https://elections.ny.gov/registration-and-voting-deadlines"
   source_retrieved_at: "2026-10-09T12:00:00Z"
-  notes: "No U.S. Senate seat up in 2026; the statewide primary was held June 23, 2026. Early voting runs Oct 24 through Nov 1, 2026. An early-mail or absentee application to have a ballot mailed must be received by the board of elections by Oct 24, 2026. Absentee applications for ballots to be picked up in person must be made by Nov 2, 2026. Early-mail and absentee ballots must be postmarked by Election Day (Nov 3, 2026) or dropped off by that day to count."
+  notes: "No U.S. Senate seat up in 2026; the statewide primary was held June 23, 2026. Registration forms must be received by the county board of elections by Oct 24, 2026, and a form sent by mail must also be postmarked at least 15 days before the election (Oct 19). Early voting runs Oct 24 through Nov 1, 2026; hours are set by each county. An early-mail or absentee ballot application must be received by the board of elections by Oct 24, 2026 to have the ballot mailed, or by Nov 2, 2026 to pick it up in person. A mailed ballot must be postmarked no later than Nov 3, 2026 and received by the board by Nov 10, 2026; a ballot delivered in person must reach the board of elections or a polling place before the polls close on Nov 3."
 
 - state: OH
   jurisdiction_type: state
@@ -676,10 +676,11 @@
   registration_deadline: "2026-10-05"
   early_voting_start: "2026-10-06"
   early_voting_end: "2026-11-01"
+  mail_ballot_request_deadline: "2026-10-27"
   confidence: official
   source_url: "https://www.ohiosos.gov/elections/voting-schedule"
-  source_retrieved_at: "2026-07-21T18:00:00Z"
-  notes: "The U.S. Senate race is a SPECIAL election for the seat vacated by JD Vance and filled by appointee Jon Husted (no regular Ohio Senate seat is up in 2026); Governor's race is open (Gov. DeWine term-limited)."
+  source_retrieved_at: "2026-10-09T12:00:00Z"
+  notes: "The U.S. Senate race is a SPECIAL election for the seat vacated by JD Vance and filled by appointee Jon Husted (no regular Ohio Senate seat is up in 2026); Governor's race is open (Gov. DeWine term-limited). Registration closes Oct 5, 2026; boards of elections and the Secretary of State's office are open until 9 p.m. that day. Absentee voting by mail begins Oct 6, and absentee ballot applications must be received by the board of elections by 8:30 p.m. on Oct 27. Early in-person voting runs Oct 6 through Nov 1: 8 a.m.–5 p.m. weekdays through Oct 23, 8 a.m.–4 p.m. Saturday Oct 24, 7:30 a.m.–7:30 p.m. Oct 26–30 (until 8:30 p.m. on Oct 27), 8 a.m.–4 p.m. Saturday Oct 31, and 1–5 p.m. Sunday Nov 1. Polls are open 6:30 a.m. to 7:30 p.m. on Nov 3, and absentee ballots from voters other than military and overseas voters must be received by the board of elections by 7:30 p.m. that day. Military and overseas voters' mailed ballots must be received by Nov 7 to count."
 
 - state: OK
   jurisdiction_type: state
