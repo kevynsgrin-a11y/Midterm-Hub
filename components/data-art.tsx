@@ -57,7 +57,7 @@ export function CountdownMasthead({ date, eyebrow, caption, initialDate, classNa
           )}
         </div>
         <figcaption className="max-w-2xl text-sm leading-relaxed text-muted-foreground">{caption}</figcaption>
-        <noscript><p className="font-mono text-xs text-muted-foreground">Countdown reflects the build date of this edition. Enable JavaScript to use your device date.</p></noscript>
+        <p className="font-mono text-xs text-muted-foreground">Edition built {formatDate(initialDate)}. Once scripts load, your device date refreshes this count.</p>
       </div>
     </figure>
   );

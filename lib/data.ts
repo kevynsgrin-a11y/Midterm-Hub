@@ -16,6 +16,8 @@ export const stateNames = Object.fromEntries(elections.map((e) => [e.state, e.st
 export const states = Object.entries(stateNames).sort((a, b) => a[1].localeCompare(b[1]));
 // `states` also holds DC, so its length is jurisdictions (51), not states (50).
 export const stateCount = states.filter(([code]) => code !== "DC").length;
+// Jurisdictions (states and DC) that have a reviewed primary-election record in this edition.
+export const primaryCoverage = new Set(elections.filter((e) => e.election_type === "primary").map((e) => e.state)).size;
 export const electionHref = (e: Election) => `/elections/${e.state}/${e.slug}/${e.id}/`;
 export { stateHref } from "./navigation";
 export const formatDate = (date: string, compact = false) => new Intl.DateTimeFormat("en-US", compact ? { month: "short", day: "numeric" } : { weekday: "long", month: "long", day: "numeric", year: "numeric" }).format(new Date(`${date}T12:00:00Z`));

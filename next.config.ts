@@ -9,6 +9,7 @@ const nextConfig: NextConfig = {
   basePath,
   assetPrefix: basePath || undefined,
   images: { unoptimized: true },
+  env: { NEXT_PUBLIC_BASE_PATH: basePath },
   reactCompiler: true,
   async headers() {
     return [{ source: "/(.*)", headers: [
