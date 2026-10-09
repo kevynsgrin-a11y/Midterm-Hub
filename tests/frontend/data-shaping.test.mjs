@@ -6,7 +6,7 @@ import { importFromRepo } from './resolve-repo.mjs';
 const payload = JSON.parse(readFileSync(new URL('../../generated/elections.json', import.meta.url)));
 const elections = payload.elections;
 
-const { elections: dataElections, stateNames, states, stateCount, forState, findElection, electionHref, formatDate, titleCase } =
+const { elections: dataElections, stateNames, states, stateCount, primaryCoverage, forState, findElection, electionHref, formatDate, titleCase } =
   await importFromRepo('../../lib/data.ts');
 
 test('the published election index is the edition payload verbatim', () => {
@@ -35,6 +35,12 @@ test('the homepage "states + DC" count excludes DC (50 states, 51 jurisdictions)
   assert.ok(states.some(([code]) => code === 'DC'), 'the edition tracks DC');
   assert.equal(stateCount, states.length - 1);
   assert.equal(stateCount, 50);
+});
+
+test('primary coverage counts the jurisdictions that have a reviewed primary record', () => {
+  const withPrimary = new Set(elections.filter((e) => e.election_type === 'primary').map((e) => e.state));
+  assert.equal(primaryCoverage, withPrimary.size);
+  assert.ok(primaryCoverage > 0 && primaryCoverage <= states.length);
 });
 
 test('a state lookup returns only that state, ordered by date, leaving the source untouched', () => {
