@@ -16,8 +16,8 @@
   early_voting_start: "2026-08-03"
   confidence: official
   source_url: "https://www.elections.alaska.gov/election-information/"
-  source_retrieved_at: "2026-07-21T18:00:00Z"
-  notes: "Top-four nonpartisan open primary; top four advance to the ranked-choice general election. Historical — election already held; record retained for archive."
+  source_retrieved_at: "2026-10-09T12:00:00Z"
+  notes: "Top-four nonpartisan open primary; top four advance to the ranked-choice general election. Registration closed July 19, 2026. In-person absentee (early) voting opened Aug 3 and ran through Election Day, Aug 18, at Division of Elections locations with site-specific hours. Historical — election already held; record retained for archive."
 
 - state: AK
   jurisdiction_type: state
@@ -27,10 +27,11 @@
   offices: ["U.S. Senate", "Governor", "U.S. House (all districts)", "Statewide offices & Legislature"]
   registration_deadline: "2026-10-04"
   early_voting_start: "2026-10-19"
+  mail_ballot_request_deadline: "2026-10-24"
   confidence: official
   source_url: "https://www.elections.alaska.gov/calendar/"
-  source_retrieved_at: "2026-07-21T18:00:00Z"
-  notes: "General election uses ranked-choice voting among top-four primary finishers."
+  source_retrieved_at: "2026-10-09T12:00:00Z"
+  notes: "General election uses ranked-choice voting among top-four primary finishers. A ballot measure to repeal the open primary and ranked-choice general elections is also on the Nov 3 ballot, but the Alaska Constitution makes an initiated law effective ninety days after certification, so ranked-choice voting applies on Nov 3. Registration closed Sunday, Oct 4, 2026. In-person absentee (early) voting opens Oct 19 and runs through Election Day, Nov 3, at Division of Elections locations with site-specific hours. A by-mail absentee ballot application must be received by the Division by Oct 24; online-delivery and fax ballot requests must be received by 5 p.m. Alaska time on Nov 2. A mailed ballot must be postmarked on or before Nov 3 and, if mailed from within the U.S., received by close of business on Nov 13; a ballot mailed from overseas must also be postmarked by Nov 3 and received by close of business on Nov 18. A ballot can also be handed in at a voting location by 8 p.m. on Nov 3, and a faxed ballot must be received by 8 p.m. Alaska time on Nov 3."
 
 - state: AL
   jurisdiction_type: state
@@ -39,10 +40,11 @@
   election_date: "2026-11-03"
   offices: ["U.S. Senate", "Governor", "U.S. House (all districts)", "Statewide offices & Legislature"]
   registration_deadline: "2026-10-19"
+  mail_ballot_request_deadline: "2026-10-27"
   confidence: official
   source_url: "https://www.sos.alabama.gov/alabama-votes/voter/election-information/2026"
-  source_retrieved_at: "2026-07-21T18:00:00Z"
-  notes: "Statewide primary was held May 19, 2026, with runoffs in June; Alabama has no early in-person voting; Governor (Ivey term-limited) and the Class 2 U.S. Senate seat are both on the ballot. Registration closes 15 days before the election (Oct 19; per NCSL voter-registration table updated 2026-05-20, cross-checked 2026-09-28); no same-day registration."
+  source_retrieved_at: "2026-10-09T12:00:00Z"
+  notes: "Alabama's statewide primary was held May 19, 2026, with runoffs June 16, except in U.S. House Districts 1, 2, 6 and 7 and State Senate Districts 25 and 26, which held special primaries on Aug 11, 2026; Alabama has no early in-person voting; Governor (Ivey term-limited) and the Class 2 U.S. Senate seat are both on the ballot. Registration closes Monday, Oct 19: mailed forms must be postmarked by then, in-person applications received before close of business, and online applications submitted before 11:59 p.m.; there is no same-day registration. An absentee ballot application returned by mail must be received by your county Absentee Election Manager by Oct 27, and one returned in person by Oct 29. A voted absentee ballot returned by mail must be received by noon on Election Day, Nov 3; one returned by hand must be in the Absentee Election Manager's office by close of business (no later than 5 p.m.) on Nov 2."
 
 - state: AR
   jurisdiction_type: state
@@ -53,10 +55,11 @@
   registration_deadline: "2026-10-05"
   early_voting_start: "2026-10-19"
   early_voting_end: "2026-11-02"
+  mail_ballot_request_deadline: "2026-10-27"
   confidence: official
   source_url: "https://www.sos.arkansas.gov/uploads/elections/2026_Election_Calendar_Rev._6-2025_.pdf"
-  source_retrieved_at: "2026-07-21T18:00:00Z"
-  notes: "A General Runoff Election, if required for eligible (e.g., nonpartisan/municipal) races, is set for December 1, 2026."
+  source_retrieved_at: "2026-10-09T12:00:00Z"
+  notes: "Registration closed Monday, Oct 5, 2026: applications had to be submitted to a registration agency or mailed with a postmark by then. Early voting runs Oct 19 through 5 p.m. on Monday, Nov 2; sites and hours vary by county. An absentee ballot application sent by mail, fax or email must be received by your county clerk by Oct 27; a voter or designated bearer may deliver one in person until the clerk's office closes on Friday, Oct 30. A mailed absentee ballot must be received by the county clerk by 7:30 p.m. on Election Day, Nov 3; a voter or designated bearer who hand-delivers one must do so by the clerk's closing time on Friday, Oct 30. Military and overseas voters must vote their ballot by Election Day, and it must be received by 5 p.m. on Nov 13. Polls are open 7:30 a.m.–7:30 p.m. Nonpartisan runoffs and school runoffs are held on the Nov 3 ballot; the general runoff for county and municipal offices, if one is needed, is set for Dec 1, 2026, and a special runoff on that date also follows a tie in certain races."
 
 - state: AZ
   jurisdiction_type: state
@@ -65,10 +68,13 @@
   election_date: "2026-11-03"
   offices: ["Governor", "U.S. House (all districts)", "Statewide offices & Legislature"]
   registration_deadline: "2026-10-05"
+  early_voting_start: "2026-10-07"
+  early_voting_end: "2026-10-30"
+  mail_ballot_request_deadline: "2026-10-23"
   confidence: official
   source_url: "https://azsos.gov/elections/election-information/2026-election-info"
-  source_retrieved_at: "2026-07-21T18:00:00Z"
-  notes: "No U.S. Senate seat is up in Arizona in 2026; Governor and all other statewide executive offices plus all 9 U.S. House districts and the Legislature are on the ballot."
+  source_retrieved_at: "2026-10-09T12:00:00Z"
+  notes: "Registration closed at the end of Monday, Oct 5, 2026 (the Secretary of State's calendar says 11:59 p.m.; the statute says midnight), and mailed forms had to be postmarked by then. Early ballots were mailed and in-person early voting began Oct 7; ordinary early in-person voting ends Friday, Oct 30 (county hours vary), and emergency voting, for unforeseen emergencies only, runs until 5 p.m. on Nov 2. A request for an early ballot by mail must reach your county recorder by 5 p.m. on Friday, Oct 23. A voted early ballot must be received by the county recorder, or dropped at any polling place or secure drop box in the county, by 7 p.m. Arizona time on Nov 3; postmarks do not count, and counties advise mailing your ballot back by Tuesday, Oct 27. Arizona's 2026 primary was held July 21, 2026. No U.S. Senate seat is up in Arizona in 2026; Governor and all other statewide executive offices plus all 9 U.S. House districts and the Legislature are on the ballot."
 
 - state: CA
   jurisdiction_type: state
@@ -79,8 +85,8 @@
   registration_deadline: "2026-10-19"
   confidence: official
   source_url: "https://www.sos.ca.gov/elections/upcoming-elections/general-election-november-3-2026/key-dates-deadlines"
-  source_retrieved_at: "2026-07-21T18:00:00Z"
-  notes: "All active registered voters are mailed ballots beginning 2026-10-05; same-day (conditional) voter registration available after the deadline; no U.S. Senate seat on California's 2026 ballot."
+  source_retrieved_at: "2026-10-09T12:00:00Z"
+  notes: "County elections officials must begin mailing ballots to all active registered voters by Oct 5, 2026. Registration closes Oct 19 (online by midnight Pacific, or mailed with a postmark by then); after that, eligible voters can register conditionally in person at a county elections office or vote center from Oct 20 through Nov 3 and vote a provisional ballot. County elections offices offer in-person early voting from Oct 5, and Voter's Choice Act vote centers open Oct 24; availability varies by county. Request a replacement ballot by Oct 27 (the Secretary of State labels this date recommended). A mailed ballot must be postmarked on or before Nov 3 and received by your county elections office by Nov 10; a ballot can be returned to a drop box or vote center by 8 p.m. on Nov 3. Polls are open 7 a.m.–8 p.m. Pacific. There is no U.S. Senate seat on California's 2026 ballot."
 
 - state: CO
   jurisdiction_type: state
@@ -94,7 +100,7 @@
   confidence: official
   source_url: "https://www.sos.state.co.us/pubs/elections/calendars/2026ElectionCalendar.pdf"
   source_retrieved_at: "2026-10-09T12:00:00Z"
-  notes: "All-mail voting state; every voter receives a mail ballot. Ballots are mailed to all registered voters Oct 2 through Oct 9, 2026; active, eligible registered voters receive one in that initial dispatch. Oct 26, 2026 is the deadline to register and still receive a mailed ballot (through the 8th day before the election). Eligible voters may register in person at a county voter service and polling center through Election Day, Nov 3. Voter service and polling centers open at least 15 days before the election (Oct 19) and run through Election Day, when they are open 7 a.m. to 7 p.m.; the minimum schedule excludes Sundays and the first Saturday, and local hours vary. Ballots must be in the county clerk's hands by 7 p.m. on Election Day; military and overseas ballots follow separate rules. Same-day registration is available during early voting and on Election Day."
+  notes: "All-mail voting state; every voter receives a mail ballot. County clerks mail ballots to every active voter between Oct 2 and Oct 9, 2026. Oct 26, 2026 is the deadline to register and still receive a mailed ballot (through the 8th day before the election). Eligible voters may register in person at a county voter service and polling center through Election Day, Nov 3. Voter service and polling centers open at least 15 days before the election (Oct 19) and run through Election Day, when they are open 7 a.m. to 7 p.m.; the minimum schedule excludes Sundays and the first Saturday, and local hours vary. Ballots must be in the county clerk's hands by 7 p.m. on Election Day; the Secretary of State suggests mailing yours back by Oct 26 and using a drop box or voting center after that. Military and overseas ballots follow separate rules. Same-day registration is available during early voting and on Election Day."
 
 - state: CT
   jurisdiction_type: state
@@ -108,7 +114,7 @@
   confidence: official
   source_url: "https://portal.ct.gov/-/media/sots/electionservices/calendars/2026-elections/2026-election-calendar-122325.pdf?rev=340f2bcacc9748c1a2ed8f49d1774f52&hash=471ECCC3D26999C2D53BB5636927C0EB"
   source_retrieved_at: "2026-10-09T12:00:00Z"
-  notes: "Same-day registration is not available for primaries. The last day to register or enroll by mail was July 24, 2026; the online system closed that day at 11:59 p.m. Early voting ran Aug 3 through Aug 9. Historical — election already held; record retained for archive."
+  notes: "Same-day registration is not available for primaries. The last day to register or enroll by mail was July 24, 2026; in-person registration and enrollment closed at 12:00 noon on Aug 10, 2026. Early voting ran Aug 3 through Aug 9. Historical — election already held; record retained for archive."
 
 - state: CT
   jurisdiction_type: state
@@ -123,7 +129,7 @@
   confidence: official
   source_url: "https://portal.ct.gov/-/media/sots/electionservices/calendars/2026-elections/2026-election-calendar-122325.pdf?rev=340f2bcacc9748c1a2ed8f49d1774f52&hash=471ECCC3D26999C2D53BB5636927C0EB"
   source_retrieved_at: "2026-10-09T12:00:00Z"
-  notes: "Same-day voter registration available. The ordinary by-mail and online registration cutoff is Oct 16, 2026 (18 days before the election); same-day registration is available in person during early voting and on Election Day. Early voting hours are 10 a.m.–6 p.m. daily, extended to 8 a.m.–8 p.m. on Oct 27 and Oct 29. Any eligible registered voter may request an absentee ballot without an excuse; the deadline to request one is Nov 2, 2026. Narrow Election Day exceptions (for example, sudden illness, hospital or nursing-home patients, and overseas voters) are not shown here. Absentee ballots must be received by 8 p.m. on Nov 3 if mailed or returned by an immediate family member or designee; a voter returning the ballot in person must deliver it by Nov 2."
+  notes: "Same-day voter registration available. The ordinary by-mail and online registration cutoff is Oct 16, 2026 (18 days before the election); same-day registration is available in person during early voting and on Election Day. Early voting hours are 10 a.m.–6 p.m. daily, extended to 8 a.m.–8 p.m. on Oct 27 and Oct 29. Any eligible registered voter may request an absentee ballot without an excuse; the deadline to request one is Nov 2, 2026, and town clerks began issuing absentee ballots on Oct 2. Narrow Election Day exceptions (for example, sudden illness, hospital or nursing-home patients, and overseas voters) are not shown here. Absentee ballots returned by mail, in a drop box or by an immediate family member or designee must be received by 8 p.m. on Nov 3. The Secretary of the State's election calendar says a voter returning the ballot in person must do so by Nov 2, while its other 2026 materials say directly to the town clerk by 8 p.m. on Election Day; to be safe, return it in person by Nov 2."
 
 - state: DC
   jurisdiction_type: state
@@ -136,8 +142,8 @@
   early_voting_end: "2026-11-01"
   confidence: official
   source_url: "https://dcboe.org/elections/2026-elections"
-  source_retrieved_at: "2026-07-21T18:00:00Z"
-  notes: "Same-day voter registration available. Registration closes 21 days before the election (Oct 13; per NCSL table updated 2026-05-20, cross-checked 2026-09-28); same-day registration is available during early voting and on Election Day."
+  source_retrieved_at: "2026-10-09T12:00:00Z"
+  notes: "Same-day voter registration is available. Registration applications must be received by the Board of Elections by Oct 13, 2026 (the 21st day before the election); after that, eligible voters can register in person at the Board's office, or at any Vote Center during early voting or on Election Day. Early vote centers are open 8:30 a.m.–7 p.m. daily from Oct 26 through Nov 1. Mail-ballot drop boxes are open from Oct 9 until 8 p.m. on Nov 3. A voter away from their DC address can request a mail ballot; the Board must receive the request by Oct 19, the 15th day before the election. A mailed ballot must be postmarked or otherwise proven to have been mailed on or before Nov 3 and received by the Board by Nov 13; a ballot delivered to a drop box or Vote Center must be received by 8 p.m. on Nov 3. Contests with three or more qualified candidates use ranked-choice voting."
 
 - state: DE
   jurisdiction_type: state
@@ -178,10 +184,11 @@
   registration_deadline: "2026-07-20"
   early_voting_start: "2026-08-08"
   early_voting_end: "2026-08-15"
+  mail_ballot_request_deadline: "2026-08-06"
   confidence: official
   source_url: "https://dos.fl.gov/elections/for-voters/election-dates/"
   source_retrieved_at: "2026-10-09T12:00:00Z"
-  notes: "Closed primary; early-voting dates shown are the mandatory statewide period (counties may offer additional days). The Aug 18 primary included Republican and Democratic U.S. Senate contests. Historical — election already held; record retained for archive."
+  notes: "Closed primary; early-voting dates shown are the mandatory statewide period, Aug 8–15 (counties could start as early as Aug 3 and add Aug 16). Registration and party changes closed July 20, 2026. A ballot to be mailed had to be requested by 5 p.m. local time on Aug 6. The Aug 18 primary included Republican and Democratic U.S. Senate contests. Historical — election already held; record retained for archive."
 
 - state: FL
   jurisdiction_type: state
@@ -192,10 +199,11 @@
   registration_deadline: "2026-10-05"
   early_voting_start: "2026-10-24"
   early_voting_end: "2026-10-31"
+  mail_ballot_request_deadline: "2026-10-22"
   confidence: official
   source_url: "https://dos.fl.gov/elections/for-voters/election-dates/"
-  source_retrieved_at: "2026-07-21T18:00:00Z"
-  notes: "Includes special U.S. Senate election for the remainder of the unexpired term (appointee Ashley Moody's seat); early-voting dates shown are the mandatory statewide period."
+  source_retrieved_at: "2026-10-09T12:00:00Z"
+  notes: "Includes special U.S. Senate election for the remainder of the unexpired term (appointee Ashley Moody's seat). Registration closed Oct 5, 2026. Early-voting dates shown are the mandatory statewide period, Oct 24–31; counties may begin as early as Oct 19 and add Sunday, Nov 1, so confirm your county's days and hours. A request for a ballot to be mailed must reach your county supervisor of elections by 5 p.m. local time on Oct 22. A vote-by-mail ballot must be received by the supervisor's office by 7 p.m. local time on Election Day, Nov 3, regardless of postmark; a ballot from an overseas voter that is postmarked or dated by Nov 3 also counts if received by Nov 13. Polls are open 7 a.m.–7 p.m. local time."
 
 - state: GA
   jurisdiction_type: state
@@ -210,7 +218,7 @@
   confidence: official
   source_url: "https://sos.ga.gov/sites/default/files/forms/2026%20Election%20Calendar%20Summary.pdf"
   source_retrieved_at: "2026-10-09T12:00:00Z"
-  notes: "Governor's race is open (Kemp term-limited) and the Class 2 U.S. Senate seat is up; May 19 primary and June 16 primary runoff were held before July 25. Absentee ballot applications are due by Oct 23, 2026."
+  notes: "Governor's race is open (Kemp term-limited) and the Class 2 U.S. Senate seat is up; the May 19 primary and June 16 primary runoff have been held. Absentee ballot applications are due by Oct 23, 2026. A regular absentee ballot must be received by your county registrar by 7 p.m. local time on Election Day, Nov 3; a military or overseas ballot postmarked by Nov 3 counts if received within three business days after the election, by Friday, Nov 6."
 
 - state: GA
   jurisdiction_type: state
@@ -223,7 +231,7 @@
   confidence: official
   source_url: "https://sos.ga.gov/sites/default/files/forms/2026%20Election%20Calendar%20Summary.pdf"
   source_retrieved_at: "2026-10-09T12:00:00Z"
-  notes: "Held only for Nov 3 races in which no candidate receives the required majority (Georgia requires a majority to win the general election). Registration deadlines: Oct 5, 2026 for state and local runoff races; Nov 2, 2026 for federal runoff races. Absentee ballot applications are due by Nov 20, 2026."
+  notes: "Held only for Nov 3 races in which no candidate receives the required majority (Georgia requires a majority to win the general election). Registration deadlines: Oct 5, 2026 for state and local runoff races; Nov 2, 2026 for federal runoff races. Absentee ballot applications are due by Nov 20, 2026. A regular absentee ballot must be received by your county registrar by 7 p.m. local time on Dec 1; a military or overseas ballot postmarked by Dec 1 counts if received by Friday, Dec 4. Early-voting days for a runoff are set county by county, so check your county election office."
 
 - state: HI
   jurisdiction_type: state
@@ -275,10 +283,11 @@
   election_date: "2026-11-03"
   offices: ["U.S. Senate", "Governor", "U.S. House (all districts)", "Statewide offices & Legislature"]
   registration_deadline: "2026-10-23"
+  mail_ballot_request_deadline: "2026-10-23"
   confidence: official
   source_url: "https://voteidaho.gov/election-information/"
-  source_retrieved_at: "2026-07-21T18:00:00Z"
-  notes: "Same-day voter registration available at the polls on Election Day; early in-person voting offered only in counties that choose to conduct it. Registration closes 11 days before the election (Oct 23; per NCSL table updated 2026-05-20, cross-checked 2026-09-28); Election Day registration is available."
+  source_retrieved_at: "2026-10-09T12:00:00Z"
+  notes: "Voter pre-registration ends Oct 23, 2026; a paper application must be received by the county clerk by 5 p.m. local time that day. Eligible voters can also register and vote at their designated polling place on Election Day with the required proof of identity and residence. Early voting is offered only in counties that choose to conduct it: counties may open as early as Oct 13 (some start Oct 14 or Oct 19), and early voting ends by 5 p.m. local time on Fri Oct 30. Every county clerk provides in-person absentee voting. A request for a mail-in absentee ballot must be received by the county clerk by 5 p.m. local time on Oct 23; an in-person request is due by 5 p.m. on Oct 30. Absentee ballots must be received by the county clerk by 8 p.m. on Nov 3; postmarks do not count. Polls are open 8 a.m.–8 p.m. local time. A voter hospitalized by an emergency that began after 5 p.m. on Oct 23 may apply for an absentee ballot from Oct 29 until 5 p.m. on Mon Nov 2."
 
 - state: IL
   jurisdiction_type: state
@@ -289,10 +298,11 @@
   registration_deadline: "2026-10-06"
   early_voting_start: "2026-09-24"
   early_voting_end: "2026-11-02"
+  mail_ballot_request_deadline: "2026-10-29"
   confidence: official
   source_url: "https://elections.il.gov/"
-  source_retrieved_at: "2026-07-21T18:00:00Z"
-  notes: "Open U.S. Senate seat (Sen. Dick Durbin not seeking re-election) plus Governor, all 17 U.S. House districts, statewide constitutional officers, and the General Assembly; early voting begins Sept 24 at election-authority main sites, with additional permanent sites opening later (e.g., Oct 19 in some jurisdictions). Mail registration closes 28 days before the election (Oct 6; per NCSL table updated 2026-05-20, cross-checked 2026-09-28); online registration remains open through Oct 18, with grace-period and same-day registration through Election Day."
+  source_retrieved_at: "2026-10-09T12:00:00Z"
+  notes: "Open U.S. Senate seat (Sen. Dick Durbin not seeking re-election) plus Governor, all 17 U.S. House districts, statewide constitutional officers, and the General Assembly. Sept 24 is the earliest day an election authority's office may offer early voting; actual start dates and hours vary by jurisdiction (suburban Cook County begins Oct 7 at six vote centers and expands Oct 19; other permanent polling places open Oct 19), and early voting ends Nov 2. Regular registration closes Oct 6; online registration closes at 11:59 p.m. on Oct 18; from Oct 7 through Nov 3 voters can register or update their address and vote during the grace period at the election authority's office or sites it designates, and whether grace-period registration is offered at polling places on Election Day varies, so contact your election authority. A vote-by-mail application sent by mail must be received by the election authority by Oct 29, and a voter can request a ballot in person at the election authority's office through Nov 2. A mailed ballot counts if it is postmarked on or before Nov 3 and received by Nov 17; a ballot delivered by hand to the election authority or a drop box must arrive by 7 p.m. on Nov 3. Polls are open 6 a.m.–7 p.m."
 
 - state: IN
   jurisdiction_type: state
@@ -303,10 +313,11 @@
   registration_deadline: "2026-10-05"
   early_voting_start: "2026-10-06"
   early_voting_end: "2026-11-02"
+  mail_ballot_request_deadline: "2026-10-22"
   confidence: official
   source_url: "https://www.in.gov/sos/elections/files/2026-Calendar-Brochure.FINAL-VERSION.pdf"
-  source_retrieved_at: "2026-07-21T18:00:00Z"
-  notes: "No U.S. Senate seat and no Governor's race in Indiana in 2026; ballot includes all 9 U.S. House districts, statewide offices (Secretary of State, Auditor/Comptroller, Treasurer), and the Legislature; early (in-person absentee) voting ends at 12:00 noon on Nov 2."
+  source_retrieved_at: "2026-10-09T12:00:00Z"
+  notes: "No U.S. Senate seat and no Governor's race in Indiana in 2026; ballot includes all 9 U.S. House districts, statewide offices (Secretary of State, Auditor/Comptroller, Treasurer), and the Legislature. Registration closed Oct 5, 2026: online at 11:59 p.m., in person at the county voter registration office's close of business. In-person early voting begins Oct 6 at the county clerk's office (satellite sites may open later) and ends at 12:00 noon prevailing local time on Nov 2; any registered voter may vote early in person, while voting an absentee ballot by mail requires one of the reasons listed in state law. An application for a mail ballot must be received by 11:59 p.m. on Oct 22. A voted absentee ballot must be received by the county election board by 6 p.m. prevailing local time on Nov 3 (postmarks do not count); a military or overseas ballot postmarked by Nov 3 may arrive until noon on Nov 13. Polls are open 6 a.m.–6 p.m. prevailing local time on Nov 3."
 
 - state: KS
   jurisdiction_type: state
@@ -319,7 +330,7 @@
   early_voting_end: "2026-08-03"
   confidence: official
   source_url: "https://sos.ks.gov/Pubs/Elections/2026-Primary-Election-Dates.pdf"
-  source_retrieved_at: "2026-07-21T18:00:00Z"
+  source_retrieved_at: "2026-10-09T12:00:00Z"
   notes: "Advance in-person voting may begin July 15 (varies by county) and must begin in all counties by July 28; it ends at 12:00 noon on August 3. Historical — election already held; record retained for archive."
 
 - state: KS
@@ -331,10 +342,11 @@
   registration_deadline: "2026-10-13"
   early_voting_start: "2026-10-14"
   early_voting_end: "2026-11-02"
+  mail_ballot_request_deadline: "2026-10-27"
   confidence: official
   source_url: "https://sos.ks.gov/Pubs/Elections/2026-General-Election-Dates.pdf"
-  source_retrieved_at: "2026-07-21T18:00:00Z"
-  notes: "U.S. Senate Class II seat (incumbent Roger Marshall) and an open Governor's race (Gov. Kelly term-limited) are both on the 2026 ballot; advance in-person voting may begin Oct 14, must begin in all counties by Oct 27, and ends at 12:00 noon Nov 2."
+  source_retrieved_at: "2026-10-09T12:00:00Z"
+  notes: "U.S. Senate Class II seat (incumbent Roger Marshall) and an open Governor's race (Gov. Kelly term-limited) are both on the 2026 ballot; advance in-person voting may begin Oct 14 (opening dates vary by county), must begin in all counties by Oct 27, and ends at 12:00 noon Nov 2. Registration, or an update to change a name or address, closes Oct 13. An application for a mail ballot must reach the county election office by Oct 27. Kansas law sets the deadline for returning a mail ballot at the close of polls on Election Day (7 p.m. on Nov 3), but the Secretary of State says a district-court injunction, which the Court of Appeals declined to stay for the general election, requires ballots postmarked by Election Day to be counted if they arrive by the last postal delivery on the Friday after the election (Nov 6). Mail your ballot early, or hand-deliver it or use a drop box before the polls close on Nov 3."
 
 - state: KY
   jurisdiction_type: state
@@ -642,7 +654,7 @@
   confidence: official
   source_url: "https://www.sos.nm.gov/candidate-and-campaigns/how-to-become-a-candidate/2026-elections-candidate-information/"
   source_retrieved_at: "2026-10-09T12:00:00Z"
-  notes: "Same-day voter registration is available during early voting and on Election Day at voting locations. Registration closes 28 days before the election (Oct 6; per NCSL table updated 2026-05-20, cross-checked 2026-09-28). Clerk's-office early voting begins Oct 6 and runs through Oct 31; expanded early voting at alternate sites begins Oct 17. The county clerk must receive absentee applications by Oct 20, 2026. Voted ballots must be received by 7 p.m. on Nov 3 at the clerk's office or a secure drop box. Polls are open 7 a.m. to 7 p.m. on Election Day."
+  notes: "Same-day voter registration is available during early voting and on Election Day at voting locations. Registration by mail or online closes on Oct 6, 2026, 28 days before the election. Clerk's-office early voting begins Oct 6 and runs through Oct 31; expanded early voting at alternate sites begins Oct 17. The county clerk must receive absentee applications by Oct 20, 2026. Voted ballots must be received by 7 p.m. on Nov 3 at the clerk's office or a secure drop box. Polls are open 7 a.m. to 7 p.m. on Election Day."
 
 - state: NV
   jurisdiction_type: state
@@ -656,7 +668,7 @@
   confidence: official
   source_url: "https://www.nvsos.gov/elections/election-information/2026-election-information"
   source_retrieved_at: "2026-10-09T12:00:00Z"
-  notes: "Active registered voters receive mail ballots; no U.S. Senate seat on Nevada's 2026 ballot. In-person registration closes 28 days before the election (Oct 6; per NCSL table updated 2026-05-20, cross-checked 2026-09-28). Online registration is open through Nov 3, 2026. A registration completed online from Oct 20 through Nov 3 counts as same-day registration: the voter must vote in person with qualifying identification and receives no mail ballot. Same-day registration is available in person during early voting and on Election Day; the in-person same-day period varies by county (Washoe County lists Oct 20 through Nov 3). Mailed ballots must be postmarked by Nov 3 and received by 5 p.m. on Nov 7; if the postmark cannot be determined, the ballot must be received by 5 p.m. on Nov 6."
+  notes: "Active registered voters are sent a mail ballot automatically unless they opted out; no U.S. Senate seat on Nevada's 2026 ballot. Regular voter registration closes on the fourth Tuesday before the election (Oct 6). Online registration is open through Nov 3, 2026, but a voter who registers less than 14 days before the election (Oct 21 through Nov 3) counts as same-day registration: the voter must vote in person with qualifying identification and receives no mail ballot. Same-day registration is available in person during early voting (Oct 17–30) and on Election Day. Mailed ballots must be postmarked by Nov 3 and received by 5 p.m. on Nov 7; if the postmark cannot be determined, the ballot must be received by 5 p.m. on Nov 6. A voted mail ballot can also be hand-delivered to the county clerk or any ballot drop box until the polls close at 7 p.m. on Nov 3. A missing or questioned signature on a mail ballot must be corrected by 5 p.m. on Nov 9."
 
 - state: NY
   jurisdiction_type: state
@@ -671,7 +683,7 @@
   confidence: official
   source_url: "https://elections.ny.gov/registration-and-voting-deadlines"
   source_retrieved_at: "2026-10-09T12:00:00Z"
-  notes: "No U.S. Senate seat up in 2026; the statewide primary was held June 23, 2026. Registration forms must be received by the county board of elections by Oct 24, 2026, and a form sent by mail must also be postmarked at least 15 days before the election (Oct 19). Early voting runs Oct 24 through Nov 1, 2026; hours are set by each county. An early-mail or absentee ballot application must be received by the board of elections by Oct 24, 2026 to have the ballot mailed, or by Nov 2, 2026 to pick it up in person. A mailed ballot must be postmarked no later than Nov 3, 2026 and received by the county board by Nov 10, 2026; a ballot entered in the mail after the last posted collection time is not postmarked until the next business day. A ballot can also be delivered in person to the county board of elections or a poll site by 9 p.m. on Nov 3, or to an early voting site Oct 24–Nov 1."
+  notes: "No U.S. Senate seat up in 2026; the statewide primary was held June 23, 2026. Registration forms must be received by the county board of elections by Oct 24, 2026, and a form sent by mail must also be postmarked at least 15 days before the election (Oct 19). Early voting runs Oct 24 through Nov 1, 2026; hours are set by each county. An early-mail or absentee ballot application must be received by the board of elections by Oct 24, 2026 to have the ballot mailed, or by Nov 2, 2026 to pick it up in person. A mailed ballot must be postmarked no later than Nov 3, 2026 and received by the county board by Nov 10, 2026; a ballot entered in the mail after the last posted collection time is not postmarked until the next business day. A ballot can also be delivered in person to the county board of elections or a poll site by 9 p.m. on Nov 3, or to an early voting site Oct 24–Nov 1. Polls are open 6 a.m.–9 p.m. on Nov 3. Some county boards, including Monroe and Westchester, let voters register at an early voting site on Oct 24, the last registration day, and vote that day by affidavit ballot; check with your county board."
 
 - state: OH
   jurisdiction_type: state
@@ -686,7 +698,7 @@
   confidence: official
   source_url: "https://www.ohiosos.gov/elections/voting-schedule"
   source_retrieved_at: "2026-10-09T12:00:00Z"
-  notes: "The U.S. Senate race is a SPECIAL election for the seat vacated by JD Vance and filled by appointee Jon Husted (no regular Ohio Senate seat is up in 2026); Governor's race is open (Gov. DeWine term-limited). Registration closes Oct 5, 2026; boards of elections and the Secretary of State's office are open until 9 p.m. that day. Absentee voting by mail begins Oct 6, and absentee ballot applications must be received by the board of elections by 8:30 p.m. on Oct 27. Early in-person voting runs Oct 6 through Nov 1: 8 a.m.–5 p.m. weekdays through Oct 23, 8 a.m.–4 p.m. Saturday Oct 24, 7:30 a.m.–7:30 p.m. Oct 26–30 (until 8:30 p.m. on Oct 27), 8 a.m.–4 p.m. Saturday Oct 31, and 1–5 p.m. Sunday Nov 1. Polls are open 6:30 a.m. to 7:30 p.m. on Nov 3, and absentee ballots from voters other than military and overseas voters must be received by the board of elections by 7:30 p.m. that day. Military and overseas voters' mailed ballots must be received by Nov 7 to count."
+  notes: "The U.S. Senate race is a SPECIAL election for the seat vacated by JD Vance and filled by appointee Jon Husted (no regular Ohio Senate seat is up in 2026); Governor's race is open (Gov. DeWine term-limited). Registration closes Oct 5, 2026; boards of elections and the Secretary of State's office are open until 9 p.m. that day. Absentee voting by mail begins Oct 6, and absentee ballot applications must be received by the board of elections by 8:30 p.m. on Oct 27. Early in-person voting runs Oct 6 through Nov 1: 8 a.m.–5 p.m. weekdays through Oct 23, 8 a.m.–4 p.m. Saturday Oct 24, 7:30 a.m.–7:30 p.m. Oct 26–30 (until 8:30 p.m. on Oct 27), 8 a.m.–4 p.m. Saturday Oct 31, and 1–5 p.m. Sunday Nov 1. Polls are open 6:30 a.m. to 7:30 p.m. on Nov 3, and absentee ballots from voters other than military and overseas voters must be received by the board of elections by 7:30 p.m. that day. Military and overseas voters' mailed ballots must be received by Nov 7 to count. A voter hospitalized by an accident or unforeseen medical emergency after the application deadline may apply for an emergency absentee ballot at the county board of elections until 3 p.m. on Nov 3."
 
 - state: OK
   jurisdiction_type: state
