@@ -5,12 +5,12 @@ import { CountdownMasthead, DeadlineBoard } from "@/components/data-art";
 import { UpcomingElections } from "@/components/upcoming-elections";
 import { StateSelector } from "@/components/state-selector";
 import { Button } from "@/components/ui/button";
-import { data, elections, states } from "@/lib/data";
+import { data, elections, stateCount } from "@/lib/data";
 
 export default function Home() {
   const today = new Date().toISOString().slice(0, 10);
   const generalDate = elections.filter((e) => e.election_type === "general").map((e) => e.election_date).sort().pop() ?? "2026-11-03";
-  const stats = [[elections.length, "verified records"], [states.length, "states + DC"], [new Set(elections.map((e) => e.source_url)).size, "official sources"], ["Nov 3", "general election"]];
+  const stats = [[elections.length, "verified records"], [stateCount, "states + DC"], [new Set(elections.map((e) => e.source_url)).size, "official sources"], ["Nov 3", "general election"]];
   return <>
     <section className="border-b">
       <div className="mx-auto grid max-w-[100rem] md:grid-cols-[1.08fr_.92fr]">

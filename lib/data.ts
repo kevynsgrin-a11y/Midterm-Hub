@@ -14,6 +14,8 @@ export const data = payload as { edition: string; generated_at: string; demo: bo
 export const elections = data.elections;
 export const stateNames = Object.fromEntries(elections.map((e) => [e.state, e.state_name]));
 export const states = Object.entries(stateNames).sort((a, b) => a[1].localeCompare(b[1]));
+// `states` also holds DC, so its length is jurisdictions (51), not states (50).
+export const stateCount = states.filter(([code]) => code !== "DC").length;
 export const electionHref = (e: Election) => `/elections/${e.state}/${e.slug}/${e.id}/`;
 export { stateHref } from "./navigation";
 export const formatDate = (date: string, compact = false) => new Intl.DateTimeFormat("en-US", compact ? { month: "short", day: "numeric" } : { weekday: "long", month: "long", day: "numeric", year: "numeric" }).format(new Date(`${date}T12:00:00Z`));
