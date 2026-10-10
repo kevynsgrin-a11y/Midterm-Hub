@@ -1,21 +1,21 @@
 {
   "edition": "2026 Midterm Cycle",
-  "generated_at": "2026-10-09T07:00:33Z",
+  "generated_at": "2026-10-10T16:17:36Z",
   "files": [
     {
       "name": "midterm-watch-elections.json",
       "format": "JSON",
       "description": "Structured records for apps and analysis.",
-      "bytes": 126348,
-      "sha256": "b1a3d53327432a9b58bca30883b798650b555dd3d2b99ba78bc7b4dde3171d69",
+      "bytes": 126929,
+      "sha256": "6c6cd26d1e455e1be0e6ca9f2cd3da96d482255e8f4dd277581c72fd1795887d",
       "records": 74
     },
     {
       "name": "midterm-watch-elections.csv",
       "format": "CSV",
       "description": "Flat rows for spreadsheets and reporting.",
-      "bytes": 74771,
-      "sha256": "3cd113e22fdd813786dfd649387df32d925cd734c1190d1a2a81e5306a7382b5",
+      "bytes": 75352,
+      "sha256": "6ac85db3548523bfd5b71cc3c7fb3eab38e56542421c89854196c1c6e809a54c",
       "records": 74
     },
     {
@@ -23,7 +23,7 @@
       "format": "ICS",
       "description": "Upcoming elections and deadlines for your calendar.",
       "bytes": 95710,
-      "sha256": "8c5a09be6c9775673a91ca552a03b3905422283441f8ac80a5ca111a38259ec0",
+      "sha256": "544cfeb4d18786755474bae5c7c3f3adca525c0e46403af8a6948f2301f1f2dd",
       "records": 54
     }
   ]
