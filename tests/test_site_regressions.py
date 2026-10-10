@@ -13,11 +13,44 @@ import re
 import pytest
 
 from civic.site.base import SiteConfig, safe_href
-from civic.site.components import deadline_chip
+from civic.site.components import deadline_chip, provenance
 from civic.site.data import Deadline
 
 
 CFG = SiteConfig(origin="https://example.test")
+
+
+class TestProvenanceNotes:
+    """A URL in a record's notes is something a voter will want to open, and it was
+    printed as inert text. Notes stay escaped text; only http(s) URLs become links."""
+
+    @staticmethod
+    def _notes_html(make_view, notes):
+        html = provenance(CFG, make_view(notes=notes))
+        found = re.search(r'<p class="provenance__notes">(.*?)</p>', html, re.S)
+        return found.group(1) if found else None
+
+    def test_urls_in_notes_are_external_links_and_the_closing_period_stays_outside(self, make_view):
+        notes = self._notes_html(
+            make_view,
+            "The PDF is at https://sos.example.gov/a.pdf and the page is https://sos.example.gov/b.aspx.",
+        )
+        assert notes.count("<a ") == 2
+        assert 'href="https://sos.example.gov/a.pdf" rel="nofollow noopener" target="_blank"' in notes
+        assert 'href="https://sos.example.gov/b.aspx" rel="nofollow noopener" target="_blank"' in notes
+        assert notes.endswith("</a>.")
+
+    def test_notes_without_a_url_have_no_anchor_and_are_escaped(self, make_view):
+        notes = self._notes_html(make_view, "Polls open 7 a.m. <b>sharp</b> & close at 8 p.m.")
+        assert "<a " not in notes
+        assert notes == "Polls open 7 a.m. &lt;b&gt;sharp&lt;/b&gt; &amp; close at 8 p.m."
+
+    def test_a_javascript_url_in_notes_is_not_linked(self, make_view):
+        notes = self._notes_html(make_view, "Click javascript:alert(1) now")
+        assert "<a " not in notes
+
+    def test_no_notes_means_no_notes_paragraph(self, make_view):
+        assert self._notes_html(make_view, None) is None
 
 
 class TestDeadlineSemantics:

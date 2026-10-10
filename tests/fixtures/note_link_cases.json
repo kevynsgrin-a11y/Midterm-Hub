@@ -1,0 +1,195 @@
+[
+  {
+    "name": "plain text with no URL is one part",
+    "text": "Plain note with no links, 2026.",
+    "parts": [{"text": "Plain note with no links, 2026."}]
+  },
+  {
+    "name": "a sentence-ending period is not part of the URL",
+    "text": "See https://sos.oregon.gov/elections/x.pdf. Next sentence.",
+    "parts": [
+      {"text": "See "},
+      {"text": "https://sos.oregon.gov/elections/x.pdf", "href": "https://sos.oregon.gov/elections/x.pdf"},
+      {"text": ". Next sentence."}
+    ]
+  },
+  {
+    "name": "two URLs in one sentence, the way the Oregon note cites them",
+    "text": "The PDF is at https://sos.oregon.gov/a/ES-STA-1126-vp.pdf and is listed on https://sos.oregon.gov/b/Voters-Pamphlet-Spanish.aspx. It is partial.",
+    "parts": [
+      {"text": "The PDF is at "},
+      {"text": "https://sos.oregon.gov/a/ES-STA-1126-vp.pdf", "href": "https://sos.oregon.gov/a/ES-STA-1126-vp.pdf"},
+      {"text": " and is listed on "},
+      {"text": "https://sos.oregon.gov/b/Voters-Pamphlet-Spanish.aspx", "href": "https://sos.oregon.gov/b/Voters-Pamphlet-Spanish.aspx"},
+      {"text": ". It is partial."}
+    ]
+  },
+  {
+    "name": "trailing comma, semicolon and colon stay outside the link",
+    "text": "A https://a.gov/x, B https://a.gov/y; C https://a.gov/z: done",
+    "parts": [
+      {"text": "A "},
+      {"text": "https://a.gov/x", "href": "https://a.gov/x"},
+      {"text": ", B "},
+      {"text": "https://a.gov/y", "href": "https://a.gov/y"},
+      {"text": "; C "},
+      {"text": "https://a.gov/z", "href": "https://a.gov/z"},
+      {"text": ": done"}
+    ]
+  },
+  {
+    "name": "repeated sentence punctuation stays outside the link",
+    "text": "Really https://a.gov/x...?!",
+    "parts": [
+      {"text": "Really "},
+      {"text": "https://a.gov/x", "href": "https://a.gov/x"},
+      {"text": "...?!"}
+    ]
+  },
+  {
+    "name": "a closing parenthesis with no opener is not part of the URL",
+    "text": "(see https://a.gov/x).",
+    "parts": [
+      {"text": "(see "},
+      {"text": "https://a.gov/x", "href": "https://a.gov/x"},
+      {"text": ")."}
+    ]
+  },
+  {
+    "name": "balanced parentheses inside the URL are kept",
+    "text": "Read https://en.example.org/wiki/Foo_(bar) now",
+    "parts": [
+      {"text": "Read "},
+      {"text": "https://en.example.org/wiki/Foo_(bar)", "href": "https://en.example.org/wiki/Foo_(bar)"},
+      {"text": " now"}
+    ]
+  },
+  {
+    "name": "balanced parentheses inside the URL inside parentheses",
+    "text": "(see https://en.example.org/wiki/Foo_(bar))",
+    "parts": [
+      {"text": "(see "},
+      {"text": "https://en.example.org/wiki/Foo_(bar)", "href": "https://en.example.org/wiki/Foo_(bar)"},
+      {"text": ")"}
+    ]
+  },
+  {
+    "name": "square brackets around a URL",
+    "text": "[https://a.gov/x]",
+    "parts": [
+      {"text": "["},
+      {"text": "https://a.gov/x", "href": "https://a.gov/x"},
+      {"text": "]"}
+    ]
+  },
+  {
+    "name": "query string, ampersand and fragment are part of the URL",
+    "text": "Form at https://a.gov/p?a=1&b=2#top.",
+    "parts": [
+      {"text": "Form at "},
+      {"text": "https://a.gov/p?a=1&b=2#top", "href": "https://a.gov/p?a=1&b=2#top"},
+      {"text": "."}
+    ]
+  },
+  {
+    "name": "port and trailing slash are part of the URL",
+    "text": "Try https://a.gov:8080/x/ today",
+    "parts": [
+      {"text": "Try "},
+      {"text": "https://a.gov:8080/x/", "href": "https://a.gov:8080/x/"},
+      {"text": " today"}
+    ]
+  },
+  {
+    "name": "http is linked as well as https",
+    "text": "Old site http://a.gov/x here",
+    "parts": [
+      {"text": "Old site "},
+      {"text": "http://a.gov/x", "href": "http://a.gov/x"},
+      {"text": " here"}
+    ]
+  },
+  {
+    "name": "the scheme is matched without regard to case",
+    "text": "HTTPS://A.GOV/X is linked",
+    "parts": [
+      {"text": "HTTPS://A.GOV/X", "href": "HTTPS://A.GOV/X"},
+      {"text": " is linked"}
+    ]
+  },
+  {
+    "name": "angle brackets and straight quotes end the URL",
+    "text": "<https://a.gov/x> \"https://a.gov/y\" 'https://a.gov/z'",
+    "parts": [
+      {"text": "<"},
+      {"text": "https://a.gov/x", "href": "https://a.gov/x"},
+      {"text": "> \""},
+      {"text": "https://a.gov/y", "href": "https://a.gov/y"},
+      {"text": "\" '"},
+      {"text": "https://a.gov/z", "href": "https://a.gov/z"},
+      {"text": "'"}
+    ]
+  },
+  {
+    "name": "curly quotes end the URL",
+    "text": "“https://a.gov/x” and ‘https://a.gov/y’",
+    "parts": [
+      {"text": "“"},
+      {"text": "https://a.gov/x", "href": "https://a.gov/x"},
+      {"text": "” and ‘"},
+      {"text": "https://a.gov/y", "href": "https://a.gov/y"},
+      {"text": "’"}
+    ]
+  },
+  {
+    "name": "markup in the surrounding text stays text",
+    "text": "<b>bold</b> & \"q\" https://a.gov/x?a=1&b=2",
+    "parts": [
+      {"text": "<b>bold</b> & \"q\" "},
+      {"text": "https://a.gov/x?a=1&b=2", "href": "https://a.gov/x?a=1&b=2"}
+    ]
+  },
+  {
+    "name": "two URLs separated by a space",
+    "text": "https://a.gov/x https://a.gov/y",
+    "parts": [
+      {"text": "https://a.gov/x", "href": "https://a.gov/x"},
+      {"text": " "},
+      {"text": "https://a.gov/y", "href": "https://a.gov/y"}
+    ]
+  },
+  {
+    "name": "a newline ends the URL",
+    "text": "line1 https://a.gov/x\nline2",
+    "parts": [
+      {"text": "line1 "},
+      {"text": "https://a.gov/x", "href": "https://a.gov/x"},
+      {"text": "\nline2"}
+    ]
+  },
+  {
+    "name": "whitespace-only text is one part",
+    "text": "   ",
+    "parts": [{"text": "   "}]
+  },
+  {
+    "name": "javascript, ftp, mailto and data are never linked",
+    "text": "javascript:alert(1) ftp://a.gov/x mailto:a@b.gov data:text/html,hi",
+    "parts": [{"text": "javascript:alert(1) ftp://a.gov/x mailto:a@b.gov data:text/html,hi"}]
+  },
+  {
+    "name": "a scheme in the middle of a word is not a link",
+    "text": "nothttps://a.gov/x is not a link",
+    "parts": [{"text": "nothttps://a.gov/x is not a link"}]
+  },
+  {
+    "name": "a scheme with no host is not a link",
+    "text": "bare https:// and https://. end",
+    "parts": [{"text": "bare https:// and https://. end"}]
+  },
+  {
+    "name": "a host the URL parser rejects is not a link",
+    "text": "see https://[bad here",
+    "parts": [{"text": "see https://[bad here"}]
+  }
+]
