@@ -7,12 +7,31 @@ poisoned ``source_url``.
 """
 from __future__ import annotations
 
+import json
+from pathlib import Path
+
 import pytest
 
-from civic.site.base import SiteConfig, absu, asset, attrs, esc, rel, safe_href
+from civic.site.base import (
+    SiteConfig,
+    absu,
+    asset,
+    attrs,
+    esc,
+    linkify,
+    rel,
+    safe_href,
+    split_note_links,
+)
 
 ROOT = SiteConfig(origin="https://example.test")
 SUB = SiteConfig(origin="https://example.test", base_path="/Midterm-Hub")
+
+# One list of cases for both implementations: tests/frontend/note-links.test.mjs reads the same file.
+NOTE_LINK_CASES = json.loads(
+    (Path(__file__).parent / "fixtures" / "note_link_cases.json").read_text(encoding="utf-8")
+)
+CASE_IDS = [case["name"] for case in NOTE_LINK_CASES]
 
 
 class TestEsc:
@@ -173,3 +192,70 @@ class TestAttrs:
     def test_empty_when_nothing_renderable(self):
         assert attrs() == ""
         assert attrs(a=None, b=False) == ""
+
+
+def _as_parts(pairs):
+    return [{"text": text} if href is None else {"text": text, "href": href} for text, href in pairs]
+
+
+class TestSplitNoteLinks:
+    @pytest.mark.parametrize("case", NOTE_LINK_CASES, ids=CASE_IDS)
+    def test_shared_cases(self, case):
+        parts = _as_parts(split_note_links(case["text"]))
+        assert parts == case["parts"]
+        # Nothing is dropped or invented: the parts rejoin to the note.
+        assert "".join(p["text"] for p in parts) == case["text"]
+
+    def test_empty_input_has_no_parts(self):
+        assert split_note_links(None) == []
+        assert split_note_links("") == []
+
+
+class TestLinkify:
+    def test_wraps_a_url_in_an_external_anchor_and_leaves_the_period_outside(self):
+        assert linkify("See https://sos.oregon.gov/x.pdf.") == (
+            'See <a href="https://sos.oregon.gov/x.pdf" rel="nofollow noopener" target="_blank">'
+            "https://sos.oregon.gov/x.pdf</a>."
+        )
+
+    def test_ampersands_are_escaped_in_the_href_and_the_text(self):
+        assert linkify("https://a.gov/p?a=1&b=2") == (
+            '<a href="https://a.gov/p?a=1&amp;b=2" rel="nofollow noopener" target="_blank">'
+            "https://a.gov/p?a=1&amp;b=2</a>"
+        )
+
+    def test_text_around_a_url_cannot_inject_markup(self):
+        html = linkify('<script>alert(1)</script> "x" https://a.gov/x')
+        assert "<script>" not in html
+        assert html.startswith("&lt;script&gt;alert(1)&lt;/script&gt; &quot;x&quot; <a ")
+
+    def test_other_schemes_stay_inert_text(self):
+        html = linkify("javascript:alert(1) data:text/html,hi mailto:a@b.gov")
+        assert "<a " not in html
+        assert html == "javascript:alert(1) data:text/html,hi mailto:a@b.gov"
+
+    def test_a_note_without_a_url_is_just_escaped_text(self):
+        assert linkify("Registration closes Oct 13 & more") == "Registration closes Oct 13 &amp; more"
+        assert linkify(None) == ""
+        assert linkify("") == ""
+
+    def test_only_http_urls_are_linked_even_if_the_pattern_is_widened(self, monkeypatch):
+        # Defence in depth: the allowlist must not rest on the URL pattern alone.
+        import re
+
+        from civic.site import base
+
+        monkeypatch.setattr(base, "_URL_RE", re.compile(r"\S+"))
+        html = linkify("javascript:alert(1) ftp://a.gov/x https://a.gov/x")
+        assert html.count("<a ") == 1
+        assert 'href="https://a.gov/x"' in html
+
+    @pytest.mark.parametrize("case", NOTE_LINK_CASES, ids=CASE_IDS)
+    def test_shared_cases_render_each_part_escaped_on_its_own(self, case):
+        expected = "".join(
+            f'<a href="{esc(p["href"])}" rel="nofollow noopener" target="_blank">{esc(p["text"])}</a>'
+            if "href" in p
+            else esc(p["text"])
+            for p in case["parts"]
+        )
+        assert linkify(case["text"]) == expected

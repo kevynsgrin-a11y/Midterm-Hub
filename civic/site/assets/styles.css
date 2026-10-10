@@ -545,7 +545,7 @@ a.cart-cell:focus-visible{ outline:3px solid var(--ring); outline-offset:2px; }
 .provenance__key{ color:var(--text-subtle); min-width:6.5rem; flex:none; }
 .provenance__val{ color:var(--text); word-break:break-word; min-width:0; }
 .provenance__val a{ color:var(--link); }
-.provenance__notes{ font-family:var(--font-sans); margin:var(--space-2xs) 0 0; color:var(--text-muted); }
+.provenance__notes{ font-family:var(--font-sans); margin:var(--space-2xs) 0 0; color:var(--text-muted); overflow-wrap:anywhere; }
 
 /* Lead card */
 .lead-card{ margin-top:var(--space-md); background:var(--surface); border:1px solid var(--border); border-radius:var(--radius-md); padding:var(--space-md); }

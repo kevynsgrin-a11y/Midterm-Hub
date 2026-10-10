@@ -6,7 +6,7 @@ import datetime
 from typing import Optional
 
 from . import icons
-from .base import SiteConfig, attrs, esc, rel, safe_href
+from .base import SiteConfig, attrs, esc, linkify, rel, safe_href
 from .data import (
     CONFIDENCE_BLURB,
     CONFIDENCE_LABELS,
@@ -256,7 +256,7 @@ def provenance(cfg: SiteConfig, e: ElectionView) -> str:
     if e.timezone:
         rows.append(_prov_row("TIMEZONE", esc(e.timezone)))
     notes = (
-        f'<p class="provenance__notes">{esc(e.notes)}</p>' if e.notes else ""
+        f'<p class="provenance__notes">{linkify(e.notes)}</p>' if e.notes else ""
     )
     # The content hash is a join key for data users, not something a voter needs.
     record_id = (
