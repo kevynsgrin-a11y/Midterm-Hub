@@ -1,6 +1,6 @@
 {
   "edition": "2026 Midterm Cycle",
-  "generated_at": "2026-10-09T07:00:33Z",
+  "generated_at": "2026-10-10T16:14:06Z",
   "demo": false,
   "elections": [
     {
@@ -1697,7 +1697,7 @@
       "confidence": "official",
       "source_url": "https://sos.oregon.gov/elections/pages/current-election.aspx",
       "source_retrieved_at": "2026-10-09T12:00:00Z",
-      "notes": "All-mail voting state. Registration closes Oct 13, 2026: online by 11:59 p.m. Pacific, by mail postmarked Oct 13 or earlier, or in person at an elections office or location before it closes that day. Counties mail ballots to active voters from Oct 14 through Oct 20, 2026 (Oct 16 is the last mailing day for voters without daily mail delivery); ballots are not mailed to voters with an inactive status. Oregon has no statewide in-person early-voting period; county elections offices provide in-person services with local hours. Drop-box and in-person returns are accepted until 8 p.m. on Nov 3. Ballots postmarked by Nov 3 are accepted if received by Nov 10, 2026.",
+      "notes": "All-mail voting state. Registration closes Oct 13, 2026: online by 11:59 p.m. Pacific, by mail postmarked Oct 13 or earlier, or in person at an elections office or location before it closes that day. Counties mail ballots to active voters from Oct 14 through Oct 20, 2026 (Oct 16 is the last mailing day for voters without daily mail delivery); ballots are not mailed to voters with an inactive status. Oregon has no statewide in-person early-voting period; county elections offices provide in-person services with local hours. Drop-box and in-person returns are accepted until 8 p.m. on Nov 3. Ballots postmarked by Nov 3 are accepted if received by Nov 10, 2026. The Secretary of State's Spanish-language state voters' pamphlet for the November 3, 2026 general election (58 pages) is at https://sos.oregon.gov/elections/Voters-Pamphlet/Documents/ES-STA-1126-vp.pdf and is listed on https://sos.oregon.gov/elections/Voters-Pamphlet/Pages/Voters-Pamphlet-Spanish.aspx. That page describes its Spanish material as translated sections of the state and county pamphlets; the full state pamphlet is in English. Checked October 10, 2026. County Spanish-language pamphlets were not all checked.",
       "id": "5a5d0cbe7c84f5f1",
       "state_name": "Oregon",
       "slug": "oregon",
